@@ -1,0 +1,24 @@
+{
+    "left": [
+    "images/chibi uma/left/alicorn.png",
+    "images/chibi uma/left/bee.png",
+    "images/chibi uma/left/champion.png",
+    "images/chibi uma/left/elk.png",
+    "images/chibi uma/left/griffin.png",
+    "images/chibi uma/left/hero.png",
+    "images/chibi uma/left/hound.png",
+    "images/chibi uma/left/mammoth.png"
+    ],
+
+  "peeking": [
+    "images/chibi uma/cobra.png",
+    "images/chibi uma/crocodile.png",
+    "images/chibi uma/evil dragon.png",
+    "images/chibi uma/hydra.png",
+    "images/chibi uma/maticore.png",
+    "images/chibi uma/ogre.png",
+    "images/chibi uma/sabertooth.png",
+    "images/chibi uma/spider.png"
+  ]
+  
+}
