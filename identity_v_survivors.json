@@ -1,0 +1,539 @@
+[
+    {
+        "Name": "Doctor",
+        "Roles": [
+            "Contain",
+            "Assist"
+        ],
+        "Gender": "Female",
+        "Difficulty": 1.0,
+        "ReleaseYear": 2018,
+        "Image" : "images/survivor/NavDoctor.webp"
+    },
+    {
+        "Name": "Lawyer",
+        "Roles": [
+            "Decode"
+        ],
+        "Gender": "Male",
+        "Difficulty": 1.0,
+        "ReleaseYear": 2018,
+        "Image" : "images/survivor/NavLawyer.webp"
+    },
+    {
+        "Name": "Thief",
+        "Roles": [
+            "Contain"
+        ],
+        "Gender": "Male",
+        "Difficulty": 1.5,
+        "ReleaseYear": 2018,
+        "Image" : "images/survivor/NavThief.webp"
+    },
+    {
+        "Name": "Gardener",
+        "Roles": [
+            "Contain",
+            "Assist"
+        ],
+        "Gender": "Female",
+        "Difficulty": 1.0,
+        "ReleaseYear": 2018,
+        "Image" : "images/survivor/NavGardener.webp"
+    },
+    {
+        "Name": "Magician",
+        "Roles": [
+            "Contain"
+        ],
+        "Gender": "Male",
+        "Difficulty": 2.0,
+        "ReleaseYear": 2018,
+        "Image" : "images/survivor/NavMagician.webp"
+    },
+    {
+        "Name": "Explorer",
+        "Roles": [
+            "Decode"
+        ],
+        "Gender": "Male",
+        "Difficulty": 1.5,
+        "ReleaseYear": 2018,
+        "Image" : "images/survivor/NavExplorer.webp"
+    },
+    {
+        "Name": "Mercenary",
+        "Roles": [
+            "Rescue"
+        ],
+        "Gender": "Male",
+        "Difficulty": 1.5,
+        "ReleaseYear": 2018,
+        "Image" : "images/survivor/NavMercenary.webp"
+    },
+    {
+        "Name": "Coordinator",
+        "Roles": [
+            "Rescue"
+        ],
+        "Gender": "Female",
+        "Difficulty": 1.0,
+        "ReleaseYear": 2018,
+        "Image" : "images/survivor/NavCoordinator.webp"
+    },
+    {
+        "Name": "Priestess",
+        "Roles": [
+            "Assist",
+            "Contain"
+        ],
+        "Gender": "Female",
+        "Difficulty": 2.0,
+        "ReleaseYear": 2018,
+        "Image" : "images/survivor/NavPriestess.webp"
+    },
+    {
+        "Name": "Mechanic",
+        "Roles": [
+            "Decode"
+        ],
+        "Gender": "Female",
+        "Difficulty": 2.0,
+        "ReleaseYear": 2018,
+        "Image" : "images/survivor/NavMechanic.webp"
+    },
+    {
+        "Name": "Forward",
+        "Roles": [
+            "Assist",
+            "Rescue"
+        ],
+        "Gender": "Male",
+        "Difficulty": 3.0,
+        "ReleaseYear": 2018,
+        "Image" : "images/survivor/NavForward.webp"
+    },
+    {
+        "Name": "Mind's Eye",
+        "Roles": [
+            "Decode"
+        ],
+        "Gender": "Female",
+        "Difficulty": 2.5,
+        "ReleaseYear": 2018,
+        "Image" : "images/survivor/NavTheMindsEye.webp"
+    },
+    {
+        "Name": "Perfumer",
+        "Roles": [
+            "Contain"
+        ],
+        "Gender": "Female",
+        "Difficulty": 1.5,
+        "ReleaseYear": 2018,
+        "Image" : "images/survivor/NavPerfumer.webp"
+    },
+    {
+        "Name": "Cowboy",
+        "Roles": [
+            "Assist",
+            "Contain"
+        ],
+        "Gender": "Male",
+        "Difficulty": 2.5,
+        "ReleaseYear": 2018,
+        "Image" : "images/survivor/NavCowboy.webp"
+    },
+    {
+        "Name": "Female Dancer",
+        "Roles": [
+            "Contain",
+            "Assist"
+        ],
+        "Gender": "Female",
+        "Difficulty": 1.5,
+        "ReleaseYear": 2018,
+        "Image" : "images/survivor/NavFemaleDancer.webp"
+    },
+    {
+        "Name": "Seer",
+        "Roles": [
+            "Assist"
+        ],
+        "Gender": "Male",
+        "Difficulty": 1.5,
+        "ReleaseYear": 2018,
+        "Image" : "images/survivor/NavSeer.webp"
+    },
+    {
+        "Name": "Embalmer",
+        "Roles": [
+            "Assist"
+        ],
+        "Gender": "Male",
+        "Difficulty": 1.5,
+        "ReleaseYear": 2018,
+        "Image" : "images/survivor/NavEmbalmer.webp"
+    },
+    {
+        "Name": "Prospector",
+        "Roles": [
+            "Contain",
+            "Assist"
+        ],
+        "Gender": "Male",
+        "Difficulty": 2.5,
+        "ReleaseYear": 2019,
+        "Image" : "images/survivor/NavProspector.webp"
+    },
+    {
+        "Name": "Enchantress",
+        "Roles": [
+            "Contain",
+            "Assist"
+        ],
+        "Gender": "Female",
+        "Difficulty": 1.5,
+        "ReleaseYear": 2019,
+        "Image" : "images/survivor/NavEnchantress.webp"
+    },
+    {
+        "Name": "Wildling",
+        "Roles": [
+            "Assist",
+            "Rescue"
+        ],
+        "Gender": "Male",
+        "Difficulty": 1.5,
+        "ReleaseYear": 2019,
+        "Image" : "images/survivor/NavWildling.webp"
+    },
+    {
+        "Name": "Acrobat",
+        "Roles": [
+            "Contain"
+        ],
+        "Gender": "Male",
+        "Difficulty": 2.5,
+        "ReleaseYear": 2019,
+        "Image" : "images/survivor/NavAcrobat.webp"
+    },
+    {
+        "Name": "First Officer",
+        "Roles": [
+            "Rescue"
+        ],
+        "Gender": "Male",
+        "Difficulty": 2.0,
+        "ReleaseYear": 2019,
+        "Image" : "images/survivor/NavFirstOfficer.webp"
+    },
+    {
+        "Name": "Barmaid",
+        "Roles": [
+            "Assist",
+            "Contain"
+        ],
+        "Gender": "Female",
+        "Difficulty": 2.0,
+        "ReleaseYear": 2019,
+        "Image" : "images/survivor/NavBarmaid.webp"
+    },
+    {
+        "Name": "Postman",
+        "Roles": [
+            "Assist"
+        ],
+        "Gender": "Male",
+        "Difficulty": 1.0,
+        "ReleaseYear": 2019,
+        "Image" : "images/survivor/NavPostman.webp"
+    },
+    {
+        "Name": "Grave Keeper",
+        "Roles": [
+            "Rescue"
+        ],
+        "Gender": "Male",
+        "Difficulty": 1.0,
+        "ReleaseYear": 2020,
+        "Image" : "images/survivor/NavGraveKeeper.webp"
+    },
+    {
+        "Name": "Prisoner",
+        "Roles": [
+            "Decode",
+            "Assist"
+        ],
+        "Gender": "Male",
+        "Difficulty": 2.0,
+        "ReleaseYear": 2020,
+        "Image" : "images/survivor/NavPrisoner.webp"
+    },
+    {
+        "Name": "Entomologist",
+        "Roles": [
+            "Contain",
+            "Assist"
+        ],
+        "Gender": "Female",
+        "Difficulty": 1.5,
+        "ReleaseYear": 2020,
+        "Image" : "images/survivor/NavEntomologist.webp"
+    },
+    {
+        "Name": "Painter",
+        "Roles": [
+            "Contain",
+            "Assist"
+        ],
+        "Gender": "Male",
+        "Difficulty": 2.0,
+        "ReleaseYear": 2020,
+        "Image" : "images/survivor/NavPainter.webp"
+    },
+    {
+        "Name": "Batter",
+        "Roles": [
+            "Assist",
+            "Rescue"
+        ],
+        "Gender": "Male",
+        "Difficulty": 2.5,
+        "ReleaseYear": 2020,
+        "Image" : "images/survivor/NavBatter.webp"
+    },
+    {
+        "Name": "Toy Merchant",
+        "Roles": [
+            "Contain",
+            "Assist"
+        ],
+        "Gender": "Female",
+        "Difficulty": 1.5,
+        "ReleaseYear": 2021,
+        "Image" : "images/survivor/NavToyMerchant.webp"
+    },
+    {
+        "Name": "Patient",
+        "Roles": [
+            "Contain",
+            "Rescue"
+        ],
+        "Gender": "Male",
+        "Difficulty": 2.5,
+        "ReleaseYear": 2021,
+        "Image" : "images/survivor/NavPatient.webp"
+    },
+    {
+        "Name": "Psychologist",
+        "Roles": [
+            "Assist"
+        ],
+        "Gender": "Female",
+        "Difficulty": 1.5,
+        "ReleaseYear": 2021,
+        "Image" : "images/survivor/NavPsychologist.webp"
+    },
+    {
+        "Name": "Novelist",
+        "Roles": [
+            "Contain",
+            "Assist"
+        ],
+        "Gender": "Male",
+        "Difficulty": 2.0,
+        "ReleaseYear": 2021,
+        "Image" : "images/survivor/NavNovelist.webp"
+    },
+    {
+        "Name": "Little Girl",
+        "Roles": [
+            "Assist"
+        ],
+        "Gender": "Female",
+        "Difficulty": 1.0,
+        "ReleaseYear": 2021,
+        "Image" : "images/survivor/NavLittleGirl.webp"
+    },
+    {
+        "Name": "Weeping Clown",
+        "Roles": [
+            "Rescue",
+            "Assist"
+        ],
+        "Gender": "Male",
+        "Difficulty": 1.5,
+        "ReleaseYear": 2022,
+        "Image" : "images/survivor/NavWeepingClown.webp"
+    },
+    {
+        "Name": "Professor",
+        "Roles": [
+            "Contain",
+            "Assist"
+        ],
+        "Gender": "Male",
+        "Difficulty": 2.0,
+        "ReleaseYear": 2022,
+        "Image" : "images/survivor/NavProfessor.webp"
+    },
+    {
+        "Name": "Antiquarian",
+        "Roles": [
+            "Contain"
+        ],
+        "Gender": "Female",
+        "Difficulty": 3.0,
+        "ReleaseYear": 2022,
+        "Image" : "images/survivor/NavAntiquarian.webp"
+    },
+    {
+        "Name": "Composer",
+        "Roles": [
+            "Decode"
+        ],
+        "Gender": "Male",
+        "Difficulty": 2.5,
+        "ReleaseYear": 2022,
+        "Image" : "images/survivor/NavComposer.webp"
+    },
+    {
+        "Name": "Journalist",
+        "Roles": [
+            "Rescue"
+        ],
+        "Gender": "Female",
+        "Difficulty": 2.0,
+        "ReleaseYear": 2023,
+        "Image" : "images/survivor/NavJournalist.webp"
+    },
+    {
+        "Name": "Aeroplanist",
+        "Roles": [
+            "Contain",
+            "Rescue"
+        ],
+        "Gender": "Male",
+        "Difficulty": 3.0,
+        "ReleaseYear": 2023,
+        "Image" : "images/survivor/NavAeroplanist.webp"
+    },
+    {
+        "Name": "Cheerleader",
+        "Roles": [
+            "Assist",
+            "Contain"
+        ],
+        "Gender": "Female",
+        "Difficulty": 2.0,
+        "ReleaseYear": 2023,
+        "Image" : "images/survivor/NavCheerleader.webp"
+    },
+    {
+        "Name": "Puppeteer",
+        "Roles": [
+            "Contain",
+            "Rescue"
+        ],
+        "Gender": "Male",
+        "Difficulty": 1.0,
+        "ReleaseYear": 2024,
+        "Image" : "images/survivor/NavPuppeteer.webp"
+    },
+    {
+        "Name": "Fire Investigator",
+        "Roles": [
+            "Contain",
+            "Assist"
+        ],
+        "Gender": "Male",
+        "Difficulty": 1.5,
+        "ReleaseYear": 2024,
+        "Image" : "images/survivor/NavFireInvestigator.webp"
+    },
+    {
+        "Name": "Faro Lady",
+        "Roles": [
+            "Decode"
+        ],
+        "Gender": "Female",
+        "Difficulty": 1.5,
+        "ReleaseYear": 2024,
+        "Image" : "images/survivor/NavFaroLady.webp"
+    },
+    {
+        "Name": "Knight",
+        "Roles": [
+            "Rescue"
+        ],
+        "Gender": "Male",
+        "Difficulty": 1.5,
+        "ReleaseYear": 2024,
+        "Image" : "images/survivor/NavKnight.webp"
+    },
+    {
+        "Name": "Meteorologist",
+        "Roles": [
+            "Contain",
+            "Assist"
+        ],
+        "Gender": "Female",
+        "Difficulty": 3.0,
+        "ReleaseYear": 2025,
+        "Image" : "images/survivor/NavMeteorologist.webp"
+    },
+    {
+        "Name": "Archer",
+        "Roles": [
+            "Contain"
+        ],
+        "Gender": "Female",
+        "Difficulty": 2.5,
+        "ReleaseYear": 2025,
+        "Image" : "images/survivor/NavArcher.webp"
+    },
+    {
+        "Name": "Escapologist",
+        "Roles": [
+            "Assist",
+            "Rescue"
+        ],
+        "Gender": "Male",
+        "Difficulty": 2.0,
+        "ReleaseYear": 2025,
+        "Image" : "images/survivor/NavEscapologist.webp"
+    },
+    {
+        "Name": "Lanternist",
+        "Roles": [
+            "Assist",
+            "Contain"
+        ],
+        "Gender": "Female",
+        "Difficulty": 2.0,
+        "ReleaseYear": 2025,
+        "Image" : "images/survivor/NavLanternist.webp"
+    },
+    {
+        "Name": "Matador",
+        "Roles": [
+            "Contain",
+            "Assist"
+        ],
+        "Gender": "Male",
+        "Difficulty": 2.0,
+        "ReleaseYear": 2026,
+        "Image" : "images/survivor/NavMatador.webp"
+    },
+    {
+        "Name": "Lucky Guy",
+        "Roles": [
+            "Contain"
+        ],
+        "Gender": "Male",
+        "Difficulty": 1.0,
+        "ReleaseYear": 2018,
+        "Image" : "images/survivor/NavLuckyGuy.webp"
+    }
+]

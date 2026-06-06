@@ -1,0 +1,457 @@
+[
+    {
+        "Name": "Hell Ember",
+        "Gender": "Male",
+        "Style": {
+                "Pursuit": "Low",
+                "Control": "Medium",
+                "ChairGuarding": "High"
+                 },
+        "External Trait": 1,
+        "Difficulty": 1.5,
+        "ReleaseYear": 2018,
+        "Image": "images/hunter/HellEmberOriginalSprite.webp"
+    },
+    {
+        "Name": "Smiley Face",
+        "Gender": "Male",
+        "Style": {
+                "Pursuit": "Low",
+                "Control": "High",
+                "ChairGuarding": "Medium"
+                 },
+        "External Trait": 1,
+        "Difficulty": 1,
+        "ReleaseYear": 2018,
+        "Image": "images/hunter/SmileyFaceOriginalMaskSprite.webp"
+    },
+    {
+        "Name": "Game Keeper",
+        "Gender": "Male",
+        "Style": {
+                "Pursuit": "High",
+                "Control": "Low",
+                "ChairGuarding": "High"
+                 },
+        "External Trait": 1,
+        "Difficulty": 2,
+        "ReleaseYear": 2018,
+        "Image": "images/hunter/GamekeeperOriginalSprite.webp"
+    },
+    {
+        "Name": "The Ripper",
+        "Gender": "Male",
+        "Style": {
+                "Pursuit": "High",
+                "Control": "Low",
+                "ChairGuarding": "Medium"
+                 },
+        "External Trait": 2,
+        "Difficulty": 1,
+        "ReleaseYear": 2018,
+        "Image": "images/hunter/JackTransparent.webp"
+    },
+    {
+        "Name": "Soul Weaver",
+        "Gender": "Female",
+        "Style": {
+                "Pursuit": "Medium",
+                "Control": "Low",
+                "ChairGuarding": "Medium"
+                 },
+        "External Trait": 2,
+        "Difficulty": 1.5,
+        "ReleaseYear": 2018,
+        "Image": "images/hunter/Violetta_Transparent.webp"
+    },
+    {
+        "Name": "Geisha",
+        "Gender": "Female",
+        "Style": {
+                "Pursuit": "High",
+                "Control": "Medium",
+                "ChairGuarding": "Low"
+                 },
+        "External Trait": 1,
+        "Difficulty": 1.5,
+        "ReleaseYear": 2018,
+        "Image": "images/hunter/Michiko_Transparent.webp"
+    },
+    {
+        "Name": "Wu chang",
+        "Gender": "Male",
+        "Style": {
+                "Pursuit": "Low",
+                "Control": "High",
+                "ChairGuarding": "Medium"
+                 },
+        "External Trait": 1,
+        "Difficulty": 2,
+        "ReleaseYear": 2018,
+        "Image": "images/hunter/WuChangIcon.webp"
+    },
+    {
+        "Name": "Photographer",
+        "Gender": "Male",
+        "Style": {
+                "Pursuit": "Medium",
+                "Control": "High",
+                "ChairGuarding": "Medium"
+                 },
+        "External Trait": 2,
+        "Difficulty": 2.5,
+        "ReleaseYear": 2018,
+        "Image": "images/hunter/Joseph_Transparent.webp"
+    },
+    {
+        "Name": "Mad Eyes",
+        "Gender": "Male",
+        "Style": {
+                "Pursuit": "Low",
+                "Control": "High",
+                "ChairGuarding": "High"
+                 },
+        "External Trait": 3,
+        "Difficulty": 3,
+        "ReleaseYear": 2018,
+        "Image": "images/hunter/Burke_Transparent.webp"
+    },
+    {
+        "Name": "The Feaster",
+        "Gender": "Male",
+        "Style": {
+                "Pursuit": "Medium",
+                "Control": "Low",
+                "ChairGuarding": "High"
+                 },
+        "External Trait": 2,
+        "Difficulty": 1.5,
+        "ReleaseYear": 2018,
+        "Image": "images/hunter/Hastur_Transparent.webp"
+    },
+    {
+        "Name": "Dream Witch",
+        "Gender": "Female",
+        "Style": {
+                "Pursuit": "Medium",
+                "Control": "High",
+                "ChairGuarding": "Medium"
+                 },
+        "External Trait": 3,
+        "Difficulty": 3,
+        "ReleaseYear": 2019,
+        "Image": "images/hunter/Yidhra_Transparent.webp"
+    },
+    {
+        "Name": "Axe Boy",
+        "Gender": "Male",
+        "Style": {
+                "Pursuit": "Medium",
+                "Control": "Medium",
+                "ChairGuarding": "Medium"
+                 },
+        "External Trait": 2,
+        "Difficulty": 2,
+        "ReleaseYear": 2019,
+        "Image": "images/hunter/Robbie_Transparent.webp"
+    },
+    {
+        "Name": "Evil Reptilian",
+        "Gender": "Male",
+        "Style": {
+                "Pursuit": "High",
+                "Control": "Low",
+                "ChairGuarding": "Medium"
+                 },
+        "External Trait": 3,
+        "Difficulty": 3,
+        "ReleaseYear": 2019,
+        "Image": "images/hunter/Luchino_Transparent.webp"
+    },
+    {
+        "Name": "Bloody Queen",
+        "Gender": "Female",
+        "Style": {
+                "Pursuit": "High",
+                "Control": "High",
+                "ChairGuarding": "Low"
+                 },
+        "External Trait": 1,
+        "Difficulty": 2,
+        "ReleaseYear": 2019,
+        "Image": "images/hunter/Mary_Transparent.webp"
+    },
+    {
+        "Name": "Guard 26",
+        "Gender": "Unknown",
+        "Style": {
+                "Pursuit": "Medium",
+                "Control": "Low",
+                "ChairGuarding": "High"
+                 },
+        "External Trait": 1,
+        "Difficulty": 2,
+        "ReleaseYear": 2019,
+        "Image": "images/hunter/Bonbon_Transparent.webp"
+    },
+    {
+        "Name": "Disciple",
+        "Gender": "Female",
+        "Style": {
+                "Pursuit": "Medium",
+                "Control": "Medium",
+                "ChairGuarding": "High"
+                 },
+        "External Trait": 1,
+        "Difficulty": 2,
+        "ReleaseYear": 2020,
+        "Image": "images/hunter/Ann_Transparent_2.webp"
+    },
+    {
+        "Name": "Violinist",
+        "Gender": "Male",
+        "Style": {
+                "Pursuit": "Medium",
+                "Control": "Medium",
+                "ChairGuarding": "Medium"
+                 },
+        "External Trait": 1,
+        "Difficulty": 1.5,
+        "ReleaseYear": 2020,
+        "Image": "images/hunter/Antonio_Transparent.webp"
+    },
+    {
+        "Name": "Sculpor",
+        "Gender": "Female",
+        "Style": {
+                "Pursuit": "Medium",
+                "Control": "Medium",
+                "ChairGuarding": "Medium"
+                 },
+        "External Trait": 1,
+        "Difficulty": 2.5,
+        "ReleaseYear": 2020,
+        "Image": "images/hunter/Galatea_Character_Select_Transparent.webp"
+    },
+    {
+        "Name": "Undead",
+        "Gender": "Male",
+        "Style": {
+                "Pursuit": "High",
+                "Control": "High",
+                "ChairGuarding": "Low"
+                 },
+        "External Trait": 3,
+        "Difficulty": 1.5,
+        "ReleaseYear": 2020,
+        "Image": "images/hunter/Percy_Transparent.webp"
+    },
+    {
+        "Name": "The Breaking Wheel",
+        "Gender": "Male",
+        "Style": {
+                "Pursuit": "High",
+                "Control": "Medium",
+                "ChairGuarding": "Low"
+                 },
+        "External Trait": 2,
+        "Difficulty": 3,
+        "ReleaseYear": 2021,
+        "Image": "images/hunter/Will_Brothers_Transparent.webp"
+    },
+    {
+        "Name": "Naiad",
+        "Gender": "Female",
+        "Style": {
+                "Pursuit": "Low",
+                "Control": "Medium",
+                "ChairGuarding": "Low"
+                 },
+        "External Trait": 1,
+        "Difficulty": 2,
+        "ReleaseYear": 2021,
+        "Image": "images/hunter/Grace_Profile_Transparent.webp"
+    },
+    {
+        "Name": "Wax Artist",
+        "Gender": "Male",
+        "Style": {
+                "Pursuit": "Medium",
+                "Control": "Low",
+                "ChairGuarding": "Medium"
+                 },
+        "External Trait": 2,
+        "Difficulty": 2,
+        "ReleaseYear": 2021,
+        "Image": "images/hunter/Philippe_Character_Select_Transparent.webp"
+    },
+    {
+        "Name": "Nightmare",
+        "Gender": "Male",
+        "Style": {
+                "Pursuit": "Medium",
+                "Control": "Medium",
+                "ChairGuarding": "Medium"
+                 },
+        "External Trait": 1,
+        "Difficulty": 1,
+        "ReleaseYear": 2021,
+        "Image": "images/hunter/orpheus.png"
+    },
+    {
+        "Name": "Clerk",
+        "Gender": "Female",
+        "Style": {
+                "Pursuit": "Medium",
+                "Control": "High",
+                "ChairGuarding": "Medium"
+                 },
+        "External Trait": 0,
+        "Difficulty": 3,
+        "ReleaseYear": 2022,
+        "Image": "images/hunter/Clerk.png"
+    },
+    {
+        "Name": "Hermit",
+        "Gender": "Male",
+        "Style": {
+                "Pursuit": "Medium",
+                "Control": "High",
+                "ChairGuarding": "Medium"
+                 },
+        "External Trait": 2,
+        "Difficulty": 2,
+        "ReleaseYear": 2022,
+        "Image": "images/hunter/hermit.png"
+    },
+    {
+        "Name": "Nightwatch",
+        "Gender": "Male",
+        "Style": {
+                "Pursuit": "High",
+                "Control": "Medium",
+                "ChairGuarding": "Medium"
+                 },
+        "External Trait": 1,
+        "Difficulty": 1.5,
+        "ReleaseYear": 2023,
+        "Image": "images/hunter/night watch.png"
+    },
+    {
+        "Name": "Opera Singer",
+        "Gender": "Female",
+        "Style": {
+                "Pursuit": "High",
+                "Control": "Medium",
+                "ChairGuarding": "Medium"
+                 },
+        "External Trait": 1,
+        "Difficulty": 2.5,
+        "ReleaseYear": 2023,
+        "Image": "images/hunter/opera singer.png"
+    },
+    {
+        "Name": "Fools Gold",
+        "Gender": "Male",
+        "Style": {
+                "Pursuit": "Medium",
+                "Control": "Medium",
+                "ChairGuarding": "Medium"
+                 },
+        "External Trait": 1,
+        "Difficulty": 1.5,
+        "ReleaseYear": 2023,
+        "Image": "images/hunter/Fools Gold.png"
+    },
+    {
+        "Name": "The Shadow",
+        "Gender": "Female",
+        "Style": {
+                "Pursuit": "Low",
+                "Control": "High",
+                "ChairGuarding": "Medium"
+                 },
+        "External Trait": 2,
+        "Difficulty": 3,
+        "ReleaseYear": 2024,
+        "Image": "images/hunter/the shadow.png"
+    },
+    {
+        "Name": "Goatman",
+        "Gender": "Male",
+        "Style": {
+                "Pursuit": "High",
+                "Control": "Medium",
+                "ChairGuarding": "Medium"
+                 },
+        "External Trait": 2,
+        "Difficulty": 2.5,
+        "ReleaseYear": 2024,
+        "Image": "images/hunter/goatman.png"
+    },
+    {
+        "Name": "Hullabaloo",
+        "Gender": "Male",
+        "Style": {
+                "Pursuit": "High",
+                "Control": "Medium",
+                "ChairGuarding": "Low"
+                 },
+        "External Trait": 2,
+        "Difficulty": 2,
+        "ReleaseYear": 2024,
+        "Image": "images/hunter/hullabaloo.png"
+    },
+    {
+        "Name": "Peddler",
+        "Gender": "Female",
+        "Style": {
+                "Pursuit": "High",
+                "Control": "Medium",
+                "ChairGuarding": "Medium"
+                 },
+        "External Trait": 1,
+        "Difficulty": 2,
+        "ReleaseYear": 2025,
+        "Image": "images/hunter/peddler.png"
+    },
+    {
+        "Name": "Cueist",
+        "Gender": "Male",
+        "Style": {
+                "Pursuit": "Low",
+                "Control": "High",
+                "ChairGuarding": "Medium"
+                 },
+        "External Trait": 1,
+        "Difficulty": 2.5,
+        "ReleaseYear": 2025,
+        "Image": "images/hunter/cueist.png"
+    },
+    {
+        "Name": "Queen Bee",
+        "Gender": "Female",
+        "Style": {
+                "Pursuit": "High",
+                "Control": "Low",
+                "ChairGuarding": "Medium"
+                 },
+        "External Trait": 1,
+        "Difficulty": 2,
+        "ReleaseYear": 2025,
+        "Image": "images/hunter/queen bee.png"
+    },
+    {
+        "Name": "Dentist",
+        "Gender": "Male",
+        "Style": {
+                "Pursuit": "High",
+                "Control": "Medium",
+                "ChairGuarding": "Medium"
+                 },
+        "External Trait": 1,
+        "Difficulty": 2,
+        "ReleaseYear": 2026,
+        "Image": "images/hunter/dentist.png"
+    }
+]
