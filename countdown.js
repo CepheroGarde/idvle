@@ -7,7 +7,7 @@
 
 (function () {
   // June 8, 2026 20:00:00 GMT+8 = June 8, 2026 12:00:00 UTC
-const RELEASE_TIME = new Date('2026-06-08T00:00:00Z').getTime();
+  const RELEASE_TIME = new Date('2026-06-08T00:00:00Z').getTime();
   const STORAGE_KEY = 'idvle_countdown_dismissed';
 
   // If already past release time and user has seen the popup, don't show again
