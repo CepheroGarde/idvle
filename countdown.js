@@ -71,7 +71,7 @@ const RELEASE_TIME = new Date('2026-06-08T00:00:00Z').getTime();
       padding: 28px 24px 0;
     }
 
-    .idvle-cd-logo {
+    .-logo {
       width: 80px;
       height: 80px;
       object-fit: contain;
@@ -80,7 +80,7 @@ const RELEASE_TIME = new Date('2026-06-08T00:00:00Z').getTime();
       border-radius: 16px;
     }
 
-    .idvle-cd-title {
+    .-title {
       font-size: 22px;
       font-weight: 900;
       color: #1a1a2e;
@@ -88,14 +88,14 @@ const RELEASE_TIME = new Date('2026-06-08T00:00:00Z').getTime();
       letter-spacing: -0.5px;
     }
 
-    .idvle-cd-subtitle {
+    .-subtitle {
       font-size: 13px;
       color: #6b7280;
       margin: 0 0 20px;
       line-height: 1.5;
     }
 
-    .idvle-cd-date-badge {
+    .-date-badge {
       display: inline-block;
       background: #f0fdf4;
       border: 1.5px solid #bbf7d0;
@@ -204,7 +204,7 @@ const RELEASE_TIME = new Date('2026-06-08T00:00:00Z').getTime();
           Identity V: Wordle is launching officially.<br>
           Get ready to test your knowledge!
         </p>
-        <div class="idvle-cd-date-badge">📅 June 8, 2026 · 8:00 PM (GMT+8)</div>
+        <div class="idvle-cd-date-badge">📅 June 8, 2026 · 8:00 AM (GMT+8)</div>
       </div>
 
       <div class="idvle-cd-blocks">
