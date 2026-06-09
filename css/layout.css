@@ -1,0 +1,236 @@
+/* ============================================================
+   layout.css — Header glass, game/menu screens, guess table,
+                input container, and responsive breakpoints
+   ============================================================ */
+
+/* ---- Header responsive ---- */
+@media (max-width: 768px) {
+    header {
+        z-index: 9999;
+        padding-bottom: calc(1rem + 4px);
+        border-bottom-width: 2px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    header button,
+    header .icon-btn,
+    header .theme-toggle {
+        position: relative;
+        z-index: 10001;
+        background-clip: padding-box;
+    }
+    header #stats-summary { font-size: 11px; padding: 4px 10px; }
+}
+
+/* ---- Game toolbar ---- */
+#game-toolbar {
+    position: relative;
+    z-index: 10;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-bottom: 2px solid #d1fae5;
+    border-radius: 0.75rem;
+    padding: 6px 8px;
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 0.75rem;
+}
+body.dark #game-toolbar {
+    background: rgba(15, 23, 42, 0.95);
+    border-bottom-color: #064e3b;
+}
+
+/* ---- Game screen ---- */
+#game-screen {
+    width: 100%;
+    overflow-x: hidden;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* ---- Table wrapper ---- */
+.table-wrapper {
+    width: 100%;
+    overflow-x: hidden;
+    padding-bottom: 8px;
+}
+
+/* ---- Guess grid ---- */
+#guesses {
+    width: 100%;
+    min-width: unset;
+    border-collapse: separate;
+    table-layout: fixed;
+    border: 1.5px solid rgba(16, 185, 129, 0.24);
+    border-radius: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.94);
+    overflow: hidden;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+}
+#guesses th, #guesses td { border: 1px solid rgba(148, 163, 184, 0.16); }
+#guesses thead th:first-child { border-top-left-radius: 1.5rem; }
+#guesses thead th:last-child  { border-top-right-radius: 1.5rem; }
+#guesses tbody tr:last-child td:first-child { border-bottom-left-radius: 1.5rem; }
+#guesses tbody tr:last-child td:last-child  { border-bottom-right-radius: 1.5rem; }
+.cell-group-end { border-right: 2px solid #e5e7eb !important; }
+
+/* Column widths — survivor mode */
+#guesses .name-col { width: 13%; }
+#guesses th:not(.name-col), #guesses td:not(.name-col) { width: calc(87% / 10); }
+/* Hunter mode */
+#guesses.course-mode .name-col { width: 14%; }
+#guesses.course-mode th:not(.name-col), #guesses.course-mode td:not(.name-col) { width: calc(86% / 6); }
+
+/* Images inside grids */
+#guesses img, #guess-grid img {
+    width: 100%;
+    max-width: 80px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto;
+}
+#guesses.course-mode .name-col img, #guess-grid .course-img {
+    width: 56px !important; height: 56px !important;
+    max-width: 56px !important; max-height: 56px !important;
+    object-fit: contain; border-radius: 6px;
+}
+
+/* Difficulty stars */
+.difficulty-stars {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    white-space: nowrap;
+}
+#guess-grid .difficulty-stars {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+.difficulty-stars .difficulty-star, #guess-grid .difficulty-star {
+    width: 20px; height: 20px;
+    display: inline-block; margin: 0;
+    object-fit: contain;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.35));
+}
+#guess-grid .difficulty-star.opacity-50 { opacity: 0.7; }
+#guess-grid .difficulty-stars, #guess-grid .difficulty-star { max-width: none; max-height: none; }
+
+/* ---- Input container ---- */
+#input-container { position: relative; }
+.picker-search-bar { padding: 4px 0; }
+
+/* ---- Picker panel ---- */
+#picker-panel {
+    width: 100%;
+    background: rgba(255,255,255,0.97);
+    border: 2px solid #d1fae5;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+    max-height: 280px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-top: 4px;
+}
+body.dark #picker-panel {
+    background: rgba(15,23,42,0.97);
+    border-color: #064e3b;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+#picker-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 8px;
+}
+
+/* ---- Menu / game padding ---- */
+@media (max-width: 768px) {
+    #menu-screen, #game-screen { padding: 1rem; }
+    #game-screen { padding: 0.5rem; }
+    .table-wrapper { border-radius: 1rem; overflow-x: hidden; }
+    #guesses { min-width: unset; font-size: clamp(8px, 2.5vw, 13px); }
+    #guesses th, #guesses td {
+        padding: clamp(2px, 1vw, 8px);
+        white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    #guesses td.wordle-cell { overflow: visible; text-overflow: clip; }
+    #guesses .difficulty-stars { gap: 1px; flex-wrap: nowrap; }
+    #guesses .difficulty-star {
+        width: clamp(7px, 2.4vw, 14px) !important;
+        height: clamp(7px, 2.4vw, 14px) !important;
+        flex-shrink: 0;
+    }
+    #guesses img, #guess-grid img {
+        width: clamp(24px, 6vw, 36px); height: clamp(24px, 6vw, 36px);
+        max-width: clamp(24px, 6vw, 36px); max-height: clamp(24px, 6vw, 36px);
+    }
+    .name-col { min-width: unset; font-size: clamp(8px, 2.2vw, 11px); }
+    #guess-head th {
+        font-size: clamp(7px, 2vw, 10px);
+        white-space: normal; word-break: break-word; line-height: 1.1; padding: 3px 2px;
+    }
+    #guesses.course-mode #guess-head th { font-size: clamp(6px, 1.8vw, 9px); }
+    #guesses.course-mode .name-col      { width: 11%; }
+    #guesses.course-mode th:not(.name-col), #guesses.course-mode td:not(.name-col) { width: calc(89% / 6); }
+    #input-container { position: relative; width: 100%; padding-bottom: 0; margin-bottom: 5rem; }
+    #autocomplete-list {
+        position: absolute; z-index: 9999; left: 0; right: 0; top: 100%;
+        max-height: 250px; overflow-y: auto;
+        background-color: white; border: 1px solid #d1d5db; border-top: none;
+        border-bottom-left-radius: 0.75rem; border-bottom-right-radius: 0.75rem;
+        box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+    }
+    #menu-screen, .help-modal > div, .result-modal > div > div {
+        width: 90%; max-width: 500px; margin: auto;
+    }
+    .btn-primary, .btn-secondary, .btn-easy, .btn-hard,
+    #input-container button, #input-container input { width: 100%; }
+    .btn-primary, .btn-secondary, .btn-easy, .btn-hard { min-height: 3.5rem; font-size: 1rem; }
+    #guess-grid th, #guess-grid td { padding: 0.65rem; }
+    #guess-grid { min-width: 100%; }
+    header { padding-bottom: 0; }
+    #stats-summary { justify-content: center; width: 100%; }
+    .share-card { padding: 1rem; font-size: 0.95rem; }
+    .stat-tag { padding: 0.55rem 0.75rem; font-size: 0.85rem; }
+
+    #game-screen {
+        width: 100% !important; max-width: 100% !important;
+        margin: 0 !important; padding: 0.5rem !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .course-mode img {
+        width: 10vw !important; height: 10vw !important;
+        max-width: 44px !important; max-height: 44px !important;
+    }
+    #guesses.course-mode td { padding: 3px 1px !important; }
+    .table-wrapper { overflow-x: auto; }
+}
+
+@media (max-width: 480px) {
+    body { padding: 4px; }
+    #guesses { min-width: unset; font-size: clamp(7px, 2.2vw, 11px); }
+    #guesses th, #guesses td { padding: clamp(2px, 0.8vw, 5px); }
+    #guesses img, #guess-grid img {
+        width: clamp(20px, 5.5vw, 30px); height: clamp(20px, 5.5vw, 30px);
+        max-width: clamp(20px, 5.5vw, 30px); max-height: clamp(20px, 5.5vw, 30px);
+    }
+    .name-col { min-width: unset; width: 12%; }
+    #guesses.course-mode .name-col img, #guess-grid .course-img {
+        width: clamp(40px, 10vw, 56px) !important; height: clamp(40px, 10vw, 56px) !important;
+        max-width: clamp(40px, 10vw, 56px) !important; max-height: clamp(40px, 10vw, 56px) !important;
+    }
+    .guess-card { padding: 8px 4px; width: 98%; margin-left: auto; margin-right: auto; }
+    .attribute-grid { grid-template-columns: repeat(11, 1fr) !important; gap: 1px; width: 100%; overflow-x: hidden; }
+    .stat-box { padding: 2px 1px; font-size: 10px; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+    #picker-grid { grid-template-columns: repeat(auto-fill, minmax(72px, 1fr)); gap: 6px; }
+    .picker-card-img { max-width: 64px; }
+}
