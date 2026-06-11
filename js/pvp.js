@@ -43,6 +43,42 @@ let readyCheckState = {
   secondsLeft: 20
 };
 
+// --- Server-Calibrated Timing System (Option 1) ---
+let serverTimeOffsetMs = 0;
+
+/**
+ * Calibrates the client clock against the database server's time
+ * by fetching HTTP response headers from the Supabase API endpoint.
+ * This resolves clock drift issues across different device timezones.
+ */
+async function calibrateServerTime() {
+  const start = Date.now();
+  try {
+    const url = typeof SUPABASE_URL !== 'undefined' ? SUPABASE_URL : '';
+    if (!url) return;
+
+    const response = await fetch(url, { method: 'HEAD' });
+    const serverDateHeader = response.headers.get('date');
+    
+    if (serverDateHeader) {
+      const serverTime = new Date(serverDateHeader).getTime();
+      const rtt = Date.now() - start;
+      // Estimate server time adjusted for half of the round trip time
+      const estimatedServerTime = serverTime + Math.floor(rtt / 2);
+      serverTimeOffsetMs = estimatedServerTime - Date.now();
+    }
+  } catch (err) {
+    console.warn('Unable to calibrate server time, using local clock fallback:', err);
+  }
+}
+
+/**
+ * Returns the estimated current server time in milliseconds.
+ */
+function getServerTime() {
+  return Date.now() + serverTimeOffsetMs;
+}
+
 function calculatePlayerRoundPower(state, guesses, maxG, dmgMult) {
   if (state && state.startsWith('finished_won')) {
     const parts = state.split(':');
@@ -135,7 +171,7 @@ function getRoundTimeLimitMin(battle) {
 
 function computeRoundExpiresAt(battle) {
   const limitMin = getRoundTimeLimitMin(battle);
-  return new Date(Date.now() + limitMin * 60 * 1000).toISOString();
+  return new Date(getServerTime() + limitMin * 60 * 1000).toISOString();
 }
 
 // --------------- Matchmaking Queue Operations ---------------
@@ -148,6 +184,7 @@ async function joinPvPQueue() {
   showQueueModal(true);
 
   try {
+    await calibrateServerTime(); // Perform clock calibration upon queueing
     await supabaseClient.from('pvp_queue_idv').delete().eq('user_id', userId);
 
     const { error } = await supabaseClient.from('pvp_queue_idv').insert({
@@ -316,7 +353,7 @@ function startReadyCheck(battle) {
           initializePvPGame(b);
         } else {
           if (readyCheckState.role === 'player1') {
-            const now = Date.now();
+            const now = getServerTime();
             const freshExpires = new Date(now + 3 * 60 * 1000).toISOString();
             await supabaseClient
               .from('pvp_battles_idv')
@@ -449,8 +486,10 @@ async function createBattleFromLobby(allPlayers, gameType, modSettings = {}, lob
   const dataList = GAME_CONFIG[gameType].data();
   const target = dataList[Math.floor(Math.random() * dataList.length)];
   const timeLimitMin = modSettings?.timeLimit || 3;
-  const expiresAt = new Date(Date.now() + timeLimitMin * 60 * 1000).toISOString();
-  const now = Date.now();
+  
+  await calibrateServerTime(); // Perform baseline sync
+  const expiresAt = new Date(getServerTime() + timeLimitMin * 60 * 1000).toISOString();
+  const now = getServerTime();
   const startingHp = modSettings?.startingHp || 100;
 
   const players = allPlayers.map(p => ({
@@ -492,7 +531,9 @@ async function setupPvPBattle(opponent) {
   const dataList = GAME_CONFIG[gameType].data();
   
   const target = dataList[Math.floor(Math.random() * dataList.length)];
-  const roundExpiresAt = new Date(Date.now() + 3 * 60 * 1000).toISOString();
+  
+  await calibrateServerTime(); // Perform baseline sync
+  const roundExpiresAt = new Date(getServerTime() + 3 * 60 * 1000).toISOString();
 
   try {
     await supabaseClient.from('pvp_queue_idv').delete().in('user_id', [userId, opponent.user_id]);
@@ -570,7 +611,7 @@ function initializePvPGame(battle) {
 
   pvpState.currentRound = battle.round_number || 1;
   pvpState.isWaitingForOpponent = false;
-  pvpState.lastHeartbeatSent = Date.now();
+  pvpState.lastHeartbeatSent = getServerTime();
   pvpState.formattedTime = "03:00";
 
   sessionState.active = true;
@@ -611,7 +652,7 @@ function initializePvPGame(battle) {
   pvpState.roundTimeoutHandled = false;
   const roundExpiry = battle.round_expires_at
     ? new Date(battle.round_expires_at)
-    : new Date(Date.now() + pvpState.roundTimeLimitMin * 60 * 1000);
+    : new Date(getServerTime() + pvpState.roundTimeLimitMin * 60 * 1000);
   startPvPTimer(roundExpiry);
 
   startBattlePoll();
@@ -840,10 +881,10 @@ function startPvPTimer(expiresTime) {
   if (pvpState.matchTimer) clearInterval(pvpState.matchTimer);
 
   pvpState.roundExpiresAt = expiresTime instanceof Date ? expiresTime : new Date(expiresTime);
-  pvpState.formattedTime = formatTimerFromMs(pvpState.roundExpiresAt - Date.now());
+  pvpState.formattedTime = formatTimerFromMs(pvpState.roundExpiresAt - getServerTime());
 
   pvpState.matchTimer = setInterval(() => {
-    const diff = pvpState.roundExpiresAt - Date.now();
+    const diff = pvpState.roundExpiresAt - getServerTime();
 
     if (diff <= 0) {
       clearInterval(pvpState.matchTimer);
@@ -1082,7 +1123,7 @@ function startBattlePoll() {
           if (isStatePlaying(p.state)) {
             const parts = p.state.split(':');
             const ts = parseInt(parts[1], 10) || 0;
-            if (parts.length === 2 && Date.now() - ts > PVP_DC_TIMEOUT_MS) {
+            if (parts.length === 2 && getServerTime() - ts > PVP_DC_TIMEOUT_MS) {
               return false; // Timed out player cannot be dynamic host
             }
           }
@@ -1098,7 +1139,7 @@ function startBattlePoll() {
             if (isStatePlaying(opp.state)) {
               const parts = opp.state.split(':');
               const ts = parseInt(parts[1], 10) || 0;
-              if (parts.length === 2 && Date.now() - ts > PVP_DC_TIMEOUT_MS) {
+              if (parts.length === 2 && getServerTime() - ts > PVP_DC_TIMEOUT_MS) {
                 players[i] = { ...opp, state: 'exited' };
                 stateChanged = true;
               }
@@ -1120,7 +1161,7 @@ function startBattlePoll() {
         }
 
         // Heartbeat verification guard: Avoid rewriting states if the user is finished
-        const nowMs = Date.now();
+        const nowMs = getServerTime();
         if (nowMs - pvpState.lastHeartbeatSent > 4000 && !sessionState.isGameOver && !pvpState.isWaitingForOpponent) {
           pvpState.lastHeartbeatSent = nowMs;
           const updated = [...players];
@@ -1171,7 +1212,7 @@ function startBattlePoll() {
         if (isStatePlaying(opponentState)) {
           const parts = opponentState.split(':');
           const ts = parseInt(parts[1], 10) || 0;
-          if (parts.length === 2 && Date.now() - ts > PVP_DC_TIMEOUT_MS) {
+          if (parts.length === 2 && getServerTime() - ts > PVP_DC_TIMEOUT_MS) {
             clearInterval(pvpState.pollTimer);
             clearInterval(pvpState.matchTimer);
             await supabaseClient.from('pvp_battles_idv').update({
@@ -1185,7 +1226,7 @@ function startBattlePoll() {
         }
 
         // Heartbeat verification guard: Avoid rewriting states if the user is finished
-        const nowMs = Date.now();
+        const nowMs = getServerTime();
         if (nowMs - pvpState.lastHeartbeatSent > 4000 && !sessionState.isGameOver && !pvpState.isWaitingForOpponent) {
           pvpState.lastHeartbeatSent = nowMs;
           const myStateKey = pvpState.role === 'player1' ? 'player1_state' : 'player2_state';
@@ -1231,7 +1272,7 @@ function startBattlePoll() {
     if (!pvpState.battleId || sessionState.isGameOver || pvpState.isWaitingForOpponent) return;
 
     if (document.visibilityState === 'hidden') {
-      const nowMs = Date.now();
+      const nowMs = getServerTime();
       pvpState.lastHeartbeatSent = nowMs;
       if (pvpState.isFFA) {
         const updated = pvpState.allPlayers.map((p, i) =>
@@ -1267,13 +1308,13 @@ async function submitPvPGuess(guessItem) {
 
   let stateUpdate;
   if (isWin) {
-    const msRemaining = pvpState.roundExpiresAt ? (pvpState.roundExpiresAt - Date.now()) : 0;
+    const msRemaining = pvpState.roundExpiresAt ? (pvpState.roundExpiresAt - getServerTime()) : 0;
     const secRemaining = Math.max(0, Math.floor(msRemaining / 1000));
     stateUpdate = `finished_won:${secRemaining}`;
   } else if (isLoss) {
     stateUpdate = 'finished_lost';
   } else {
-    stateUpdate = `playing:${Date.now()}`;
+    stateUpdate = `playing:${getServerTime()}`;
   }
 
   const currentGuesses = sessionState.guesses;
@@ -1443,7 +1484,7 @@ async function processRoundResolution(battle) {
     roundDamageMultiplier = baseDmgMult * suddenDeathFactor;
   }
 
-  const now = Date.now();
+  const now = getServerTime();
 
   // ==========================================
   //  FREE-FOR-ALL (MULTIPLAYER) MITIGATION
@@ -1507,7 +1548,7 @@ async function processRoundResolution(battle) {
     const alive = updated.filter(p => p.hp > 0 && p.state !== 'exited');
     const payload = {
       ...buildPlayersPayload(updated),
-      last_update: new Date().toISOString()
+      last_update: new Date(getServerTime()).toISOString()
     };
 
     if (alive.length <= 1) {
@@ -1583,7 +1624,7 @@ async function processRoundResolution(battle) {
     player2_state: `playing:${now}`,
     player1_guesses: [],
     player2_guesses: [],
-    last_update: new Date().toISOString()
+    last_update: new Date(getServerTime()).toISOString()
   };
 
   if (isBattleOver) {
@@ -1699,7 +1740,7 @@ function handleRoundReset(nextRoundNumber, newTargetName, gameType, roundExpires
 
   const expiry = roundExpiresAt
     ? new Date(roundExpiresAt)
-    : new Date(Date.now() + pvpState.roundTimeLimitMin * 60 * 1000);
+    : new Date(getServerTime() + pvpState.roundTimeLimitMin * 60 * 1000);
   startPvPTimer(expiry);
 
   updateHpDisplay();
