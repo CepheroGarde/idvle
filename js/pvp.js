@@ -1,1 +1,2251 @@
-const a0_0x16dfdb=a0_0x40ea;(function(_0x2e837b,_0x550876){const _0x393ed2=a0_0x40ea,_0x102ed4=_0x2e837b();while(!![]){try{const _0x16013d=parseInt(_0x393ed2(0x1ea))/0x1*(parseInt(_0x393ed2(0x293))/0x2)+-parseInt(_0x393ed2(0x254))/0x3+parseInt(_0x393ed2(0x24b))/0x4*(parseInt(_0x393ed2(0x166))/0x5)+parseInt(_0x393ed2(0x19c))/0x6*(parseInt(_0x393ed2(0x1c1))/0x7)+-parseInt(_0x393ed2(0x197))/0x8+parseInt(_0x393ed2(0x279))/0x9+-parseInt(_0x393ed2(0x178))/0xa*(parseInt(_0x393ed2(0x1fc))/0xb);if(_0x16013d===_0x550876)break;else _0x102ed4['push'](_0x102ed4['shift']());}catch(_0x274bbb){_0x102ed4['push'](_0x102ed4['shift']());}}}(a0_0x2c62,0xa6132));const PVP_DC_TIMEOUT_MS=0x61a8;let pvpState={'battleId':null,'role':null,'opponentId':null,'opponentName':null,'myHp':0x64,'opponentHp':0x64,'maxHp':0x64,'opponentGuesses':[],'currentRound':0x1,'matchTimer':null,'pollTimer':null,'queueTimer':null,'isWaitingForOpponent':![],'lastHeartbeatSent':0x0,'formattedTime':a0_0x16dfdb(0x246),'maxGuesses':0x5,'damageMultiplier':0x1,'isFFA':![],'allPlayers':[],'mySlot':0x0,'prevHpMap':{},'roundTimeLimitMin':0x3,'roundExpiresAt':null,'roundTimeoutHandled':![],'isResolvingRound':![],'hardModeActive':![],'isShowingRoundResolution':![],'suddenDeathRound':0x6},readyCheckState={'battleId':null,'role':null,'pollTimer':null,'countdownTimer':null,'secondsLeft':0x14};function calculatePlayerRoundPower(_0xa1514c,_0x2f956e,_0x519edf,_0x4e8475){const _0x47497c=a0_0x16dfdb;if(_0xa1514c&&_0xa1514c[_0x47497c(0x1d4)](_0x47497c(0x1ad))){const _0x15cf0a=_0xa1514c[_0x47497c(0x1c4)](':'),_0x234530=_0x15cf0a[_0x47497c(0x2ba)]===0x2?parseFloat(_0x15cf0a[0x1]):0x0,_0x63673d=_0x519edf-parseGuessesArray(_0x2f956e)[_0x47497c(0x2ba)],_0x11f451=Math[_0x47497c(0x1bf)](1.2*(_0x234530/0x5),_0x519edf*0x3);return Math[_0x47497c(0x226)]((_0x63673d+_0x11f451)*_0x4e8475);}return 0x0;}function isStatePlaying(_0x203e3d){const _0x323c1b=a0_0x16dfdb;return typeof _0x203e3d==='string'&&_0x203e3d[_0x323c1b(0x1d4)](_0x323c1b(0x16f));}function parseGuessesArray(_0x3b911a){const _0x26628a=a0_0x16dfdb;if(Array['isArray'](_0x3b911a))return _0x3b911a;if(typeof _0x3b911a===_0x26628a(0x28f))try{return JSON['parse'](_0x3b911a);}catch(_0x581e55){return[];}return[];}function parseBattlePlayers(_0x1e84da){const _0x434136=a0_0x16dfdb,_0x5f43ca=isMultiplayerBattle(_0x1e84da),_0x592692=_0x1e84da[_0x434136(0x176)]||{},_0x37529b=_0x592692[_0x434136(0x276)]||0x64;if(_0x5f43ca&&_0x1e84da[_0x434136(0x26f)]&&Array['isArray'](_0x1e84da[_0x434136(0x26f)])&&_0x1e84da['players']['length']>0x0)return _0x1e84da[_0x434136(0x26f)][_0x434136(0x180)](_0x588717=>({..._0x588717,'hp':_0x588717['hp']??_0x37529b,'guesses':parseGuessesArray(_0x588717[_0x434136(0x24c)])}));return[{'id':_0x1e84da[_0x434136(0x235)],'username':_0x1e84da[_0x434136(0x1f7)],'hp':_0x1e84da[_0x434136(0x1d3)]??_0x37529b,'state':_0x1e84da['player1_state'],'guesses':parseGuessesArray(_0x1e84da[_0x434136(0x273)])},{'id':_0x1e84da[_0x434136(0x272)],'username':_0x1e84da[_0x434136(0x17c)],'hp':_0x1e84da[_0x434136(0x1ae)]??_0x37529b,'state':_0x1e84da[_0x434136(0x1ec)],'guesses':parseGuessesArray(_0x1e84da[_0x434136(0x1d0)])}];}function isMultiplayerBattle(_0x23c028){const _0x25411a=a0_0x16dfdb,_0x2a97ce=_0x23c028[_0x25411a(0x200)]||_0x23c028[_0x25411a(0x26f)]?.[_0x25411a(0x2ba)]||0x2;return _0x2a97ce>0x2;}function syncLegacyFieldsFromPlayers(_0x4b6e45){const _0x50cbeb=a0_0x16dfdb,_0x2735ff=_0x4b6e45[0x0]||{},_0x2c158d=_0x4b6e45[0x1]||{};return{'player1_id':_0x2735ff['id'],'player1_username':_0x2735ff[_0x50cbeb(0x27c)],'player1_hp':_0x2735ff['hp'],'player1_state':_0x2735ff['state'],'player1_guesses':_0x2735ff[_0x50cbeb(0x24c)]||[],'player2_id':_0x2c158d['id'],'player2_username':_0x2c158d[_0x50cbeb(0x27c)],'player2_hp':_0x2c158d['hp'],'player2_state':_0x2c158d['state'],'player2_guesses':_0x2c158d[_0x50cbeb(0x24c)]||[]};}function buildPlayersPayload(_0x4b6238){return{'players':_0x4b6238,'player_count':_0x4b6238['length'],...syncLegacyFieldsFromPlayers(_0x4b6238)};}function getRoundTimeLimitMin(_0x38a80d){return _0x38a80d?.['settings']?.['timeLimit']||pvpState['roundTimeLimitMin']||0x3;}function computeRoundExpiresAt(_0x3feab6){const _0x1034bd=a0_0x16dfdb,_0x2984c9=getRoundTimeLimitMin(_0x3feab6);return new Date(Date['now']()+_0x2984c9*0x3c*0x3e8)[_0x1034bd(0x202)]();}async function joinPvPQueue(){const _0x271761=a0_0x16dfdb,_0x4f0399=getOrCreateUserId(),_0x1136d9=localStorage['getItem']('idvle_nickname')||'Anonymous',_0x264670=currentGameType;showQueueModal(!![]);try{await supabaseClient[_0x271761(0x2ab)](_0x271761(0x215))['delete']()['eq'](_0x271761(0x192),_0x4f0399);const {error:_0x173dfa}=await supabaseClient['from'](_0x271761(0x215))[_0x271761(0x218)]({'user_id':_0x4f0399,'username':_0x1136d9,'game_type':_0x264670});if(_0x173dfa)throw _0x173dfa;startMatchmakingPoll();}catch(_0x38333d){console[_0x271761(0x269)](_0x271761(0x2b5),_0x38333d),showSaveTransferToast(_0x271761(0x2a9)),showQueueModal(![]);}}async function leavePvPQueue(){const _0x16c221=a0_0x16dfdb,_0x466c80=getOrCreateUserId();stopQueuePoll();try{await supabaseClient['from']('pvp_queue_idv')['delete']()['eq']('user_id',_0x466c80);}catch(_0xff9d71){console[_0x16c221(0x269)](_0x16c221(0x1ac),_0xff9d71);}showQueueModal(![]);}function startMatchmakingPoll(){stopQueuePoll(),pvpState['queueTimer']=setInterval(async()=>{const _0x4a3f9f=a0_0x40ea,_0x19dd91=getOrCreateUserId(),_0x3daea8=currentGameType;try{const {data:_0x35349e,error:_0x1f4906}=await supabaseClient[_0x4a3f9f(0x2ab)]('pvp_queue_idv')[_0x4a3f9f(0x17a)]('*')['eq'](_0x4a3f9f(0x1a8),_0x3daea8)['neq'](_0x4a3f9f(0x192),_0x19dd91)[_0x4a3f9f(0x1fd)](_0x4a3f9f(0x1e7),{'ascending':!![]})[_0x4a3f9f(0x20f)](0x1);if(_0x1f4906)throw _0x1f4906;if(_0x35349e&&_0x35349e['length']>0x0){const _0x3c2b6e=_0x35349e[0x0];stopQueuePoll(),await setupPvPBattle(_0x3c2b6e);}else{const {data:_0x58d118,error:_0xd6084d}=await supabaseClient[_0x4a3f9f(0x2ab)](_0x4a3f9f(0x1bc))[_0x4a3f9f(0x17a)]('*')['eq'](_0x4a3f9f(0x21d),_0x4a3f9f(0x23c))['or'](_0x4a3f9f(0x160)+_0x19dd91+_0x4a3f9f(0x19e)+_0x19dd91)[_0x4a3f9f(0x20f)](0x1)['maybeSingle']();if(_0xd6084d)throw _0xd6084d;_0x58d118&&(stopQueuePoll(),_0x58d118[_0x4a3f9f(0x184)]===_0x4a3f9f(0x1f6)||_0x58d118[_0x4a3f9f(0x1ec)]===_0x4a3f9f(0x1f6)?startReadyCheck(_0x58d118):initializePvPGame(_0x58d118));}}catch(_0x7b4280){console[_0x4a3f9f(0x269)](_0x4a3f9f(0x195),_0x7b4280);}},0x7d0);}function stopQueuePoll(){const _0x51646e=a0_0x16dfdb;pvpState[_0x51646e(0x213)]&&(clearInterval(pvpState[_0x51646e(0x213)]),pvpState[_0x51646e(0x213)]=null);}function startReadyCheck(_0x4d1864){const _0x2e0a5f=a0_0x16dfdb,_0x255848=getOrCreateUserId();showQueueModal(![]),readyCheckState[_0x2e0a5f(0x1f9)]=_0x4d1864['id'],readyCheckState['role']=_0x255848===_0x4d1864['player1_id']?_0x2e0a5f(0x2b3):_0x2e0a5f(0x1a2),readyCheckState[_0x2e0a5f(0x237)]=0x14,showReadyCheckModal(_0x4d1864);if(readyCheckState[_0x2e0a5f(0x227)])clearInterval(readyCheckState['countdownTimer']);readyCheckState[_0x2e0a5f(0x227)]=setInterval(()=>{const _0x3f3185=_0x2e0a5f;readyCheckState[_0x3f3185(0x237)]--;const _0x7db3da=document[_0x3f3185(0x21c)]('ready-check-countdown');_0x7db3da&&(_0x7db3da[_0x3f3185(0x20c)]=readyCheckState[_0x3f3185(0x237)]),readyCheckState[_0x3f3185(0x237)]<=0x0&&handleReadyCheckTimeout();},0x3e8);if(readyCheckState['pollTimer'])clearInterval(readyCheckState[_0x2e0a5f(0x27a)]);readyCheckState[_0x2e0a5f(0x27a)]=setInterval(async()=>{const _0x1cd03e=_0x2e0a5f;try{const {data:_0x1e41c8,error:_0x5ebb7d}=await supabaseClient[_0x1cd03e(0x2ab)]('pvp_battles_idv')[_0x1cd03e(0x17a)]('*')['eq']('id',readyCheckState['battleId'])['single']();if(_0x5ebb7d||!_0x1e41c8||_0x1e41c8['status']===_0x1cd03e(0x280)){abortReadyCheck(_0x1cd03e(0x28b));return;}const _0x1d8a28=readyCheckState[_0x1cd03e(0x208)]===_0x1cd03e(0x2b3)?_0x1e41c8[_0x1cd03e(0x184)]:_0x1e41c8[_0x1cd03e(0x1ec)],_0x360f8f=readyCheckState[_0x1cd03e(0x208)]===_0x1cd03e(0x2b3)?_0x1e41c8[_0x1cd03e(0x1ec)]:_0x1e41c8[_0x1cd03e(0x184)],_0xf9a05d=document['getElementById'](_0x1cd03e(0x2a7)),_0x533c22=document[_0x1cd03e(0x21c)](_0x1cd03e(0x29d)),_0x5967eb=_0x1d8a28===_0x1cd03e(0x25c)||isStatePlaying(_0x1d8a28),_0x390964=_0x360f8f===_0x1cd03e(0x25c)||isStatePlaying(_0x360f8f);if(_0xf9a05d){if(_0x5967eb){_0xf9a05d[_0x1cd03e(0x2b4)]=_0x1cd03e(0x162),_0xf9a05d[_0x1cd03e(0x20c)]=_0x1cd03e(0x1cf);const _0x234e4b=document[_0x1cd03e(0x21c)](_0x1cd03e(0x1d7));_0x234e4b&&(_0x234e4b[_0x1cd03e(0x186)]=!![],_0x234e4b['textContent']='WAITING\x20FOR\x20OPPONENT...',_0x234e4b[_0x1cd03e(0x2b4)]=_0x1cd03e(0x285));}else _0xf9a05d[_0x1cd03e(0x2b4)]=_0x1cd03e(0x247),_0xf9a05d[_0x1cd03e(0x20c)]=_0x1cd03e(0x22b);}_0x533c22&&(_0x390964?(_0x533c22[_0x1cd03e(0x2b4)]='text-xs\x20font-bold\x20text-green-600\x20dark:text-green-400',_0x533c22[_0x1cd03e(0x20c)]=_0x1cd03e(0x1cf)):(_0x533c22[_0x1cd03e(0x2b4)]=_0x1cd03e(0x247),_0x533c22[_0x1cd03e(0x20c)]=_0x1cd03e(0x22b)));if(_0x5967eb&&_0x390964){clearInterval(readyCheckState[_0x1cd03e(0x27a)]),clearInterval(readyCheckState[_0x1cd03e(0x227)]);const _0x163022=isStatePlaying(_0x1d8a28)&&isStatePlaying(_0x360f8f);if(_0x163022)hideReadyCheckModal(),initializePvPGame(_0x1e41c8);else{if(readyCheckState[_0x1cd03e(0x208)]===_0x1cd03e(0x2b3)){const _0x14558e=Date[_0x1cd03e(0x27e)](),_0x3b4d8c=new Date(_0x14558e+0x3*0x3c*0x3e8)[_0x1cd03e(0x202)]();await supabaseClient[_0x1cd03e(0x2ab)](_0x1cd03e(0x1bc))['update']({'player1_state':'playing:'+_0x14558e,'player2_state':_0x1cd03e(0x234)+_0x14558e,'expires_at':_0x3b4d8c,'round_expires_at':_0x3b4d8c})['eq']('id',readyCheckState['battleId']);}setTimeout(async()=>{const _0x4170b3=_0x1cd03e,{data:_0x193049,error:_0x303c6c}=await supabaseClient['from'](_0x4170b3(0x1bc))[_0x4170b3(0x17a)]('*')['eq']('id',readyCheckState[_0x4170b3(0x1f9)])[_0x4170b3(0x211)]();if(_0x303c6c||!_0x193049){abortReadyCheck(_0x4170b3(0x1d8));return;}hideReadyCheckModal(),initializePvPGame(_0x193049);},0x320);}}}catch(_0x29000b){console[_0x1cd03e(0x269)](_0x1cd03e(0x189),_0x29000b);}},0x3e8);}async function submitReadyCheck(){const _0x52f6fb=a0_0x16dfdb,_0x2aee57=readyCheckState[_0x52f6fb(0x208)]===_0x52f6fb(0x2b3)?_0x52f6fb(0x184):_0x52f6fb(0x1ec);try{await supabaseClient[_0x52f6fb(0x2ab)]('pvp_battles_idv')[_0x52f6fb(0x1ca)]({[_0x2aee57]:_0x52f6fb(0x25c)})['eq']('id',readyCheckState[_0x52f6fb(0x1f9)]);}catch(_0x508267){console[_0x52f6fb(0x269)](_0x52f6fb(0x23e),_0x508267);}}async function declineReadyCheck(){const _0x1203f5=a0_0x16dfdb;abortReadyCheck(_0x1203f5(0x20a));try{await supabaseClient[_0x1203f5(0x2ab)](_0x1203f5(0x1bc))[_0x1203f5(0x1ca)]({'status':_0x1203f5(0x280)})['eq']('id',readyCheckState[_0x1203f5(0x1f9)]);}catch(_0x3be961){console['error'](_0x1203f5(0x1e6),_0x3be961);}}async function handleReadyCheckTimeout(){const _0x38c3c5=a0_0x16dfdb;abortReadyCheck(_0x38c3c5(0x198));try{await supabaseClient[_0x38c3c5(0x2ab)](_0x38c3c5(0x1bc))['update']({'status':_0x38c3c5(0x280)})['eq']('id',readyCheckState[_0x38c3c5(0x1f9)]);}catch(_0x2fdc0f){console['error'](_0x38c3c5(0x298),_0x2fdc0f);}}function abortReadyCheck(_0xbe9533){const _0x4c6679=a0_0x16dfdb;if(readyCheckState[_0x4c6679(0x27a)])clearInterval(readyCheckState[_0x4c6679(0x27a)]);if(readyCheckState['countdownTimer'])clearInterval(readyCheckState['countdownTimer']);hideReadyCheckModal(),_0xbe9533&&showSaveTransferToast('❌\x20'+_0xbe9533),cleanupPvPSession();}function showReadyCheckModal(_0x35be45){const _0x2c4a62=a0_0x16dfdb;let _0x4e61e2=document[_0x2c4a62(0x21c)]('pvp-ready-check-modal');const _0x47e1e1=readyCheckState[_0x2c4a62(0x208)]===_0x2c4a62(0x2b3)?_0x35be45['player2_username']:_0x35be45['player1_username'];!_0x4e61e2&&(_0x4e61e2=document[_0x2c4a62(0x22d)](_0x2c4a62(0x15d)),_0x4e61e2['id']=_0x2c4a62(0x224),_0x4e61e2[_0x2c4a62(0x2b4)]=_0x2c4a62(0x26e),document[_0x2c4a62(0x24d)][_0x2c4a62(0x1d6)](_0x4e61e2)),_0x4e61e2['innerHTML']=_0x2c4a62(0x17f)+escapeHtml(_0x47e1e1)+'</strong></p>\x0a\x20\x20\x20\x20\x20\x20\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22flex\x20flex-col\x20gap-2\x20p-3\x20bg-slate-50\x20dark:bg-slate-900\x20rounded-xl\x20border\x20border-slate-200\x20dark:border-slate-700\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22flex\x20justify-between\x20items-center\x20text-xs\x20text-slate-600\x20dark:text-slate-300\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span>You:</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20id=\x22ready-status-me\x22\x20class=\x22font-bold\x20text-slate-500\x22>WAITING...</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22flex\x20justify-between\x20items-center\x20text-xs\x20text-slate-600\x20dark:text-slate-300\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span>Opponent:</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20id=\x22ready-status-opp\x22\x20class=\x22font-bold\x20text-slate-500\x22>WAITING...</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22text-sm\x20font-bold\x20text-red-600\x20dark:text-red-400\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20Time\x20to\x20respond:\x20<span\x20id=\x22ready-check-countdown\x22\x20class=\x22font-mono\x20text-base\x20font-black\x22>20</span>s\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22flex\x20gap-2\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<button\x20id=\x22ready-check-btn\x22\x20onclick=\x22submitReadyCheck()\x22\x20class=\x22btn-primary\x20flex-1\x20py-2.5\x20rounded-xl\x20font-bold\x20transition-all\x20text-sm\x22>Accept</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<button\x20onclick=\x22declineReadyCheck()\x22\x20class=\x22btn-secondary\x20py-2.5\x20px-4\x20rounded-xl\x20font-bold\x20transition-all\x20text-sm\x20border-2\x20border-slate-200\x20dark:border-slate-700\x22>Decline</button>\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20</div>\x0a\x20\x20';}function hideReadyCheckModal(){const _0x77a136=a0_0x16dfdb,_0x2a10e4=document[_0x77a136(0x21c)]('pvp-ready-check-modal');if(_0x2a10e4)_0x2a10e4['remove']();}async function createBattleFromLobby(_0xf0c44c,_0x7ee07f,_0x441bb9={},_0x533983=null){const _0x4a829b=a0_0x16dfdb,_0x4166f2=GAME_CONFIG[_0x7ee07f][_0x4a829b(0x1fb)](),_0x197ea6=_0x4166f2[Math[_0x4a829b(0x26b)](Math[_0x4a829b(0x275)]()*_0x4166f2[_0x4a829b(0x2ba)])],_0x53df97=_0x441bb9?.[_0x4a829b(0x244)]||0x3,_0x2f5f51=new Date(Date[_0x4a829b(0x27e)]()+_0x53df97*0x3c*0x3e8)[_0x4a829b(0x202)](),_0x585825=Date['now'](),_0x4ed466=_0x441bb9?.['startingHp']||0x64,_0x29e150=_0xf0c44c[_0x4a829b(0x180)](_0x588b93=>({'id':_0x588b93[_0x4a829b(0x192)],'username':_0x588b93['username'],'hp':_0x4ed466,'state':_0x4a829b(0x234)+_0x585825,'guesses':[]}));try{const {data:_0x23f8b7,error:_0xd22263}=await supabaseClient[_0x4a829b(0x2ab)](_0x4a829b(0x1bc))[_0x4a829b(0x218)]({'target_name':_0x197ea6['name'],'game_type':_0x7ee07f,'expires_at':_0x2f5f51,'round_expires_at':_0x2f5f51,'lobby_id':_0x533983,'settings':_0x441bb9||{},...buildPlayersPayload(_0x29e150)})[_0x4a829b(0x17a)]()[_0x4a829b(0x211)]();if(_0xd22263)throw _0xd22263;return _0x23f8b7;}catch(_0x1be69f){return console[_0x4a829b(0x269)](_0x4a829b(0x19d),_0x1be69f),showSaveTransferToast('❌\x20Failed\x20to\x20create\x20battle.'),null;}}async function setupPvPBattle(_0x4d2e90){const _0x7f818d=a0_0x16dfdb,_0x203f4f=getOrCreateUserId(),_0x2fdb49=localStorage[_0x7f818d(0x291)]('idvle_nickname')||'Anonymous',_0x545937=currentGameType,_0x1c77cf=GAME_CONFIG[_0x545937][_0x7f818d(0x1fb)](),_0x495d26=_0x1c77cf[Math[_0x7f818d(0x26b)](Math['random']()*_0x1c77cf['length'])],_0x5958fd=new Date(Date[_0x7f818d(0x27e)]()+0x3*0x3c*0x3e8)[_0x7f818d(0x202)]();try{await supabaseClient[_0x7f818d(0x2ab)](_0x7f818d(0x215))[_0x7f818d(0x2a8)]()['in'](_0x7f818d(0x192),[_0x203f4f,_0x4d2e90['user_id']]);const {data:_0x303c53,error:_0x227eca}=await supabaseClient[_0x7f818d(0x2ab)](_0x7f818d(0x1bc))['insert']({'player1_id':_0x203f4f,'player1_username':_0x2fdb49,'player2_id':_0x4d2e90['user_id'],'player2_username':_0x4d2e90[_0x7f818d(0x27c)],'target_name':_0x495d26['name'],'game_type':_0x545937,'expires_at':_0x5958fd,'round_expires_at':_0x5958fd,'player1_state':_0x7f818d(0x1f6),'player2_state':'matched:waiting_ready','player1_hp':0x64,'player2_hp':0x64})[_0x7f818d(0x17a)]()[_0x7f818d(0x211)]();if(_0x227eca)throw _0x227eca;startReadyCheck(_0x303c53);}catch(_0x2c5bb5){console['error'](_0x7f818d(0x212),_0x2c5bb5),joinPvPQueue();}}function initializePvPGame(_0x538731){const _0x31265a=a0_0x16dfdb,_0x3e297a=getOrCreateUserId();showQueueModal(![]);typeof switchGameType==='function'?switchGameType(_0x538731[_0x31265a(0x1a8)]):currentGameType=_0x538731[_0x31265a(0x1a8)];const _0x12dc56=_0x538731[_0x31265a(0x176)]||{};pvpState[_0x31265a(0x1b7)]=!!_0x12dc56[_0x31265a(0x283)],pvpState[_0x31265a(0x1c7)]=_0x12dc56[_0x31265a(0x276)]||0x64,pvpState['suddenDeathRound']=_0x12dc56['suddenDeathRound']!==undefined?_0x12dc56[_0x31265a(0x16a)]:0x6,pvpState['isFFA']=isMultiplayerBattle(_0x538731),pvpState[_0x31265a(0x1f5)]=parseBattlePlayers(_0x538731),pvpState[_0x31265a(0x190)]=pvpState[_0x31265a(0x1f5)][_0x31265a(0x260)](_0x44be01=>_0x44be01['id']===_0x3e297a);if(pvpState[_0x31265a(0x190)]<0x0)pvpState[_0x31265a(0x190)]=0x0;const _0x98f1fc=pvpState[_0x31265a(0x1f5)][pvpState[_0x31265a(0x190)]],_0x5d7ef7=pvpState['allPlayers'][_0x31265a(0x268)]((_0x26049a,_0x470914)=>_0x470914!==pvpState[_0x31265a(0x190)]);if(pvpState[_0x31265a(0x190)]===0x0)pvpState[_0x31265a(0x208)]=_0x31265a(0x2b3);else pvpState[_0x31265a(0x190)]===0x1?pvpState['role']=_0x31265a(0x1a2):pvpState['role']=_0x31265a(0x1e8)+(pvpState[_0x31265a(0x190)]+0x1);pvpState[_0x31265a(0x29a)]=_0x5d7ef7?.['id']||_0x538731[_0x31265a(0x272)],pvpState[_0x31265a(0x173)]=_0x5d7ef7?.[_0x31265a(0x27c)]||_0x538731['player2_username'],pvpState['opponentGuesses']=_0x5d7ef7?.['guesses']||[],pvpState[_0x31265a(0x1f9)]=_0x538731['id'],pvpState['myHp']=_0x98f1fc?.['hp']??pvpState[_0x31265a(0x1c7)],pvpState['opponentHp']=_0x5d7ef7?.['hp']??pvpState[_0x31265a(0x1c7)],pvpState['prevHpMap']={},pvpState[_0x31265a(0x1f5)][_0x31265a(0x1da)](_0x61c504=>{const _0x7a5aa3=_0x31265a;pvpState[_0x7a5aa3(0x1b2)][_0x61c504['id']]=_0x61c504['hp'];}),pvpState[_0x31265a(0x1c9)]=_0x538731[_0x31265a(0x1d2)]||0x1,pvpState[_0x31265a(0x1c3)]=![],pvpState[_0x31265a(0x28d)]=Date[_0x31265a(0x27e)](),pvpState[_0x31265a(0x270)]='03:00',sessionState['active']=!![],sessionState['mode']=_0x31265a(0x245),sessionState[_0x31265a(0x16b)]=![],sessionState[_0x31265a(0x24c)]=[],sessionState['knownStats']={};const _0x56bc93=GAME_CONFIG[_0x538731[_0x31265a(0x1a8)]],_0x927a70=_0x56bc93[_0x31265a(0x1fb)]();sessionState[_0x31265a(0x203)]=_0x927a70[_0x31265a(0x268)](_0x1b360e=>_0x1b360e[_0x31265a(0x1cc)]===_0x538731[_0x31265a(0x24e)]),sessionState[_0x31265a(0x274)]=[];if(pvpState[_0x31265a(0x1b7)]&&_0x538731['game_type']!=='voicedle'){const _0x3381e1=_0x927a70[_0x31265a(0x252)](_0x49721a=>_0x49721a[_0x31265a(0x1cc)]!==_0x538731[_0x31265a(0x24e)]);sessionState[_0x31265a(0x274)]=_0x3381e1[_0x31265a(0x1a4)](()=>0.5-Math[_0x31265a(0x275)]())['slice'](0x0,0x3);}renderGameLayout(),injectPvPHeaders();pvpState[_0x31265a(0x1b7)]&&_0x538731[_0x31265a(0x1a8)]!=='voicedle'&&sessionState[_0x31265a(0x274)][_0x31265a(0x1da)](_0x3705d1=>addGuessRow(_0x3705d1,!![]));pvpState['roundTimeLimitMin']=_0x12dc56[_0x31265a(0x244)]||0x3;_0x12dc56[_0x31265a(0x222)]&&_0x12dc56[_0x31265a(0x222)]!==0x5?pvpState['maxGuesses']=_0x12dc56['maxGuesses']:pvpState[_0x31265a(0x222)]=0x5;_0x12dc56[_0x31265a(0x220)]?pvpState[_0x31265a(0x220)]=_0x12dc56[_0x31265a(0x220)]:pvpState[_0x31265a(0x220)]=0x1;pvpState['roundTimeoutHandled']=![];const _0x53b34b=_0x538731[_0x31265a(0x242)]?new Date(_0x538731[_0x31265a(0x242)]):new Date(Date[_0x31265a(0x27e)]()+pvpState[_0x31265a(0x221)]*0x3c*0x3e8);startPvPTimer(_0x53b34b),startBattlePoll();}function injectPvPHeaders(){const _0x2e8fc2=a0_0x16dfdb,_0x4b3dd1=document['getElementById']('game-toolbar');if(!_0x4b3dd1)return;let _0x159350=document[_0x2e8fc2(0x21c)](_0x2e8fc2(0x236));!_0x159350&&(_0x159350=document[_0x2e8fc2(0x22d)](_0x2e8fc2(0x15d)),_0x159350['id']=_0x2e8fc2(0x236),_0x4b3dd1[_0x2e8fc2(0x1e4)](_0x159350)),_0x159350[_0x2e8fc2(0x2b4)]=pvpState['isFFA']?_0x2e8fc2(0x263):'w-full\x20flex\x20flex-col\x20md:flex-row\x20justify-between\x20items-center\x20gap-4\x20pvp-interface-panel\x20p-3\x20rounded-xl\x20border\x20my-2',updateHpDisplay();}function updateHpDisplay(){const _0x2476e8=a0_0x16dfdb,_0x526e26=document[_0x2476e8(0x21c)](_0x2476e8(0x236));if(!_0x526e26)return;if(pvpState[_0x2476e8(0x1bb)]){updateFFAHPDisplay(_0x526e26),updateGuessCountUI();return;}const _0x2a66d6=localStorage[_0x2476e8(0x291)](_0x2476e8(0x1a7))||_0x2476e8(0x17d),_0x47daeb=sessionState[_0x2476e8(0x203)]?.[_0x2476e8(0x1cc)]||'';let _0x6d5b71=pvpState[_0x2476e8(0x204)];if(typeof _0x6d5b71==='string')try{_0x6d5b71=JSON[_0x2476e8(0x233)](_0x6d5b71);}catch(_0x1a3b86){_0x6d5b71=[];}!Array[_0x2476e8(0x1f3)](_0x6d5b71)&&(_0x6d5b71=[]);const _0x678fe5=_0x6d5b71['length'];let _0x2efae4='';if(pvpState[_0x2476e8(0x29a)]){const _0x1dc163=Array['from']({'length':pvpState[_0x2476e8(0x222)]},(_0x1f7786,_0x1c9490)=>{const _0x5444c0=_0x2476e8;if(_0x1c9490<_0x678fe5){const _0x2783d0=_0x6d5b71[_0x1c9490],_0x396473=_0x2783d0&&_0x47daeb&&_0x2783d0['name']===_0x47daeb;if(_0x396473)return _0x5444c0(0x1fe);return _0x5444c0(0x2a6);}return _0x5444c0(0x25a);})[_0x2476e8(0x2ac)]('');_0x2efae4='\x0a\x20\x20\x20\x20\x20\x20<div\x20style=\x22display:\x20flex;\x20align-items:\x20center;\x20gap:\x204px;\x20margin-top:\x204px;\x20justify-content:\x20flex-end;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x22font-size:\x2010px;\x20color:\x20#94a3b8;\x20text-transform:\x20uppercase;\x20letter-spacing:\x200.05em;\x20margin-right:\x204px;\x22>Guesses:</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20'+_0x1dc163+_0x2476e8(0x250);}let _0xee424f=sessionState[_0x2476e8(0x24c)];if(typeof _0xee424f==='string')try{_0xee424f=JSON[_0x2476e8(0x233)](_0xee424f);}catch(_0xdfa970){_0xee424f=[];}!Array[_0x2476e8(0x1f3)](_0xee424f)&&(_0xee424f=[]);const _0x2382f6=_0xee424f[_0x2476e8(0x2ba)],_0xa9f0e7=Array[_0x2476e8(0x2ab)]({'length':pvpState[_0x2476e8(0x222)]},(_0x13a8c1,_0x2485ad)=>{const _0x577075=_0x2476e8;if(_0x2485ad<_0x2382f6){const _0x606d44=_0xee424f[_0x2485ad],_0x13c797=_0x606d44&&_0x47daeb&&_0x606d44[_0x577075(0x1cc)]===_0x47daeb;if(_0x13c797)return _0x577075(0x1fe);return'<span\x20style=\x22display:\x20inline-block;\x20width:\x2014px;\x20height:\x2014px;\x20border-radius:\x204px;\x20background-color:\x20#ef4444;\x20border:\x201.5px\x20solid\x20#dc2626;\x20transition:\x20all\x200.3s;\x22></span>';}return _0x577075(0x25a);})[_0x2476e8(0x2ac)](''),_0x461bc7=_0x2476e8(0x22a)+_0xa9f0e7+_0x2476e8(0x1ef),_0x48b2ee=pvpState[_0x2476e8(0x23b)]/pvpState['maxHp']*0x64,_0x51b3d1=pvpState[_0x2476e8(0x27f)]/pvpState[_0x2476e8(0x1c7)]*0x64,_0x377cac=pvpState['suddenDeathRound']>0x0&&pvpState[_0x2476e8(0x1c9)]>=pvpState[_0x2476e8(0x16a)],_0x1a4f48=_0x377cac?'<div\x20class=\x22tracking-widest\x20text-red-600\x20dark:text-red-500\x20font-extrabold\x20animate-pulse\x20pvp-sudden-death-glow\x20text-[11px]\x20md:text-xs\x22>⚡\x20SUDDEN\x20DEATH\x20(R'+pvpState['currentRound']+_0x2476e8(0x175):'<div\x20class=\x22tracking-widest\x22>ROUND\x20'+pvpState[_0x2476e8(0x1c9)]+_0x2476e8(0x2a5);_0x526e26[_0x2476e8(0x191)]=_0x2476e8(0x292)+_0x2a66d6+_0x2476e8(0x199)+pvpState[_0x2476e8(0x23b)]+_0x2476e8(0x1fa)+pvpState[_0x2476e8(0x1c7)]+_0x2476e8(0x1ab)+_0x48b2ee+_0x2476e8(0x1ba)+_0x461bc7+_0x2476e8(0x171)+_0x1a4f48+_0x2476e8(0x297)+pvpState['formattedTime']+_0x2476e8(0x20e)+pvpState['opponentName']+_0x2476e8(0x265)+pvpState['opponentHp']+_0x2476e8(0x1fa)+pvpState[_0x2476e8(0x1c7)]+'\x20HP</span>\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22w-full\x20bg-slate-300\x20dark:bg-slate-700\x20h-4\x20rounded-full\x20overflow-hidden\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22bg-red-600\x20h-full\x20transition-all\x20duration-500\x22\x20style=\x22width:\x20'+_0x51b3d1+_0x2476e8(0x1ba)+_0x2efae4+_0x2476e8(0x1ef),updateGuessCountUI();}function updateFFAHPDisplay(_0x28778a){const _0x2fd62f=a0_0x16dfdb,_0x561b25=localStorage['getItem'](_0x2fd62f(0x1a7))||_0x2fd62f(0x17d),_0x4ad3ee=pvpState['allPlayers'][pvpState[_0x2fd62f(0x190)]],_0xbec46c=sessionState[_0x2fd62f(0x24c)]||[],_0x1dcb86=pvpState[_0x2fd62f(0x1f5)][_0x2fd62f(0x2ba)]<=0x4,_0x59f8e0=sessionState[_0x2fd62f(0x203)]?.[_0x2fd62f(0x1cc)]||'',_0x29256c=pvpState[_0x2fd62f(0x1f5)][_0x2fd62f(0x180)]((_0x1b8768,_0x72d52d)=>{const _0x349d11=_0x2fd62f;if(_0x72d52d===pvpState[_0x349d11(0x190)])return'';const _0x41bff9=parseGuessesArray(_0x1b8768[_0x349d11(0x24c)]),_0x4bc7ee=_0x1b8768['hp']<=0x0||_0x1b8768[_0x349d11(0x19a)]===_0x349d11(0x259),_0x32873f=_0x1b8768['hp']/pvpState[_0x349d11(0x1c7)]*0x64;return'\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20id=\x22pvp-opp-col-'+_0x72d52d+'\x22\x20class=\x22pvp-ffa-opponent\x20p-2\x20rounded-lg\x20border\x20border-slate-200\x20dark:border-slate-600\x20'+(_0x4bc7ee?'opacity-40':'')+_0x349d11(0x163)+_0x1b8768[_0x349d11(0x27c)]+_0x349d11(0x1a5)+_0x1b8768['hp']+_0x349d11(0x1fa)+pvpState[_0x349d11(0x1c7)]+_0x349d11(0x1aa)+_0x32873f+_0x349d11(0x1e0)+(_0x1dcb86?renderGuessDots(_0x41bff9,pvpState[_0x349d11(0x222)],_0x349d11(0x296),_0x59f8e0):'')+'\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>';})[_0x2fd62f(0x2ac)](''),_0x1884c3=(_0x4ad3ee?.['hp']??pvpState[_0x2fd62f(0x23b)])/pvpState[_0x2fd62f(0x1c7)]*0x64,_0x1690eb=pvpState[_0x2fd62f(0x16a)]>0x0&&pvpState[_0x2fd62f(0x1c9)]>=pvpState['suddenDeathRound'],_0x3e2649=_0x1690eb?_0x2fd62f(0x251)+pvpState[_0x2fd62f(0x1f5)]['length']+_0x2fd62f(0x15e):_0x2fd62f(0x1e9)+pvpState['allPlayers'][_0x2fd62f(0x2ba)]+_0x2fd62f(0x15e),_0xe1870=_0x1690eb?'<div\x20class=\x22tracking-widest\x20text-xs\x20text-red-600\x20dark:text-red-500\x20font-extrabold\x20animate-pulse\x20text-right\x22>SUDDEN\x20DEATH\x20(R'+pvpState[_0x2fd62f(0x1c9)]+_0x2fd62f(0x175):_0x2fd62f(0x164)+pvpState['currentRound']+_0x2fd62f(0x2a5);_0x28778a[_0x2fd62f(0x191)]='\x0a\x20\x20\x20\x20<div\x20class=\x22flex\x20items-center\x20justify-between\x20w-full\x22>\x0a\x20\x20\x20\x20\x20\x20'+_0x3e2649+_0x2fd62f(0x201)+_0xe1870+_0x2fd62f(0x1f8)+pvpState[_0x2fd62f(0x270)]+_0x2fd62f(0x1a6)+_0x561b25+'\x20(You)</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<span>'+(_0x4ad3ee?.['hp']??pvpState['myHp'])+_0x2fd62f(0x1fa)+pvpState[_0x2fd62f(0x1c7)]+_0x2fd62f(0x1ab)+_0x1884c3+_0x2fd62f(0x1ba)+renderGuessDots(_0xbec46c,pvpState[_0x2fd62f(0x222)],_0x2fd62f(0x169),_0x59f8e0)+_0x2fd62f(0x181)+_0x29256c+'\x0a\x20\x20\x20\x20</div>\x0a\x20\x20';}function renderGuessDots(_0x1dd016,_0x48d204,_0x2ef69e=a0_0x16dfdb(0x169),_0x2d9a05=''){const _0x944fb6=a0_0x16dfdb,_0x3c0192=_0x2ef69e==='end'?_0x944fb6(0x1de):_0x944fb6(0x194),_0x38b3e8=parseGuessesArray(_0x1dd016),_0xf8e13=_0x38b3e8['length'],_0x487cdf=Array[_0x944fb6(0x2ab)]({'length':_0x48d204},(_0x35a80d,_0x205b35)=>{const _0x58d2a3=_0x944fb6;if(_0x205b35<_0xf8e13){const _0x4c96ad=_0x38b3e8[_0x205b35],_0x23bd45=_0x4c96ad&&_0x2d9a05&&_0x4c96ad[_0x58d2a3(0x1cc)]===_0x2d9a05;if(_0x23bd45)return _0x58d2a3(0x1fe);return _0x58d2a3(0x2a6);}return _0x58d2a3(0x25a);})['join']('');return _0x944fb6(0x21b)+_0x3c0192+_0x944fb6(0x18a)+_0x487cdf+'\x0a\x20\x20\x20\x20</div>';}function startPvPTimer(_0x2b6011){const _0x182d01=a0_0x16dfdb;if(pvpState[_0x182d01(0x207)])clearInterval(pvpState[_0x182d01(0x207)]);pvpState['roundExpiresAt']=_0x2b6011 instanceof Date?_0x2b6011:new Date(_0x2b6011),pvpState['formattedTime']=formatTimerFromMs(pvpState['roundExpiresAt']-Date[_0x182d01(0x27e)]()),pvpState['matchTimer']=setInterval(()=>{const _0x3a17d8=_0x182d01,_0x4c98ac=pvpState[_0x3a17d8(0x1c6)]-Date[_0x3a17d8(0x27e)]();if(_0x4c98ac<=0x0){clearInterval(pvpState[_0x3a17d8(0x207)]),pvpState[_0x3a17d8(0x207)]=null,pvpState['formattedTime']=_0x3a17d8(0x217);const _0x1bd885=document[_0x3a17d8(0x21c)](_0x3a17d8(0x23a));if(_0x1bd885)_0x1bd885[_0x3a17d8(0x20c)]='00:00';handlePvPRoundTimeout();return;}pvpState[_0x3a17d8(0x270)]=formatTimerFromMs(_0x4c98ac);const _0x55321e=document['getElementById'](_0x3a17d8(0x23a));if(_0x55321e)_0x55321e[_0x3a17d8(0x20c)]=pvpState[_0x3a17d8(0x270)];},0x3e8);}function formatTimerFromMs(_0xc07b99){const _0x3abbf9=a0_0x16dfdb;if(isNaN(_0xc07b99)||_0xc07b99<=0x0)return'00:00';const _0x27c7d0=Math[_0x3abbf9(0x26b)](_0xc07b99/0x3e8),_0xbe0937=Math[_0x3abbf9(0x26b)](_0x27c7d0/0x3c),_0x38e6c1=_0x27c7d0%0x3c;return String(_0xbe0937)[_0x3abbf9(0x239)](0x2,'0')+':'+String(_0x38e6c1)[_0x3abbf9(0x239)](0x2,'0');}function escapeHtml(_0x69b9){const _0x150fd7=a0_0x16dfdb,_0x571e98=document[_0x150fd7(0x22d)]('div');return _0x571e98[_0x150fd7(0x20c)]=_0x69b9||'',_0x571e98[_0x150fd7(0x191)];}async function markPvPPlayerTimedOut(){const _0x3733dc=a0_0x16dfdb;if(!pvpState['battleId'])return;try{const {data:_0x406627}=await supabaseClient[_0x3733dc(0x2ab)](_0x3733dc(0x1bc))[_0x3733dc(0x17a)]('*')['eq']('id',pvpState[_0x3733dc(0x1f9)])[_0x3733dc(0x211)]();if(!_0x406627||_0x406627['status']!==_0x3733dc(0x23c))return;if(pvpState[_0x3733dc(0x1bb)]){const _0x5ef9a3=parseBattlePlayers(_0x406627),_0x28a836=_0x5ef9a3[pvpState[_0x3733dc(0x190)]];if(!_0x28a836||!isStatePlaying(_0x28a836[_0x3733dc(0x19a)]))return;_0x5ef9a3[pvpState[_0x3733dc(0x190)]]={..._0x28a836,'state':_0x3733dc(0x1db)},await supabaseClient[_0x3733dc(0x2ab)]('pvp_battles_idv')[_0x3733dc(0x1ca)](buildPlayersPayload(_0x5ef9a3))['eq']('id',pvpState['battleId']),pvpState[_0x3733dc(0x1f5)]=_0x5ef9a3;}else{const _0x53f26b=pvpState['role']===_0x3733dc(0x2b3)?_0x3733dc(0x184):'player2_state';if(!isStatePlaying(_0x406627[_0x53f26b]))return;await supabaseClient[_0x3733dc(0x2ab)]('pvp_battles_idv')[_0x3733dc(0x1ca)]({[_0x53f26b]:'finished_lost'})['eq']('id',pvpState[_0x3733dc(0x1f9)]);}}catch(_0x30d46e){console['error'](_0x3733dc(0x17b),_0x30d46e);}}async function processTimeoutRoundAsHost(){const _0x4f24df=a0_0x16dfdb;if(pvpState['mySlot']!==0x0||!pvpState[_0x4f24df(0x1f9)])return;try{const {data:_0x2a3d19}=await supabaseClient['from'](_0x4f24df(0x1bc))[_0x4f24df(0x17a)]('*')['eq']('id',pvpState[_0x4f24df(0x1f9)])['single']();if(!_0x2a3d19||_0x2a3d19['status']!=='active')return;let _0x5c3b08=_0x2a3d19;if(pvpState[_0x4f24df(0x1bb)]){const _0x1a37c5=parseBattlePlayers(_0x2a3d19)['map'](_0x50119c=>{const _0x52c648=_0x4f24df;if(_0x50119c['hp']>0x0&&_0x50119c[_0x52c648(0x19a)]!==_0x52c648(0x259)&&isStatePlaying(_0x50119c[_0x52c648(0x19a)]))return{..._0x50119c,'state':_0x52c648(0x1db)};return _0x50119c;});_0x5c3b08={..._0x2a3d19,...buildPlayersPayload(_0x1a37c5)},await supabaseClient[_0x4f24df(0x2ab)]('pvp_battles_idv')[_0x4f24df(0x1ca)](buildPlayersPayload(_0x1a37c5))['eq']('id',pvpState[_0x4f24df(0x1f9)]);}else{const _0xa47483={};if(isStatePlaying(_0x2a3d19[_0x4f24df(0x184)]))_0xa47483['player1_state']=_0x4f24df(0x1db);if(isStatePlaying(_0x2a3d19[_0x4f24df(0x1ec)]))_0xa47483[_0x4f24df(0x1ec)]=_0x4f24df(0x1db);Object[_0x4f24df(0x2b6)](_0xa47483)['length']>0x0&&(await supabaseClient[_0x4f24df(0x2ab)]('pvp_battles_idv')[_0x4f24df(0x1ca)](_0xa47483)['eq']('id',pvpState[_0x4f24df(0x1f9)]),_0x5c3b08={..._0x2a3d19,..._0xa47483});}await processRoundResolution(_0x5c3b08);}catch(_0x46f610){console['error']('Host\x20timeout\x20resolution\x20error:',_0x46f610);}}async function handlePvPRoundTimeout(){const _0x301aff=a0_0x16dfdb;if(!pvpState[_0x301aff(0x1f9)]||pvpState[_0x301aff(0x188)])return;pvpState[_0x301aff(0x188)]=!![],pvpState[_0x301aff(0x1c3)]=!![],document[_0x301aff(0x21c)](_0x301aff(0x289))?.[_0x301aff(0x182)][_0x301aff(0x15c)]('hidden'),showPvPWaitingScreen(!![],_0x301aff(0x271)),await markPvPPlayerTimedOut(),pvpState[_0x301aff(0x190)]===0x0&&setTimeout(()=>processTimeoutRoundAsHost(),0x258);}function startBattlePoll(){const _0x4b35fc=a0_0x16dfdb;if(pvpState[_0x4b35fc(0x27a)])clearInterval(pvpState[_0x4b35fc(0x27a)]);pvpState[_0x4b35fc(0x27a)]=setInterval(async()=>{const _0x46281a=_0x4b35fc;if(!pvpState['battleId'])return;if(pvpState[_0x46281a(0x15f)])return;try{const {data:_0x2621ff,error:_0x5072f3}=await supabaseClient[_0x46281a(0x2ab)](_0x46281a(0x1bc))[_0x46281a(0x17a)]('*')['eq']('id',pvpState[_0x46281a(0x1f9)])[_0x46281a(0x211)]();if(_0x5072f3)throw _0x5072f3;const _0x1803ed=parseBattlePlayers(_0x2621ff),_0xbdd839=getOrCreateUserId(),_0x22f429=_0x1803ed[pvpState[_0x46281a(0x190)]];if(_0x2621ff[_0x46281a(0x1d2)]>pvpState[_0x46281a(0x1c9)]&&_0x2621ff[_0x46281a(0x21d)]===_0x46281a(0x23c)){const _0x909846=pvpState['currentRound'];pvpState[_0x46281a(0x1c9)]=_0x2621ff[_0x46281a(0x1d2)],pvpState[_0x46281a(0x15f)]=!![];let _0x890f4f,_0x5c23eb,_0x3f53fd=[];if(pvpState[_0x46281a(0x1bb)]){const _0x14f0db=[...pvpState[_0x46281a(0x1f5)]],_0x34b050=_0x1803ed,_0x40412d=_0x34b050[pvpState[_0x46281a(0x190)]],_0x5319b7=_0x34b050[_0x46281a(0x268)]((_0x31b57c,_0x247e80)=>_0x247e80!==pvpState[_0x46281a(0x190)]);_0x890f4f=_0x40412d?_0x40412d['hp']:pvpState[_0x46281a(0x23b)],_0x5c23eb=_0x5319b7?_0x5319b7['hp']:pvpState[_0x46281a(0x27f)],_0x3f53fd=_0x34b050[_0x46281a(0x180)]((_0x2eaeaf,_0x3937f5)=>{const _0x29ae0b=_0x46281a,_0x3cb720=_0x14f0db[_0x3937f5]||_0x2eaeaf;return{'username':_0x2eaeaf[_0x29ae0b(0x27c)],'oldHp':_0x3cb720['hp'],'newHp':_0x2eaeaf['hp'],'dmg':Math[_0x29ae0b(0x19b)](0x0,_0x3cb720['hp']-_0x2eaeaf['hp']),'isMe':_0x3937f5===pvpState['mySlot']};});}else{const _0x4f7385=pvpState[_0x46281a(0x208)]===_0x46281a(0x2b3);_0x890f4f=_0x4f7385?_0x2621ff[_0x46281a(0x1d3)]:_0x2621ff[_0x46281a(0x1ae)],_0x5c23eb=_0x4f7385?_0x2621ff[_0x46281a(0x1ae)]:_0x2621ff[_0x46281a(0x1d3)];}const _0x54d545=pvpState[_0x46281a(0x23b)],_0x2242e2=pvpState[_0x46281a(0x27f)];showPvPRoundResolutionModal({'round':_0x909846,'isFFA':pvpState[_0x46281a(0x1bb)],'myOldHp':_0x54d545,'myNewHp':_0x890f4f,'myDmg':Math[_0x46281a(0x19b)](0x0,_0x54d545-_0x890f4f),'oppOldHp':_0x2242e2,'oppNewHp':_0x5c23eb,'oppDmg':Math[_0x46281a(0x19b)](0x0,_0x2242e2-_0x5c23eb),'oppName':pvpState[_0x46281a(0x173)],'ffaPlayers':_0x3f53fd},()=>{const _0x47ae28=_0x46281a;pvpState[_0x47ae28(0x23b)]=_0x890f4f,pvpState[_0x47ae28(0x27f)]=_0x5c23eb,pvpState['isFFA']&&(pvpState[_0x47ae28(0x1f5)]=_0x1803ed,pvpState[_0x47ae28(0x1f5)][_0x47ae28(0x1da)](_0x5674ec=>{pvpState['prevHpMap'][_0x5674ec['id']]=_0x5674ec['hp'];})),pvpState[_0x47ae28(0x15f)]=![],handleRoundReset(_0x2621ff[_0x47ae28(0x1d2)],_0x2621ff[_0x47ae28(0x24e)],_0x2621ff[_0x47ae28(0x1a8)],_0x2621ff[_0x47ae28(0x242)]);});return;}if(pvpState['isFFA']){pvpState[_0x46281a(0x1f5)]=_0x1803ed;if(_0x22f429?.[_0x46281a(0x19a)]==='exited'){clearInterval(pvpState[_0x46281a(0x27a)]),clearInterval(pvpState[_0x46281a(0x207)]);const _0xce776=_0x1803ed['find'](_0x3562a1=>_0x3562a1['hp']>0x0&&_0x3562a1[_0x46281a(0x19a)]!==_0x46281a(0x259));showPvPResultModal({'battle':_0x2621ff,'winnerId':_0xce776?.['id']||_0x46281a(0x281),'reason':_0x46281a(0x27b)}),document[_0x46281a(0x21c)](_0x46281a(0x289))['classList'][_0x46281a(0x15c)]('hidden');return;}const _0xdd8774=_0x1803ed[_0x46281a(0x252)](_0x42b0b2=>_0x42b0b2['hp']>0x0&&_0x42b0b2[_0x46281a(0x19a)]!==_0x46281a(0x259));if(_0xdd8774['length']===0x1&&_0xdd8774[0x0]['id']===_0xbdd839&&_0x2621ff[_0x46281a(0x21d)]===_0x46281a(0x23c)){await supabaseClient[_0x46281a(0x2ab)]('pvp_battles_idv')[_0x46281a(0x1ca)]({'status':'finished','winner_id':_0xbdd839})['eq']('id',pvpState[_0x46281a(0x1f9)]),clearInterval(pvpState['pollTimer']),clearInterval(pvpState[_0x46281a(0x207)]),declarePvPWinner(_0xbdd839,_0x2621ff);return;}const _0x37bb4a=_0x1803ed[_0x46281a(0x260)](_0x47ef29=>{const _0x4c36e7=_0x46281a;if(_0x47ef29['hp']<=0x0||_0x47ef29[_0x4c36e7(0x19a)]===_0x4c36e7(0x259))return![];if(isStatePlaying(_0x47ef29['state'])){const _0x31f6a8=_0x47ef29['state']['split'](':'),_0x3bc264=parseInt(_0x31f6a8[0x1],0xa)||0x0;if(_0x31f6a8['length']===0x2&&Date[_0x4c36e7(0x27e)]()-_0x3bc264>PVP_DC_TIMEOUT_MS)return![];}return!![];});if(pvpState[_0x46281a(0x190)]===_0x37bb4a&&_0x37bb4a!==-0x1){let _0x4c1fbf=![];for(let _0x5ecc95=0x0;_0x5ecc95<_0x1803ed[_0x46281a(0x2ba)];_0x5ecc95++){if(_0x5ecc95===pvpState[_0x46281a(0x190)])continue;const _0x1de7ca=_0x1803ed[_0x5ecc95];if(_0x1de7ca[_0x46281a(0x19a)]===_0x46281a(0x259)||_0x1de7ca['hp']<=0x0)continue;if(isStatePlaying(_0x1de7ca[_0x46281a(0x19a)])){const _0x16526c=_0x1de7ca[_0x46281a(0x19a)][_0x46281a(0x1c4)](':'),_0x83fd6e=parseInt(_0x16526c[0x1],0xa)||0x0;_0x16526c['length']===0x2&&Date[_0x46281a(0x27e)]()-_0x83fd6e>PVP_DC_TIMEOUT_MS&&(_0x1803ed[_0x5ecc95]={..._0x1de7ca,'state':'exited'},_0x4c1fbf=!![]);}}if(_0x4c1fbf){const _0x1c7845=_0x1803ed[_0x46281a(0x252)](_0x5a3fdb=>_0x5a3fdb['hp']>0x0&&_0x5a3fdb['state']!==_0x46281a(0x259)),_0x1f62b5={...buildPlayersPayload(_0x1803ed)};if(_0x1c7845[_0x46281a(0x2ba)]===0x1)_0x1f62b5[_0x46281a(0x21d)]=_0x46281a(0x280),_0x1f62b5[_0x46281a(0x2b8)]=_0x1c7845[0x0]['id'];else _0x1c7845['length']===0x0&&(_0x1f62b5[_0x46281a(0x21d)]=_0x46281a(0x280),_0x1f62b5[_0x46281a(0x2b8)]=_0x46281a(0x281));await supabaseClient[_0x46281a(0x2ab)]('pvp_battles_idv')[_0x46281a(0x1ca)](_0x1f62b5)['eq']('id',pvpState[_0x46281a(0x1f9)]);}}const _0x10414e=Date[_0x46281a(0x27e)]();if(_0x10414e-pvpState[_0x46281a(0x28d)]>0xfa0&&!sessionState[_0x46281a(0x16b)]&&!pvpState[_0x46281a(0x1c3)]){pvpState[_0x46281a(0x28d)]=_0x10414e;const _0x568408=[..._0x1803ed];_0x568408[pvpState[_0x46281a(0x190)]]={..._0x568408[pvpState[_0x46281a(0x190)]],'state':_0x46281a(0x234)+_0x10414e},supabaseClient[_0x46281a(0x2ab)](_0x46281a(0x1bc))[_0x46281a(0x1ca)](buildPlayersPayload(_0x568408))['eq']('id',pvpState[_0x46281a(0x1f9)])[_0x46281a(0x1a9)](({error:_0x1b1962})=>{const _0x2878c4=_0x46281a;if(_0x1b1962)pvpState[_0x2878c4(0x28d)]=0x0;});}_0x1803ed[_0x46281a(0x1da)]((_0xb9a152,_0x57f0de)=>{const _0x3a309c=_0x46281a,_0x52e2fe=pvpState['prevHpMap'][_0xb9a152['id']]??_0xb9a152['hp'];if(_0x52e2fe>_0xb9a152['hp']){if(_0x57f0de===pvpState[_0x3a309c(0x190)])triggerDamageAnimation(_0x3a309c(0x1e8),_0x52e2fe-_0xb9a152['hp']);else triggerDamageAnimation(_0x3a309c(0x261)+_0x57f0de,_0x52e2fe-_0xb9a152['hp']);}pvpState['prevHpMap'][_0xb9a152['id']]=_0xb9a152['hp'];}),pvpState[_0x46281a(0x23b)]=_0x22f429?.['hp']??pvpState[_0x46281a(0x23b)];const _0x15b204=_0x1803ed[_0x46281a(0x268)]((_0x2d6495,_0x30a887)=>_0x30a887!==pvpState[_0x46281a(0x190)]);pvpState[_0x46281a(0x27f)]=_0x15b204?.['hp']??0x0,pvpState[_0x46281a(0x204)]=_0x15b204?.[_0x46281a(0x24c)]||[],updateHpDisplay();const _0x3c06e3=_0x1803ed[_0x46281a(0x252)](_0x3e051f=>_0x3e051f['hp']>0x0&&_0x3e051f['state']!==_0x46281a(0x259)),_0x23e755=_0x3c06e3['some'](_0x4b5270=>isStatePlaying(_0x4b5270[_0x46281a(0x19a)]));!_0x23e755&&_0x3c06e3[_0x46281a(0x2ba)]>0x0&&_0x2621ff[_0x46281a(0x21d)]===_0x46281a(0x23c)&&processRoundResolution(_0x2621ff);}else{if(_0x2621ff[_0x46281a(0x184)]==='exited'||_0x2621ff[_0x46281a(0x1ec)]===_0x46281a(0x259)){clearInterval(pvpState['pollTimer']),clearInterval(pvpState[_0x46281a(0x207)]);const _0xbec1b9=pvpState[_0x46281a(0x208)]===_0x46281a(0x2b3)&&_0x2621ff[_0x46281a(0x1ec)]===_0x46281a(0x259)||pvpState[_0x46281a(0x208)]===_0x46281a(0x1a2)&&_0x2621ff[_0x46281a(0x184)]===_0x46281a(0x259);showPvPResultModal({'battle':_0x2621ff,'winnerId':_0xbec1b9?_0xbdd839:_0x2621ff[pvpState[_0x46281a(0x208)]==='player1'?_0x46281a(0x272):_0x46281a(0x235)],'reason':_0xbec1b9?'opponent_left':_0x46281a(0x27b)}),document['getElementById'](_0x46281a(0x289))['classList'][_0x46281a(0x15c)]('hidden');return;}const _0x519ad6=pvpState['role']===_0x46281a(0x2b3)?_0x2621ff['player2_state']:_0x2621ff[_0x46281a(0x184)];if(isStatePlaying(_0x519ad6)){const _0x4c1b0c=_0x519ad6[_0x46281a(0x1c4)](':'),_0x5977e7=parseInt(_0x4c1b0c[0x1],0xa)||0x0;if(_0x4c1b0c[_0x46281a(0x2ba)]===0x2&&Date[_0x46281a(0x27e)]()-_0x5977e7>PVP_DC_TIMEOUT_MS){clearInterval(pvpState[_0x46281a(0x27a)]),clearInterval(pvpState[_0x46281a(0x207)]),await supabaseClient[_0x46281a(0x2ab)](_0x46281a(0x1bc))['update']({'status':_0x46281a(0x280),'winner_id':_0xbdd839,[pvpState[_0x46281a(0x208)]==='player1'?_0x46281a(0x1ec):'player1_state']:_0x46281a(0x259)})['eq']('id',pvpState[_0x46281a(0x1f9)]),showPvPResultModal({'battle':_0x2621ff,'winnerId':_0xbdd839,'reason':'disconnect'});return;}}const _0x2a02e7=Date[_0x46281a(0x27e)]();if(_0x2a02e7-pvpState['lastHeartbeatSent']>0xfa0&&!sessionState['isGameOver']&&!pvpState[_0x46281a(0x1c3)]){pvpState[_0x46281a(0x28d)]=_0x2a02e7;const _0x254919=pvpState[_0x46281a(0x208)]===_0x46281a(0x2b3)?'player1_state':_0x46281a(0x1ec);supabaseClient[_0x46281a(0x2ab)]('pvp_battles_idv')[_0x46281a(0x1ca)]({[_0x254919]:_0x46281a(0x234)+_0x2a02e7})['eq']('id',pvpState[_0x46281a(0x1f9)])['then'](({error:_0x986a27})=>{const _0x56b6f6=_0x46281a;if(_0x986a27)pvpState[_0x56b6f6(0x28d)]=0x0;});}const _0x2838cb=pvpState[_0x46281a(0x208)]===_0x46281a(0x2b3)?_0x2621ff['player1_hp']:_0x2621ff[_0x46281a(0x1ae)],_0x3d1add=pvpState[_0x46281a(0x208)]===_0x46281a(0x2b3)?_0x2621ff['player2_hp']:_0x2621ff[_0x46281a(0x1d3)];if(pvpState['myHp']-_0x2838cb>0x0)triggerDamageAnimation(_0x46281a(0x1e8),pvpState[_0x46281a(0x23b)]-_0x2838cb);if(pvpState[_0x46281a(0x27f)]-_0x3d1add>0x0)triggerDamageAnimation(_0x46281a(0x174),pvpState[_0x46281a(0x27f)]-_0x3d1add);pvpState[_0x46281a(0x23b)]=_0x2838cb,pvpState[_0x46281a(0x27f)]=_0x3d1add,pvpState[_0x46281a(0x204)]=(pvpState[_0x46281a(0x208)]===_0x46281a(0x2b3)?_0x2621ff[_0x46281a(0x1d0)]:_0x2621ff[_0x46281a(0x273)])||[],updateHpDisplay();const _0x41a111=isStatePlaying(_0x2621ff[_0x46281a(0x184)]),_0x235251=isStatePlaying(_0x2621ff[_0x46281a(0x1ec)]);!_0x41a111&&!_0x235251&&_0x2621ff[_0x46281a(0x21d)]==='active'&&processRoundResolution(_0x2621ff);}_0x2621ff['status']===_0x46281a(0x280)&&(clearInterval(pvpState[_0x46281a(0x27a)]),clearInterval(pvpState['matchTimer']),declarePvPWinner(_0x2621ff[_0x46281a(0x2b8)],_0x2621ff));}catch(_0x5bca51){console['error']('Battle\x20polling\x20error:',_0x5bca51);}},0x5dc);}(function setupPvPVisibilityHeartbeat(){const _0x38829a=a0_0x16dfdb;document['addEventListener'](_0x38829a(0x2af),()=>{const _0x3fc77a=_0x38829a;if(!pvpState[_0x3fc77a(0x1f9)]||sessionState[_0x3fc77a(0x16b)]||pvpState[_0x3fc77a(0x1c3)])return;if(document[_0x3fc77a(0x26d)]===_0x3fc77a(0x18e)){const _0x5001f4=Date[_0x3fc77a(0x27e)]();pvpState['lastHeartbeatSent']=_0x5001f4;if(pvpState[_0x3fc77a(0x1bb)]){const _0x23f746=pvpState['allPlayers'][_0x3fc77a(0x180)]((_0x12dcd4,_0x25a79d)=>_0x25a79d===pvpState[_0x3fc77a(0x190)]?{..._0x12dcd4,'state':_0x3fc77a(0x234)+_0x5001f4}:_0x12dcd4);supabaseClient[_0x3fc77a(0x2ab)](_0x3fc77a(0x1bc))[_0x3fc77a(0x1ca)](buildPlayersPayload(_0x23f746))['eq']('id',pvpState[_0x3fc77a(0x1f9)])[_0x3fc77a(0x1a9)](()=>{});}else{const _0x256322=pvpState[_0x3fc77a(0x208)]===_0x3fc77a(0x2b3)?_0x3fc77a(0x184):'player2_state';supabaseClient[_0x3fc77a(0x2ab)]('pvp_battles_idv')[_0x3fc77a(0x1ca)]({[_0x256322]:'playing:'+_0x5001f4})['eq']('id',pvpState[_0x3fc77a(0x1f9)])['then'](()=>{});}}else document[_0x3fc77a(0x26d)]===_0x3fc77a(0x1bd)&&(pvpState['lastHeartbeatSent']=0x0);});}());async function submitPvPGuess(_0x2ad87b){const _0x497824=a0_0x16dfdb;if(sessionState[_0x497824(0x16b)]||pvpState[_0x497824(0x1c3)])return;sessionState[_0x497824(0x24c)][_0x497824(0x1c5)](_0x2ad87b),updateKnownStats(_0x2ad87b),addGuessRow(_0x2ad87b,![],!![]),updateGuessCountUI();const _0x295f42=_0x2ad87b[_0x497824(0x1cc)]===sessionState[_0x497824(0x203)][_0x497824(0x1cc)],_0x3c0bc8=sessionState[_0x497824(0x24c)]['length']>=pvpState[_0x497824(0x222)];let _0x3f17a4;if(_0x295f42){const _0xca4c44=pvpState[_0x497824(0x1c6)]?pvpState[_0x497824(0x1c6)]-Date['now']():0x0,_0x59b66d=Math[_0x497824(0x19b)](0x0,Math[_0x497824(0x26b)](_0xca4c44/0x3e8));_0x3f17a4=_0x497824(0x2ae)+_0x59b66d;}else _0x3c0bc8?_0x3f17a4=_0x497824(0x1db):_0x3f17a4='playing:'+Date['now']();const _0x392f61=sessionState[_0x497824(0x24c)];let _0x453c11;if(pvpState[_0x497824(0x1bb)]){const _0x10eeb9=[...pvpState[_0x497824(0x1f5)]];_0x10eeb9[pvpState['mySlot']]={..._0x10eeb9[pvpState['mySlot']],'guesses':_0x392f61,'state':_0x3f17a4},_0x453c11=buildPlayersPayload(_0x10eeb9),pvpState[_0x497824(0x1f5)]=_0x10eeb9;}else _0x453c11={},pvpState['role']===_0x497824(0x2b3)?(_0x453c11['player1_guesses']=_0x392f61,_0x453c11[_0x497824(0x184)]=_0x3f17a4):(_0x453c11[_0x497824(0x1d0)]=_0x392f61,_0x453c11[_0x497824(0x1ec)]=_0x3f17a4);try{await supabaseClient[_0x497824(0x2ab)](_0x497824(0x1bc))[_0x497824(0x1ca)](_0x453c11)['eq']('id',pvpState[_0x497824(0x1f9)]),updateHpDisplay(),(_0x295f42||_0x3c0bc8)&&(pvpState['isWaitingForOpponent']=!![],document['getElementById']('input-container')[_0x497824(0x182)]['add']('hidden'),showPvPWaitingScreen(!![]));}catch(_0x307e17){console[_0x497824(0x269)](_0x497824(0x187),_0x307e17);}}async function exitPvPBattle(){const _0xeccc16=a0_0x16dfdb;if(!pvpState['battleId'])return;try{if(pvpState[_0xeccc16(0x1bb)]){const _0x1ea9ea=[...pvpState['allPlayers']];_0x1ea9ea[pvpState['mySlot']]={..._0x1ea9ea[pvpState['mySlot']],'state':'exited'};const _0x5859fc=_0x1ea9ea['filter'](_0x274e0f=>_0x274e0f['hp']>0x0&&_0x274e0f['state']!==_0xeccc16(0x259)),_0x2f3651={...buildPlayersPayload(_0x1ea9ea)};if(_0x5859fc[_0xeccc16(0x2ba)]===0x1)_0x2f3651[_0xeccc16(0x21d)]='finished',_0x2f3651[_0xeccc16(0x2b8)]=_0x5859fc[0x0]['id'];else _0x5859fc[_0xeccc16(0x2ba)]===0x0&&(_0x2f3651[_0xeccc16(0x21d)]=_0xeccc16(0x280),_0x2f3651['winner_id']=_0xeccc16(0x281));await supabaseClient[_0xeccc16(0x2ab)](_0xeccc16(0x1bc))[_0xeccc16(0x1ca)](_0x2f3651)['eq']('id',pvpState[_0xeccc16(0x1f9)]);}else await supabaseClient['from'](_0xeccc16(0x1bc))['update']({'status':_0xeccc16(0x280),'winner_id':pvpState[_0xeccc16(0x29a)],[pvpState[_0xeccc16(0x208)]==='player1'?_0xeccc16(0x184):_0xeccc16(0x1ec)]:'exited'})['eq']('id',pvpState[_0xeccc16(0x1f9)]);}catch(_0x4042e9){console[_0xeccc16(0x269)](_0xeccc16(0x2a1),_0x4042e9);}finally{cleanupPvPSession();}}function exitPvPBattleBeacon(){const _0x95938d=a0_0x16dfdb;if(!pvpState[_0x95938d(0x1f9)])return;const _0x148659=SUPABASE_URL+_0x95938d(0x18f)+pvpState[_0x95938d(0x1f9)],_0x5a1cbc={'apikey':SUPABASE_ANON_KEY,'Authorization':_0x95938d(0x29b)+SUPABASE_ANON_KEY,'Content-Type':_0x95938d(0x1e1),'Prefer':'return=minimal'};let _0x365208;if(pvpState['isFFA']){const _0x583449=[...pvpState[_0x95938d(0x1f5)]];_0x583449[pvpState[_0x95938d(0x190)]]={..._0x583449[pvpState[_0x95938d(0x190)]],'state':'exited'};const _0x5c3e53=_0x583449[_0x95938d(0x252)](_0x43ca17=>_0x43ca17['hp']>0x0&&_0x43ca17[_0x95938d(0x19a)]!==_0x95938d(0x259));_0x365208=JSON[_0x95938d(0x23f)]({...buildPlayersPayload(_0x583449),'status':_0x95938d(0x280),'winner_id':_0x5c3e53[_0x95938d(0x2ba)]===0x1?_0x5c3e53[0x0]['id']:pvpState[_0x95938d(0x29a)]});}else _0x365208=JSON[_0x95938d(0x23f)]({'status':_0x95938d(0x280),'winner_id':pvpState['opponentId'],[pvpState[_0x95938d(0x208)]===_0x95938d(0x2b3)?_0x95938d(0x184):_0x95938d(0x1ec)]:_0x95938d(0x259)});fetch(_0x148659,{'method':_0x95938d(0x1f1),'headers':_0x5a1cbc,'body':_0x365208,'keepalive':!![]})[_0x95938d(0x28c)](()=>{});}window[a0_0x16dfdb(0x214)]('beforeunload',()=>{const _0x1634b4=a0_0x16dfdb;sessionState[_0x1634b4(0x23c)]&&sessionState[_0x1634b4(0x27d)]===_0x1634b4(0x245)&&pvpState[_0x1634b4(0x1f9)]&&exitPvPBattleBeacon();});if(window[a0_0x16dfdb(0x255)]){const originalShowMenu=window['showMenu'];window['showMenu']=function(){const _0x368043=a0_0x16dfdb;sessionState[_0x368043(0x23c)]&&sessionState['mode']===_0x368043(0x245)&&pvpState['battleId']?confirm(_0x368043(0x18b))&&(exitPvPBattle(),originalShowMenu()):originalShowMenu();};}function a0_0x40ea(_0x5bdda4,_0x29e493){_0x5bdda4=_0x5bdda4-0x15c;const _0x2c62bc=a0_0x2c62();let _0x40ea27=_0x2c62bc[_0x5bdda4];return _0x40ea27;}async function processRoundResolution(_0x4bb269){const _0x55d938=a0_0x16dfdb,_0x151df9=pvpState[_0x55d938(0x190)]===0x0;if(!_0x151df9){await new Promise(_0x20f49d=>setTimeout(_0x20f49d,0xbb8));try{const {data:_0x2e72e7}=await supabaseClient[_0x55d938(0x2ab)](_0x55d938(0x1bc))[_0x55d938(0x17a)](_0x55d938(0x243))['eq']('id',_0x4bb269['id'])[_0x55d938(0x211)]();if(_0x2e72e7&&(_0x2e72e7[_0x55d938(0x21d)]===_0x55d938(0x280)||(_0x2e72e7['round_number']||0x1)>(_0x4bb269[_0x55d938(0x1d2)]||0x1)))return;}catch(_0x1f60d9){}}if(pvpState['isResolvingRound'])return;pvpState[_0x55d938(0x278)]=!![];const _0x20afa7=_0x4bb269[_0x55d938(0x1d2)]||0x1,_0x4077fa=_0x4bb269[_0x55d938(0x176)]?.[_0x55d938(0x222)]||pvpState['maxGuesses']||0x5,_0x8d0fea=_0x4bb269[_0x55d938(0x176)]?.[_0x55d938(0x220)]||pvpState[_0x55d938(0x220)]||0x1,_0x52a1df=pvpState[_0x55d938(0x16a)]!==undefined?pvpState[_0x55d938(0x16a)]:0x6,_0xde318c=_0x52a1df>0x0&&_0x20afa7>=_0x52a1df;let _0x10210b=_0x8d0fea;if(_0xde318c){const _0x5e29d4=1.5+(_0x20afa7-_0x52a1df)*0.5;_0x10210b=_0x8d0fea*_0x5e29d4;}const _0x30df0e=Date[_0x55d938(0x27e)]();if(pvpState[_0x55d938(0x1bb)]){const _0x4172ad=parseBattlePlayers(_0x4bb269),_0x5af9d9={},_0x41eb12={};_0x4172ad[_0x55d938(0x1da)](_0x323c58=>{const _0x210a6e=_0x55d938;_0x5af9d9[_0x323c58['id']]=0x0,_0x41eb12[_0x323c58['id']]=calculatePlayerRoundPower(_0x323c58['state'],_0x323c58[_0x210a6e(0x24c)],_0x4077fa,_0x10210b);}),_0x4172ad[_0x55d938(0x1da)](_0xe2cfe2=>{const _0x365515=_0x55d938;if(_0xe2cfe2[_0x365515(0x19a)]===_0x365515(0x259)||_0xe2cfe2['hp']<=0x0)return;if(_0xe2cfe2[_0x365515(0x19a)]&&_0xe2cfe2[_0x365515(0x19a)][_0x365515(0x1d4)]('finished_won')){const _0x22cbb7=_0x41eb12[_0xe2cfe2['id']];_0x4172ad[_0x365515(0x1da)](_0x243ec6=>{const _0x352e89=_0x365515;if(_0x243ec6['id']===_0xe2cfe2['id'])return;if(_0x243ec6['hp']<=0x0||_0x243ec6[_0x352e89(0x19a)]===_0x352e89(0x259))return;if(_0x243ec6[_0x352e89(0x19a)]&&_0x243ec6['state'][_0x352e89(0x1d4)](_0x352e89(0x1ad)))return;const _0x37d22f=_0x41eb12[_0x243ec6['id']]||0x0,_0x1aa8cf=Math[_0x352e89(0x19b)](0x0,_0x22cbb7-_0x37d22f);_0x5af9d9[_0x243ec6['id']]=Math['max'](_0x5af9d9[_0x243ec6['id']],_0x1aa8cf);});}else{if(_0xe2cfe2[_0x365515(0x19a)]===_0x365515(0x1db)){if(_0x5af9d9[_0xe2cfe2['id']]===0x0){const _0x10121c=Math[_0x365515(0x226)](0x14*_0x10210b),_0x285b3b=Math['min'](_0x41eb12[_0xe2cfe2['id']]||0x0,_0x10121c);_0x5af9d9[_0xe2cfe2['id']]=Math[_0x365515(0x19b)](0x0,_0x10121c-_0x285b3b);}}}});const _0x471ab1=_0xde318c?0xa:0x5,_0x404b09=Math['round'](_0x471ab1*(_0xde318c?0x1+(_0x20afa7-_0x52a1df)*0.5:0x1));_0x4172ad[_0x55d938(0x1da)](_0x5bfbdd=>{const _0x377c6c=_0x55d938;_0x5bfbdd['hp']>0x0&&_0x5bfbdd[_0x377c6c(0x19a)]!=='exited'&&(_0x5af9d9[_0x5bfbdd['id']]=Math[_0x377c6c(0x19b)](_0x5af9d9[_0x5bfbdd['id']],_0x404b09));});const _0x2db91a=_0x4172ad[_0x55d938(0x180)](_0x1d75fd=>{const _0x34354d=_0x55d938,_0xe480fd=Math[_0x34354d(0x19b)](0x0,_0x1d75fd['hp']-(_0x5af9d9[_0x1d75fd['id']]||0x0));return{..._0x1d75fd,'hp':_0xe480fd,'state':_0xe480fd<=0x0?_0x34354d(0x259):_0x1d75fd[_0x34354d(0x19a)]===_0x34354d(0x259)?_0x34354d(0x259):_0x34354d(0x234)+_0x30df0e,'guesses':[]};}),_0x1aff23=_0x2db91a[_0x55d938(0x252)](_0x13af8c=>_0x13af8c['hp']>0x0&&_0x13af8c[_0x55d938(0x19a)]!==_0x55d938(0x259)),_0x4bc9ea={...buildPlayersPayload(_0x2db91a),'last_update':new Date()['toISOString']()};if(_0x1aff23[_0x55d938(0x2ba)]<=0x1)_0x4bc9ea['status']=_0x55d938(0x280),_0x4bc9ea[_0x55d938(0x2b8)]=_0x1aff23['length']===0x1?_0x1aff23[0x0]['id']:'draw';else{const _0x524d8a=GAME_CONFIG[_0x4bb269[_0x55d938(0x1a8)]],_0x46668e=_0x524d8a[_0x55d938(0x1fb)]()[Math[_0x55d938(0x26b)](Math[_0x55d938(0x275)]()*_0x524d8a[_0x55d938(0x1fb)]()[_0x55d938(0x2ba)])];_0x4bc9ea[_0x55d938(0x24e)]=_0x46668e[_0x55d938(0x1cc)],_0x4bc9ea['round_number']=(_0x4bb269[_0x55d938(0x1d2)]||0x1)+0x1,_0x4bc9ea[_0x55d938(0x242)]=computeRoundExpiresAt(_0x4bb269);}try{await supabaseClient[_0x55d938(0x2ab)](_0x55d938(0x1bc))[_0x55d938(0x1ca)](_0x4bc9ea)['eq']('id',_0x4bb269['id']);}catch(_0x31a064){console[_0x55d938(0x269)](_0x55d938(0x267),_0x31a064);}finally{setTimeout(()=>{const _0x4b5784=_0x55d938;pvpState[_0x4b5784(0x278)]=![];},0x4b0);}return;}const _0x4361c4=calculatePlayerRoundPower(_0x4bb269[_0x55d938(0x184)],_0x4bb269[_0x55d938(0x273)],_0x4077fa,_0x10210b),_0x67ef7c=calculatePlayerRoundPower(_0x4bb269[_0x55d938(0x1ec)],_0x4bb269[_0x55d938(0x1d0)],_0x4077fa,_0x10210b);let _0x1e021f=Math['max'](0x0,_0x67ef7c-_0x4361c4),_0x5d489b=Math[_0x55d938(0x19b)](0x0,_0x4361c4-_0x67ef7c);_0x4bb269['player1_state']===_0x55d938(0x1db)&&_0x1e021f===0x0&&(_0x1e021f=Math[_0x55d938(0x226)](0x14*_0x10210b));_0x4bb269[_0x55d938(0x1ec)]===_0x55d938(0x1db)&&_0x5d489b===0x0&&(_0x5d489b=Math[_0x55d938(0x226)](0x14*_0x10210b));const _0x4dabe7=_0x4bb269[_0x55d938(0x184)]&&_0x4bb269[_0x55d938(0x184)]!==_0x55d938(0x259),_0x3c5555=_0x4bb269[_0x55d938(0x1ec)]&&_0x4bb269[_0x55d938(0x1ec)]!==_0x55d938(0x259),_0x392d96=_0xde318c?0xa:0x5,_0x375a44=Math[_0x55d938(0x226)](_0x392d96*(_0xde318c?0x1+(_0x20afa7-_0x52a1df)*0.5:0x1)),_0x51d846=_0x4bb269[_0x55d938(0x184)]&&_0x4bb269[_0x55d938(0x184)]['startsWith'](_0x55d938(0x1ad)),_0x388455=_0x4bb269['player2_state']&&_0x4bb269[_0x55d938(0x1ec)][_0x55d938(0x1d4)](_0x55d938(0x1ad));if(_0x4dabe7&&!_0x51d846)_0x1e021f=Math['max'](_0x1e021f,_0x375a44);if(_0x3c5555&&!_0x388455)_0x5d489b=Math[_0x55d938(0x19b)](_0x5d489b,_0x375a44);const _0x52a543=Math[_0x55d938(0x19b)](0x0,_0x4bb269[_0x55d938(0x1d3)]-_0x1e021f),_0x45dce3=Math['max'](0x0,_0x4bb269[_0x55d938(0x1ae)]-_0x5d489b),_0x5970ca=_0x52a543<=0x0||_0x45dce3<=0x0;let _0x32d8c9=null;if(_0x5970ca){if(_0x52a543>_0x45dce3)_0x32d8c9=_0x4bb269[_0x55d938(0x235)];else{if(_0x45dce3>_0x52a543)_0x32d8c9=_0x4bb269[_0x55d938(0x272)];else _0x32d8c9=_0x55d938(0x281);}}const _0x4d21e1={'player1_hp':_0x52a543,'player2_hp':_0x45dce3,'player1_state':'playing:'+_0x30df0e,'player2_state':_0x55d938(0x234)+_0x30df0e,'player1_guesses':[],'player2_guesses':[],'last_update':new Date()[_0x55d938(0x202)]()};if(_0x5970ca)_0x4d21e1['status']='finished',_0x4d21e1[_0x55d938(0x2b8)]=_0x32d8c9;else{const _0x54e1ce=GAME_CONFIG[_0x4bb269['game_type']],_0x47531e=_0x54e1ce[_0x55d938(0x1fb)]()[Math[_0x55d938(0x26b)](Math[_0x55d938(0x275)]()*_0x54e1ce[_0x55d938(0x1fb)]()['length'])];_0x4d21e1[_0x55d938(0x24e)]=_0x47531e['name'],_0x4d21e1[_0x55d938(0x1d2)]=(_0x4bb269[_0x55d938(0x1d2)]||0x1)+0x1,_0x4d21e1['round_expires_at']=computeRoundExpiresAt(_0x4bb269);}try{await supabaseClient['from'](_0x55d938(0x1bc))[_0x55d938(0x1ca)](_0x4d21e1)['eq']('id',_0x4bb269['id']);}catch(_0x28aabd){console[_0x55d938(0x269)]('Failed\x20to\x20resolve\x20active\x20round\x20state:',_0x28aabd);}finally{setTimeout(()=>{const _0x7e5796=_0x55d938;pvpState[_0x7e5796(0x278)]=![];},0x4b0);}}function triggerSuddenDeathAnnouncement(_0xdfbb98){const _0x38f97a=a0_0x16dfdb;let _0x1f0cbc=document['getElementById'](_0x38f97a(0x172));if(_0x1f0cbc)_0x1f0cbc[_0x38f97a(0x1b3)]();_0x1f0cbc=document['createElement']('div'),_0x1f0cbc['id']=_0x38f97a(0x172);const _0x556eed=pvpState[_0x38f97a(0x16a)]!==undefined?pvpState['suddenDeathRound']:0x6,_0x457f72=0x2+(_0xdfbb98-_0x556eed)*0.5;_0x1f0cbc[_0x38f97a(0x2b4)]=_0x38f97a(0x2a0),_0x1f0cbc[_0x38f97a(0x290)]['opacity']='0',_0x1f0cbc['style'][_0x38f97a(0x258)]=_0x38f97a(0x1cb),_0x1f0cbc[_0x38f97a(0x290)][_0x38f97a(0x2aa)]=_0x38f97a(0x241),_0x1f0cbc[_0x38f97a(0x191)]=_0x38f97a(0x161)+_0x457f72+_0x38f97a(0x1dd),document[_0x38f97a(0x24d)][_0x38f97a(0x1d6)](_0x1f0cbc),void _0x1f0cbc[_0x38f97a(0x25d)],_0x1f0cbc['style'][_0x38f97a(0x170)]='1',_0x1f0cbc[_0x38f97a(0x290)][_0x38f97a(0x258)]=_0x38f97a(0x284),setTimeout(()=>{const _0x5ac7c4=_0x38f97a,_0x10ebf4=document[_0x5ac7c4(0x21c)](_0x5ac7c4(0x172));_0x10ebf4&&(_0x10ebf4['style'][_0x5ac7c4(0x170)]='0',_0x10ebf4['style'][_0x5ac7c4(0x258)]=_0x5ac7c4(0x183),setTimeout(()=>_0x10ebf4['remove'](),0x5dc));},0x9c4);}function handleRoundReset(_0x40e213,_0x7bb87e,_0x2de1f7,_0x1b1c2d){const _0x2bb5f8=a0_0x16dfdb;pvpState[_0x2bb5f8(0x1c3)]=![],pvpState[_0x2bb5f8(0x188)]=![],pvpState[_0x2bb5f8(0x278)]=![],showPvPWaitingScreen(![]),pvpState[_0x2bb5f8(0x1c9)]=_0x40e213,pvpState['opponentGuesses']=[];pvpState['isFFA']&&(pvpState[_0x2bb5f8(0x1f5)]=pvpState[_0x2bb5f8(0x1f5)][_0x2bb5f8(0x180)](_0x2289b7=>({..._0x2289b7,'guesses':[]})));sessionState['guesses']=[],sessionState[_0x2bb5f8(0x16b)]=![],sessionState[_0x2bb5f8(0x196)]={},sessionState[_0x2bb5f8(0x274)]=[];const _0x3dfeeb=GAME_CONFIG[_0x2de1f7];sessionState[_0x2bb5f8(0x203)]=_0x3dfeeb['data']()['find'](_0x2624b6=>_0x2624b6[_0x2bb5f8(0x1cc)]===_0x7bb87e);if(pvpState[_0x2bb5f8(0x1b7)]&&_0x2de1f7!==_0x2bb5f8(0x231)){const _0xa9ecd6=_0x3dfeeb[_0x2bb5f8(0x1fb)]()[_0x2bb5f8(0x252)](_0x316255=>_0x316255[_0x2bb5f8(0x1cc)]!==_0x7bb87e);sessionState['clues']=_0xa9ecd6['sort'](()=>0.5-Math[_0x2bb5f8(0x275)]())['slice'](0x0,0x3);}document[_0x2bb5f8(0x21c)](_0x2bb5f8(0x21e))['innerHTML']='',document[_0x2bb5f8(0x21c)](_0x2bb5f8(0x25e))[_0x2bb5f8(0x17e)]='',document[_0x2bb5f8(0x21c)](_0x2bb5f8(0x289))[_0x2bb5f8(0x182)][_0x2bb5f8(0x1b3)](_0x2bb5f8(0x18e));const _0x2a9716=_0x1b1c2d?new Date(_0x1b1c2d):new Date(Date[_0x2bb5f8(0x27e)]()+pvpState['roundTimeLimitMin']*0x3c*0x3e8);startPvPTimer(_0x2a9716),updateHpDisplay(),updateGuessCountUI(),renderSuggestions('');pvpState[_0x2bb5f8(0x1b7)]&&_0x2de1f7!=='voicedle'&&sessionState['clues'][_0x2bb5f8(0x1da)](_0x1f59aa=>addGuessRow(_0x1f59aa,!![]));const _0x4b27dc=pvpState[_0x2bb5f8(0x16a)]!==undefined?pvpState[_0x2bb5f8(0x16a)]:0x6;_0x4b27dc>0x0&&_0x40e213>=_0x4b27dc&&triggerSuddenDeathAnnouncement(_0x40e213);}function injectPvPDamageStyles(){const _0x133bb9=a0_0x16dfdb;if(document[_0x133bb9(0x21c)](_0x133bb9(0x1d9)))return;const _0x5a854f=document[_0x133bb9(0x22d)](_0x133bb9(0x290));_0x5a854f['id']=_0x133bb9(0x1d9),_0x5a854f[_0x133bb9(0x20c)]=_0x133bb9(0x286),document[_0x133bb9(0x1a0)][_0x133bb9(0x1d6)](_0x5a854f);}function a0_0x2c62(){const _0x244cd1=['7379658fGlsKY','pollTimer','forfeit','username','mode','now','opponentHp','finished','draw','newHp','hardMode','scale(1.15)','w-full\x20py-2.5\x20rounded-xl\x20font-bold\x20bg-slate-400\x20dark:bg-slate-700\x20text-slate-200\x20text-sm\x20cursor-not-allowed','\x0a\x20\x20\x20\x20@keyframes\x20pvpDamageFloat\x20{\x0a\x20\x20\x20\x20\x20\x200%\x20{\x20opacity:\x200;\x20transform:\x20translate(-50%,\x2010px)\x20scale(0.8);\x20}\x0a\x20\x20\x20\x20\x20\x2015%\x20{\x20opacity:\x201;\x20transform:\x20translate(-50%,\x20-10px)\x20scale(1.2);\x20}\x0a\x20\x20\x20\x20\x20\x2080%\x20{\x20opacity:\x201;\x20transform:\x20translate(-50%,\x20-25px)\x20scale(1);\x20}\x0a\x20\x20\x20\x20\x20\x20100%\x20{\x20opacity:\x200;\x20transform:\x20translate(-50%,\x20-40px)\x20scale(0.9);\x20}\x0a\x20\x20\x20\x20}\x0a\x20\x20\x20\x20@keyframes\x20pvpShieldAbsorb\x20{\x0a\x20\x20\x20\x20\x20\x200%\x20{\x20opacity:\x200;\x20transform:\x20translate(-50%,\x2025px)\x20scale(0.6);\x20}\x0a\x20\x20\x20\x20\x20\x2015%\x20{\x20opacity:\x201;\x20transform:\x20translate(-50%,\x205px)\x20scale(1.1);\x20filter:\x20drop-shadow(0\x200\x208px\x20rgba(59,\x20130,\x20246,\x200.8));\x20}\x0a\x20\x20\x20\x20\x20\x2080%\x20{\x20opacity:\x201;\x20transform:\x20translate(-50%,\x20-5px)\x20scale(1);\x20}\x0a\x20\x20\x20\x20\x20\x20100%\x20{\x20opacity:\x200;\x20transform:\x20translate(-50%,\x20-15px)\x20scale(0.9);\x20}\x0a\x20\x20\x20\x20}\x0a\x20\x20\x20\x20@keyframes\x20pvpSwordSlash\x20{\x0a\x20\x20\x20\x20\x20\x200%\x20{\x20opacity:\x200;\x20transform:\x20translate(-50%,\x20-35px)\x20scale(0.5)\x20rotate(-15deg);\x20}\x0a\x20\x20\x20\x20\x20\x2015%\x20{\x20opacity:\x201;\x20transform:\x20translate(-50%,\x20-15px)\x20scale(1.2)\x20rotate(5deg);\x20filter:\x20drop-shadow(0\x200\x208px\x20rgba(234,\x20179,\x208,\x200.8));\x20}\x0a\x20\x20\x20\x20\x20\x2080%\x20{\x20opacity:\x201;\x20transform:\x20translate(-50%,\x20-20px)\x20scale(1)\x20rotate(5deg);\x20}\x0a\x20\x20\x20\x20\x20\x20100%\x20{\x20opacity:\x200;\x20transform:\x20translate(-50%,\x20-30px)\x20scale(0.9)\x20rotate(15deg);\x20}\x0a\x20\x20\x20\x20}\x0a\x20\x20\x20\x20@keyframes\x20pvpColumnShake\x20{\x0a\x20\x20\x20\x20\x20\x200%,\x20100%\x20{\x20transform:\x20translateX(0);\x20}\x0a\x20\x20\x20\x20\x20\x2010%,\x2030%,\x2050%,\x2070%,\x2090%\x20{\x20transform:\x20translateX(-4px);\x20}\x0a\x20\x20\x20\x20\x20\x2020%,\x2040%,\x2060%,\x2080%\x20{\x20transform:\x20translateX(4px);\x20}\x0a\x20\x20\x20\x20}\x0a\x20\x20\x20\x20@keyframes\x20pvpFlashRed\x20{\x0a\x20\x20\x20\x20\x20\x200%,\x20100%\x20{\x20background-color:\x20transparent;\x20}\x0a\x20\x20\x20\x20\x20\x2050%\x20{\x20background-color:\x20rgba(239,\x2068,\x2068,\x200.2);\x20}\x0a\x20\x20\x20\x20}\x0a\x20\x20\x20\x20@keyframes\x20pvpFlashBlue\x20{\x0a\x20\x20\x20\x20\x20\x200%,\x20100%\x20{\x20background-color:\x20transparent;\x20}\x0a\x20\x20\x20\x20\x20\x2050%\x20{\x20background-color:\x20rgba(59,\x20130,\x20246,\x200.15);\x20}\x0a\x20\x20\x20\x20}\x0a\x20\x20\x20\x20@keyframes\x20pvpPulseRedGlow\x20{\x0a\x20\x20\x20\x20\x20\x200%,\x20100%\x20{\x20filter:\x20drop-shadow(0\x200\x202px\x20rgba(239,\x2068,\x2068,\x200.4));\x20}\x0a\x20\x20\x20\x20\x20\x2050%\x20{\x20filter:\x20drop-shadow(0\x200\x2010px\x20rgba(239,\x2068,\x2068,\x200.8));\x20}\x0a\x20\x20\x20\x20}\x0a\x20\x20\x20\x20@keyframes\x20pvpBounceShort\x20{\x0a\x20\x20\x20\x20\x20\x200%,\x20100%\x20{\x20transform:\x20scale(1);\x20}\x0a\x20\x20\x20\x20\x20\x2050%\x20{\x20transform:\x20scale(1.03);\x20}\x0a\x20\x20\x20\x20}\x0a\x20\x20\x20\x20.pvp-damage-indicator\x20{\x0a\x20\x20\x20\x20\x20\x20position:\x20absolute;\x0a\x20\x20\x20\x20\x20\x20top:\x20-15px;\x0a\x20\x20\x20\x20\x20\x20left:\x2050%;\x0a\x20\x20\x20\x20\x20\x20transform:\x20translateX(-50%);\x0a\x20\x20\x20\x20\x20\x20font-size:\x2026px;\x0a\x20\x20\x20\x20\x20\x20font-weight:\x20900;\x0a\x20\x20\x20\x20\x20\x20color:\x20#ef4444;\x0a\x20\x20\x20\x20\x20\x20text-shadow:\x200\x200\x204px\x20#000,\x200\x202px\x204px\x20rgba(0,\x200,\x200,\x200.8);\x0a\x20\x20\x20\x20\x20\x20pointer-events:\x20none;\x0a\x20\x20\x20\x20\x20\x20z-index:\x20105;\x0a\x20\x20\x20\x20\x20\x20animation:\x20pvpDamageFloat\x201.8s\x20cubic-bezier(0.25,\x201,\x200.5,\x201)\x20forwards;\x0a\x20\x20\x20\x20\x20\x20font-family:\x20\x27Impact\x27,\x20\x27Arial\x20Black\x27,\x20sans-serif;\x0a\x20\x20\x20\x20}\x0a\x20\x20\x20\x20.pvp-shield-indicator\x20{\x0a\x20\x20\x20\x20\x20\x20position:\x20absolute;\x0a\x20\x20\x20\x20\x20\x20top:\x20-20px;\x0a\x20\x20\x20\x20\x20\x20left:\x2050%;\x0a\x20\x20\x20\x20\x20\x20transform:\x20translateX(-50%);\x0a\x20\x20\x20\x20\x20\x20font-size:\x2018px;\x0a\x20\x20\x20\x20\x20\x20font-weight:\x20900;\x0a\x20\x20\x20\x20\x20\x20color:\x20#3b82f6;\x0a\x20\x20\x20\x20\x20\x20text-shadow:\x200\x200\x204px\x20#000,\x200\x202px\x204px\x20rgba(0,\x200,\x200,\x200.8);\x0a\x20\x20\x20\x20\x20\x20pointer-events:\x20none;\x0a\x20\x20\x20\x20\x20\x20z-index:\x20104;\x0a\x20\x20\x20\x20\x20\x20animation:\x20pvpShieldAbsorb\x201.8s\x20cubic-bezier(0.25,\x201,\x200.5,\x201)\x20forwards;\x0a\x20\x20\x20\x20\x20\x20font-family:\x20\x27Impact\x27,\x20\x27Arial\x20Black\x27,\x20sans-serif;\x0a\x20\x20\x20\x20}\x0a\x20\x20\x20\x20.pvp-atk-indicator\x20{\x0a\x20\x20\x20\x20\x20\x20position:\x20absolute;\x0a\x20\x20\x20\x20\x20\x20top:\x20-45px;\x0a\x20\x20\x20\x20\x20\x20left:\x2050%;\x0a\x20\x20\x20\x20\x20\x20transform:\x20translateX(-50%);\x0a\x20\x20\x20\x20\x20\x20font-size:\x2018px;\x0a\x20\x20\x20\x20\x20\x20font-weight:\x20900;\x0a\x20\x20\x20\x20\x20\x20color:\x20#eab308;\x0a\x20\x20\x20\x20\x20\x20text-shadow:\x200\x200\x204px\x20#000,\x200\x202px\x204px\x20rgba(0,\x200,\x200,\x200.8);\x0a\x20\x20\x20\x20\x20\x20pointer-events:\x20none;\x0a\x20\x20\x20\x20\x20\x20z-index:\x20103;\x0a\x20\x20\x20\x20\x20\x20animation:\x20pvpSwordSlash\x201.8s\x20cubic-bezier(0.25,\x201,\x200.5,\x201)\x20forwards;\x0a\x20\x20\x20\x20\x20\x20font-family:\x20\x27Impact\x27,\x20\x27Arial\x20Black\x27,\x20sans-serif;\x0a\x20\x20\x20\x20}\x0a\x20\x20\x20\x20.pvp-shake-active\x20{\x20animation:\x20pvpColumnShake\x200.5s\x20ease-in-out;\x20}\x0a\x20\x20\x20\x20.pvp-flash-red-active\x20{\x20animation:\x20pvpFlashRed\x200.6s\x20ease-in-out;\x20}\x0a\x20\x20\x20\x20.pvp-flash-blue-active\x20{\x20animation:\x20pvpFlashBlue\x200.6s\x20ease-in-out;\x20}\x0a\x20\x20\x20\x20.pvp-sudden-death-glow\x20{\x20animation:\x20pvpPulseRedGlow\x201.8s\x20infinite\x20ease-in-out;\x20}\x0a\x20\x20\x20\x20.animate-bounce-short\x20{\x20animation:\x20pvpBounceShort\x201.5s\x20infinite\x20ease-in-out;\x20}\x0a\x20\x20\x20\x20\x0a\x20\x20\x20\x20#pvp-player-col,\x20#pvp-opponent-col,\x20.pvp-ffa-opponent\x20{\x0a\x20\x20\x20\x20\x20\x20position:\x20relative;\x0a\x20\x20\x20\x20\x20\x20transition:\x20transform\x200.2s\x20ease;\x0a\x20\x20\x20\x20}\x0a\x20\x20','\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x0a\x20\x20\x20\x20\x20\x20<div\x20id=\x22res-next-round-status\x22\x20class=\x22text-sm\x20font-bold\x20text-amber-600\x20dark:text-amber-400\x20animate-pulse\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20Calculating\x20damage\x20indicators...\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20</div>\x0a\x20\x20','OPPONENT\x20DISCONNECTED','input-container','scale-100','Match\x20declined\x20or\x20cancelled.','catch','lastHeartbeatSent','pvp-result-standings','string','style','getItem','\x0a\x20\x20\x20\x20<!--\x20Left\x20Column:\x20You\x20-->\x0a\x20\x20\x20\x20<div\x20id=\x22pvp-player-col\x22\x20class=\x22flex-1\x20w-full\x20p-2\x22>\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22flex\x20justify-between\x20text-xs\x20font-bold\x20mb-1\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22text-green-700\x20dark:text-green-400\x22>','1668604ENEwOa','\x20HP</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20','res-bar-opp','end','\x0a\x20\x20\x20\x20\x20\x20<div\x20id=\x22pvp-match-timer\x22\x20class=\x22text-xs\x20font-mono\x20text-slate-500\x20dark:text-slate-400\x20mt-0.5\x22>','Error\x20writing\x20matchmaking\x20timeout\x20event:','#3b82f6','opponentId','Bearer\x20','\x22\x20class=\x22','ready-status-opp','pvp-player-col','Better\x20luck\x20on\x20the\x20next\x20investigation.','fixed\x20inset-0\x20z-[310]\x20flex\x20flex-col\x20items-center\x20justify-center\x20pointer-events-none','Error\x20exiting\x20battle\x20room:','You\x20outlasted\x20all\x20opponents\x20in\x20the\x20free-for-all!','%\x22></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20</div>','opacity-0','</div>','<span\x20style=\x22display:\x20inline-block;\x20width:\x2014px;\x20height:\x2014px;\x20border-radius:\x204px;\x20background-color:\x20#ef4444;\x20border:\x201.5px\x20solid\x20#dc2626;\x20transition:\x20all\x200.3s;\x22></span>','ready-status-me','delete','❌\x20Failed\x20to\x20join\x20matchmaking\x20queue.','transition','from','join','Rounds\x20played:\x20','finished_won:','visibilitychange','opacity-100','⏳\x20Board\x20complete.\x20Waiting\x20for\x20other\x20players\x20to\x20finish...','requestAnimationFrame','player1','className','Error\x20joining\x20queue:','keys','\x20HP</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22w-full\x20bg-slate-300\x20dark:bg-slate-700\x20h-4\x20rounded-full\x20overflow-hidden\x20relative\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20id=\x22res-bar-opp\x22\x20class=\x22bg-red-600\x20h-full\x22\x20style=\x22width:\x20','winner_id','res-bar-me','length','add','div','\x20Players</div>','isShowingRoundResolution','player1_id.eq.','\x0a\x20\x20\x20\x20<div\x20class=\x22text-center\x20font-black\x20select-none\x20p-4\x22>\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22text-4xl\x20md:text-6xl\x20tracking-widest\x20uppercase\x20mb-2\x20font-black\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20style=\x22color:\x20#ef4444;\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20-webkit-text-stroke:\x202.5px\x20#000000;\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20text-shadow:\x200\x200\x2010px\x20rgba(239,\x2068,\x2068,\x200.95),\x200\x200\x2025px\x20rgba(239,\x2068,\x2068,\x200.8),\x200\x200\x2050px\x20rgba(239,\x2068,\x2068,\x200.6);\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20SUDDEN\x20DEATH\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22text-lg\x20md:text-2xl\x20tracking-widest\x20uppercase\x20font-black\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20style=\x22color:\x20#ffffff;\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20-webkit-text-stroke:\x201.5px\x20#000000;\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20text-shadow:\x200\x200\x208px\x20rgba(239,\x2068,\x2068,\x200.9),\x200\x200\x2020px\x20rgba(239,\x2068,\x2068,\x200.7);\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20','text-xs\x20font-bold\x20text-green-600\x20dark:text-green-400','\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22flex\x20justify-between\x20text-[10px]\x20font-bold\x20mb-1\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22text-red-700\x20dark:text-red-400\x20truncate\x22>','<div\x20class=\x22tracking-widest\x20text-xs\x22>ROUND\x20','\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22grid\x20grid-cols-1\x20gap-3\x20w-full\x20max-w-sm\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20','1344540JivFXJ','\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22pvp-result-player\x20','DISCONNECTED','start','suddenDeathRound','isGameOver','pvp-result-shadows-or-standings','DRAW','win','playing','opacity','\x0a\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x0a\x20\x20\x20\x20<!--\x20Middle\x20Column:\x20Stats\x20-->\x0a\x20\x20\x20\x20<div\x20class=\x22flex\x20flex-col\x20items-center\x20justify-center\x20px-4\x20font-black\x20text-red-600\x20dark:text-red-400\x20text-sm\x20text-center\x22>\x0a\x20\x20\x20\x20\x20\x20','pvp-sudden-death-overlay','opponentName','opponent',')</div>','settings','dmg','30KoLAFn','res-dmg-indicator-me','select','Mark\x20timed\x20out\x20error:','player2_username','You','value','\x0a\x20\x20\x20\x20<div\x20class=\x22bg-white\x20dark:bg-slate-800\x20rounded-2xl\x20max-w-sm\x20w-full\x20p-6\x20text-center\x20border-t-8\x20border-red-700\x20shadow-2xl\x20flex\x20flex-col\x20gap-4\x22>\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22text-4xl\x20animate-pulse\x22>🎯</div>\x0a\x20\x20\x20\x20\x20\x20<h2\x20class=\x22text-xl\x20font-black\x20text-slate-800\x20dark:text-slate-100\x20uppercase\x20tracking-wide\x22>Match\x20Found!</h2>\x0a\x20\x20\x20\x20\x20\x20<p\x20class=\x22text-xs\x20text-slate-500\x20dark:text-slate-400\x22>Match\x20opponent\x20detected:\x20<strong\x20class=\x22text-red-700\x20dark:text-red-400\x20font-bold\x22>','map','\x0a\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20<div\x20class=\x22grid\x20grid-cols-2\x20md:grid-cols-3\x20gap-2\x20w-full\x22>\x0a\x20\x20\x20\x20\x20\x20','classList','scale(1.3)','player1_state','myOldHp','disabled','Error\x20synchronising\x20guess\x20update:','roundTimeoutHandled','Ready\x20check\x20state\x20retrieval\x20error:','\x22>\x0a\x20\x20\x20\x20\x20\x20<span\x20style=\x22font-size:\x2010px;\x20color:\x20#94a3b8;\x20text-transform:\x20uppercase;\x20letter-spacing:\x200.05em;\x20margin-right:\x204px;\x22>Guesses:</span>\x0a\x20\x20\x20\x20\x20\x20','Are\x20you\x20sure\x20you\x20want\x20to\x20leave\x20the\x20PvP\x20match?\x20This\x20will\x20count\x20as\x20an\x20automatic\x20forfeit/defeat.','\x20h-full\x22\x20style=\x22width:\x20','pvp-result-subtitle','hidden','/rest/v1/pvp_battles_idv?id=eq.','mySlot','innerHTML','user_id','ffaPlayers','justify-content:\x20flex-start;','Queue\x20polling\x20error:','knownStats','6465600XGxriB','Matchmaking\x20timed\x20out\x20due\x20to\x20inactive\x20response.','\x20(You)</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<span>','state','max','43134bzoEGz','Error\x20creating\x20lobby\x20battle:',',player2_id.eq.','\x0a\x20\x20\x20\x20<div\x20class=\x22bg-white\x20dark:bg-slate-800\x20rounded-2xl\x20max-w-lg\x20w-full\x20p-6\x20text-center\x20border-t-8\x20border-red-700\x20shadow-2xl\x20flex\x20flex-col\x20gap-4\x20animate-fade-in\x22>\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22text-3xl\x22>⚔️</div>\x0a\x20\x20\x20\x20\x20\x20<h2\x20class=\x22text-xl\x20font-black\x20text-slate-800\x20dark:text-slate-100\x20uppercase\x20tracking-wide\x22>Round\x20','head','pvp-shake-active','player2','pvp-waiting-overlay','sort','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span>','</div>\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20<div\x20id=\x22pvp-player-col\x22\x20class=\x22w-full\x20p-2\x20rounded-lg\x20border-2\x20border-green-600/40\x20bg-green-50/50\x20dark:bg-green-950/20\x22>\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22flex\x20justify-between\x20text-xs\x20font-bold\x20mb-1\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22text-green-700\x20dark:text-green-400\x22>','idvle_nickname','game_type','then','\x20HP</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22w-full\x20bg-slate-300\x20dark:bg-slate-700\x20h-3\x20rounded-full\x20overflow-hidden\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22bg-red-600\x20h-full\x20transition-all\x20duration-500\x22\x20style=\x22width:\x20','\x20HP</span>\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22w-full\x20bg-slate-300\x20dark:bg-slate-700\x20h-4\x20rounded-full\x20overflow-hidden\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22bg-green-600\x20h-full\x20transition-all\x20duration-500\x22\x20style=\x22width:\x20','Error\x20leaving\x20queue:','finished_won','player2_hp','text-red-700\x20dark:text-red-400','bg-amber-500','\x20HP</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22w-full\x20bg-slate-300\x20dark:bg-slate-700\x20h-4\x20rounded-full\x20overflow-hidden\x20relative\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20id=\x22res-bar-me\x22\x20class=\x22bg-green-600\x20h-full\x22\x20style=\x22width:\x20','prevHpMap','remove','\x20HP','#ef4444','width','hardModeActive','pvp-damage-indicator','\x20HP</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22w-full\x20bg-slate-300\x20dark:bg-slate-700\x20h-3\x20rounded-full\x20overflow-hidden\x20relative\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20id=\x22res-bar-','%\x22></div>\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20','isFFA','pvp_battles_idv','visible','normal','min','fixed\x20inset-0\x20bg-black/85\x20backdrop-blur-md\x20z-[300]\x20flex\x20items-center\x20justify-center\x20p-4\x20transition-opacity\x20duration-300','1099FTEFcp','%\x22;\x20transition:\x20width\x200.8s\x20cubic-bezier(0.4,\x200,\x200.2,\x201);\x22></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20id=\x22res-dmg-indicator-','isWaitingForOpponent','split','push','roundExpiresAt','maxHp','\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22flex\x20justify-between\x20text-xs\x20font-bold\x20mb-1\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span>','currentRound','update','scale(0.75)','name','border-green-600/50\x20bg-green-950/20','⏳\x20Board\x20complete.\x20Waiting\x20for\x20opponent\x20to\x20finish\x20their\x20escape\x20attempts...','READY','player2_guesses','pvp-opponent-col','round_number','player1_hp','startsWith','oldHp','appendChild','ready-check-btn','Failed\x20to\x20load\x20match\x20updates.','pvp-damage-styles','forEach','finished_lost','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span>','x\x20Damage\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20</div>\x0a\x20\x20','justify-content:\x20flex-end;','function','%\x22></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','application/json','\x20Resolved!</h2>\x0a\x20\x20\x20\x20\x20\x20<p\x20class=\x22text-xs\x20text-slate-500\x20dark:text-slate-400\x22>Applying\x20damage\x20and\x20calculating\x20updates...</p>\x0a\x20\x20\x20\x20\x20\x20\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22my-2\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20','%\x22;\x20transition:\x20width\x200.8s\x20cubic-bezier(0.4,\x200,\x200.2,\x201);\x22></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20id=\x22res-dmg-indicator-opp\x22\x20class=\x22absolute\x20inset-0\x20flex\x20items-center\x20justify-center\x20pointer-events-none\x20opacity-0\x20transform\x20scale-75\x20transition-all\x20duration-300\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22text-3xl\x20font-black\x20text-red-600\x20dark:text-red-500\x20drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]\x22>-','after','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22font-mono\x22><span\x20id=\x22res-hp-val-','Error\x20cancelling\x20match\x20instance:','created_at','player','<div\x20class=\x22text-xs\x20font-black\x20text-red-600\x20dark:text-red-400\x20uppercase\x20tracking-widest\x22>FFA\x20·\x20','1Azyypz','bg-red-600','player2_state','pvp-result-title','isMe','\x0a\x20\x20\x20\x20</div>\x0a\x20\x20','Preparing\x20Sudden\x20Death\x20Round\x20','PATCH','...','isArray','pvp-opp-col-','allPlayers','matched:waiting_ready','player1_username','\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20id=\x22pvp-match-timer\x22\x20class=\x22text-xs\x20font-mono\x20text-slate-500\x20dark:text-slate-400\x22>','battleId','\x20/\x20','data','4032633pypFiF','order','<span\x20style=\x22display:\x20inline-block;\x20width:\x2014px;\x20height:\x2014px;\x20border-radius:\x204px;\x20background-color:\x20#22c55e;\x20border:\x201.5px\x20solid\x20#16a34a;\x20transition:\x20all\x200.3s;\x22></span>','VICTORY','player_count','\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22flex\x20flex-col\x20items-end\x20font-black\x20text-red-600\x20dark:text-red-400\x20text-sm\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20','toISOString','target','opponentGuesses','res-hp-val-','w-full\x20max-w-md\x20bg-amber-50\x20dark:bg-slate-900\x20border\x20border-amber-200\x20dark:border-amber-950\x20p-4\x20rounded-xl\x20text-center\x20text-xs\x20font-bold\x20text-amber-800\x20dark:text-amber-400\x20my-3\x20animate-pulse','matchTimer','role','pvp-result-modal','You\x20declined\x20the\x20match.','OPPONENT\x20FORFEIT','textContent','\x20h-full\x22\x20style=\x22width:','</div>\x0a\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x0a\x20\x20\x20\x20<!--\x20Right\x20Column:\x20Opponent\x20-->\x0a\x20\x20\x20\x20<div\x20id=\x22pvp-opponent-col\x22\x20class=\x22flex-1\x20w-full\x20p-2\x22>\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22flex\x20justify-between\x20text-xs\x20font-bold\x20mb-1\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22text-red-700\x20dark:text-red-400\x22>','limit','pvp-round-resolution-modal','single','Error\x20creating\x20battle:','queueTimer','addEventListener','pvp_queue_idv','pvp-queue-modal','00:00','insert','pvp-atk-indicator','color','\x0a\x20\x20\x20\x20<div\x20style=\x22display:\x20flex;\x20align-items:\x20center;\x20gap:\x204px;\x20margin-top:\x204px;\x20','getElementById','status','guess-grid','disconnect','damageMultiplier','roundTimeLimitMin','maxGuesses','\x20HP</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20<!--\x20Opponent\x20Column\x20-->\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22flex-1\x20p-3\x20rounded-xl\x20border-2\x20border-red-900/50\x20bg-red-950/10\x20relative\x20flex\x20flex-col\x20gap-1\x20overflow-hidden\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22flex\x20justify-between\x20text-xs\x20font-black\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22text-red-700\x20dark:text-red-400\x22>','pvp-ready-check-modal','lose','round','countdownTimer','oppNewHp','myNewHp','\x0a\x20\x20\x20\x20<div\x20style=\x22display:\x20flex;\x20align-items:\x20center;\x20gap:\x204px;\x20margin-top:\x204px;\x20justify-content:\x20flex-start;\x22>\x0a\x20\x20\x20\x20\x20\x20<span\x20style=\x22font-size:\x2010px;\x20color:\x20#94a3b8;\x20text-transform:\x20uppercase;\x20letter-spacing:\x200.05em;\x20margin-right:\x204px;\x22>Guesses:</span>\x0a\x20\x20\x20\x20\x20\x20','WAITING...','%;\x20data-target-width=\x22','createElement','\x22\x20class=\x22absolute\x20inset-0\x20flex\x20items-center\x20justify-center\x20pointer-events-none\x20opacity-0\x20transform\x20scale-75\x20transition-all\x20duration-300\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22text-2xl\x20font-black\x20text-red-600\x20dark:text-red-500\x20drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]\x22>-','myDmg','Result:\x20Stalemate','voicedle','scale-75','parse','playing:','player1_id','pvp-hp-interface','secondsLeft','OPPONENT\x20LEFT','padStart','pvp-match-timer','myHp','active','text-green-700\x20dark:text-green-400','Error\x20submitting\x20ready\x20flag:','stringify','res-next-round-status','opacity\x201.5s\x20cubic-bezier(0.25,\x201,\x200.5,\x201),\x20transform\x201.5s\x20cubic-bezier(0.25,\x201,\x200.5,\x201)','round_expires_at','round_number,\x20status','timeLimit','pvp','03:00','text-xs\x20font-bold\x20text-slate-500\x20dark:text-slate-400\x20animate-pulse','🛡️\x20DEF\x20','</span>\x20/\x20','replace','4FhKRjX','guesses','body','target_name','pvp-flash-blue-active','\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20','<div\x20class=\x22text-xs\x20font-black\x20text-red-600\x20dark:text-red-500\x20uppercase\x20tracking-widest\x20animate-pulse\x20pvp-sudden-death-glow\x22>⚡\x20SUDDEN\x20DEATH\x20FFA\x20·\x20','filter','Preparing\x20Round\x20','1390782dbpnNG','showMenu','pvp-flash-red-active','\x20HP</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20','transform','exited','<span\x20style=\x22display:\x20inline-block;\x20width:\x2014px;\x20height:\x2014px;\x20border-radius:\x204px;\x20background-color:\x20#09090b;\x20border:\x201.5px\x20solid\x20#27272a;\x20transition:\x20all\x200.3s;\x22></span>','\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22bg-white\x20dark:bg-slate-800\x20rounded-2xl\x20max-w-sm\x20w-full\x20p-6\x20text-center\x20border-t-8\x20border-red-700\x20shadow-2xl\x20flex\x20flex-col\x20gap-4\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22text-4xl\x20animate-bounce\x22>⚡</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<h2\x20class=\x22text-xl\x20font-black\x20text-slate-800\x20dark:text-slate-100\x20uppercase\x20tracking-wide\x22>Looking\x20for\x20Opponent</h2>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<p\x20class=\x22text-xs\x20text-slate-500\x20dark:text-slate-400\x22>Searching\x20the\x20matchmaking\x20server\x20for\x20another\x20Visitors...</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22flex\x20items-center\x20justify-center\x20py-2\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22animate-spin\x20rounded-full\x20h-8\x20w-8\x20border-b-2\x20border-red-700\x22></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<button\x20onclick=\x22leavePvPQueue()\x22\x20class=\x22btn-secondary\x20w-full\x20py-2.5\x20rounded-xl\x20font-bold\x20transition-all\x20text-sm\x22>Cancel\x20Matchmaking</button>\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20','matched:ready','offsetWidth','uma-input','bg-green-600','findIndex','opp-','oppOldHp','w-full\x20flex\x20flex-col\x20gap-3\x20pvp-interface-panel\x20p-3\x20rounded-xl\x20border\x20my-2','pvp-result-winner','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<span>','oppDmg','Failed\x20FFA\x20round\x20resolution:','find','error','animationend','floor','pvp-result-icon','visibilityState','fixed\x20inset-0\x20bg-black/75\x20backdrop-blur-sm\x20z-[250]\x20flex\x20items-center\x20justify-center\x20p-4','players','formattedTime','⏱️\x20Round\x20time\x20expired!\x20Resolving\x20round...','player2_id','player1_guesses','clues','random','startingHp','pvp-shield-indicator','isResolvingRound'];a0_0x2c62=function(){return _0x244cd1;};return a0_0x2c62();}function triggerDamageAnimation(_0x34723d,_0xf127e5){const _0x2837f3=a0_0x16dfdb;if(_0xf127e5<=0x0)return;injectPvPDamageStyles();let _0x34e745=_0x2837f3(0x1d1);if(_0x34723d===_0x2837f3(0x1e8))_0x34e745=_0x2837f3(0x29e);else String(_0x34723d)[_0x2837f3(0x1d4)](_0x2837f3(0x261))&&(_0x34e745=_0x2837f3(0x1f4)+_0x34723d['split']('-')[0x1]);const _0x402355=document[_0x2837f3(0x21c)](_0x34e745);if(!_0x402355)return;_0x402355[_0x2837f3(0x182)][_0x2837f3(0x1b3)]('pvp-shake-active',_0x2837f3(0x256),_0x2837f3(0x24f)),void _0x402355[_0x2837f3(0x25d)];const _0x53a71f=document[_0x2837f3(0x22d)](_0x2837f3(0x15d));_0x53a71f[_0x2837f3(0x2b4)]=_0x2837f3(0x1b8),_0x53a71f[_0x2837f3(0x20c)]='-'+_0xf127e5+_0x2837f3(0x1b4),_0x53a71f[_0x2837f3(0x290)][_0x2837f3(0x21a)]=_0x2837f3(0x1b5),_0x402355[_0x2837f3(0x182)][_0x2837f3(0x15c)](_0x2837f3(0x1a1),_0x2837f3(0x256)),_0x402355['appendChild'](_0x53a71f),_0x53a71f[_0x2837f3(0x214)](_0x2837f3(0x26a),()=>_0x53a71f[_0x2837f3(0x1b3)]());}function triggerCombatAnimation(_0x8c36a7,_0x14f342,_0x2bb19a,_0x371953){const _0x5ef1f9=a0_0x16dfdb;injectPvPDamageStyles();let _0x1818b9=_0x5ef1f9(0x1d1);if(_0x8c36a7===_0x5ef1f9(0x1e8))_0x1818b9=_0x5ef1f9(0x29e);else{if(String(_0x8c36a7)[_0x5ef1f9(0x1d4)](_0x5ef1f9(0x261)))_0x1818b9=_0x5ef1f9(0x1f4)+_0x8c36a7[_0x5ef1f9(0x1c4)]('-')[0x1];}const _0x139f54=document[_0x5ef1f9(0x21c)](_0x1818b9);if(!_0x139f54)return;_0x139f54[_0x5ef1f9(0x182)][_0x5ef1f9(0x1b3)](_0x5ef1f9(0x1a1),_0x5ef1f9(0x256),_0x5ef1f9(0x24f)),void _0x139f54[_0x5ef1f9(0x25d)];if(_0x14f342>0x0){const _0x3e3bd0=document[_0x5ef1f9(0x22d)](_0x5ef1f9(0x15d));_0x3e3bd0[_0x5ef1f9(0x2b4)]=_0x5ef1f9(0x219),_0x3e3bd0[_0x5ef1f9(0x191)]='⚔️\x20ATK\x20'+_0x14f342,_0x139f54[_0x5ef1f9(0x1d6)](_0x3e3bd0),_0x3e3bd0['addEventListener'](_0x5ef1f9(0x26a),()=>_0x3e3bd0['remove']());}if(_0x2bb19a>0x0){const _0x29e002=document['createElement'](_0x5ef1f9(0x15d));_0x29e002['className']=_0x5ef1f9(0x277),_0x29e002[_0x5ef1f9(0x191)]=_0x5ef1f9(0x248)+_0x2bb19a,_0x139f54[_0x5ef1f9(0x1d6)](_0x29e002),_0x29e002['addEventListener'](_0x5ef1f9(0x26a),()=>_0x29e002[_0x5ef1f9(0x1b3)]());}setTimeout(()=>{const _0x45ceeb=_0x5ef1f9,_0x269bd9=document[_0x45ceeb(0x22d)]('div');_0x269bd9[_0x45ceeb(0x2b4)]=_0x45ceeb(0x1b8),_0x371953>0x0?(_0x269bd9[_0x45ceeb(0x20c)]='-'+_0x371953+_0x45ceeb(0x1b4),_0x269bd9[_0x45ceeb(0x290)][_0x45ceeb(0x21a)]=_0x45ceeb(0x1b5),_0x139f54[_0x45ceeb(0x182)][_0x45ceeb(0x15c)](_0x45ceeb(0x1a1),_0x45ceeb(0x256))):(_0x269bd9[_0x45ceeb(0x191)]='🛡️\x20BLOCKED',_0x269bd9['style'][_0x45ceeb(0x21a)]=_0x45ceeb(0x299),_0x139f54[_0x45ceeb(0x182)][_0x45ceeb(0x15c)](_0x45ceeb(0x24f))),_0x139f54['appendChild'](_0x269bd9),_0x269bd9[_0x45ceeb(0x214)]('animationend',()=>_0x269bd9[_0x45ceeb(0x1b3)]());},0x1c2);}function showQueueModal(_0x3a4764){const _0xf10904=a0_0x16dfdb;let _0x4852c5=document[_0xf10904(0x21c)](_0xf10904(0x216));if(!_0x4852c5&&_0x3a4764)_0x4852c5=document[_0xf10904(0x22d)](_0xf10904(0x15d)),_0x4852c5['id']=_0xf10904(0x216),_0x4852c5[_0xf10904(0x2b4)]='fixed\x20inset-0\x20bg-black/70\x20backdrop-blur-sm\x20z-[250]\x20flex\x20items-center\x20justify-center\x20p-4',_0x4852c5[_0xf10904(0x191)]=_0xf10904(0x25b),document[_0xf10904(0x24d)][_0xf10904(0x1d6)](_0x4852c5);else _0x4852c5&&!_0x3a4764&&_0x4852c5['remove']();}function showPvPWaitingScreen(_0x2dbcac,_0xc37cb4=null){const _0x484708=a0_0x16dfdb;let _0x27807a=document[_0x484708(0x21c)](_0x484708(0x1a3));if(!_0x27807a&&_0x2dbcac){_0x27807a=document['createElement'](_0x484708(0x15d)),_0x27807a['id']=_0x484708(0x1a3),_0x27807a[_0x484708(0x2b4)]=_0x484708(0x206);const _0xfbda86=document[_0x484708(0x21c)](_0x484708(0x24c));if(_0xfbda86)_0xfbda86['after'](_0x27807a);}if(_0x27807a&&_0x2dbcac)_0x27807a['innerHTML']=_0xc37cb4||(pvpState[_0x484708(0x1bb)]?_0x484708(0x2b1):_0x484708(0x1ce));else _0x27807a&&!_0x2dbcac&&_0x27807a['remove']();}function declarePvPWinner(_0x533386,_0x241a48){const _0x1b4b04=a0_0x16dfdb;showPvPResultModal({'battle':_0x241a48,'winnerId':_0x533386,'reason':_0x1b4b04(0x1be)}),document['getElementById']('input-container')?.[_0x1b4b04(0x182)]['add'](_0x1b4b04(0x18e));}function showPvPResultModal({battle:_0x56d35d,winnerId:_0x3732aa,reason:reason='normal'}){const _0x130594=a0_0x16dfdb,_0xec4199=document[_0x130594(0x21c)](_0x130594(0x209));if(!_0xec4199)return;const _0x37dda3=getOrCreateUserId(),_0x14ad02=_0x3732aa===_0x37dda3,_0x3b14b2=_0x3732aa===_0x130594(0x281),_0xdd77e7=_0x56d35d?parseBattlePlayers(_0x56d35d):[...pvpState[_0x130594(0x1f5)]],_0x1d6c04=_0x56d35d?.['round_number']||pvpState[_0x130594(0x1c9)]||0x1,_0x26d490=_0x56d35d?isMultiplayerBattle(_0x56d35d):pvpState[_0x130594(0x1bb)],_0x1c37c8={'normal':{'win':_0x26d490?'FFA\x20VICTORY':_0x130594(0x1ff),'lose':'DEFEAT','draw':'DRAW'},'forfeit':{'win':_0x130594(0x20b),'lose':'FORFEIT','draw':'DRAW'},'disconnect':{'win':_0x130594(0x288),'lose':_0x130594(0x168),'draw':_0x130594(0x16d)},'opponent_left':{'win':_0x130594(0x238),'lose':'FORFEIT','draw':_0x130594(0x16d)}},_0x432bc3=_0x1c37c8[reason]||_0x1c37c8[_0x130594(0x1be)];let _0x49178e=_0x432bc3[_0x130594(0x225)],_0x1ffa2b=_0x130594(0x29f);if(_0x14ad02)_0x49178e=_0x432bc3[_0x130594(0x16e)],_0x1ffa2b=_0x26d490?_0x130594(0x2a2):'You\x20deduced\x20the\x20targets\x20and\x20claimed\x20victory.',setTimeout(launchConfetti,0x64);else{if(_0x3b14b2)_0x49178e=_0x432bc3['draw'],_0x1ffa2b='No\x20single\x20victor\x20remained\x20standing.';else{if(reason==='forfeit')_0x1ffa2b='A\x20player\x20left\x20the\x20match\x20before\x20it\x20concluded.';else reason===_0x130594(0x21f)&&(_0x1ffa2b='Connection\x20was\x20lost\x20during\x20the\x20battle.');}}const _0x37bb5c=_0xdd77e7[_0x130594(0x268)](_0x5a8f7e=>_0x5a8f7e['id']===_0x3732aa),_0x44f192=_0x37bb5c?.[_0x130594(0x27c)]||(_0x3b14b2?'—':'Unknown'),_0x52e035=_0xdd77e7[_0x130594(0x180)](_0x32e9a5=>{const _0x569e4d=_0x130594,_0xa4e2e6=_0x32e9a5['id']===_0x37dda3,_0x41a590=_0x32e9a5['id']===_0x3732aa,_0x330c45=_0x41a590?_0x569e4d(0x1b0):_0xa4e2e6?'bg-green-600':_0x569e4d(0x1eb),_0x3f42d2=_0x32e9a5['hp']/pvpState[_0x569e4d(0x1c7)]*0x64;return _0x569e4d(0x167)+(_0x41a590?'is-winner':'')+_0x569e4d(0x1c8)+_0x32e9a5[_0x569e4d(0x27c)]+(_0xa4e2e6?'\x20(You)':'')+(_0x41a590?'\x20👑':'')+_0x569e4d(0x1dc)+_0x32e9a5['hp']+_0x569e4d(0x1fa)+pvpState[_0x569e4d(0x1c7)]+'\x20HP</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22w-full\x20bg-slate-300\x20dark:bg-slate-700\x20h-2.5\x20rounded-full\x20overflow-hidden\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22'+_0x330c45+_0x569e4d(0x20d)+_0x3f42d2+_0x569e4d(0x2a3);})[_0x130594(0x2ac)](''),_0x3f85d4=document[_0x130594(0x21c)](_0x130594(0x1ed));if(_0x3f85d4)_0x3f85d4['textContent']=_0x49178e;const _0x30b2e3=document[_0x130594(0x21c)](_0x130594(0x18d));if(_0x30b2e3)_0x30b2e3[_0x130594(0x20c)]=_0x1ffa2b;const _0x12fbba=document[_0x130594(0x21c)]('pvp-result-rounds');if(_0x12fbba)_0x12fbba[_0x130594(0x20c)]=_0x130594(0x2ad)+_0x1d6c04;const _0x108f26=document[_0x130594(0x21c)](_0x130594(0x264));_0x108f26&&(_0x108f26['textContent']=_0x3b14b2?_0x130594(0x230):'Winner:\x20'+_0x44f192);const _0x333ecf=document[_0x130594(0x21c)](_0x130594(0x16c))||document[_0x130594(0x21c)](_0x130594(0x28e));_0x333ecf&&(_0x333ecf[_0x130594(0x191)]=_0x52e035);const _0x1f3d49=document['getElementById'](_0x130594(0x26c));_0x1f3d49&&(_0x1f3d49[_0x130594(0x20c)]=_0x14ad02?'🏆':_0x3b14b2?'🤝':'💀');_0xec4199['classList'][_0x130594(0x1b3)](_0x130594(0x18e));if(pvpState[_0x130594(0x27a)])clearInterval(pvpState[_0x130594(0x27a)]);if(pvpState[_0x130594(0x207)])clearInterval(pvpState[_0x130594(0x207)]);}function closePvPResultModal(){const _0x27bb71=a0_0x16dfdb,_0x4ddf08=document[_0x27bb71(0x21c)](_0x27bb71(0x209));if(_0x4ddf08)_0x4ddf08[_0x27bb71(0x182)][_0x27bb71(0x15c)]('hidden');cleanupPvPSession();if(typeof showMenu===_0x27bb71(0x1df))showMenu();}function cleanupPvPSession(){const _0x3bb57e=a0_0x16dfdb;if(pvpState[_0x3bb57e(0x27a)])clearInterval(pvpState[_0x3bb57e(0x27a)]);if(pvpState['matchTimer'])clearInterval(pvpState['matchTimer']);pvpState[_0x3bb57e(0x1f9)]=null,pvpState[_0x3bb57e(0x1bb)]=![],pvpState[_0x3bb57e(0x1f5)]=[],pvpState[_0x3bb57e(0x190)]=0x0,pvpState[_0x3bb57e(0x1b2)]={},pvpState[_0x3bb57e(0x1c7)]=0x64,pvpState[_0x3bb57e(0x1c6)]=null,pvpState[_0x3bb57e(0x188)]=![],pvpState[_0x3bb57e(0x278)]=![],pvpState[_0x3bb57e(0x15f)]=![];const _0xe75961=document[_0x3bb57e(0x21c)](_0x3bb57e(0x236));if(_0xe75961)_0xe75961[_0x3bb57e(0x1b3)]();const _0x3b23ee=document['getElementById'](_0x3bb57e(0x210));if(_0x3b23ee)_0x3b23ee[_0x3bb57e(0x1b3)]();showPvPWaitingScreen(![]);}function escapeHtml(_0x50fc27){const _0x4af279=a0_0x16dfdb,_0x2140c2=document[_0x4af279(0x22d)](_0x4af279(0x15d));return _0x2140c2[_0x4af279(0x20c)]=_0x50fc27||'',_0x2140c2[_0x4af279(0x191)];}function showPvPRoundResolutionModal(_0x4c7d73,_0x59f6ed){const _0x5f4fe2=a0_0x16dfdb;let _0x313c2c=document['getElementById'](_0x5f4fe2(0x210));!_0x313c2c&&(_0x313c2c=document[_0x5f4fe2(0x22d)]('div'),_0x313c2c['id']=_0x5f4fe2(0x210),_0x313c2c[_0x5f4fe2(0x2b4)]=_0x5f4fe2(0x1c0),document[_0x5f4fe2(0x24d)][_0x5f4fe2(0x1d6)](_0x313c2c));const _0x1b21e1=_0x4c7d73['round']+0x1;let _0x328193='';if(_0x4c7d73[_0x5f4fe2(0x1bb)]){const _0x92747b=_0x4c7d73[_0x5f4fe2(0x193)][_0x5f4fe2(0x180)]((_0x4b648e,_0x20bd74)=>{const _0xf9ae09=_0x5f4fe2,_0xd17fd8=_0x4b648e['isMe']?_0xf9ae09(0x1cd):'border-red-900/50\x20bg-red-950/10',_0x1f823e=_0x4b648e['isMe']?_0xf9ae09(0x23d):_0xf9ae09(0x1af),_0x65ab5b=_0x4b648e[_0xf9ae09(0x1ee)]?_0xf9ae09(0x25f):_0xf9ae09(0x1eb),_0x1e1f1a=_0x4b648e['oldHp']/pvpState[_0xf9ae09(0x1c7)]*0x64,_0x4c3f12=_0x4b648e[_0xf9ae09(0x282)]/pvpState[_0xf9ae09(0x1c7)]*0x64;return'\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22p-3\x20rounded-xl\x20border-2\x20'+_0xd17fd8+'\x20relative\x20flex\x20flex-col\x20gap-1\x20overflow-hidden\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22flex\x20justify-between\x20text-xs\x20font-black\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22'+_0x1f823e+'\x22>'+escapeHtml(_0x4b648e[_0xf9ae09(0x27c)])+'\x20'+(_0x4b648e[_0xf9ae09(0x1ee)]?'(You)':'')+_0xf9ae09(0x1e5)+_0x20bd74+'\x22>'+_0x4b648e['oldHp']+_0xf9ae09(0x249)+pvpState[_0xf9ae09(0x1c7)]+_0xf9ae09(0x1b9)+_0x20bd74+_0xf9ae09(0x29c)+_0x65ab5b+_0xf9ae09(0x18c)+_0x1e1f1a+_0xf9ae09(0x22c)+_0x4c3f12+_0xf9ae09(0x1c2)+_0x20bd74+_0xf9ae09(0x22e)+_0x4b648e[_0xf9ae09(0x177)]+_0xf9ae09(0x294);})[_0x5f4fe2(0x2ac)]('');_0x328193=_0x5f4fe2(0x165)+_0x92747b+_0x5f4fe2(0x250);}else{const _0x6559cf=_0x4c7d73[_0x5f4fe2(0x185)]/pvpState[_0x5f4fe2(0x1c7)]*0x64,_0x252c0b=_0x4c7d73[_0x5f4fe2(0x229)]/pvpState[_0x5f4fe2(0x1c7)]*0x64,_0xff553d=_0x4c7d73[_0x5f4fe2(0x262)]/pvpState['maxHp']*0x64,_0x581220=_0x4c7d73[_0x5f4fe2(0x228)]/pvpState[_0x5f4fe2(0x1c7)]*0x64;_0x328193='\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22flex\x20flex-col\x20md:flex-row\x20gap-4\x20w-full\x20max-w-md\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<!--\x20Player\x20Column\x20-->\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22flex-1\x20p-3\x20rounded-xl\x20border-2\x20border-green-600/50\x20bg-green-950/20\x20relative\x20flex\x20flex-col\x20gap-1\x20overflow-hidden\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22flex\x20justify-between\x20text-xs\x20font-black\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22text-green-700\x20dark:text-green-400\x22>You</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22font-mono\x22><span\x20id=\x22res-hp-val-me\x22>'+_0x4c7d73['myOldHp']+_0x5f4fe2(0x249)+pvpState[_0x5f4fe2(0x1c7)]+_0x5f4fe2(0x1b1)+_0x6559cf+'%;\x20data-target-width=\x22'+_0x252c0b+'%\x22;\x20transition:\x20width\x200.8s\x20cubic-bezier(0.4,\x200,\x200.2,\x201);\x22></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20id=\x22res-dmg-indicator-me\x22\x20class=\x22absolute\x20inset-0\x20flex\x20items-center\x20justify-center\x20pointer-events-none\x20opacity-0\x20transform\x20scale-75\x20transition-all\x20duration-300\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22text-3xl\x20font-black\x20text-red-600\x20dark:text-red-500\x20drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]\x22>-'+_0x4c7d73['myDmg']+_0x5f4fe2(0x223)+escapeHtml(_0x4c7d73['oppName'])+'</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22font-mono\x22><span\x20id=\x22res-hp-val-opp\x22>'+_0x4c7d73[_0x5f4fe2(0x262)]+_0x5f4fe2(0x249)+pvpState['maxHp']+_0x5f4fe2(0x2b7)+_0xff553d+_0x5f4fe2(0x22c)+_0x581220+_0x5f4fe2(0x1e3)+_0x4c7d73[_0x5f4fe2(0x266)]+_0x5f4fe2(0x257);}const _0x36d87a=pvpState['suddenDeathRound']!==undefined?pvpState[_0x5f4fe2(0x16a)]:0x6,_0x1dbc27=_0x36d87a>0x0&&_0x1b21e1>=_0x36d87a;_0x313c2c[_0x5f4fe2(0x191)]=_0x5f4fe2(0x19f)+_0x4c7d73[_0x5f4fe2(0x226)]+_0x5f4fe2(0x1e2)+_0x328193+_0x5f4fe2(0x287),setTimeout(()=>{const _0x186ce2=_0x5f4fe2;if(_0x4c7d73[_0x186ce2(0x1bb)])_0x4c7d73[_0x186ce2(0x193)][_0x186ce2(0x1da)]((_0x1da402,_0x13840d)=>{const _0x5eaa98=_0x186ce2;if(_0x1da402[_0x5eaa98(0x177)]>0x0){const _0x1e6b89=document[_0x5eaa98(0x21c)]('res-dmg-indicator-'+_0x13840d);if(_0x1e6b89)_0x1e6b89[_0x5eaa98(0x182)][_0x5eaa98(0x24a)](_0x5eaa98(0x2a4),_0x5eaa98(0x2b0)),_0x1e6b89[_0x5eaa98(0x182)][_0x5eaa98(0x24a)](_0x5eaa98(0x232),_0x5eaa98(0x28a));}});else{if(_0x4c7d73[_0x186ce2(0x22f)]>0x0){const _0x2f097e=document[_0x186ce2(0x21c)](_0x186ce2(0x179));if(_0x2f097e)_0x2f097e[_0x186ce2(0x182)][_0x186ce2(0x24a)](_0x186ce2(0x2a4),_0x186ce2(0x2b0)),_0x2f097e[_0x186ce2(0x182)][_0x186ce2(0x24a)](_0x186ce2(0x232),_0x186ce2(0x28a));}if(_0x4c7d73['oppDmg']>0x0){const _0x4d020a=document['getElementById']('res-dmg-indicator-opp');if(_0x4d020a)_0x4d020a[_0x186ce2(0x182)][_0x186ce2(0x24a)](_0x186ce2(0x2a4),_0x186ce2(0x2b0)),_0x4d020a[_0x186ce2(0x182)]['replace'](_0x186ce2(0x232),_0x186ce2(0x28a));}}},0x190),setTimeout(()=>{const _0x2967cd=_0x5f4fe2;if(_0x4c7d73[_0x2967cd(0x1bb)])_0x4c7d73['ffaPlayers'][_0x2967cd(0x1da)]((_0x374b65,_0x33b085)=>{const _0x1a4f32=_0x2967cd,_0x26acc4=document['getElementById']('res-bar-'+_0x33b085),_0x4eaba0=document[_0x1a4f32(0x21c)](_0x1a4f32(0x205)+_0x33b085),_0x10b506=_0x374b65[_0x1a4f32(0x282)]/pvpState[_0x1a4f32(0x1c7)]*0x64;if(_0x26acc4)_0x26acc4[_0x1a4f32(0x290)][_0x1a4f32(0x1b6)]=_0x10b506+'%';if(_0x4eaba0)animateHPValue(_0x4eaba0,_0x374b65[_0x1a4f32(0x1d5)],_0x374b65[_0x1a4f32(0x282)],0x320);});else{const _0x41cbba=document[_0x2967cd(0x21c)](_0x2967cd(0x2b9)),_0x2327db=document[_0x2967cd(0x21c)]('res-hp-val-me'),_0x460f3e=document[_0x2967cd(0x21c)](_0x2967cd(0x295)),_0x1c0b52=document[_0x2967cd(0x21c)]('res-hp-val-opp'),_0x1238a4=_0x4c7d73[_0x2967cd(0x229)]/pvpState[_0x2967cd(0x1c7)]*0x64,_0x4a2bab=_0x4c7d73[_0x2967cd(0x228)]/pvpState[_0x2967cd(0x1c7)]*0x64;if(_0x41cbba)_0x41cbba[_0x2967cd(0x290)][_0x2967cd(0x1b6)]=_0x1238a4+'%';if(_0x2327db)animateHPValue(_0x2327db,_0x4c7d73[_0x2967cd(0x185)],_0x4c7d73['myNewHp'],0x320);if(_0x460f3e)_0x460f3e[_0x2967cd(0x290)][_0x2967cd(0x1b6)]=_0x4a2bab+'%';if(_0x1c0b52)animateHPValue(_0x1c0b52,_0x4c7d73[_0x2967cd(0x262)],_0x4c7d73['oppNewHp'],0x320);}const _0x275b9b=document['getElementById'](_0x2967cd(0x240));_0x275b9b&&(_0x275b9b['textContent']=_0x1dbc27?_0x2967cd(0x1f0)+_0x1b21e1+'...':_0x2967cd(0x253)+_0x1b21e1+_0x2967cd(0x1f2));},0x4b0),setTimeout(()=>{const _0x34edca=_0x5f4fe2;_0x313c2c[_0x34edca(0x182)][_0x34edca(0x15c)](_0x34edca(0x2a4)),setTimeout(()=>{const _0x34388d=_0x34edca;_0x313c2c[_0x34388d(0x1b3)]();if(typeof _0x59f6ed==='function')_0x59f6ed();},0x12c);},0xdac);}function animateHPValue(_0x186a2e,_0x10722b,_0xbd0daa,_0x5a18c1){const _0x40b736=a0_0x16dfdb;let _0x69d200=null;const _0x47bb33=_0x2007fc=>{const _0x2cf617=a0_0x40ea;if(!_0x69d200)_0x69d200=_0x2007fc;const _0x40229b=Math[_0x2cf617(0x1bf)]((_0x2007fc-_0x69d200)/_0x5a18c1,0x1);_0x186a2e[_0x2cf617(0x20c)]=Math[_0x2cf617(0x26b)](_0x10722b-_0x40229b*(_0x10722b-_0xbd0daa)),_0x40229b<0x1?window[_0x2cf617(0x2b2)](_0x47bb33):_0x186a2e[_0x2cf617(0x20c)]=_0xbd0daa;};window[_0x40b736(0x2b2)](_0x47bb33);}
+// ============================================================
+//  pvp.js — Matchmaking, State Polling, and PvP Game Loop
+// ============================================================
+const PVP_DC_TIMEOUT_MS = 25000;
+
+let pvpState = {
+  battleId: null,
+  role: null, // 'player1' or 'player2' (host = player1)
+  opponentId: null,
+  opponentName: null,
+  myHp: 100,
+  opponentHp: 100,
+  maxHp: 100, // Scaling maximum starting HP
+  opponentGuesses: [],
+  currentRound: 1,
+  matchTimer: null,
+  pollTimer: null,
+  queueTimer: null,
+  isWaitingForOpponent: false,
+  lastHeartbeatSent: 0,
+  formattedTime: "03:00",
+  maxGuesses: 5,
+  damageMultiplier: 1,
+  isFFA: false,
+  allPlayers: [],
+  mySlot: 0,
+  prevHpMap: {},
+  roundTimeLimitMin: 3,
+  roundExpiresAt: null,
+  roundTimeoutHandled: false,
+  isResolvingRound: false,
+  hardModeActive: false,
+  isShowingRoundResolution: false, // Tracks visual round resolution sequence
+  suddenDeathRound: 6 // Added customizable Sudden Death fallback round
+};
+
+// Ready check state tracking
+let readyCheckState = {
+  battleId: null,
+  role: null,
+  pollTimer: null,
+  countdownTimer: null,
+  secondsLeft: 20
+};
+
+function calculatePlayerRoundPower(state, guesses, maxG, dmgMult) {
+  if (state && state.startsWith('finished_won')) {
+    const parts = state.split(':');
+    const timeRemaining = parts.length === 2 ? parseFloat(parts[1]) : 0;
+    const remainingGuesses = maxG - parseGuessesArray(guesses).length;
+
+    // Cap time bonus to maxG * 3 to target ~20 max power per round (~5 avg rounds).
+    const timeBonus = Math.min(1.2 * (timeRemaining / 5), maxG * 3);
+    return Math.round((remainingGuesses + timeBonus) * dmgMult);
+  }
+  return 0;
+}
+
+function isStatePlaying(stateStr) {
+  return typeof stateStr === 'string' && stateStr.startsWith('playing');
+}
+
+function parseGuessesArray(guesses) {
+  if (Array.isArray(guesses)) return guesses;
+  if (typeof guesses === 'string') {
+    try { return JSON.parse(guesses); } catch (e) { return []; }
+  }
+  return [];
+}
+
+function parseBattlePlayers(battle) {
+  const isFFA = isMultiplayerBattle(battle);
+  const battleSettings = battle.settings || {};
+  const initialMaxHp = battleSettings.startingHp || 100;
+  
+  if (isFFA && battle.players && Array.isArray(battle.players) && battle.players.length > 0) {
+    return battle.players.map(p => ({
+      ...p,
+      hp: p.hp ?? initialMaxHp,
+      guesses: parseGuessesArray(p.guesses)
+    }));
+  }
+  
+  return [
+    {
+      id: battle.player1_id,
+      username: battle.player1_username,
+      hp: battle.player1_hp ?? initialMaxHp,
+      state: battle.player1_state,
+      guesses: parseGuessesArray(battle.player1_guesses)
+    },
+    {
+      id: battle.player2_id,
+      username: battle.player2_username,
+      hp: battle.player2_hp ?? initialMaxHp,
+      state: battle.player2_state,
+      guesses: parseGuessesArray(battle.player2_guesses)
+    }
+  ];
+}
+
+function isMultiplayerBattle(battle) {
+  const count = battle.player_count || (battle.players?.length) || 2;
+  return count > 2;
+}
+
+function syncLegacyFieldsFromPlayers(players) {
+  const p1 = players[0] || {};
+  const p2 = players[1] || {};
+  return {
+    player1_id: p1.id,
+    player1_username: p1.username,
+    player1_hp: p1.hp,
+    player1_state: p1.state,
+    player1_guesses: p1.guesses || [],
+    player2_id: p2.id,
+    player2_username: p2.username,
+    player2_hp: p2.hp,
+    player2_state: p2.state,
+    player2_guesses: p2.guesses || []
+  };
+}
+
+function buildPlayersPayload(players) {
+  return {
+    players,
+    player_count: players.length,
+    ...syncLegacyFieldsFromPlayers(players)
+  };
+}
+
+function getRoundTimeLimitMin(battle) {
+  return (battle?.settings?.timeLimit) || pvpState.roundTimeLimitMin || 3;
+}
+
+function computeRoundExpiresAt(battle) {
+  const limitMin = getRoundTimeLimitMin(battle);
+  return new Date(Date.now() + limitMin * 60 * 1000).toISOString();
+}
+
+// --------------- Matchmaking Queue Operations ---------------
+
+async function joinPvPQueue() {
+  const userId = getOrCreateUserId();
+  const username = localStorage.getItem('idvle_nickname') || 'Anonymous';
+  const gameType = currentGameType;
+
+  showQueueModal(true);
+
+  try {
+    await supabaseClient.from('pvp_queue_idv').delete().eq('user_id', userId);
+
+    const { error } = await supabaseClient.from('pvp_queue_idv').insert({
+      user_id: userId,
+      username: username,
+      game_type: gameType
+    });
+
+    if (error) throw error;
+
+    startMatchmakingPoll();
+  } catch (err) {
+    console.error('Error joining queue:', err);
+    showSaveTransferToast('❌ Failed to join matchmaking queue.');
+    showQueueModal(false);
+  }
+}
+
+async function leavePvPQueue() {
+  const userId = getOrCreateUserId();
+  stopQueuePoll();
+  try {
+    await supabaseClient.from('pvp_queue_idv').delete().eq('user_id', userId);
+  } catch (err) {
+    console.error('Error leaving queue:', err);
+  }
+  showQueueModal(false);
+}
+
+function startMatchmakingPoll() {
+  stopQueuePoll();
+  pvpState.queueTimer = setInterval(async () => {
+    const userId = getOrCreateUserId();
+    const gameType = currentGameType;
+
+    try {
+      const { data: queue, error } = await supabaseClient
+        .from('pvp_queue_idv')
+        .select('*')
+        .eq('game_type', gameType)
+        .neq('user_id', userId)
+        .order('created_at', { ascending: true })
+        .limit(1);
+
+      if (error) throw error;
+
+      if (queue && queue.length > 0) {
+        const opponent = queue[0];
+        stopQueuePoll();
+        await setupPvPBattle(opponent);
+      } else {
+        const { data: battle, error: bError } = await supabaseClient
+          .from('pvp_battles_idv')
+          .select('*')
+          .eq('status', 'active')
+          .or(`player1_id.eq.${userId},player2_id.eq.${userId}`)
+          .limit(1)
+          .maybeSingle();
+
+        if (bError) throw bError;
+
+        if (battle) {
+          stopQueuePoll();
+          if (battle.player1_state === 'matched:waiting_ready' || battle.player2_state === 'matched:waiting_ready') {
+            startReadyCheck(battle);
+          } else {
+            initializePvPGame(battle);
+          }
+        }
+      }
+    } catch (err) {
+      console.error('Queue polling error:', err);
+    }
+  }, 2000);
+}
+
+function stopQueuePoll() {
+  if (pvpState.queueTimer) {
+    clearInterval(pvpState.queueTimer);
+    pvpState.queueTimer = null;
+  }
+}
+
+// --------------- Ready Check System ---------------
+
+function startReadyCheck(battle) {
+  const userId = getOrCreateUserId();
+  showQueueModal(false);
+
+  readyCheckState.battleId = battle.id;
+  readyCheckState.role = userId === battle.player1_id ? 'player1' : 'player2';
+  readyCheckState.secondsLeft = 20;
+
+  showReadyCheckModal(battle);
+
+  if (readyCheckState.countdownTimer) clearInterval(readyCheckState.countdownTimer);
+  readyCheckState.countdownTimer = setInterval(() => {
+    readyCheckState.secondsLeft--;
+    const timerEl = document.getElementById('ready-check-countdown');
+    if (timerEl) {
+      timerEl.textContent = readyCheckState.secondsLeft;
+    }
+
+    if (readyCheckState.secondsLeft <= 0) {
+      handleReadyCheckTimeout();
+    }
+  }, 1000);
+
+  if (readyCheckState.pollTimer) clearInterval(readyCheckState.pollTimer);
+  readyCheckState.pollTimer = setInterval(async () => {
+    try {
+      const { data: b, error } = await supabaseClient
+        .from('pvp_battles_idv')
+        .select('*')
+        .eq('id', readyCheckState.battleId)
+        .single();
+
+      if (error || !b || b.status === 'finished') {
+        abortReadyCheck('Match declined or cancelled.');
+        return;
+      }
+
+      const meState = readyCheckState.role === 'player1' ? b.player1_state : b.player2_state;
+      const oppState = readyCheckState.role === 'player1' ? b.player2_state : b.player1_state;
+
+      const meIndicator = document.getElementById('ready-status-me');
+      const oppIndicator = document.getElementById('ready-status-opp');
+
+      const isMeReady = meState === 'matched:ready' || isStatePlaying(meState);
+      const isOppReady = oppState === 'matched:ready' || isStatePlaying(oppState);
+
+      if (meIndicator) {
+        if (isMeReady) {
+          meIndicator.className = 'text-xs font-bold text-green-600 dark:text-green-400';
+          meIndicator.textContent = 'READY';
+          const readyBtn = document.getElementById('ready-check-btn');
+          if (readyBtn) {
+            readyBtn.disabled = true;
+            readyBtn.textContent = 'WAITING FOR OPPONENT...';
+            readyBtn.className = 'w-full py-2.5 rounded-xl font-bold bg-slate-400 dark:bg-slate-700 text-slate-200 text-sm cursor-not-allowed';
+          }
+        } else {
+          meIndicator.className = 'text-xs font-bold text-slate-500 dark:text-slate-400 animate-pulse';
+          meIndicator.textContent = 'WAITING...';
+        }
+      }
+
+      if (oppIndicator) {
+        if (isOppReady) {
+          oppIndicator.className = 'text-xs font-bold text-green-600 dark:text-green-400';
+          oppIndicator.textContent = 'READY';
+        } else {
+          oppIndicator.className = 'text-xs font-bold text-slate-500 dark:text-slate-400 animate-pulse';
+          oppIndicator.textContent = 'WAITING...';
+        }
+      }
+
+      if (isMeReady && isOppReady) {
+        clearInterval(readyCheckState.pollTimer);
+        clearInterval(readyCheckState.countdownTimer);
+
+        const alreadyPlaying = isStatePlaying(meState) && isStatePlaying(oppState);
+
+        if (alreadyPlaying) {
+          hideReadyCheckModal();
+          initializePvPGame(b);
+        } else {
+          if (readyCheckState.role === 'player1') {
+            const now = Date.now();
+            const freshExpires = new Date(now + 3 * 60 * 1000).toISOString();
+            await supabaseClient
+              .from('pvp_battles_idv')
+              .update({
+                player1_state: `playing:${now}`,
+                player2_state: `playing:${now}`,
+                expires_at: freshExpires,
+                round_expires_at: freshExpires
+              })
+              .eq('id', readyCheckState.battleId);
+          }
+
+          setTimeout(async () => {
+            const { data: updatedBattle, error: fetchErr } = await supabaseClient
+              .from('pvp_battles_idv')
+              .select('*')
+              .eq('id', readyCheckState.battleId)
+              .single();
+
+            if (fetchErr || !updatedBattle) {
+              abortReadyCheck('Failed to load match updates.');
+              return;
+            }
+
+            hideReadyCheckModal();
+            initializePvPGame(updatedBattle);
+          }, 800);
+        }
+      }
+    } catch (err) {
+      console.error('Ready check state retrieval error:', err);
+    }
+  }, 1000);
+}
+
+async function submitReadyCheck() {
+  const stateKey = readyCheckState.role === 'player1' ? 'player1_state' : 'player2_state';
+  try {
+    await supabaseClient
+      .from('pvp_battles_idv')
+      .update({ [stateKey]: 'matched:ready' })
+      .eq('id', readyCheckState.battleId);
+  } catch (err) {
+    console.error('Error submitting ready flag:', err);
+  }
+}
+
+async function declineReadyCheck() {
+  abortReadyCheck('You declined the match.');
+  try {
+    await supabaseClient
+      .from('pvp_battles_idv')
+      .update({ status: 'finished' })
+      .eq('id', readyCheckState.battleId);
+  } catch (err) {
+    console.error('Error cancelling match instance:', err);
+  }
+}
+
+async function handleReadyCheckTimeout() {
+  abortReadyCheck('Matchmaking timed out due to inactive response.');
+  try {
+    await supabaseClient
+      .from('pvp_battles_idv')
+      .update({ status: 'finished' })
+      .eq('id', readyCheckState.battleId);
+  } catch (err) {
+    console.error('Error writing matchmaking timeout event:', err);
+  }
+}
+
+function abortReadyCheck(message) {
+  if (readyCheckState.pollTimer) clearInterval(readyCheckState.pollTimer);
+  if (readyCheckState.countdownTimer) clearInterval(readyCheckState.countdownTimer);
+  hideReadyCheckModal();
+  if (message) {
+    showSaveTransferToast(`❌ ${message}`);
+  }
+  cleanupPvPSession();
+}
+
+function showReadyCheckModal(battle) {
+  let modal = document.getElementById('pvp-ready-check-modal');
+  const opponentName = readyCheckState.role === 'player1' ? battle.player2_username : battle.player1_username;
+
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'pvp-ready-check-modal';
+    modal.className = 'fixed inset-0 bg-black/75 backdrop-blur-sm z-[250] flex items-center justify-center p-4';
+    document.body.appendChild(modal);
+  }
+
+  modal.innerHTML = `
+    <div class="bg-white dark:bg-slate-800 rounded-2xl max-w-sm w-full p-6 text-center border-t-8 border-red-700 shadow-2xl flex flex-col gap-4">
+      <div class="text-4xl animate-pulse">🎯</div>
+      <h2 class="text-xl font-black text-slate-800 dark:text-slate-100 uppercase tracking-wide">Match Found!</h2>
+      <p class="text-xs text-slate-500 dark:text-slate-400">Match opponent detected: <strong class="text-red-700 dark:text-red-400 font-bold">${escapeHtml(opponentName)}</strong></p>
+      
+      <div class="flex flex-col gap-2 p-3 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700">
+        <div class="flex justify-between items-center text-xs text-slate-600 dark:text-slate-300">
+          <span>You:</span>
+          <span id="ready-status-me" class="font-bold text-slate-500">WAITING...</span>
+        </div>
+        <div class="flex justify-between items-center text-xs text-slate-600 dark:text-slate-300">
+          <span>Opponent:</span>
+          <span id="ready-status-opp" class="font-bold text-slate-500">WAITING...</span>
+        </div>
+      </div>
+
+      <div class="text-sm font-bold text-red-600 dark:text-red-400">
+        Time to respond: <span id="ready-check-countdown" class="font-mono text-base font-black">20</span>s
+      </div>
+
+      <div class="flex gap-2">
+        <button id="ready-check-btn" onclick="submitReadyCheck()" class="btn-primary flex-1 py-2.5 rounded-xl font-bold transition-all text-sm">Accept</button>
+        <button onclick="declineReadyCheck()" class="btn-secondary py-2.5 px-4 rounded-xl font-bold transition-all text-sm border-2 border-slate-200 dark:border-slate-700">Decline</button>
+      </div>
+    </div>
+  `;
+}
+
+function hideReadyCheckModal() {
+  const modal = document.getElementById('pvp-ready-check-modal');
+  if (modal) modal.remove();
+}
+
+// --------------- Setup & Initialisation ---------------
+
+async function createBattleFromLobby(allPlayers, gameType, modSettings = {}, lobbyId = null) {
+  const dataList = GAME_CONFIG[gameType].data();
+  const target = dataList[Math.floor(Math.random() * dataList.length)];
+  const timeLimitMin = modSettings?.timeLimit || 3;
+  const expiresAt = new Date(Date.now() + timeLimitMin * 60 * 1000).toISOString();
+  const now = Date.now();
+  const startingHp = modSettings?.startingHp || 100;
+
+  const players = allPlayers.map(p => ({
+    id: p.user_id,
+    username: p.username,
+    hp: startingHp,
+    state: `playing:${now}`,
+    guesses: []
+  }));
+
+  try {
+    const { data: battle, error } = await supabaseClient
+      .from('pvp_battles_idv')
+      .insert({
+        target_name: target.name,
+        game_type: gameType,
+        expires_at: expiresAt,
+        round_expires_at: expiresAt,
+        lobby_id: lobbyId,
+        settings: modSettings || {},
+        ...buildPlayersPayload(players)
+      })
+      .select()
+      .single();
+
+    if (error) throw error;
+    return battle;
+  } catch (err) {
+    console.error('Error creating lobby battle:', err);
+    showSaveTransferToast('❌ Failed to create battle.');
+    return null;
+  }
+}
+
+async function setupPvPBattle(opponent) {
+  const userId = getOrCreateUserId();
+  const username = localStorage.getItem('idvle_nickname') || 'Anonymous';
+  const gameType = currentGameType;
+  const dataList = GAME_CONFIG[gameType].data();
+  
+  const target = dataList[Math.floor(Math.random() * dataList.length)];
+  const roundExpiresAt = new Date(Date.now() + 3 * 60 * 1000).toISOString();
+
+  try {
+    await supabaseClient.from('pvp_queue_idv').delete().in('user_id', [userId, opponent.user_id]);
+
+    const { data: battle, error } = await supabaseClient
+      .from('pvp_battles_idv')
+      .insert({
+        player1_id: userId,
+        player1_username: username,
+        player2_id: opponent.user_id,
+        player2_username: opponent.username,
+        target_name: target.name,
+        game_type: gameType,
+        expires_at: roundExpiresAt,
+        round_expires_at: roundExpiresAt,
+        player1_state: 'matched:waiting_ready',
+        player2_state: 'matched:waiting_ready',
+        player1_hp: 100,
+        player2_hp: 100
+      })
+      .select()
+      .single();
+
+    if (error) throw error;
+
+    startReadyCheck(battle);
+  } catch (err) {
+    console.error('Error creating battle:', err);
+    joinPvPQueue();
+  }
+}
+
+function initializePvPGame(battle) {
+  const userId = getOrCreateUserId();
+  showQueueModal(false);
+
+  if (typeof switchGameType === 'function') {
+    switchGameType(battle.game_type);
+  } else {
+    currentGameType = battle.game_type;
+  }
+
+  const battleSettings = battle.settings || {};
+  pvpState.hardModeActive = !!battleSettings.hardMode;
+  pvpState.maxHp = battleSettings.startingHp || 100;
+  
+  // Set customizable Sudden Death settings
+  pvpState.suddenDeathRound = battleSettings.suddenDeathRound !== undefined ? battleSettings.suddenDeathRound : 6;
+
+  pvpState.isFFA = isMultiplayerBattle(battle);
+  pvpState.allPlayers = parseBattlePlayers(battle);
+  pvpState.mySlot = pvpState.allPlayers.findIndex(p => p.id === userId);
+  if (pvpState.mySlot < 0) pvpState.mySlot = 0;
+
+  const me = pvpState.allPlayers[pvpState.mySlot];
+  const firstOpponent = pvpState.allPlayers.find((p, i) => i !== pvpState.mySlot);
+
+  if (pvpState.mySlot === 0) {
+    pvpState.role = 'player1';
+  } else if (pvpState.mySlot === 1) {
+    pvpState.role = 'player2';
+  } else {
+    pvpState.role = `player${pvpState.mySlot + 1}`;
+  }
+
+  pvpState.opponentId = firstOpponent?.id || battle.player2_id;
+  pvpState.opponentName = firstOpponent?.username || battle.player2_username;
+  pvpState.opponentGuesses = firstOpponent?.guesses || [];
+
+  pvpState.battleId = battle.id;
+  pvpState.myHp = me?.hp ?? pvpState.maxHp;
+  pvpState.opponentHp = firstOpponent?.hp ?? pvpState.maxHp;
+  pvpState.prevHpMap = {};
+  pvpState.allPlayers.forEach(p => { pvpState.prevHpMap[p.id] = p.hp; });
+
+  pvpState.currentRound = battle.round_number || 1;
+  pvpState.isWaitingForOpponent = false;
+  pvpState.lastHeartbeatSent = Date.now();
+  pvpState.formattedTime = "03:00";
+
+  sessionState.active = true;
+  sessionState.mode = 'pvp';
+  sessionState.isGameOver = false;
+  sessionState.guesses = [];
+  sessionState.knownStats = {};
+  
+  const config = GAME_CONFIG[battle.game_type];
+  const dataList = config.data();
+  sessionState.target = dataList.find(item => item.name === battle.target_name);
+
+  sessionState.clues = [];
+  if (pvpState.hardModeActive && battle.game_type !== 'voicedle') {
+    const otherItems = dataList.filter(item => item.name !== battle.target_name);
+    sessionState.clues = otherItems.sort(() => 0.5 - Math.random()).slice(0, 3);
+  }
+
+  renderGameLayout();
+  injectPvPHeaders();
+
+  if (pvpState.hardModeActive && battle.game_type !== 'voicedle') {
+    sessionState.clues.forEach(c => addGuessRow(c, true));
+  }
+
+  pvpState.roundTimeLimitMin = battleSettings.timeLimit || 3;
+  if (battleSettings.maxGuesses && battleSettings.maxGuesses !== 5) {
+    pvpState.maxGuesses = battleSettings.maxGuesses;
+  } else {
+    pvpState.maxGuesses = 5;
+  }
+  if (battleSettings.damageMultiplier) {
+    pvpState.damageMultiplier = battleSettings.damageMultiplier;
+  } else {
+    pvpState.damageMultiplier = 1;
+  }
+
+  pvpState.roundTimeoutHandled = false;
+  const roundExpiry = battle.round_expires_at
+    ? new Date(battle.round_expires_at)
+    : new Date(Date.now() + pvpState.roundTimeLimitMin * 60 * 1000);
+  startPvPTimer(roundExpiry);
+
+  startBattlePoll();
+}
+
+// --------------- UI Decoration for PvP ---------------
+
+function injectPvPHeaders() {
+  const container = document.getElementById('game-toolbar');
+  if (!container) return;
+
+  let pvpBar = document.getElementById('pvp-hp-interface');
+  if (!pvpBar) {
+    pvpBar = document.createElement('div');
+    pvpBar.id = 'pvp-hp-interface';
+    container.after(pvpBar);
+  }
+  pvpBar.className = pvpState.isFFA
+    ? 'w-full flex flex-col gap-3 pvp-interface-panel p-3 rounded-xl border my-2'
+    : 'w-full flex flex-col md:flex-row justify-between items-center gap-4 pvp-interface-panel p-3 rounded-xl border my-2';
+
+  updateHpDisplay();
+}
+
+function updateHpDisplay() {
+  const pvpBar = document.getElementById('pvp-hp-interface');
+  if (!pvpBar) return;
+
+  if (pvpState.isFFA) {
+    updateFFAHPDisplay(pvpBar);
+    updateGuessCountUI();
+    return;
+  }
+
+  const username = localStorage.getItem('idvle_nickname') || 'You';
+  const targetName = sessionState.target?.name || '';
+  
+  let opponentGuesses = pvpState.opponentGuesses;
+  if (typeof opponentGuesses === 'string') {
+    try { opponentGuesses = JSON.parse(opponentGuesses); } catch (e) { opponentGuesses = []; }
+  }
+  if (!Array.isArray(opponentGuesses)) { opponentGuesses = []; }
+  const opponentGuessCount = opponentGuesses.length;
+
+  let opponentProgressionHtml = '';
+  if (pvpState.opponentId) {
+    const oppDots = Array.from({ length: pvpState.maxGuesses }, (_, i) => {
+      if (i < opponentGuessCount) {
+        const guess = opponentGuesses[i];
+        const isCorrect = guess && targetName && (guess.name === targetName);
+        if (isCorrect) {
+          return `<span style="display: inline-block; width: 14px; height: 14px; border-radius: 4px; background-color: #22c55e; border: 1.5px solid #16a34a; transition: all 0.3s;"></span>`;
+        }
+        return `<span style="display: inline-block; width: 14px; height: 14px; border-radius: 4px; background-color: #ef4444; border: 1.5px solid #dc2626; transition: all 0.3s;"></span>`;
+      }
+      return `<span style="display: inline-block; width: 14px; height: 14px; border-radius: 4px; background-color: #09090b; border: 1.5px solid #27272a; transition: all 0.3s;"></span>`;
+    }).join('');
+
+    opponentProgressionHtml = `
+      <div style="display: flex; align-items: center; gap: 4px; margin-top: 4px; justify-content: flex-end;">
+        <span style="font-size: 10px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-right: 4px;">Guesses:</span>
+        ${oppDots}
+      </div>
+    `;
+  }
+
+  let myGuesses = sessionState.guesses;
+  if (typeof myGuesses === 'string') {
+    try { myGuesses = JSON.parse(myGuesses); } catch (e) { myGuesses = []; }
+  }
+  if (!Array.isArray(myGuesses)) { myGuesses = []; }
+  const myGuessCount = myGuesses.length;
+
+  const myDots = Array.from({ length: pvpState.maxGuesses }, (_, i) => {
+    if (i < myGuessCount) {
+      const guess = myGuesses[i];
+      const isCorrect = guess && targetName && (guess.name === targetName);
+      if (isCorrect) {
+        return `<span style="display: inline-block; width: 14px; height: 14px; border-radius: 4px; background-color: #22c55e; border: 1.5px solid #16a34a; transition: all 0.3s;"></span>`;
+      }
+      return `<span style="display: inline-block; width: 14px; height: 14px; border-radius: 4px; background-color: #ef4444; border: 1.5px solid #dc2626; transition: all 0.3s;"></span>`;
+    }
+    return `<span style="display: inline-block; width: 14px; height: 14px; border-radius: 4px; background-color: #09090b; border: 1.5px solid #27272a; transition: all 0.3s;"></span>`;
+  }).join('');
+
+  const myProgressionHtml = `
+    <div style="display: flex; align-items: center; gap: 4px; margin-top: 4px; justify-content: flex-start;">
+      <span style="font-size: 10px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-right: 4px;">Guesses:</span>
+      ${myDots}
+    </div>
+  `;
+
+  const myHpPercent = (pvpState.myHp / pvpState.maxHp) * 100;
+  const oppHpPercent = (pvpState.opponentHp / pvpState.maxHp) * 100;
+
+  // Render customizable Sudden Death indicator
+  const suddenDeathActive = pvpState.suddenDeathRound > 0 && pvpState.currentRound >= pvpState.suddenDeathRound;
+  const roundDisplayHtml = suddenDeathActive
+    ? `<div class="tracking-widest text-red-600 dark:text-red-500 font-extrabold animate-pulse pvp-sudden-death-glow text-[11px] md:text-xs">⚡ SUDDEN DEATH (R${pvpState.currentRound})</div>`
+    : `<div class="tracking-widest">ROUND ${pvpState.currentRound}</div>`;
+
+  pvpBar.innerHTML = `
+    <!-- Left Column: You -->
+    <div id="pvp-player-col" class="flex-1 w-full p-2">
+      <div class="flex justify-between text-xs font-bold mb-1">
+        <span class="text-green-700 dark:text-green-400">${username} (You)</span>
+        <span>${pvpState.myHp} / ${pvpState.maxHp} HP</span>
+      </div>
+      <div class="w-full bg-slate-300 dark:bg-slate-700 h-4 rounded-full overflow-hidden">
+        <div class="bg-green-600 h-full transition-all duration-500" style="width: ${myHpPercent}%"></div>
+      </div>
+      ${myProgressionHtml}
+    </div>
+    
+    <!-- Middle Column: Stats -->
+    <div class="flex flex-col items-center justify-center px-4 font-black text-red-600 dark:text-red-400 text-sm text-center">
+      ${roundDisplayHtml}
+      <div id="pvp-match-timer" class="text-xs font-mono text-slate-500 dark:text-slate-400 mt-0.5">${pvpState.formattedTime}</div>
+    </div>
+    
+    <!-- Right Column: Opponent -->
+    <div id="pvp-opponent-col" class="flex-1 w-full p-2">
+      <div class="flex justify-between text-xs font-bold mb-1">
+        <span class="text-red-700 dark:text-red-400">${pvpState.opponentName}</span>
+        <span>${pvpState.opponentHp} / ${pvpState.maxHp} HP</span>
+      </div>
+      <div class="w-full bg-slate-300 dark:bg-slate-700 h-4 rounded-full overflow-hidden">
+        <div class="bg-red-600 h-full transition-all duration-500" style="width: ${oppHpPercent}%"></div>
+      </div>
+      ${opponentProgressionHtml}
+    </div>
+  `;
+
+  updateGuessCountUI();
+}
+
+function updateFFAHPDisplay(pvpBar) {
+  const username = localStorage.getItem('idvle_nickname') || 'You';
+  const me = pvpState.allPlayers[pvpState.mySlot];
+  const myGuesses = sessionState.guesses || [];
+  const showProgress = pvpState.allPlayers.length <= 4;
+  const targetName = sessionState.target?.name || '';
+
+  const opponentsHtml = pvpState.allPlayers
+    .map((p, i) => {
+      if (i === pvpState.mySlot) return '';
+      const guesses = parseGuessesArray(p.guesses);
+      const isEliminated = p.hp <= 0 || p.state === 'exited';
+      const oppHpPercent = (p.hp / pvpState.maxHp) * 100;
+      return `
+        <div id="pvp-opp-col-${i}" class="pvp-ffa-opponent p-2 rounded-lg border border-slate-200 dark:border-slate-600 ${isEliminated ? 'opacity-40' : ''}">
+          <div class="flex justify-between text-[10px] font-bold mb-1">
+            <span class="text-red-700 dark:text-red-400 truncate">${p.username}</span>
+            <span>${p.hp} / ${pvpState.maxHp} HP</span>
+          </div>
+          <div class="w-full bg-slate-300 dark:bg-slate-700 h-3 rounded-full overflow-hidden">
+            <div class="bg-red-600 h-full transition-all duration-500" style="width: ${oppHpPercent}%"></div>
+          </div>
+          ${showProgress ? renderGuessDots(guesses, pvpState.maxGuesses, 'end', targetName) : ''}
+        </div>`;
+    })
+    .join('');
+
+  const myHpPercent = ((me?.hp ?? pvpState.myHp) / pvpState.maxHp) * 100;
+
+  // Custom header banner when FFA hits Sudden Death
+  const suddenDeathActive = pvpState.suddenDeathRound > 0 && pvpState.currentRound >= pvpState.suddenDeathRound;
+  
+  const ffaHeaderTitle = suddenDeathActive
+    ? `<div class="text-xs font-black text-red-600 dark:text-red-500 uppercase tracking-widest animate-pulse pvp-sudden-death-glow">⚡ SUDDEN DEATH FFA · ${pvpState.allPlayers.length} Players</div>`
+    : `<div class="text-xs font-black text-red-600 dark:text-red-400 uppercase tracking-widest">FFA · ${pvpState.allPlayers.length} Players</div>`;
+
+  const roundDisplayHtml = suddenDeathActive
+    ? `<div class="tracking-widest text-xs text-red-600 dark:text-red-500 font-extrabold animate-pulse text-right">SUDDEN DEATH (R${pvpState.currentRound})</div>`
+    : `<div class="tracking-widest text-xs">ROUND ${pvpState.currentRound}</div>`;
+
+  pvpBar.innerHTML = `
+    <div class="flex items-center justify-between w-full">
+      ${ffaHeaderTitle}
+      <div class="flex flex-col items-end font-black text-red-600 dark:text-red-400 text-sm">
+        ${roundDisplayHtml}
+        <div id="pvp-match-timer" class="text-xs font-mono text-slate-500 dark:text-slate-400">${pvpState.formattedTime}</div>
+      </div>
+    </div>
+    <div id="pvp-player-col" class="w-full p-2 rounded-lg border-2 border-green-600/40 bg-green-50/50 dark:bg-green-950/20">
+      <div class="flex justify-between text-xs font-bold mb-1">
+        <span class="text-green-700 dark:text-green-400">${username} (You)</span>
+        <span>${me?.hp ?? pvpState.myHp} / ${pvpState.maxHp} HP</span>
+      </div>
+      <div class="w-full bg-slate-300 dark:bg-slate-700 h-4 rounded-full overflow-hidden">
+        <div class="bg-green-600 h-full transition-all duration-500" style="width: ${myHpPercent}%"></div>
+      </div>
+      ${renderGuessDots(myGuesses, pvpState.maxGuesses, 'start', targetName)}
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-2 w-full">
+      ${opponentsHtml}
+    </div>
+  `;
+}
+
+function renderGuessDots(guesses, max, align = 'start', targetName = '') {
+  const justify = align === 'end' ? 'justify-content: flex-end;' : 'justify-content: flex-start;';
+  const guessesArr = parseGuessesArray(guesses);
+  const count = guessesArr.length;
+
+  const dotsHtml = Array.from({ length: max }, (_, i) => {
+    if (i < count) {
+      const guess = guessesArr[i];
+      const isCorrect = guess && targetName && (guess.name === targetName);
+      if (isCorrect) {
+        return `<span style="display: inline-block; width: 14px; height: 14px; border-radius: 4px; background-color: #22c55e; border: 1.5px solid #16a34a; transition: all 0.3s;"></span>`;
+      }
+      return `<span style="display: inline-block; width: 14px; height: 14px; border-radius: 4px; background-color: #ef4444; border: 1.5px solid #dc2626; transition: all 0.3s;"></span>`;
+    }
+    return `<span style="display: inline-block; width: 14px; height: 14px; border-radius: 4px; background-color: #09090b; border: 1.5px solid #27272a; transition: all 0.3s;"></span>`;
+  }).join('');
+
+  return `
+    <div style="display: flex; align-items: center; gap: 4px; margin-top: 4px; ${justify}">
+      <span style="font-size: 10px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-right: 4px;">Guesses:</span>
+      ${dotsHtml}
+    </div>`;
+}
+
+function startPvPTimer(expiresTime) {
+  if (pvpState.matchTimer) clearInterval(pvpState.matchTimer);
+
+  pvpState.roundExpiresAt = expiresTime instanceof Date ? expiresTime : new Date(expiresTime);
+  pvpState.formattedTime = formatTimerFromMs(pvpState.roundExpiresAt - Date.now());
+
+  pvpState.matchTimer = setInterval(() => {
+    const diff = pvpState.roundExpiresAt - Date.now();
+
+    if (diff <= 0) {
+      clearInterval(pvpState.matchTimer);
+      pvpState.matchTimer = null;
+      pvpState.formattedTime = '00:00';
+      const timerEl = document.getElementById('pvp-match-timer');
+      if (timerEl) timerEl.textContent = '00:00';
+      handlePvPRoundTimeout();
+      return;
+    }
+
+    pvpState.formattedTime = formatTimerFromMs(diff);
+    const timerEl = document.getElementById('pvp-match-timer');
+    if (timerEl) timerEl.textContent = pvpState.formattedTime;
+  }, 1000);
+}
+
+function formatTimerFromMs(ms) {
+  if (isNaN(ms) || ms <= 0) return '00:00';
+  const totalSeconds = Math.floor(ms / 1000);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str || '';
+  return div.innerHTML;
+}
+
+async function markPvPPlayerTimedOut() {
+  if (!pvpState.battleId) return;
+
+  try {
+    const { data: battle } = await supabaseClient
+      .from('pvp_battles_idv')
+      .select('*')
+      .eq('id', pvpState.battleId)
+      .single();
+
+    if (!battle || battle.status !== 'active') return;
+
+    if (pvpState.isFFA) {
+      const players = parseBattlePlayers(battle);
+      const me = players[pvpState.mySlot];
+      if (!me || !isStatePlaying(me.state)) return;
+      players[pvpState.mySlot] = { ...me, state: 'finished_lost' };
+      await supabaseClient.from('pvp_battles_idv')
+        .update(buildPlayersPayload(players))
+        .eq('id', pvpState.battleId);
+      pvpState.allPlayers = players;
+    } else {
+      const key = pvpState.role === 'player1' ? 'player1_state' : 'player2_state';
+      if (!isStatePlaying(battle[key])) return;
+      await supabaseClient.from('pvp_battles_idv')
+        .update({ [key]: 'finished_lost' })
+        .eq('id', pvpState.battleId);
+    }
+  } catch (err) {
+    console.error('Mark timed out error:', err);
+  }
+}
+
+async function processTimeoutRoundAsHost() {
+  if (pvpState.mySlot !== 0 || !pvpState.battleId) return;
+
+  try {
+    const { data: battle } = await supabaseClient
+      .from('pvp_battles_idv')
+      .select('*')
+      .eq('id', pvpState.battleId)
+      .single();
+
+    if (!battle || battle.status !== 'active') return;
+
+    let battleForResolution = battle;
+
+    if (pvpState.isFFA) {
+      const players = parseBattlePlayers(battle).map(p => {
+        if (p.hp > 0 && p.state !== 'exited' && isStatePlaying(p.state)) {
+          return { ...p, state: 'finished_lost' };
+        }
+        return p;
+      });
+      battleForResolution = { ...battle, ...buildPlayersPayload(players) };
+      await supabaseClient.from('pvp_battles_idv')
+        .update(buildPlayersPayload(players))
+        .eq('id', pvpState.battleId);
+    } else {
+      const updates = {};
+      if (isStatePlaying(battle.player1_state)) updates.player1_state = 'finished_lost';
+      if (isStatePlaying(battle.player2_state)) updates.player2_state = 'finished_lost';
+      if (Object.keys(updates).length > 0) {
+        await supabaseClient.from('pvp_battles_idv').update(updates).eq('id', pvpState.battleId);
+        battleForResolution = { ...battle, ...updates };
+      }
+    }
+
+    await processRoundResolution(battleForResolution);
+  } catch (err) {
+    console.error('Host timeout resolution error:', err);
+  }
+}
+
+async function handlePvPRoundTimeout() {
+  if (!pvpState.battleId || pvpState.roundTimeoutHandled) return;
+  pvpState.roundTimeoutHandled = true;
+
+  pvpState.isWaitingForOpponent = true;
+  document.getElementById('input-container')?.classList.add('hidden');
+  showPvPWaitingScreen(true, '⏱️ Round time expired! Resolving round...');
+
+  await markPvPPlayerTimedOut();
+
+  if (pvpState.mySlot === 0) {
+    setTimeout(() => processTimeoutRoundAsHost(), 600);
+  }
+}
+
+// --------------- PvP Battle Loop / Real-time Sync ---------------
+
+function startBattlePoll() {
+  if (pvpState.pollTimer) clearInterval(pvpState.pollTimer);
+
+  pvpState.pollTimer = setInterval(async () => {
+    if (!pvpState.battleId) return;
+    if (pvpState.isShowingRoundResolution) return;
+
+    try {
+      const { data: battle, error } = await supabaseClient
+        .from('pvp_battles_idv')
+        .select('*')
+        .eq('id', pvpState.battleId)
+        .single();
+
+      if (error) throw error;
+
+      const players = parseBattlePlayers(battle);
+      const userId = getOrCreateUserId();
+      const myPlayer = players[pvpState.mySlot];
+
+      // INTERCEPT ROUND TRANSITION IMMEDIATELY
+      if (battle.round_number > pvpState.currentRound && battle.status === 'active') {
+        const oldRound = pvpState.currentRound;
+        pvpState.currentRound = battle.round_number;
+        pvpState.isShowingRoundResolution = true;
+
+        let newMyHp, newOppHp;
+        let ffaPlayersData = [];
+
+        if (pvpState.isFFA) {
+          const oldPlayers = [...pvpState.allPlayers];
+          const newPlayers = players;
+          
+          const myP = newPlayers[pvpState.mySlot];
+          const firstOpp = newPlayers.find((p, idx) => idx !== pvpState.mySlot);
+          newMyHp = myP ? myP.hp : pvpState.myHp;
+          newOppHp = firstOpp ? firstOpp.hp : pvpState.opponentHp;
+
+          ffaPlayersData = newPlayers.map((p, idx) => {
+            const oldP = oldPlayers[idx] || p;
+            return {
+              username: p.username,
+              oldHp: oldP.hp,
+              newHp: p.hp,
+              dmg: Math.max(0, oldP.hp - p.hp),
+              isMe: idx === pvpState.mySlot
+            };
+          });
+        } else {
+          const isP1 = pvpState.role === 'player1';
+          newMyHp = isP1 ? battle.player1_hp : battle.player2_hp;
+          newOppHp = isP1 ? battle.player2_hp : battle.player1_hp;
+        }
+
+        const myOldHp = pvpState.myHp;
+        const oppOldHp = pvpState.opponentHp;
+
+        showPvPRoundResolutionModal({
+          round: oldRound,
+          isFFA: pvpState.isFFA,
+          myOldHp: myOldHp,
+          myNewHp: newMyHp,
+          myDmg: Math.max(0, myOldHp - newMyHp),
+          oppOldHp: oppOldHp,
+          oppNewHp: newOppHp,
+          oppDmg: Math.max(0, oppOldHp - newOppHp),
+          oppName: pvpState.opponentName,
+          ffaPlayers: ffaPlayersData
+        }, () => {
+          pvpState.myHp = newMyHp;
+          pvpState.opponentHp = newOppHp;
+          if (pvpState.isFFA) {
+            pvpState.allPlayers = players;
+            pvpState.allPlayers.forEach(p => { pvpState.prevHpMap[p.id] = p.hp; });
+          }
+          pvpState.isShowingRoundResolution = false;
+          handleRoundReset(
+            battle.round_number, battle.target_name, battle.game_type, battle.round_expires_at
+          );
+        });
+        return;
+      }
+
+      if (pvpState.isFFA) {
+        pvpState.allPlayers = players;
+
+        if (myPlayer?.state === 'exited') {
+          clearInterval(pvpState.pollTimer);
+          clearInterval(pvpState.matchTimer);
+          const winner = players.find(p => p.hp > 0 && p.state !== 'exited');
+          showPvPResultModal({
+            battle,
+            winnerId: winner?.id || 'draw',
+            reason: 'forfeit'
+          });
+          document.getElementById('input-container').classList.add('hidden');
+          return;
+        }
+
+        const alive = players.filter(p => p.hp > 0 && p.state !== 'exited');
+        if (alive.length === 1 && alive[0].id === userId && battle.status === 'active') {
+          await supabaseClient.from('pvp_battles_idv').update({
+            status: 'finished', winner_id: userId
+          }).eq('id', pvpState.battleId);
+          clearInterval(pvpState.pollTimer);
+          clearInterval(pvpState.matchTimer);
+          declarePvPWinner(userId, battle);
+          return;
+        }
+
+        // DYNAMIC HOST HANDOVER: Lowest active, non-timed-out player index assumes cleanup duty
+        const dynamicHostIdx = players.findIndex(p => {
+          if (p.hp <= 0 || p.state === 'exited') return false;
+          if (isStatePlaying(p.state)) {
+            const parts = p.state.split(':');
+            const ts = parseInt(parts[1], 10) || 0;
+            if (parts.length === 2 && Date.now() - ts > PVP_DC_TIMEOUT_MS) {
+              return false; // Timed out player cannot be dynamic host
+            }
+          }
+          return true;
+        });
+
+        if (pvpState.mySlot === dynamicHostIdx && dynamicHostIdx !== -1) {
+          let stateChanged = false;
+          for (let i = 0; i < players.length; i++) {
+            if (i === pvpState.mySlot) continue;
+            const opp = players[i];
+            if (opp.state === 'exited' || opp.hp <= 0) continue;
+            if (isStatePlaying(opp.state)) {
+              const parts = opp.state.split(':');
+              const ts = parseInt(parts[1], 10) || 0;
+              if (parts.length === 2 && Date.now() - ts > PVP_DC_TIMEOUT_MS) {
+                players[i] = { ...opp, state: 'exited' };
+                stateChanged = true;
+              }
+            }
+          }
+
+          if (stateChanged) {
+            const stillAlive = players.filter(p => p.hp > 0 && p.state !== 'exited');
+            const payload = { ...buildPlayersPayload(players) };
+            if (stillAlive.length === 1) {
+              payload.status = 'finished';
+              payload.winner_id = stillAlive[0].id;
+            } else if (stillAlive.length === 0) {
+              payload.status = 'finished';
+              payload.winner_id = 'draw';
+            }
+            await supabaseClient.from('pvp_battles_idv').update(payload).eq('id', pvpState.battleId);
+          }
+        }
+
+        // Heartbeat verification guard: Avoid rewriting states if the user is finished
+        const nowMs = Date.now();
+        if (nowMs - pvpState.lastHeartbeatSent > 4000 && !sessionState.isGameOver && !pvpState.isWaitingForOpponent) {
+          pvpState.lastHeartbeatSent = nowMs;
+          const updated = [...players];
+          updated[pvpState.mySlot] = { ...updated[pvpState.mySlot], state: `playing:${nowMs}` };
+          supabaseClient.from('pvp_battles_idv')
+            .update(buildPlayersPayload(updated))
+            .eq('id', pvpState.battleId)
+            .then(({ error }) => { if (error) pvpState.lastHeartbeatSent = 0; });
+        }
+
+        players.forEach((p, i) => {
+          const prev = pvpState.prevHpMap[p.id] ?? p.hp;
+          if (prev > p.hp) {
+            if (i === pvpState.mySlot) triggerDamageAnimation('player', prev - p.hp);
+            else triggerDamageAnimation(`opp-${i}`, prev - p.hp);
+          }
+          pvpState.prevHpMap[p.id] = p.hp;
+        });
+
+        pvpState.myHp = myPlayer?.hp ?? pvpState.myHp;
+        const firstOpp = players.find((p, i) => i !== pvpState.mySlot);
+        pvpState.opponentHp = firstOpp?.hp ?? 0;
+        pvpState.opponentGuesses = firstOpp?.guesses || [];
+
+        updateHpDisplay();
+
+        const activeInRound = players.filter(p => p.hp > 0 && p.state !== 'exited');
+        const anyPlaying = activeInRound.some(p => isStatePlaying(p.state));
+        if (!anyPlaying && activeInRound.length > 0 && battle.status === 'active') {
+          processRoundResolution(battle);
+        }
+      } else {
+        if (battle.player1_state === 'exited' || battle.player2_state === 'exited') {
+          clearInterval(pvpState.pollTimer);
+          clearInterval(pvpState.matchTimer);
+          const isOpponentExit = (pvpState.role === 'player1' && battle.player2_state === 'exited') ||
+                                 (pvpState.role === 'player2' && battle.player1_state === 'exited');
+          showPvPResultModal({
+            battle,
+            winnerId: isOpponentExit ? userId : battle[pvpState.role === 'player1' ? 'player2_id' : 'player1_id'],
+            reason: isOpponentExit ? 'opponent_left' : 'forfeit'
+          });
+          document.getElementById('input-container').classList.add('hidden');
+          return;
+        }
+
+        const opponentState = pvpState.role === 'player1' ? battle.player2_state : battle.player1_state;
+        if (isStatePlaying(opponentState)) {
+          const parts = opponentState.split(':');
+          const ts = parseInt(parts[1], 10) || 0;
+          if (parts.length === 2 && Date.now() - ts > PVP_DC_TIMEOUT_MS) {
+            clearInterval(pvpState.pollTimer);
+            clearInterval(pvpState.matchTimer);
+            await supabaseClient.from('pvp_battles_idv').update({
+              status: 'finished',
+              winner_id: userId,
+              [pvpState.role === 'player1' ? 'player2_state' : 'player1_state']: 'exited'
+            }).eq('id', pvpState.battleId);
+            showPvPResultModal({ battle, winnerId: userId, reason: 'disconnect' });
+            return;
+          }
+        }
+
+        // Heartbeat verification guard: Avoid rewriting states if the user is finished
+        const nowMs = Date.now();
+        if (nowMs - pvpState.lastHeartbeatSent > 4000 && !sessionState.isGameOver && !pvpState.isWaitingForOpponent) {
+          pvpState.lastHeartbeatSent = nowMs;
+          const myStateKey = pvpState.role === 'player1' ? 'player1_state' : 'player2_state';
+          supabaseClient.from('pvp_battles_idv')
+            .update({ [myStateKey]: `playing:${nowMs}` })
+            .eq('id', pvpState.battleId)
+            .then(({ error }) => { if (error) pvpState.lastHeartbeatSent = 0; });
+        }
+
+        const newMyHp = pvpState.role === 'player1' ? battle.player1_hp : battle.player2_hp;
+        const newOpponentHp = pvpState.role === 'player1' ? battle.player2_hp : battle.player1_hp;
+        if (pvpState.myHp - newMyHp > 0) triggerDamageAnimation('player', pvpState.myHp - newMyHp);
+        if (pvpState.opponentHp - newOpponentHp > 0) triggerDamageAnimation('opponent', pvpState.opponentHp - newOpponentHp);
+        pvpState.myHp = newMyHp;
+        pvpState.opponentHp = newOpponentHp;
+        pvpState.opponentGuesses = (pvpState.role === 'player1' ? battle.player2_guesses : battle.player1_guesses) || [];
+
+        updateHpDisplay();
+
+        const p1Active = isStatePlaying(battle.player1_state);
+        const p2Active = isStatePlaying(battle.player2_state);
+        if (!p1Active && !p2Active && battle.status === 'active') {
+          processRoundResolution(battle);
+        }
+      }
+
+      if (battle.status === 'finished') {
+        clearInterval(pvpState.pollTimer);
+        clearInterval(pvpState.matchTimer);
+        declarePvPWinner(battle.winner_id, battle);
+      }
+    } catch (err) {
+      console.error('Battle polling error:', err);
+    }
+  }, 1500);
+}
+
+// --------------- Tab Visibility Heartbeat ---------------
+
+(function setupPvPVisibilityHeartbeat() {
+  document.addEventListener('visibilitychange', () => {
+    // Return early if the player is waiting for an opponent to complete their turns.
+    if (!pvpState.battleId || sessionState.isGameOver || pvpState.isWaitingForOpponent) return;
+
+    if (document.visibilityState === 'hidden') {
+      const nowMs = Date.now();
+      pvpState.lastHeartbeatSent = nowMs;
+      if (pvpState.isFFA) {
+        const updated = pvpState.allPlayers.map((p, i) =>
+          i === pvpState.mySlot ? { ...p, state: `playing:${nowMs}` } : p
+        );
+        supabaseClient.from('pvp_battles_idv')
+          .update(buildPlayersPayload(updated))
+          .eq('id', pvpState.battleId).then(() => {});
+      } else {
+        const myStateKey = pvpState.role === 'player1' ? 'player1_state' : 'player2_state';
+        supabaseClient.from('pvp_battles_idv')
+          .update({ [myStateKey]: `playing:${nowMs}` })
+          .eq('id', pvpState.battleId).then(() => {});
+      }
+    } else if (document.visibilityState === 'visible') {
+      pvpState.lastHeartbeatSent = 0;
+    }
+  });
+})();
+
+// --------------- Intercepting Existing Guess Mechanics ---------------
+
+async function submitPvPGuess(guessItem) {
+  if (sessionState.isGameOver || pvpState.isWaitingForOpponent) return;
+
+  sessionState.guesses.push(guessItem);
+  updateKnownStats(guessItem);
+  addGuessRow(guessItem, false, true);
+  updateGuessCountUI();
+
+  const isWin = guessItem.name === sessionState.target.name;
+  const isLoss = sessionState.guesses.length >= pvpState.maxGuesses;
+
+  let stateUpdate;
+  if (isWin) {
+    const msRemaining = pvpState.roundExpiresAt ? (pvpState.roundExpiresAt - Date.now()) : 0;
+    const secRemaining = Math.max(0, Math.floor(msRemaining / 1000));
+    stateUpdate = `finished_won:${secRemaining}`;
+  } else if (isLoss) {
+    stateUpdate = 'finished_lost';
+  } else {
+    stateUpdate = `playing:${Date.now()}`;
+  }
+
+  const currentGuesses = sessionState.guesses;
+
+  let updatePayload;
+  if (pvpState.isFFA) {
+    const players = [...pvpState.allPlayers];
+    players[pvpState.mySlot] = {
+      ...players[pvpState.mySlot],
+      guesses: currentGuesses,
+      state: stateUpdate
+    };
+    updatePayload = buildPlayersPayload(players);
+    pvpState.allPlayers = players;
+  } else {
+    updatePayload = {};
+    if (pvpState.role === 'player1') {
+      updatePayload.player1_guesses = currentGuesses;
+      updatePayload.player1_state = stateUpdate;
+    } else {
+      updatePayload.player2_guesses = currentGuesses;
+      updatePayload.player2_state = stateUpdate;
+    }
+  }
+
+  try {
+    await supabaseClient
+      .from('pvp_battles_idv')
+      .update(updatePayload)
+      .eq('id', pvpState.battleId);
+
+    updateHpDisplay();
+
+    if (isWin || isLoss) {
+      pvpState.isWaitingForOpponent = true;
+      document.getElementById('input-container').classList.add('hidden');
+      showPvPWaitingScreen(true);
+    }
+  } catch (err) {
+    console.error('Error synchronising guess update:', err);
+  }
+}
+
+// --------------- Game Exit / Abandonment Operations ---------------
+
+async function exitPvPBattle() {
+  if (!pvpState.battleId) return;
+
+  try {
+    if (pvpState.isFFA) {
+      const players = [...pvpState.allPlayers];
+      players[pvpState.mySlot] = { ...players[pvpState.mySlot], state: 'exited' };
+      const alive = players.filter(p => p.hp > 0 && p.state !== 'exited');
+      const payload = { ...buildPlayersPayload(players) };
+      if (alive.length === 1) {
+        payload.status = 'finished';
+        payload.winner_id = alive[0].id;
+      } else if (alive.length === 0) {
+        payload.status = 'finished';
+        payload.winner_id = 'draw';
+      }
+      await supabaseClient.from('pvp_battles_idv').update(payload).eq('id', pvpState.battleId);
+    } else {
+      await supabaseClient.from('pvp_battles_idv').update({
+        status: 'finished',
+        winner_id: pvpState.opponentId,
+        [pvpState.role === 'player1' ? 'player1_state' : 'player2_state']: 'exited'
+      }).eq('id', pvpState.battleId);
+    }
+  } catch (err) {
+    console.error('Error exiting battle room:', err);
+  } finally {
+    cleanupPvPSession();
+  }
+}
+
+function exitPvPBattleBeacon() {
+  if (!pvpState.battleId) return;
+
+  const url = `${SUPABASE_URL}/rest/v1/pvp_battles_idv?id=eq.${pvpState.battleId}`;
+  const headers = {
+    'apikey': SUPABASE_ANON_KEY,
+    'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+    'Content-Type': 'application/json',
+    'Prefer': 'return=minimal'
+  };
+  let body;
+  if (pvpState.isFFA) {
+    const players = [...pvpState.allPlayers];
+    players[pvpState.mySlot] = { ...players[pvpState.mySlot], state: 'exited' };
+    const alive = players.filter(p => p.hp > 0 && p.state !== 'exited');
+    body = JSON.stringify({
+      ...buildPlayersPayload(players),
+      status: 'finished',
+      winner_id: alive.length === 1 ? alive[0].id : pvpState.opponentId
+    });
+  } else {
+    body = JSON.stringify({
+      status: 'finished',
+      winner_id: pvpState.opponentId,
+      [pvpState.role === 'player1' ? 'player1_state' : 'player2_state']: 'exited'
+    });
+  }
+
+  fetch(url, { method: 'PATCH', headers, body, keepalive: true }).catch(() => {});
+}
+
+window.addEventListener('beforeunload', () => {
+  if (sessionState.active && sessionState.mode === 'pvp' && pvpState.battleId) {
+    exitPvPBattleBeacon();
+  }
+});
+
+if (window.showMenu) {
+  const originalShowMenu = window.showMenu;
+  window.showMenu = function() {
+    if (sessionState.active && sessionState.mode === 'pvp' && pvpState.battleId) {
+      if (confirm("Are you sure you want to leave the PvP match? This will count as an automatic forfeit/defeat.")) {
+        exitPvPBattle();
+        originalShowMenu();
+      }
+    } else {
+      originalShowMenu();
+    }
+  };
+}
+
+// --------------- Game Rules & Damage Processor ---------------
+
+async function processRoundResolution(battle) {
+  // Allow non-host players to resolve after a fallback delay if the host hasn't.
+  const isHost = pvpState.mySlot === 0;
+  if (!isHost) {
+    await new Promise(resolve => setTimeout(resolve, 3000));
+    // Re-fetch battle to see if the host already resolved (round_number advanced)
+    try {
+      const { data: refreshed } = await supabaseClient
+        .from('pvp_battles_idv')
+        .select('round_number, status')
+        .eq('id', battle.id)
+        .single();
+      if (
+        refreshed &&
+        (refreshed.status === 'finished' ||
+          (refreshed.round_number || 1) > (battle.round_number || 1))
+      ) {
+        // Host already resolved — bail out
+        return;
+      }
+    } catch (_) { /* network hiccup; fall through and try to resolve */ }
+  }
+
+  if (pvpState.isResolvingRound) return;
+  pvpState.isResolvingRound = true;
+
+  const currentRoundNum = battle.round_number || 1;
+  const maxG = (battle.settings?.maxGuesses) || pvpState.maxGuesses || 5;
+  const baseDmgMult = (battle.settings?.damageMultiplier) || pvpState.damageMultiplier || 1;
+
+  // Calculate Sudden Death Damage Escalation dynamically based on configuration
+  const sdRound = pvpState.suddenDeathRound !== undefined ? pvpState.suddenDeathRound : 6;
+  const isSdActive = sdRound > 0 && currentRoundNum >= sdRound;
+  let roundDamageMultiplier = baseDmgMult;
+  
+  if (isSdActive) {
+    const suddenDeathFactor = 1.5 + (currentRoundNum - sdRound) * 0.5;
+    roundDamageMultiplier = baseDmgMult * suddenDeathFactor;
+  }
+
+  const now = Date.now();
+
+  // ==========================================
+  //  FREE-FOR-ALL (MULTIPLAYER) MITIGATION
+  // ==========================================
+  if (pvpState.isFFA) {
+    const players = parseBattlePlayers(battle);
+    const damageMap = {};
+    const powerMap = {};
+    
+    players.forEach(p => { 
+      damageMap[p.id] = 0; 
+      powerMap[p.id] = calculatePlayerRoundPower(p.state, p.guesses, maxG, roundDamageMultiplier);
+    });
+
+    players.forEach(p => {
+      if (p.state === 'exited' || p.hp <= 0) return;
+
+      if (p.state && p.state.startsWith('finished_won')) {
+        const attackerPower = powerMap[p.id];
+
+        players.forEach(other => {
+          if (other.id === p.id) return;
+          if (other.hp <= 0 || other.state === 'exited') return;
+          if (other.state && other.state.startsWith('finished_won')) return; // winners don't hurt each other
+
+          const defenderPower = powerMap[other.id] || 0;
+          const netDmg = Math.max(0, attackerPower - defenderPower);
+          damageMap[other.id] = Math.max(damageMap[other.id], netDmg); // highest hit wins, no stacking
+        });
+      } else if (p.state === 'finished_lost') {
+        // Only apply loss penalty if no net damage was already assigned
+        if (damageMap[p.id] === 0) {
+          const lossPenalty = Math.round(20 * roundDamageMultiplier);
+          const mitigation = Math.min(powerMap[p.id] || 0, lossPenalty);
+          damageMap[p.id] = Math.max(0, lossPenalty - mitigation);
+        }
+      }
+    });
+
+    // Enforce escalated minimum damage floor during Sudden Death so mirror matches end quickly.
+    const baselineFloor = isSdActive ? 10 : 5;
+    const finalFloor = Math.round(baselineFloor * (isSdActive ? (1 + (currentRoundNum - sdRound) * 0.5) : 1));
+
+    players.forEach(p => {
+      const pWon = p.state && p.state.startsWith('finished_won');
+      if (p.hp > 0 && p.state !== 'exited' && !pWon) {
+        damageMap[p.id] = Math.max(damageMap[p.id], finalFloor);
+      }
+    });
+
+    const updated = players.map(p => {
+      const newHp = Math.max(0, p.hp - (damageMap[p.id] || 0));
+      return {
+        ...p,
+        hp: newHp,
+        state: newHp <= 0 ? 'exited' : (p.state === 'exited' ? 'exited' : `playing:${now}`),
+        guesses: []
+      };
+    });
+
+    const alive = updated.filter(p => p.hp > 0 && p.state !== 'exited');
+    const payload = {
+      ...buildPlayersPayload(updated),
+      last_update: new Date().toISOString()
+    };
+
+    if (alive.length <= 1) {
+      payload.status = 'finished';
+      payload.winner_id = alive.length === 1 ? alive[0].id : 'draw';
+    } else {
+      const config = GAME_CONFIG[battle.game_type];
+      const nextTarget = config.data()[Math.floor(Math.random() * config.data().length)];
+      payload.target_name = nextTarget.name;
+      payload.round_number = (battle.round_number || 1) + 1;
+      payload.round_expires_at = computeRoundExpiresAt(battle);
+    }
+
+    try {
+      await supabaseClient.from('pvp_battles_idv').update(payload).eq('id', battle.id);
+    } catch (err) {
+      console.error('Failed FFA round resolution:', err);
+    } finally {
+      setTimeout(() => { pvpState.isResolvingRound = false; }, 1200);
+    }
+    return;
+  }
+
+  // ==========================================
+  //  1v1 MITIGATION LOGIC
+  // ==========================================
+  
+  // 1. Calculate raw power for both players (using dynamic round escalation)
+  const p1Power = calculatePlayerRoundPower(battle.player1_state, battle.player1_guesses, maxG, roundDamageMultiplier);
+  const p2Power = calculatePlayerRoundPower(battle.player2_state, battle.player2_guesses, maxG, roundDamageMultiplier);
+
+  // 2. Apply mitigation (Net Damage = Opponent Power - Own Power)
+  let player1Damage = Math.max(0, p2Power - p1Power);
+  let player2Damage = Math.max(0, p1Power - p2Power);
+
+  // 3. Apply failure penalty ONLY if the player took zero net damage already.
+  if (battle.player1_state === 'finished_lost' && player1Damage === 0) {
+    player1Damage = Math.round(20 * roundDamageMultiplier);
+  }
+  if (battle.player2_state === 'finished_lost' && player2Damage === 0) {
+    player2Damage = Math.round(20 * roundDamageMultiplier);
+  }
+
+  // 4. Enforce scaled minimum damage floor so even mirror matches don't drag on.
+  const p1Active = battle.player1_state && battle.player1_state !== 'exited';
+  const p2Active = battle.player2_state && battle.player2_state !== 'exited';
+  
+  const baselineFloor = isSdActive ? 10 : 5;
+  const finalFloor = Math.round(baselineFloor * (isSdActive ? (1 + (currentRoundNum - sdRound) * 0.5) : 1));
+
+  const p1Won = battle.player1_state && battle.player1_state.startsWith('finished_won');
+  const p2Won = battle.player2_state && battle.player2_state.startsWith('finished_won');
+
+  if (p1Active && !p1Won) player1Damage = Math.max(player1Damage, finalFloor);
+  if (p2Active && !p2Won) player2Damage = Math.max(player2Damage, finalFloor);
+
+  // 4. Update HP values
+  const p1FinalHp = Math.max(0, battle.player1_hp - player1Damage);
+  const p2FinalHp = Math.max(0, battle.player2_hp - player2Damage);
+  const isBattleOver = p1FinalHp <= 0 || p2FinalHp <= 0;
+  let winner = null;
+
+  if (isBattleOver) {
+    if (p1FinalHp > p2FinalHp) winner = battle.player1_id;
+    else if (p2FinalHp > p1FinalHp) winner = battle.player2_id;
+    else winner = 'draw';
+  }
+
+  const payload = {
+    player1_hp: p1FinalHp,
+    player2_hp: p2FinalHp,
+    player1_state: `playing:${now}`,
+    player2_state: `playing:${now}`,
+    player1_guesses: [],
+    player2_guesses: [],
+    last_update: new Date().toISOString()
+  };
+
+  if (isBattleOver) {
+    payload.status = 'finished';
+    payload.winner_id = winner;
+  } else {
+    const config = GAME_CONFIG[battle.game_type];
+    const nextTarget = config.data()[Math.floor(Math.random() * config.data().length)];
+    payload.target_name = nextTarget.name;
+    payload.round_number = (battle.round_number || 1) + 1;
+    payload.round_expires_at = computeRoundExpiresAt(battle);
+  }
+
+  try {
+    await supabaseClient.from('pvp_battles_idv').update(payload).eq('id', battle.id);
+  } catch (err) {
+    console.error('Failed to resolve active round state:', err);
+  } finally {
+    setTimeout(() => { pvpState.isResolvingRound = false; }, 1200);
+  }
+}
+
+// --------------- Sudden Death Warnings ---------------
+
+function triggerSuddenDeathAnnouncement(roundNumber) {
+  let overlay = document.getElementById('pvp-sudden-death-overlay');
+  if (overlay) overlay.remove(); // Clear any existing instance
+
+  overlay = document.createElement('div');
+  overlay.id = 'pvp-sudden-death-overlay';
+  
+  // Calculate dynamic Sudden Death factor
+  const sdRound = pvpState.suddenDeathRound !== undefined ? pvpState.suddenDeathRound : 6;
+  const multiplier = 2 + (roundNumber - sdRound) * 0.5;
+
+  // Use pointer-events-none so the overlay does not block gameplay interactions
+  overlay.className = 'fixed inset-0 z-[310] flex flex-col items-center justify-center pointer-events-none';
+  
+  // Set initial transition state: invisible and scaled down
+  overlay.style.opacity = '0';
+  overlay.style.transform = 'scale(0.75)';
+  overlay.style.transition = 'opacity 1.5s cubic-bezier(0.25, 1, 0.5, 1), transform 1.5s cubic-bezier(0.25, 1, 0.5, 1)';
+
+  // Inline styling details:
+  // - "-webkit-text-stroke" creates a crisp black border around the text.
+  // - Multiple overlapping "text-shadow" layers produce the intense glowing effect.
+  overlay.innerHTML = `
+    <div class="text-center font-black select-none p-4">
+      <div class="text-4xl md:text-6xl tracking-widest uppercase mb-2 font-black"
+           style="color: #ef4444; 
+                  -webkit-text-stroke: 2.5px #000000; 
+                  text-shadow: 0 0 10px rgba(239, 68, 68, 0.95), 0 0 25px rgba(239, 68, 68, 0.8), 0 0 50px rgba(239, 68, 68, 0.6);">
+        SUDDEN DEATH
+      </div>
+      <div class="text-lg md:text-2xl tracking-widest uppercase font-black"
+           style="color: #ffffff; 
+                  -webkit-text-stroke: 1.5px #000000; 
+                  text-shadow: 0 0 8px rgba(239, 68, 68, 0.9), 0 0 20px rgba(239, 68, 68, 0.7);">
+        ${multiplier}x Damage
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  // Force reflow to ensure transitions execute properly
+  void overlay.offsetWidth;
+
+  // Slowly fade in and bring closer to the screen
+  overlay.style.opacity = '1';
+  overlay.style.transform = 'scale(1.15)';
+
+  // Hold, then slowly fade out while continuing to move closer
+  setTimeout(() => {
+    const el = document.getElementById('pvp-sudden-death-overlay');
+    if (el) {
+      el.style.opacity = '0';
+      el.style.transform = 'scale(1.3)';
+      
+      // Remove element from DOM once fade transition is complete
+      setTimeout(() => el.remove(), 1500);
+    }
+  }, 2500);
+}
+
+function handleRoundReset(nextRoundNumber, newTargetName, gameType, roundExpiresAt) {
+  pvpState.isWaitingForOpponent = false;
+  pvpState.roundTimeoutHandled = false;
+  pvpState.isResolvingRound = false;
+  showPvPWaitingScreen(false);
+
+  pvpState.currentRound = nextRoundNumber;
+  pvpState.opponentGuesses = [];
+  if (pvpState.isFFA) {
+    pvpState.allPlayers = pvpState.allPlayers.map(p => ({ ...p, guesses: [] }));
+  }
+  sessionState.guesses = [];
+  sessionState.isGameOver = false;
+  sessionState.knownStats = {};
+  sessionState.clues = [];
+  
+  const config = GAME_CONFIG[gameType];
+  sessionState.target = config.data().find(item => item.name === newTargetName);
+
+  if (pvpState.hardModeActive && gameType !== 'voicedle') {
+    const otherItems = config.data().filter(item => item.name !== newTargetName);
+    sessionState.clues = otherItems.sort(() => 0.5 - Math.random()).slice(0, 3);
+  }
+
+  document.getElementById('guess-grid').innerHTML = '';
+  document.getElementById('uma-input').value = '';
+  document.getElementById('input-container').classList.remove('hidden');
+
+  const expiry = roundExpiresAt
+    ? new Date(roundExpiresAt)
+    : new Date(Date.now() + pvpState.roundTimeLimitMin * 60 * 1000);
+  startPvPTimer(expiry);
+
+  updateHpDisplay();
+  updateGuessCountUI();
+  renderSuggestions('');
+
+  if (pvpState.hardModeActive && gameType !== 'voicedle') {
+    sessionState.clues.forEach(c => addGuessRow(c, true));
+  }
+
+  // Trigger the customizable Sudden Death warning overlay
+  const sdRound = pvpState.suddenDeathRound !== undefined ? pvpState.suddenDeathRound : 6;
+  if (sdRound > 0 && nextRoundNumber >= sdRound) {
+    triggerSuddenDeathAnnouncement(nextRoundNumber);
+  }
+}
+
+// --------------- Dynamic Damage Visual Effects ---------------
+
+function injectPvPDamageStyles() {
+  if (document.getElementById('pvp-damage-styles')) return;
+  const style = document.createElement('style');
+  style.id = 'pvp-damage-styles';
+  style.textContent = `
+    @keyframes pvpDamageFloat {
+      0% { opacity: 0; transform: translate(-50%, 10px) scale(0.8); }
+      15% { opacity: 1; transform: translate(-50%, -10px) scale(1.2); }
+      80% { opacity: 1; transform: translate(-50%, -25px) scale(1); }
+      100% { opacity: 0; transform: translate(-50%, -40px) scale(0.9); }
+    }
+    @keyframes pvpShieldAbsorb {
+      0% { opacity: 0; transform: translate(-50%, 25px) scale(0.6); }
+      15% { opacity: 1; transform: translate(-50%, 5px) scale(1.1); filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.8)); }
+      80% { opacity: 1; transform: translate(-50%, -5px) scale(1); }
+      100% { opacity: 0; transform: translate(-50%, -15px) scale(0.9); }
+    }
+    @keyframes pvpSwordSlash {
+      0% { opacity: 0; transform: translate(-50%, -35px) scale(0.5) rotate(-15deg); }
+      15% { opacity: 1; transform: translate(-50%, -15px) scale(1.2) rotate(5deg); filter: drop-shadow(0 0 8px rgba(234, 179, 8, 0.8)); }
+      80% { opacity: 1; transform: translate(-50%, -20px) scale(1) rotate(5deg); }
+      100% { opacity: 0; transform: translate(-50%, -30px) scale(0.9) rotate(15deg); }
+    }
+    @keyframes pvpColumnShake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+      20%, 40%, 60%, 80% { transform: translateX(4px); }
+    }
+    @keyframes pvpFlashRed {
+      0%, 100% { background-color: transparent; }
+      50% { background-color: rgba(239, 68, 68, 0.2); }
+    }
+    @keyframes pvpFlashBlue {
+      0%, 100% { background-color: transparent; }
+      50% { background-color: rgba(59, 130, 246, 0.15); }
+    }
+    @keyframes pvpPulseRedGlow {
+      0%, 100% { filter: drop-shadow(0 0 2px rgba(239, 68, 68, 0.4)); }
+      50% { filter: drop-shadow(0 0 10px rgba(239, 68, 68, 0.8)); }
+    }
+    @keyframes pvpBounceShort {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+    .pvp-damage-indicator {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 26px;
+      font-weight: 900;
+      color: #ef4444;
+      text-shadow: 0 0 4px #000, 0 2px 4px rgba(0, 0, 0, 0.8);
+      pointer-events: none;
+      z-index: 105;
+      animation: pvpDamageFloat 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+      font-family: 'Impact', 'Arial Black', sans-serif;
+    }
+    .pvp-shield-indicator {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 18px;
+      font-weight: 900;
+      color: #3b82f6;
+      text-shadow: 0 0 4px #000, 0 2px 4px rgba(0, 0, 0, 0.8);
+      pointer-events: none;
+      z-index: 104;
+      animation: pvpShieldAbsorb 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+      font-family: 'Impact', 'Arial Black', sans-serif;
+    }
+    .pvp-atk-indicator {
+      position: absolute;
+      top: -45px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 18px;
+      font-weight: 900;
+      color: #eab308;
+      text-shadow: 0 0 4px #000, 0 2px 4px rgba(0, 0, 0, 0.8);
+      pointer-events: none;
+      z-index: 103;
+      animation: pvpSwordSlash 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+      font-family: 'Impact', 'Arial Black', sans-serif;
+    }
+    .pvp-shake-active { animation: pvpColumnShake 0.5s ease-in-out; }
+    .pvp-flash-red-active { animation: pvpFlashRed 0.6s ease-in-out; }
+    .pvp-flash-blue-active { animation: pvpFlashBlue 0.6s ease-in-out; }
+    .pvp-sudden-death-glow { animation: pvpPulseRedGlow 1.8s infinite ease-in-out; }
+    .animate-bounce-short { animation: pvpBounceShort 1.5s infinite ease-in-out; }
+    
+    #pvp-player-col, #pvp-opponent-col, .pvp-ffa-opponent {
+      position: relative;
+      transition: transform 0.2s ease;
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+function triggerDamageAnimation(targetType, amount) {
+  if (amount <= 0) return;
+  injectPvPDamageStyles();
+
+  let colId = 'pvp-opponent-col';
+  if (targetType === 'player') {
+    colId = 'pvp-player-col';
+  } else if (String(targetType).startsWith('opp-')) {
+    colId = `pvp-opp-col-${targetType.split('-')[1]}`;
+  }
+
+  const colEl = document.getElementById(colId);
+  if (!colEl) return;
+
+  colEl.classList.remove('pvp-shake-active', 'pvp-flash-red-active', 'pvp-flash-blue-active');
+  void colEl.offsetWidth; // Force layout recalculation to restart animations
+
+  const outcomeEl = document.createElement('div');
+  outcomeEl.className = 'pvp-damage-indicator';
+  outcomeEl.textContent = `-${amount} HP`;
+  outcomeEl.style.color = '#ef4444';
+
+  colEl.classList.add('pvp-shake-active', 'pvp-flash-red-active');
+  colEl.appendChild(outcomeEl);
+  outcomeEl.addEventListener('animationend', () => outcomeEl.remove());
+}
+
+function triggerCombatAnimation(targetType, incomingAttack, ownDefense, finalDamage) {
+  injectPvPDamageStyles();
+  
+  let colId = 'pvp-opponent-col';
+  if (targetType === 'player') colId = 'pvp-player-col';
+  else if (String(targetType).startsWith('opp-')) colId = `pvp-opp-col-${targetType.split('-')[1]}`;
+  
+  const colEl = document.getElementById(colId);
+  if (!colEl) return;
+
+  // Clear previous active anim classes
+  colEl.classList.remove('pvp-shake-active', 'pvp-flash-red-active', 'pvp-flash-blue-active');
+  void colEl.offsetWidth; // Force CSS reflow
+
+  // 1. Create Incoming Attack Floating Text
+  if (incomingAttack > 0) {
+    const atkEl = document.createElement('div');
+    atkEl.className = 'pvp-atk-indicator';
+    atkEl.innerHTML = `⚔️ ATK ${incomingAttack}`;
+    colEl.appendChild(atkEl);
+    atkEl.addEventListener('animationend', () => atkEl.remove());
+  }
+
+  // 2. Create Defense Mitigation Shield Pop
+  if (ownDefense > 0) {
+    const defEl = document.createElement('div');
+    defEl.className = 'pvp-shield-indicator';
+    defEl.innerHTML = `🛡️ DEF ${ownDefense}`;
+    colEl.appendChild(defEl);
+    defEl.addEventListener('animationend', () => defEl.remove());
+  }
+
+  // 3. Render Final Outcome
+  setTimeout(() => {
+    const outcomeEl = document.createElement('div');
+    outcomeEl.className = 'pvp-damage-indicator';
+    
+    if (finalDamage > 0) {
+      outcomeEl.textContent = `-${finalDamage} HP`;
+      outcomeEl.style.color = '#ef4444'; // Red for damage
+      colEl.classList.add('pvp-shake-active', 'pvp-flash-red-active');
+    } else {
+      outcomeEl.innerHTML = `🛡️ BLOCKED`;
+      outcomeEl.style.color = '#3b82f6'; // Blue for blocked
+      colEl.classList.add('pvp-flash-blue-active');
+    }
+    
+    colEl.appendChild(outcomeEl);
+    outcomeEl.addEventListener('animationend', () => outcomeEl.remove());
+  }, 450); // Small delay so clash effect flows sequentially
+}
+
+// --------------- UI Overlays ---------------
+
+function showQueueModal(show) {
+  let modal = document.getElementById('pvp-queue-modal');
+  if (!modal && show) {
+    modal = document.createElement('div');
+    modal.id = 'pvp-queue-modal';
+    modal.className = 'fixed inset-0 bg-black/70 backdrop-blur-sm z-[250] flex items-center justify-center p-4';
+    modal.innerHTML = `
+      <div class="bg-white dark:bg-slate-800 rounded-2xl max-w-sm w-full p-6 text-center border-t-8 border-red-700 shadow-2xl flex flex-col gap-4">
+        <div class="text-4xl animate-bounce">⚡</div>
+        <h2 class="text-xl font-black text-slate-800 dark:text-slate-100 uppercase tracking-wide">Looking for Opponent</h2>
+        <p class="text-xs text-slate-500 dark:text-slate-400">Searching the matchmaking server for another Visitors...</p>
+        <div class="flex items-center justify-center py-2">
+          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-red-700"></div>
+        </div>
+        <button onclick="leavePvPQueue()" class="btn-secondary w-full py-2.5 rounded-xl font-bold transition-all text-sm">Cancel Matchmaking</button>
+      </div>
+    `;
+    document.body.appendChild(modal);
+  } else if (modal && !show) {
+    modal.remove();
+  }
+}
+
+// --------------- UI Overlays ---------------
+
+function showPvPWaitingScreen(show, customMsg = null) {
+  let pane = document.getElementById('pvp-waiting-overlay');
+  if (!pane && show) {
+    pane = document.createElement('div');
+    pane.id = 'pvp-waiting-overlay';
+    pane.className = 'w-full max-w-md bg-amber-50 dark:bg-slate-900 border border-amber-200 dark:border-amber-950 p-4 rounded-xl text-center text-xs font-bold text-amber-800 dark:text-amber-400 my-3 animate-pulse';
+    const grid = document.getElementById('guesses');
+    if (grid) grid.after(pane);
+  }
+  if (pane && show) {
+    pane.innerHTML = customMsg || (pvpState.isFFA
+      ? `⏳ Board complete. Waiting for other players to finish...`
+      : `⏳ Board complete. Waiting for opponent to finish their escape attempts...`);
+  } else if (pane && !show) {
+    pane.remove();
+  }
+}
+
+// --------------- Cleanup & Exit Operations ---------------
+
+function declarePvPWinner(winnerId, battle) {
+  showPvPResultModal({ battle, winnerId, reason: 'normal' });
+  document.getElementById('input-container')?.classList.add('hidden');
+}
+
+function showPvPResultModal({ battle, winnerId, reason = 'normal' }) {
+  const modal = document.getElementById('pvp-result-modal');
+  if (!modal) return;
+
+  const userId = getOrCreateUserId();
+  const isWin = winnerId === userId;
+  const isDraw = winnerId === 'draw';
+  const players = battle ? parseBattlePlayers(battle) : [...pvpState.allPlayers];
+  const rounds = battle?.round_number || pvpState.currentRound || 1;
+  const isFFA = battle ? isMultiplayerBattle(battle) : pvpState.isFFA;
+
+  const titles = {
+    normal: { win: isFFA ? 'FFA VICTORY' : 'VICTORY', lose: 'DEFEAT', draw: 'DRAW' },
+    forfeit: { win: 'OPPONENT FORFEIT', lose: 'FORFEIT', draw: 'DRAW' },
+    disconnect: { win: 'OPPONENT DISCONNECTED', lose: 'DISCONNECTED', draw: 'DRAW' },
+    opponent_left: { win: 'OPPONENT LEFT', lose: 'FORFEIT', draw: 'DRAW' }
+  };
+  const t = titles[reason] || titles.normal;
+
+  let title = t.lose;
+  let subtitle = 'Better luck on the next investigation.';
+  if (isWin) {
+    title = t.win;
+    subtitle = isFFA
+      ? 'You outlasted all opponents in the free-for-all!'
+      : 'You deduced the targets and claimed victory.';
+    setTimeout(launchConfetti, 100);
+  } else if (isDraw) {
+    title = t.draw;
+    subtitle = 'No single victor remained standing.';
+  } else if (reason === 'forfeit') {
+    subtitle = 'A player left the match before it concluded.';
+  } else if (reason === 'disconnect') {
+    subtitle = 'Connection was lost during the battle.';
+  }
+
+  const winnerPlayer = players.find(p => p.id === winnerId);
+  const winnerName = winnerPlayer?.username || (isDraw ? '—' : 'Unknown');
+
+  const standingsHtml = players.map(p => {
+    const isMe = p.id === userId;
+    const isWinner = p.id === winnerId;
+    const barColor = isWinner ? 'bg-amber-500' : (isMe ? 'bg-green-600' : 'bg-red-600');
+    const playerHpPercent = (p.hp / pvpState.maxHp) * 100;
+    return `
+      <div class="pvp-result-player ${isWinner ? 'is-winner' : ''}">
+        <div class="flex justify-between text-xs font-bold mb-1">
+          <span>${p.username}${isMe ? ' (You)' : ''}${isWinner ? ' 👑' : ''}</span>
+          <span>${p.hp} / ${pvpState.maxHp} HP</span>
+        </div>
+        <div class="w-full bg-slate-300 dark:bg-slate-700 h-2.5 rounded-full overflow-hidden">
+          <div class="${barColor} h-full" style="width:${playerHpPercent}%"></div>
+        </div>
+      </div>`;
+  }).join('');
+
+  const titleEl = document.getElementById('pvp-result-title');
+  if (titleEl) titleEl.textContent = title;
+
+  const subtitleEl = document.getElementById('pvp-result-subtitle');
+  if (subtitleEl) subtitleEl.textContent = subtitle;
+
+  const roundsEl = document.getElementById('pvp-result-rounds');
+  if (roundsEl) roundsEl.textContent = `Rounds played: ${rounds}`;
+
+  const winnerEl = document.getElementById('pvp-result-winner');
+  if (winnerEl) {
+    winnerEl.textContent = isDraw
+      ? 'Result: Stalemate'
+      : `Winner: ${winnerName}`;
+  }
+
+  const standingsEl = document.getElementById('pvp-result-shadows-or-standings') || document.getElementById('pvp-result-standings');
+  if (standingsEl) {
+    standingsEl.innerHTML = standingsHtml;
+  }
+
+  const iconEl = document.getElementById('pvp-result-icon');
+  if (iconEl) {
+    iconEl.textContent = isWin ? '🏆' : isDraw ? '🤝' : '💀';
+  }
+
+  modal.classList.remove('hidden');
+  if (pvpState.pollTimer) clearInterval(pvpState.pollTimer);
+  if (pvpState.matchTimer) clearInterval(pvpState.matchTimer);
+}
+
+function closePvPResultModal() {
+  const modal = document.getElementById('pvp-result-modal');
+  if (modal) modal.classList.add('hidden');
+  cleanupPvPSession();
+  if (typeof showMenu === 'function') showMenu();
+}
+
+function cleanupPvPSession() {
+  if (pvpState.pollTimer) clearInterval(pvpState.pollTimer);
+  if (pvpState.matchTimer) clearInterval(pvpState.matchTimer);
+
+  pvpState.battleId = null;
+  pvpState.isFFA = false;
+  pvpState.allPlayers = [];
+  pvpState.mySlot = 0;
+  pvpState.prevHpMap = {};
+  pvpState.maxHp = 100;
+  pvpState.roundExpiresAt = null;
+  pvpState.roundTimeoutHandled = false;
+  pvpState.isResolvingRound = false;
+  pvpState.isShowingRoundResolution = false;
+
+  const interfacePanel = document.getElementById('pvp-hp-interface');
+  if (interfacePanel) interfacePanel.remove();
+  
+  const resolutionModal = document.getElementById('pvp-round-resolution-modal');
+  if (resolutionModal) resolutionModal.remove();
+
+  showPvPWaitingScreen(false);
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str || '';
+  return div.innerHTML;
+}
+
+function showPvPRoundResolutionModal(data, onComplete) {
+  let modal = document.getElementById('pvp-round-resolution-modal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'pvp-round-resolution-modal';
+    modal.className = 'fixed inset-0 bg-black/85 backdrop-blur-md z-[300] flex items-center justify-center p-4 transition-opacity duration-300';
+    document.body.appendChild(modal);
+  }
+
+  const nextRound = data.round + 1;
+  let contentHtml = '';
+
+  if (data.isFFA) {
+    const playersHtml = data.ffaPlayers.map((p, idx) => {
+      const borderCol = p.isMe ? 'border-green-600/50 bg-green-950/20' : 'border-red-900/50 bg-red-950/10';
+      const textCol = p.isMe ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400';
+      const barBg = p.isMe ? 'bg-green-600' : 'bg-red-600';
+      const oldHpPercent = (p.oldHp / pvpState.maxHp) * 100;
+      const newHpPercent = (p.newHp / pvpState.maxHp) * 100;
+      return `
+        <div class="p-3 rounded-xl border-2 ${borderCol} relative flex flex-col gap-1 overflow-hidden">
+          <div class="flex justify-between text-xs font-black">
+            <span class="${textCol}">${escapeHtml(p.username)} ${p.isMe ? '(You)' : ''}</span>
+            <span class="font-mono"><span id="res-hp-val-${idx}">${p.oldHp}</span> / ${pvpState.maxHp} HP</span>
+          </div>
+          <div class="w-full bg-slate-300 dark:bg-slate-700 h-3 rounded-full overflow-hidden relative">
+            <div id="res-bar-${idx}" class="${barBg} h-full" style="width: ${oldHpPercent}%; data-target-width="${newHpPercent}%"; transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);"></div>
+          </div>
+          <div id="res-dmg-indicator-${idx}" class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 transform scale-75 transition-all duration-300">
+            <span class="text-2xl font-black text-red-600 dark:text-red-500 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">-${p.dmg} HP</span>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    contentHtml = `
+      <div class="grid grid-cols-1 gap-3 w-full max-w-sm">
+        ${playersHtml}
+      </div>
+    `;
+  } else {
+    const myOldPercent = (data.myOldHp / pvpState.maxHp) * 100;
+    const myNewPercent = (data.myNewHp / pvpState.maxHp) * 100;
+    const oppOldPercent = (data.oppOldHp / pvpState.maxHp) * 100;
+    const oppNewPercent = (data.oppNewHp / pvpState.maxHp) * 100;
+
+    contentHtml = `
+      <div class="flex flex-col md:flex-row gap-4 w-full max-w-md">
+        <!-- Player Column -->
+        <div class="flex-1 p-3 rounded-xl border-2 border-green-600/50 bg-green-950/20 relative flex flex-col gap-1 overflow-hidden">
+          <div class="flex justify-between text-xs font-black">
+            <span class="text-green-700 dark:text-green-400">You</span>
+            <span class="font-mono"><span id="res-hp-val-me">${data.myOldHp}</span> / ${pvpState.maxHp} HP</span>
+          </div>
+          <div class="w-full bg-slate-300 dark:bg-slate-700 h-4 rounded-full overflow-hidden relative">
+            <div id="res-bar-me" class="bg-green-600 h-full" style="width: ${myOldPercent}%; data-target-width="${myNewPercent}%"; transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);"></div>
+          </div>
+          <div id="res-dmg-indicator-me" class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 transform scale-75 transition-all duration-300">
+            <span class="text-3xl font-black text-red-600 dark:text-red-500 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">-${data.myDmg} HP</span>
+          </div>
+        </div>
+
+        <!-- Opponent Column -->
+        <div class="flex-1 p-3 rounded-xl border-2 border-red-900/50 bg-red-950/10 relative flex flex-col gap-1 overflow-hidden">
+          <div class="flex justify-between text-xs font-black">
+            <span class="text-red-700 dark:text-red-400">${escapeHtml(data.oppName)}</span>
+            <span class="font-mono"><span id="res-hp-val-opp">${data.oppOldHp}</span> / ${pvpState.maxHp} HP</span>
+          </div>
+          <div class="w-full bg-slate-300 dark:bg-slate-700 h-4 rounded-full overflow-hidden relative">
+            <div id="res-bar-opp" class="bg-red-600 h-full" style="width: ${oppOldPercent}%; data-target-width="${oppNewPercent}%"; transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);"></div>
+          </div>
+          <div id="res-dmg-indicator-opp" class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 transform scale-75 transition-all duration-300">
+            <span class="text-3xl font-black text-red-600 dark:text-red-500 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">-${data.oppDmg} HP</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // Display custom round details on resolution
+  const sdRound = pvpState.suddenDeathRound !== undefined ? pvpState.suddenDeathRound : 6;
+  const isNextSd = sdRound > 0 && nextRound >= sdRound;
+
+  modal.innerHTML = `
+    <div class="bg-white dark:bg-slate-800 rounded-2xl max-w-lg w-full p-6 text-center border-t-8 border-red-700 shadow-2xl flex flex-col gap-4 animate-fade-in">
+      <div class="text-3xl">⚔️</div>
+      <h2 class="text-xl font-black text-slate-800 dark:text-slate-100 uppercase tracking-wide">Round ${data.round} Resolved!</h2>
+      <p class="text-xs text-slate-500 dark:text-slate-400">Applying damage and calculating updates...</p>
+      
+      <div class="my-2">
+        ${contentHtml}
+      </div>
+
+      <div id="res-next-round-status" class="text-sm font-bold text-amber-600 dark:text-amber-400 animate-pulse">
+        Calculating damage indicators...
+      </div>
+    </div>
+  `;
+
+  setTimeout(() => {
+    if (data.isFFA) {
+      data.ffaPlayers.forEach((p, idx) => {
+        if (p.dmg > 0) {
+          const el = document.getElementById(`res-dmg-indicator-${idx}`);
+          if (el) el.classList.replace('opacity-0', 'opacity-100'), el.classList.replace('scale-75', 'scale-100');
+        }
+      });
+    } else {
+      if (data.myDmg > 0) {
+        const el = document.getElementById('res-dmg-indicator-me');
+        if (el) el.classList.replace('opacity-0', 'opacity-100'), el.classList.replace('scale-75', 'scale-100');
+      }
+      if (data.oppDmg > 0) {
+        const el = document.getElementById('res-dmg-indicator-opp');
+        if (el) el.classList.replace('opacity-0', 'opacity-100'), el.classList.replace('scale-75', 'scale-100');
+      }
+    }
+  }, 400);
+
+  setTimeout(() => {
+    if (data.isFFA) {
+      data.ffaPlayers.forEach((p, idx) => {
+        const bar = document.getElementById(`res-bar-${idx}`);
+        const val = document.getElementById(`res-hp-val-${idx}`);
+        const targetPercent = (p.newHp / pvpState.maxHp) * 100;
+        if (bar) bar.style.width = `${targetPercent}%`;
+        if (val) animateHPValue(val, p.oldHp, p.newHp, 800);
+      });
+    } else {
+      const myBar = document.getElementById('res-bar-me');
+      const myVal = document.getElementById('res-hp-val-me');
+      const oppBar = document.getElementById('res-bar-opp');
+      const oppVal = document.getElementById('res-hp-val-opp');
+
+      const myTargetPercent = (data.myNewHp / pvpState.maxHp) * 100;
+      const oppTargetPercent = (data.oppNewHp / pvpState.maxHp) * 100;
+
+      if (myBar) myBar.style.width = `${myTargetPercent}%`;
+      if (myVal) animateHPValue(myVal, data.myOldHp, data.myNewHp, 800);
+
+      if (oppBar) oppBar.style.width = `${oppTargetPercent}%`;
+      if (oppVal) animateHPValue(oppVal, data.oppOldHp, data.oppNewHp, 800);
+    }
+
+    const statusText = document.getElementById('res-next-round-status');
+    if (statusText) {
+      statusText.textContent = isNextSd
+        ? `Preparing Sudden Death Round ${nextRound}...`
+        : `Preparing Round ${nextRound}...`;
+    }
+  }, 1200);
+
+  setTimeout(() => {
+    modal.classList.add('opacity-0');
+    setTimeout(() => {
+      modal.remove();
+      if (typeof onComplete === 'function') onComplete();
+    }, 300);
+  }, 3500);
+}
+
+function animateHPValue(element, start, end, duration) {
+  let startTimestamp = null;
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    element.textContent = Math.floor(start - progress * (start - end));
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    } else {
+      element.textContent = end;
+    }
+  };
+  window.requestAnimationFrame(step);
+}
