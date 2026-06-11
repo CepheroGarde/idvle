@@ -1,1 +1,1695 @@
-const a0_0x5b540a=a0_0x48f0;(function(_0x4e761f,_0x2a3119){const _0x408696=a0_0x48f0,_0x399cfe=_0x4e761f();while(!![]){try{const _0x2fb987=-parseInt(_0x408696(0x263))/0x1*(parseInt(_0x408696(0x1a8))/0x2)+-parseInt(_0x408696(0x2ce))/0x3+parseInt(_0x408696(0x1af))/0x4+-parseInt(_0x408696(0x266))/0x5*(-parseInt(_0x408696(0x2af))/0x6)+parseInt(_0x408696(0x23a))/0x7*(-parseInt(_0x408696(0x25e))/0x8)+-parseInt(_0x408696(0x229))/0x9+parseInt(_0x408696(0x24a))/0xa;if(_0x2fb987===_0x2a3119)break;else _0x399cfe['push'](_0x399cfe['shift']());}catch(_0x4b0678){_0x399cfe['push'](_0x399cfe['shift']());}}}(a0_0x44f1,0xb3880));function toggleTheme(){const _0x477ee9=a0_0x48f0;document[_0x477ee9(0x204)][_0x477ee9(0x1b4)][_0x477ee9(0x2b8)](_0x477ee9(0x28a)),localStorage['setItem']('theme',document['body'][_0x477ee9(0x1b4)][_0x477ee9(0x1a0)](_0x477ee9(0x28a))?_0x477ee9(0x28a):'light');}function loadTheme(){const _0x2cc024=a0_0x48f0,_0x513d69=localStorage[_0x2cc024(0x211)]('theme');if(_0x513d69===null||_0x513d69===_0x2cc024(0x28a)){document[_0x2cc024(0x204)][_0x2cc024(0x1b4)]['add'](_0x2cc024(0x28a));if(_0x513d69===null)localStorage[_0x2cc024(0x236)](_0x2cc024(0x33c),'dark');}}let pendingUsernameModal=![],pendingChangelogModal=![],pendingChangelogAfterUsername=![];function startClock(){const _0x21142b=a0_0x48f0,_0x2f3665=document[_0x21142b(0x1ff)](_0x21142b(0x267));if(!_0x2f3665)return;setInterval(()=>{const _0xcaa924=_0x21142b,_0x1570d5=getUTC8Time(),_0x15883b=new Date(_0x1570d5);_0x15883b[_0xcaa924(0x33b)](_0x15883b[_0xcaa924(0x223)]()+0x1),_0x15883b[_0xcaa924(0x214)](0x0,0x0,0x0,0x0);const _0x5bb031=_0x15883b-_0x1570d5;if(_0x5bb031<=0x0){location[_0xcaa924(0x1cc)]();return;}const _0x4744f6=String(Math[_0xcaa924(0x2dd)](_0x5bb031/(0x3e8*0x3c*0x3c)%0x18))['padStart'](0x2,'0'),_0x48c079=String(Math['floor'](_0x5bb031/(0x3e8*0x3c)%0x3c))[_0xcaa924(0x295)](0x2,'0'),_0x486ec2=String(Math[_0xcaa924(0x2dd)](_0x5bb031/0x3e8%0x3c))[_0xcaa924(0x295)](0x2,'0');_0x2f3665[_0xcaa924(0x1ba)]=_0xcaa924(0x329)+_0x4744f6+':'+_0x48c079+':'+_0x486ec2;},0x3e8);}function openArchiveMode(){const _0x3eb2c4=a0_0x48f0,_0x33f621=document['getElementById']('archive-modal'),_0x4d6d0d=document[_0x3eb2c4(0x1ff)](_0x3eb2c4(0x278));if(_0x33f621&&_0x4d6d0d){const _0x212be2=getUTC8Time(),_0x43540c=new Date(_0x212be2);_0x43540c[_0x3eb2c4(0x33b)](_0x43540c[_0x3eb2c4(0x223)]()-0x2);const _0xe1571c=_0x43540c[_0x3eb2c4(0x20e)]()+'-'+String(_0x43540c['getUTCMonth']()+0x1)[_0x3eb2c4(0x295)](0x2,'0')+'-'+String(_0x43540c['getUTCDate']())['padStart'](0x2,'0'),_0x3acf85=new Date(_0x212be2);_0x3acf85[_0x3eb2c4(0x33b)](_0x3acf85[_0x3eb2c4(0x223)]()-0x1e);const _0xc61865=_0x3acf85[_0x3eb2c4(0x20e)]()+'-'+String(_0x3acf85['getUTCMonth']()+0x1)[_0x3eb2c4(0x295)](0x2,'0')+'-'+String(_0x3acf85[_0x3eb2c4(0x223)]())['padStart'](0x2,'0');_0x4d6d0d['max']=_0xe1571c,_0x4d6d0d[_0x3eb2c4(0x1de)]=_0xc61865,_0x4d6d0d[_0x3eb2c4(0x2e8)]=_0xe1571c,_0x33f621[_0x3eb2c4(0x1b4)][_0x3eb2c4(0x1e4)]('hidden');}}function closeArchiveMode(){const _0xe4fb53=a0_0x48f0,_0x522f01=document[_0xe4fb53(0x1ff)](_0xe4fb53(0x332));if(_0x522f01)_0x522f01['classList'][_0xe4fb53(0x334)](_0xe4fb53(0x2d8));}function validateAndStartArchive(){const _0x48cdd5=a0_0x48f0,_0x25a6d3=document['getElementById'](_0x48cdd5(0x278));if(!_0x25a6d3[_0x48cdd5(0x2e8)]){alert('Please\x20select\x20a\x20date');return;}const _0x3067f9=getUTC8Time();_0x3067f9['setUTCHours'](0x0,0x0,0x0,0x0);const _0x54c86e=new Date(_0x3067f9);_0x54c86e['setUTCDate'](_0x54c86e[_0x48cdd5(0x223)]()-0x1);const _0x405958=new Date(_0x25a6d3[_0x48cdd5(0x2e8)]+'T00:00:00Z');if(_0x405958>=_0x3067f9){alert(_0x48cdd5(0x1bf));return;}if(_0x405958[_0x48cdd5(0x1d4)]()===_0x54c86e['getTime']()){alert(_0x48cdd5(0x233));return;}closeArchiveMode(),startArchiveGame(_0x25a6d3[_0x48cdd5(0x2e8)]);}function a0_0x44f1(){const _0x5c15e5=['rankedGuesses','height','</span>\x0a\x20\x20\x20\x20<span\x20style=\x22font-size:10px;\x20font-weight:700;\x20color:#9ca3af;\x20letter-spacing:.05em;\x20text-transform:uppercase;\x22>Daily</span>\x0a\x20\x20\x20\x20<span\x20style=\x22font-size:15px;\x20font-weight:900;\x20color:','isGameOver','from','tracendle_wallpaper','Yesterday\x27s\x20Answer:\x20','result-title','dark','#6aaa64','\x20/\x20','<img\x20src=\x22','#c9b458','transform','tab-btn-course','Wins','header-logo','button[onclick=\x22startGame(\x27ranked\x27)\x22]','Racetrack','padStart','rankedStatus','addEventListener','\x20TIER','\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20<div\x20class=\x22stats-section\x20mb-4\x22>\x0a\x20\x20\x20\x20\x20\x20<p\x20class=\x22stats-section-title\x20font-bold\x20text-sm\x20mb-1\x20text-blue-600\x20dark:text-blue-400\x22>🟢\x20Easy\x20Mode</p>\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22stats-grid\x20grid\x20grid-cols-3\x20gap-2\x20text-center\x20text-xs\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20','image','mode','mode-indicator','modal-action-btn','<span\x20style=\x22position:absolute;top:4px;right:5px;font-size:13px;color:#4ade80;text-shadow:0\x200\x204px\x20#000;\x22>✓</span>','sort','flex','\x0a\x20\x20\x20\x20<div\x20class=\x22stats-pill\x20p-2\x20border\x20rounded-xl\x20dark:border-gray-700\x22>\x0a\x20\x20\x20\x20\x20\x20<span\x20class=\x22stats-pill-value\x20block\x20font-black\x20text-lg\x22>','Voicedle','\x20potential-match','https://preview.redd.it/the-perfect-wallpaper-umadachis-v0-v4t4j435dy2f1.png?width=1080&crop=smart&auto=webp&s=6af615cb08905c9d14c3c8e6ae923c80999ab74b','animate-fade-in','left','name','archive','tab-voicedle','onload','ranked','center','result-stat-row','Easy\x20Streak','11562hlruoa','https://images.steamusercontent.com/ugc/13590127456284630094/1C00EF11763EEFAC06560B7D57B89A415844A9C9/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true','\x0a\x0aPlay\x20UmaWordle!','daily-status',';\x20border:1.5px\x20solid\x20','username-modal','</span>\x0a\x20\x20\x20\x20\x20\x20','guess-grid','wallpaper-upload-label','toggle','\x22\x20class=\x22picker-card-img\x22>\x0a\x20\x20\x20\x20\x20\x20<span\x20class=\x22picker-card-name\x22>','knownStats','bestDailyStreak',';\x22>','result-modal','Enter','Supabase\x20update\x20failed:','createElement','Reset\x20ALL\x20statistics\x20for\x20Umamusume,\x20G1\x20Race,\x20and\x20Voicedle?\x20This\x20cannot\x20be\x20undone.','correct-answer','flex-1\x20py-1.5\x20rounded-lg\x20font-bold\x20text-sm\x20transition-all\x20bg-green-600\x20text-white\x20shadow-sm','unlimitedStreak','images/trace\x20background.jpg','</span>\x0a\x20\x20\x20\x20\x20\x20</span>\x0a\x20\x20\x20\x20\x20\x20','removeItem','result-stat-pill-label','result-msg','✓\x20Custom\x20image\x20active\x20—\x20click\x20to\x20change','uma_wordle_version','then','<span\x20class=\x22text-lg\x20font-black\x20text-green-700\x22>','1615488KhirpF','backgroundSize','streak-badge','\x22\x20class=\x22','Placements:\x20','data:','\x0a\x20\x20\x20\x20<div\x20class=\x22stats-section\x20mb-4\x22>\x0a\x20\x20\x20\x20\x20\x20<p\x20class=\x22stats-section-title\x20font-bold\x20text-sm\x20mb-1\x20text-gray-700\x20dark:text-gray-300\x22>🗓️\x20Daily</p>\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22stats-grid\x20grid\x20grid-cols-3\x20gap-2\x20text-center\x20text-xs\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20',';\x0a\x20\x20\x20\x20\x20\x20line-height:1;\x20white-space:nowrap;\x0a\x20\x20\x20\x20\x22>\x0a\x20\x20\x20\x20\x20\x20<span\x20style=\x22font-size:10px;\x20font-weight:600;\x20color:#6b7280;\x20margin-right:1px;\x22>','\x0a\x20\x20\x20\x20\x20\x20\x20\x20','</strong>\x22</p>','hidden','points','keys','headers','size','floor','changelog-modal','aria-label','unlimited','animationend','some','Umamusume','guess-head','winStreak','#bbf7d0','forEach','value','startsWith','is_ranked_session','Normal','Daily\x20G1\x20Race','\x20answer-cell','translate','@keyframes\x20dot-pulse\x20{\x0a\x20\x20\x20\x20\x20\x200%,100%{transform:scale(1);opacity:1}\x0a\x20\x20\x20\x20\x20\x2050%{transform:scale(1.25);opacity:.7}\x0a\x20\x20\x20\x20}','querySelector','fillRect','clearRect','stats-tab-course','stats-content','https://media.pocketgamer.biz/images/132587/86039/uma-musume-pretty-derby-track-field_orig.webp','#22c55e','div','uma-input','wallpaper-modal','stats-summary','stats-tab-voicedle','#16a34a','target-img-wrap','createDocumentFragment','map','Welcome,\x20Trainer!','https://images.steamusercontent.com/ugc/13963806649216154660/DF23A51B457215B75849D01FD85B8EC311BAFD68/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true','Wallpaper\x20too\x20large\x20to\x20persist\x20in\x20localStorage;\x20applied\x20for\x20this\x20session\x20only.','Party','shareTitle','Outside','borderColor','width','lastPlayedDate','fillStyle','target-stats-grid','username-modal-title','voicedle','target','skipped','\x20head-course','menu-tier-points','appendChild','_allowClose','pendingStreakReset','true','false','playing','#9ca3af','tracendle_wallpaper_type','\x20/\x205\x20Matches</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>','_ranked_stats','flex-1\x20py-2\x20rounded-lg\x20font-bold\x20transition-all\x20bg-white\x20shadow-sm\x20text-green-700\x20text-sm','parse','color','picker-card','backgroundPosition','help-content','\x22\x20alt=\x22','onmouseleave','dataset','data','canvas','#f9fafb','yesterday-info','https://twitter.com/intent/tweet?text=','NEXT\x20DAILY\x20IN:\x20','button','Race','charAt','\x0a\x0aPlay\x20TracenDle:\x20Pretty\x20Wordle!\x0ahttps://tracendle.pages.dev/','get','placeholder','toUpperCase','#ec4899','archive-modal','none','add','key','hardWins','toLowerCase','correct','top','Change\x20Username','setUTCDate','theme','Nice\x20Nature','absent','_blank','contains','rotate','getAttribute','\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20</div>\x0a\x20\x20','result-stat-section-title\x20text-','</span>\x0a\x20\x20\x20\x20\x20\x20<span\x20style=\x22font-size:15px;\x20font-weight:900;\x20color:','Please\x20select\x20an\x20image\x20file.','bestUnlimitedStreak','322VXTLMz','Best\x20Streak','localeCompare','#e5e7eb','\x20head-strat','username-error','#86efac','543436xdrdfc','\x22\x20/>','span.upload-text','peeking-character','Rank\x20Active','classList','\x0a\x20\x20\x20\x20','\x20|\x20Guesses:\x20','entries','upload','writeText','innerText','title','Ogu-Cre-rden','input','length','You\x20cannot\x20play\x20Today\x27s\x20puzzle\x20in\x20Archive\x20Mode!','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22streak-banner-sub\x22>','clue-row','px)\x20scale(','warn','ranked-profile-view','thumb','wallpaper-url-input','display','None','show','flex-1\x20py-2\x20rounded-lg\x20font-bold\x20transition-all\x20text-gray-500\x20hover:text-gray-700\x20text-sm','overflow-menu-wrap','reload','move-to-header','rounded-tr-lg\x20cell-group-end','Image\x20is\x20too\x20large\x20(max\x2010\x20MB).\x20Please\x20choose\x20a\x20smaller\x20file.','background','dailyWins','#f97316','\x0a\x20\x20\x20\x20<div\x20style=\x22\x0a\x20\x20\x20\x20\x20\x20display:inline-flex;\x20align-items:center;\x20gap:5px;\x0a\x20\x20\x20\x20\x20\x20background:','getTime','getContext','\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20<div\x20class=\x22stats-section\x20mb-2\x22>\x0a\x20\x20\x20\x20\x20\x20<p\x20class=\x22stats-section-title\x20font-bold\x20text-sm\x20mb-1\x20text-purple-600\x20dark:text-purple-400\x22>💀\x20Hard\x20Mode</p>\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22stats-grid\x20grid\x20grid-cols-3\x20gap-2\x20text-center\x20text-xs\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20','load','error','\x0a\x20\x20\x20\x20\x20\x20position:relative;\x20border-radius:12px;\x20overflow:hidden;\x0a\x20\x20\x20\x20\x20\x20border:\x204px\x20solid\x20','px,\x20','2px\x20solid\x20#86efac','\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22bg-gradient-to-r\x20from-amber-50\x20to-orange-50\x20border\x20border-orange-200\x20rounded-lg\x20p-3\x20text-center\x20mb-4\x20shadow-sm\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22text-[10px]\x20font-bold\x20text-orange-600\x20uppercase\x20tracking-widest\x22>Current\x20Rank</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22text-2xl\x20font-black\x20text-orange-900\x22>','</span>\x0a\x20\x20\x20\x20</div>','min','textContent','text-[10px]\x20md:text-xs\x20font-bold\x20uppercase','search','Default','maxGuesses','remove','\x20STREAK','p-2\x20','onmouseenter','\x20|\x20','share-title-text','intro-credit','<span\x20style=\x22\x0a\x20\x20\x20\x20\x20\x20display:inline-flex;\x20align-items:center;\x20justify-content:center;\x0a\x20\x20\x20\x20\x20\x20font-size:18px;\x20line-height:1;\x20color:#16a34a;\x20font-weight:900;\x0a\x20\x20\x20\x20\x20\x20letter-spacing:-1px;\x0a\x20\x20\x20\x20\x22>∞</span><span\x20style=\x22font-size:10px;color:#9ca3af;margin-left:4px;\x22>unlimited</span>','className','hard','tracendle_nickname','dailyStreak','#daily-btn\x20.font-black','leaderboard','files','tab-btn-uma','Daily','stats-modal','username-input','Reset\x20','bestHardStreak','backgroundColor','getBoundingClientRect','resultTitle','label','span','Leaderboard\x20usernames\x20successfully\x20updated\x20across\x20all\x20modes!','getElementById','sections','dot-pulse-style','type','wordle-flip','body','\x20TIER</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22text-xs\x20font-bold\x20text-orange-700\x22>','Hard\x20Streak','backgroundImage','course-img\x20w-14\x20h-14\x20object-contain\x20mx-auto\x20rounded-md\x20shadow-sm','course','-600','Anonymous','opacity','intro-complete','getUTCFullYear','trim','innerHTML','getItem','\x20statistics?\x20This\x20cannot\x20be\x20undone.','lb-current-username','setUTCHours','https://en-portal.g.kuroco-img.app/v=1749187165/files/user/media/anime/anime01.jpg','#f59e0b','\x20Points','result-stat-pill-value','innerWidth','guesses','Normal\x20Streak','head','about-modal','target-label','#10b981','pvp','unlimitedWins','???','getUTCDate','dailyStatus','animate-flip','#ea580c','hard-mode-desc','cover','6291324RvQROD','text-green-600','keydown','clipboard','rotation','remaining-guesses','streakAtLoss','reset-tab-btn','restore','menu-description','Yesterday\x27s\x20puzzle\x20is\x20not\x20yet\x20available\x20in\x20Archive\x20Mode!','\x20head-dist','tracendle_wallpaper_data','setItem','\x0a\x20\x20\x20\x20\x20\x20<img\x20src=\x22','catch','style','9889873yfkhzN','innerHeight','menu-tier-name','url(\x27','popup','Hard:\x20Only\x202\x20guesses\x20—\x20hear\x20up\x20to\x201.0s\x20of\x20the\x20voice\x20line!','open','https://images.steamusercontent.com/ugc/17440226665388322748/374C7B41283C195C013ED0231430B439D3EF327E/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true','rotSpeed','wallpaper-preset-grid','share-block-preview','#f0fdf4','\x22\x20class=\x22result-target-thumb\x22>','bestEasyStreak','peek-start','https://www.facebook.com/sharer/sharer.php?quote=','27626270aqkGuT','max','move-to-footer','placements','result-stat-section','visible','includes','#ffffff','DOMContentLoaded','intro-logo-overlay','\x20/\x20<span\x20style=\x22color:#7c3aed;\x20font-weight:900;\x22>ARCHIVE\x20📅\x20','#3b82f6','<p\x20class=\x22picker-empty\x22>No\x20matches\x20for\x20\x22<strong>','daily','overflow-menu-dropdown','<span\x20style=\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20display:inline-block;\x20width:9px;\x20height:9px;\x20border-radius:50%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20background:#ef4444;\x20box-shadow:0\x200\x200\x201.5px\x20#fca5a5;\x0a\x20\x20\x20\x20\x20\x20\x20\x20transition:all\x20.3s;\x0a\x20\x20\x20\x20\x20\x20\x22></span>','</span>','update','easy','share-info-text','8NkvYeM',';\x0a\x20\x20\x20\x20\x20\x20border-radius:999px;\x20padding:3px\x2010px\x203px\x207px;\x0a\x20\x20\x20\x20\x20\x20font-size:12px;\x20font-weight:800;\x20color:','Daily\x20Umamusume','position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;','Season\x201','2228HkACgC','function','easyStreak','2195fgtTRU','server-time','Error\x20updating\x20leaderboard\x20username:','dailyGuesses','\x20Mode\x20Streak\x20Lost</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>','intro-logo','#fed7aa','.text-purple-500.italic','translate(','user_id','Continue','onclick','ranked-result-profile','random','archiveDate','w-10\x20h-10\x20object-cover\x20mx-auto\x20rounded-full\x20shadow-sm','readAsDataURL','score-display','archive-date-input','focus','\x0a\x20\x20\x20\x20<span\x20style=\x22font-size:14px;\x20line-height:1;\x22>','setAttribute','uma','Current\x20Streak','present','🔥\x20','\x20Rating\x20Points</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>','abs'];a0_0x44f1=function(){return _0x5c15e5;};return a0_0x44f1();}function checkOrCreateUsername(){const _0x578c48=a0_0x48f0,_0x5f1ed1=localStorage['getItem']('tracendle_nickname'),_0x42afcc=!_0x5f1ed1||_0x5f1ed1['trim']()===''||_0x5f1ed1[_0x578c48(0x2e9)]('Anonymous');_0x42afcc&&(document[_0x578c48(0x204)][_0x578c48(0x1b4)][_0x578c48(0x1a0)](_0x578c48(0x20d))?showUsernameModal(![]):pendingUsernameModal=!![]),getOrCreateUserId();}function showUsernameModal(_0x1299ae=![]){const _0x540ce1=a0_0x48f0,_0x1db55f=document[_0x540ce1(0x1ff)]('username-modal'),_0x1be448=document[_0x540ce1(0x1ff)](_0x540ce1(0x30b)),_0x51dd4d=document[_0x540ce1(0x1ff)]('username-input'),_0x15ea07=document[_0x540ce1(0x1ff)](_0x540ce1(0x1ad));if(!_0x1db55f)return;_0x1be448[_0x540ce1(0x1df)]=_0x1299ae?_0x540ce1(0x33a):_0x540ce1(0x300),_0x51dd4d[_0x540ce1(0x2e8)]=_0x1299ae?localStorage[_0x540ce1(0x211)](_0x540ce1(0x1ee))||'':'',_0x15ea07[_0x540ce1(0x1b4)]['add'](_0x540ce1(0x2d8)),_0x1db55f['classList'][_0x540ce1(0x1e4)](_0x540ce1(0x2d8)),setTimeout(()=>_0x51dd4d[_0x540ce1(0x279)](),0x64),_0x1db55f['_allowClose']=_0x1299ae,_0x1db55f[_0x540ce1(0x271)]=_0x1a172d=>{const _0x2e0407=_0x540ce1;if(_0x1a172d[_0x2e0407(0x30d)]===_0x1db55f&&_0x1db55f[_0x2e0407(0x312)])closeUsernameModal();};}function closeUsernameModal(){const _0x4e508c=a0_0x48f0,_0x2f2fe2=document[_0x4e508c(0x1ff)](_0x4e508c(0x2b4));if(_0x2f2fe2)_0x2f2fe2[_0x4e508c(0x1b4)][_0x4e508c(0x334)](_0x4e508c(0x2d8));pendingChangelogAfterUsername&&(pendingChangelogAfterUsername=![],openChangelog());}async function saveUsername(){const _0x2d2d2a=a0_0x48f0,_0x5bd1d7=document['getElementById'](_0x2d2d2a(0x1f6));if(!_0x5bd1d7)return;let _0x2c5be4=_0x5bd1d7[_0x2d2d2a(0x2e8)][_0x2d2d2a(0x20f)]();if(!_0x2c5be4)_0x2c5be4=_0x2d2d2a(0x20b);localStorage[_0x2d2d2a(0x236)](_0x2d2d2a(0x1ee),_0x2c5be4);const _0xfdf602=document['getElementById'](_0x2d2d2a(0x213));if(_0xfdf602)_0xfdf602[_0x2d2d2a(0x210)]=formatUsernameWithSuffix(_0x2c5be4,getOrCreateUserId());closeUsernameModal();const _0x29f81c=getOrCreateUserId();try{const {error:_0x1feca7}=await supabaseClient[_0x2d2d2a(0x286)](_0x2d2d2a(0x1f1))[_0x2d2d2a(0x25b)]({'username':_0x2c5be4})['eq'](_0x2d2d2a(0x26f),_0x29f81c);if(_0x1feca7)console['error'](_0x2d2d2a(0x268),_0x1feca7);else console['log'](_0x2d2d2a(0x1fe));}catch(_0x11114d){console[_0x2d2d2a(0x1d8)](_0x2d2d2a(0x2bf),_0x11114d);}typeof scheduleLegacyLeaderboardMigration===_0x2d2d2a(0x264)&&scheduleLegacyLeaderboardMigration();const _0x1cc4be=document['getElementById']('leaderboard-modal');_0x1cc4be&&!_0x1cc4be[_0x2d2d2a(0x1b4)][_0x2d2d2a(0x1a0)]('hidden')&&typeof updateLeaderboardUI==='function'&&updateLeaderboardUI();}function openChangeUsername(){showUsernameModal(!![]);}document[a0_0x5b540a(0x297)](a0_0x5b540a(0x252),()=>{const _0x24476d=a0_0x5b540a,_0x5d0419=document[_0x24476d(0x1ff)](_0x24476d(0x1f6));if(_0x5d0419)_0x5d0419[_0x24476d(0x297)](_0x24476d(0x22b),_0x4c7fb7=>{const _0x48371f=_0x24476d;if(_0x4c7fb7[_0x48371f(0x335)]===_0x48371f(0x2be))saveUsername();});});function playIntroAnimation(){const _0x54fa55=a0_0x5b540a,_0x39fdfe=document[_0x54fa55(0x1ff)](_0x54fa55(0x253)),_0x401955=document[_0x54fa55(0x1ff)](_0x54fa55(0x26b)),_0x337361=document[_0x54fa55(0x1ff)](_0x54fa55(0x1ea)),_0x5c41fc=document[_0x54fa55(0x1ff)](_0x54fa55(0x292));if(!_0x39fdfe||!_0x401955||!_0x5c41fc)return;_0x5c41fc[_0x54fa55(0x239)][_0x54fa55(0x20c)]='0',_0x39fdfe[_0x54fa55(0x1b4)][_0x54fa55(0x334)](_0x54fa55(0x24f)),requestAnimationFrame(()=>{const _0x2e9180=_0x54fa55;_0x401955[_0x2e9180(0x1b4)][_0x2e9180(0x334)](_0x2e9180(0x23e));if(_0x337361)_0x337361[_0x2e9180(0x1b4)]['add'](_0x2e9180(0x1c9));}),setTimeout(()=>{const _0x2ccb6e=_0x54fa55,_0x2e5487=_0x401955[_0x2ccb6e(0x1fa)](),_0xfa69fb=_0x5c41fc[_0x2ccb6e(0x1fa)](),_0x5be265=_0xfa69fb[_0x2ccb6e(0x2a6)]+_0xfa69fb[_0x2ccb6e(0x307)]/0x2-(_0x2e5487['left']+_0x2e5487[_0x2ccb6e(0x307)]/0x2),_0x4beec3=_0xfa69fb[_0x2ccb6e(0x339)]+_0xfa69fb['height']/0x2-(_0x2e5487[_0x2ccb6e(0x339)]+_0x2e5487[_0x2ccb6e(0x283)]/0x2),_0x462b12=Math['min'](_0xfa69fb[_0x2ccb6e(0x307)]/_0x2e5487[_0x2ccb6e(0x307)],_0xfa69fb[_0x2ccb6e(0x283)]/_0x2e5487['height'])*0.94;_0x401955[_0x2ccb6e(0x239)][_0x2ccb6e(0x28f)]=_0x2ccb6e(0x26e)+_0x5be265+_0x2ccb6e(0x1da)+_0x4beec3+_0x2ccb6e(0x1c2)+_0x462b12+')',_0x401955[_0x2ccb6e(0x1b4)][_0x2ccb6e(0x334)]('move-to-header');if(_0x337361){const _0x999d84=_0x337361[_0x2ccb6e(0x1fa)](),_0x4121c6=document[_0x2ccb6e(0x1ff)]('made-by-footer');if(_0x4121c6){const _0x1905bc=_0x4121c6['getBoundingClientRect'](),_0x443509=_0x1905bc[_0x2ccb6e(0x2a6)]+_0x1905bc[_0x2ccb6e(0x307)]/0x2-(_0x999d84[_0x2ccb6e(0x2a6)]+_0x999d84[_0x2ccb6e(0x307)]/0x2),_0x1db7d9=_0x1905bc['top']+_0x1905bc['height']/0x2-(_0x999d84['top']+_0x999d84['height']/0x2),_0x4147cc=Math[_0x2ccb6e(0x1de)](_0x1905bc[_0x2ccb6e(0x307)]/_0x999d84[_0x2ccb6e(0x307)],_0x1905bc[_0x2ccb6e(0x283)]/_0x999d84['height'])*0.9;_0x337361[_0x2ccb6e(0x239)][_0x2ccb6e(0x28f)]=_0x2ccb6e(0x26e)+_0x443509+_0x2ccb6e(0x1da)+_0x1db7d9+_0x2ccb6e(0x1c2)+_0x4147cc+')',_0x337361[_0x2ccb6e(0x1b4)]['add'](_0x2ccb6e(0x24c));}}},0x384),setTimeout(()=>{const _0x15399c=_0x54fa55;_0x401955['style'][_0x15399c(0x20c)]='0',_0x5c41fc[_0x15399c(0x239)]['opacity']='1';if(_0x337361)_0x337361[_0x15399c(0x239)]['opacity']='0';},0x5aa),setTimeout(()=>{const _0x1b3ec9=_0x54fa55;_0x39fdfe[_0x1b3ec9(0x1b4)][_0x1b3ec9(0x1e4)](_0x1b3ec9(0x24f)),_0x401955['classList'][_0x1b3ec9(0x1e4)](_0x1b3ec9(0x23e),_0x1b3ec9(0x1cd)),_0x401955[_0x1b3ec9(0x239)][_0x1b3ec9(0x28f)]='',_0x401955[_0x1b3ec9(0x239)][_0x1b3ec9(0x20c)]='';_0x337361&&(_0x337361[_0x1b3ec9(0x1b4)]['remove']('show',_0x1b3ec9(0x24c)),_0x337361[_0x1b3ec9(0x239)][_0x1b3ec9(0x28f)]='',_0x337361[_0x1b3ec9(0x239)][_0x1b3ec9(0x20c)]='');document[_0x1b3ec9(0x204)]['classList'][_0x1b3ec9(0x334)]('intro-complete');const _0x1f032a=document['getElementById'](_0x1b3ec9(0x1b2));_0x1f032a&&_0x1f032a['classList']['add'](_0x1b3ec9(0x248));if(pendingUsernameModal)pendingUsernameModal=![],showUsernameModal(![]),pendingChangelogModal&&(pendingChangelogModal=![],pendingChangelogAfterUsername=!![]);else pendingChangelogModal&&(pendingChangelogModal=![],openChangelog());},0x6d6);}function animateSelection(_0x2644f5){const _0x51ce44=a0_0x5b540a;if(!_0x2644f5)return;_0x2644f5['classList']['add'](_0x51ce44(0x225)),_0x2644f5[_0x51ce44(0x297)](_0x51ce44(0x2e1),()=>{const _0xf89e96=_0x51ce44;_0x2644f5[_0xf89e96(0x1b4)][_0xf89e96(0x1e4)](_0xf89e96(0x225));},{'once':!![]});}function _setTabActive(_0x2305aa,_0x1dfcc5){const _0x31ca35=a0_0x5b540a;if(!_0x2305aa)return;_0x2305aa['className']=_0x1dfcc5?_0x31ca35(0x31b):_0x31ca35(0x1ca);}function updateMenuModeHints(_0x19d7bc){const _0x49f41d=a0_0x5b540a,_0x3c67d1=document[_0x49f41d(0x1ff)](_0x49f41d(0x227)),_0x5736e0=document[_0x49f41d(0x2f0)](_0x49f41d(0x1f0));if(!_0x3c67d1)return;if(_0x19d7bc===_0x49f41d(0x27c)){if(_0x5736e0)_0x5736e0[_0x49f41d(0x1ba)]=_0x49f41d(0x260);}if(_0x19d7bc===_0x49f41d(0x209)){if(_0x5736e0)_0x5736e0[_0x49f41d(0x1ba)]=_0x49f41d(0x2ec);}if(_0x19d7bc==='voicedle'){_0x3c67d1['innerText']=_0x49f41d(0x23f);if(_0x5736e0)_0x5736e0[_0x49f41d(0x1ba)]='Daily\x20Voicedle';}}function switchGameType(_0x1833aa){const _0x337ec1=a0_0x5b540a;currentGameType=_0x1833aa,sessionState[_0x337ec1(0x2ba)]={};const _0x38844a=GAME_CONFIG[_0x1833aa],_0x44a6dc=document[_0x337ec1(0x1ff)]('tab-uma'),_0x302f95=document[_0x337ec1(0x1ff)]('tab-course'),_0x289182=document[_0x337ec1(0x1ff)](_0x337ec1(0x2a9));_setTabActive(_0x44a6dc,_0x1833aa==='uma'),_setTabActive(_0x302f95,_0x1833aa===_0x337ec1(0x209)),_setTabActive(_0x289182,_0x1833aa==='voicedle');const _0x52f90a=_0x1833aa===_0x337ec1(0x27c)?_0x44a6dc:_0x1833aa===_0x337ec1(0x209)?_0x302f95:_0x289182;if(_0x52f90a)animateSelection(_0x52f90a);updateMenuModeHints(_0x1833aa);const _0x1f65b0=document['getElementById'](_0x337ec1(0x232));_0x1f65b0&&(_0x1f65b0[_0x337ec1(0x1b4)]['add']('animate-fade-in'),_0x1f65b0[_0x337ec1(0x297)](_0x337ec1(0x2e1),()=>{const _0x2d68ac=_0x337ec1;_0x1f65b0[_0x2d68ac(0x1b4)]['remove'](_0x2d68ac(0x2a5));},{'once':!![]}));document[_0x337ec1(0x1ff)]('menu-description')[_0x337ec1(0x1ba)]=_0x38844a['helpDesc'];const _0x317bc4=getDailyString(),_0x2b6338=getDailyString(-0x1),_0x3f24f7=allPersistentData[_0x1833aa];if(_0x3f24f7[_0x337ec1(0x308)]!==_0x317bc4){_0x3f24f7[_0x337ec1(0x269)]=[],_0x3f24f7[_0x337ec1(0x224)]=_0x337ec1(0x316);if(_0x3f24f7['lastPlayedDate']!==_0x2b6338)_0x3f24f7['dailyStreak']=0x0;savePersistentData();}updateStatsUI(),checkDailyStatus(),displayYesterdayAnswer();if(_0x1833aa!=='voicedle'){const _0x4da68c=document[_0x337ec1(0x2c0)]('tr');_0x4da68c['className']=_0x337ec1(0x1e0);const _0x1abd28=document[_0x337ec1(0x2c0)]('th');_0x1abd28[_0x337ec1(0x1ec)]='name-col\x20p-1\x20bg-gray-100\x20text-gray-600\x20rounded-t-lg\x20text-[9px]',_0x1abd28[_0x337ec1(0x1ba)]='Name',_0x4da68c['appendChild'](_0x1abd28),_0x38844a[_0x337ec1(0x2db)][_0x337ec1(0x2e7)]((_0x5cab34,_0x238077)=>{const _0xc6c15f=_0x337ec1,_0x6083c0=document[_0xc6c15f(0x2c0)]('th');_0x6083c0['className']=_0xc6c15f(0x1e6)+(_0x238077===0x0?'rounded-tl-lg':'')+'\x20'+(_0x238077===_0x38844a[_0xc6c15f(0x2db)][_0xc6c15f(0x1be)]-0x1?_0xc6c15f(0x1ce):'');if(_0x1833aa===_0xc6c15f(0x27c)){if(_0x238077<0x4)_0x6083c0['className']+=_0xc6c15f(0x234);else{if(_0x238077<0x8)_0x6083c0[_0xc6c15f(0x1ec)]+=_0xc6c15f(0x1ac);else _0x6083c0[_0xc6c15f(0x1ec)]+='\x20head-track';}}else _0x6083c0[_0xc6c15f(0x1ec)]+=_0xc6c15f(0x30f);_0x6083c0[_0xc6c15f(0x1ba)]=_0x5cab34,_0x4da68c[_0xc6c15f(0x311)](_0x6083c0);}),document[_0x337ec1(0x1ff)](_0x337ec1(0x2e4))['innerHTML']='',document[_0x337ec1(0x1ff)](_0x337ec1(0x2e4))[_0x337ec1(0x311)](_0x4da68c);}else document[_0x337ec1(0x1ff)](_0x337ec1(0x2e4))['innerHTML']='';document[_0x337ec1(0x1ff)](_0x337ec1(0x2f8))['placeholder']=_0x38844a[_0x337ec1(0x32f)],hideVoicedlePanel(),typeof updateDailySolverBadge===_0x337ec1(0x264)?updateDailySolverBadge():setTimeout(()=>{if(typeof updateDailySolverBadge==='function')updateDailySolverBadge();},0x1f4);}function setPeekingChibiInGame(_0x392d08){const _0x371fa6=a0_0x5b540a,_0x25f910=document[_0x371fa6(0x1ff)](_0x371fa6(0x1b2));if(_0x25f910)_0x25f910[_0x371fa6(0x1b4)][_0x371fa6(0x2b8)]('peek-in-game',_0x392d08);}function renderGameLayout(){const _0xdf0635=a0_0x5b540a;document['getElementById']('menu-screen')[_0xdf0635(0x1b4)][_0xdf0635(0x334)]('hidden');const _0x3fd005=document[_0xdf0635(0x1ff)]('game-screen');_0x3fd005&&(_0x3fd005[_0xdf0635(0x1b4)][_0xdf0635(0x1e4)]('hidden'),_0x3fd005['classList'][_0xdf0635(0x334)](_0xdf0635(0x2a5)));setPeekingChibiInGame(!![]);let _0xfc8bb=currentGameType+_0xdf0635(0x28c)+sessionState[_0xdf0635(0x29b)];sessionState[_0xdf0635(0x29b)]===_0xdf0635(0x2a8)&&sessionState['archiveDate']&&(_0xfc8bb=currentGameType+_0xdf0635(0x254)+sessionState[_0xdf0635(0x274)]+_0xdf0635(0x25a));document[_0xdf0635(0x1ff)](_0xdf0635(0x29c))[_0xdf0635(0x210)]=_0xfc8bb,document['getElementById'](_0xdf0635(0x2b6))[_0xdf0635(0x210)]='',document[_0xdf0635(0x1ff)]('uma-input')[_0xdf0635(0x2e8)]='',document['getElementById']('input-container')[_0xdf0635(0x1b4)][_0xdf0635(0x1e4)](_0xdf0635(0x2d8));if(currentGameType===_0xdf0635(0x30c))renderVoicedleLayout();else{hideVoicedlePanel();const _0x4a9d9b=document['querySelectorAll']('.name-col');_0x4a9d9b[_0xdf0635(0x2e7)](_0x2f82b1=>{const _0x34caa9=_0xdf0635;if(sessionState['mode']===_0x34caa9(0x1ed))_0x2f82b1['classList'][_0x34caa9(0x334)](_0x34caa9(0x2d8));else _0x2f82b1[_0x34caa9(0x1b4)][_0x34caa9(0x1e4)](_0x34caa9(0x2d8));});}updateGuessCountUI(),updateScoreUI(),renderSuggestions('');}function updateGuessCountUI(){const _0x398335=a0_0x5b540a,_0x452ed2=document[_0x398335(0x1ff)](_0x398335(0x22e));if(!_0x452ed2)return;let _0x171574;currentGameType===_0x398335(0x30c)?_0x171574=sessionState[_0x398335(0x29b)]===_0x398335(0x25c)?null:getVoicedleMaxGuesses():_0x171574=sessionState[_0x398335(0x29b)]===_0x398335(0x220)?typeof pvpState!=='undefined'?pvpState[_0x398335(0x1e3)]:0x5:sessionState[_0x398335(0x29b)]===_0x398335(0x257)?0x5:sessionState['mode']==='hard'?0x2:sessionState['mode']==='archive'?0x5:sessionState[_0x398335(0x29b)]===_0x398335(0x25c)?null:0x5;if(_0x171574===null){_0x452ed2['innerHTML']=_0x398335(0x1eb);return;}const _0x1f0078=sessionState[_0x398335(0x21a)][_0x398335(0x1be)],_0x256faf=Math[_0x398335(0x24b)](0x0,_0x171574-_0x1f0078);let _0x3086d6='';for(let _0x47189f=0x0;_0x47189f<_0x171574;_0x47189f++){const _0x23f6ef=_0x47189f<_0x1f0078,_0x288766=!_0x23f6ef&&_0x47189f===_0x1f0078;if(_0x23f6ef)_0x3086d6+=_0x398335(0x259);else{const _0xd3e47f=_0x288766?'animation:dot-pulse\x201.4s\x20ease-in-out\x20infinite;':'';_0x3086d6+='<span\x20style=\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20display:inline-block;\x20width:9px;\x20height:9px;\x20border-radius:50%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20background:#16a34a;\x20box-shadow:0\x200\x200\x201.5px\x20#bbf7d0;\x0a\x20\x20\x20\x20\x20\x20\x20\x20transition:all\x20.3s;\x20'+_0xd3e47f+'\x0a\x20\x20\x20\x20\x20\x20\x22></span>';}}if(!document[_0x398335(0x1ff)](_0x398335(0x201))){const _0x2aa203=document[_0x398335(0x2c0)](_0x398335(0x239));_0x2aa203['id']=_0x398335(0x201),_0x2aa203[_0x398335(0x1df)]=_0x398335(0x2ef),document[_0x398335(0x21c)]['appendChild'](_0x2aa203);}_0x452ed2[_0x398335(0x210)]=_0x3086d6;}function showMenu(){const _0x7b9b0d=a0_0x5b540a;localStorage[_0x7b9b0d(0x236)](_0x7b9b0d(0x2ea),_0x7b9b0d(0x315));if(typeof persistActiveSession==='function')persistActiveSession();stopVoicedleAudio(),hideVoicedlePanel(),setPeekingChibiInGame(![]),document[_0x7b9b0d(0x1ff)]('menu-screen')[_0x7b9b0d(0x1b4)][_0x7b9b0d(0x1e4)](_0x7b9b0d(0x2d8)),document[_0x7b9b0d(0x1ff)]('game-screen')[_0x7b9b0d(0x1b4)][_0x7b9b0d(0x334)](_0x7b9b0d(0x2d8)),document[_0x7b9b0d(0x1ff)]('input-container')[_0x7b9b0d(0x1b4)][_0x7b9b0d(0x334)](_0x7b9b0d(0x2d8)),checkDailyStatus();}function checkDailyStatus(){const _0x4b1015=a0_0x5b540a,_0x228d74=getDailyString(),_0x14df94=document['getElementById'](_0x4b1015(0x2b2)),_0x21ad21=allPersistentData[currentGameType];if(_0x21ad21[_0x4b1015(0x308)]===_0x228d74&&_0x21ad21[_0x4b1015(0x224)]!=='playing'){const _0x3058af=currentGameType===_0x4b1015(0x30c)?'Voicedle':currentGameType[_0x4b1015(0x330)]();_0x14df94[_0x4b1015(0x1ba)]='Daily\x20'+_0x3058af+'\x20completed\x20for\x20today!',_0x14df94['classList'][_0x4b1015(0x334)]('text-green-600');}else _0x14df94[_0x4b1015(0x1ba)]='',_0x14df94[_0x4b1015(0x1b4)][_0x4b1015(0x1e4)](_0x4b1015(0x22a));updateDailySolverBadge();}function updateScoreUI(){const _0x33aeb3=a0_0x5b540a,_0x215cec=document[_0x33aeb3(0x1ff)](_0x33aeb3(0x277)),_0x326824=allPersistentData[currentGameType],_0x6e129b=sessionState[_0x33aeb3(0x29b)],_0x4e7d53=_0x6e129b===_0x33aeb3(0x257)?'dailyStreak':_0x6e129b+'Streak',_0x520595=_0x326824[_0x4e7d53]||0x0,_0xc9ebb0=_0x6e129b===_0x33aeb3(0x257)?_0x33aeb3(0x1f4):_0x6e129b===_0x33aeb3(0x25c)?_0x33aeb3(0x2ae):_0x6e129b==='hard'?_0x33aeb3(0x206):_0x6e129b===_0x33aeb3(0x2e0)?_0x33aeb3(0x21b):_0x6e129b[_0x33aeb3(0x32c)](0x0)['toUpperCase']()+_0x6e129b['slice'](0x1),_0x41062=_0x520595>=0x3?_0x33aeb3(0x1d2):_0x520595>=0x1?_0x33aeb3(0x2fc):_0x33aeb3(0x317),_0x59713c=_0x520595>=0x3?'#fff7ed':_0x520595>=0x1?_0x33aeb3(0x245):_0x33aeb3(0x326),_0x2d31f9=_0x520595>=0x3?_0x33aeb3(0x26c):_0x520595>=0x1?_0x33aeb3(0x2e6):_0x33aeb3(0x1ab);_0x215cec[_0x33aeb3(0x210)]=_0x33aeb3(0x1d3)+_0x59713c+_0x33aeb3(0x2b3)+_0x2d31f9+_0x33aeb3(0x25f)+_0x41062+_0x33aeb3(0x2d5)+_0xc9ebb0+_0x33aeb3(0x1a5)+_0x41062+_0x33aeb3(0x2bc)+_0x520595+_0x33aeb3(0x1dd);}function updateStatsUI(){const _0xc52c8f=a0_0x5b540a,_0x32169f=allPersistentData[currentGameType],_0xa87871=_0x32169f[_0xc52c8f(0x1ef)]||0x0,_0x398fe9=_0xa87871>=0x3?'🔥':_0xa87871>=0x1?'⚡':'💫',_0x38a143=_0xa87871>=0x3?_0xc52c8f(0x226):_0xa87871>=0x1?_0xc52c8f(0x2fc):'#9ca3af';document['getElementById'](_0xc52c8f(0x2fa))['innerHTML']=_0xc52c8f(0x27a)+_0x398fe9+_0xc52c8f(0x284)+_0x38a143+_0xc52c8f(0x2bc)+_0xa87871+'</span>';const _0x3e5044=getVerifiedRankedStats(currentGameType),_0x829068=document[_0xc52c8f(0x1ff)](_0xc52c8f(0x23c)),_0x2895e7=document[_0xc52c8f(0x1ff)](_0xc52c8f(0x310)),_0x3cb0a1=document[_0xc52c8f(0x1ff)]('menu-placements'),_0x13d4e8=document[_0xc52c8f(0x1ff)](_0xc52c8f(0x2d0));_0x3e5044['placements']<0x5?(_0x829068[_0xc52c8f(0x1ba)]='UNRANKED',_0x2895e7['innerText']='Complete\x20placement\x20matches',_0x3cb0a1[_0xc52c8f(0x1ba)]=_0xc52c8f(0x2d2)+_0x3e5044[_0xc52c8f(0x24d)]+'/5',_0x13d4e8[_0xc52c8f(0x1b4)]['add'](_0xc52c8f(0x2d8))):(_0x829068['innerText']=getTier(_0x3e5044[_0xc52c8f(0x2d9)])+_0xc52c8f(0x298),_0x2895e7[_0xc52c8f(0x1ba)]=_0x3e5044[_0xc52c8f(0x2d9)]+_0xc52c8f(0x217),_0x3cb0a1['innerText']=_0xc52c8f(0x1b3),_0x3e5044['winStreak']>=0x2?(_0x13d4e8[_0xc52c8f(0x1ba)]=_0xc52c8f(0x27f)+_0x3e5044[_0xc52c8f(0x2e5)]+_0xc52c8f(0x1e5),_0x13d4e8[_0xc52c8f(0x1b4)][_0xc52c8f(0x1e4)](_0xc52c8f(0x2d8))):_0x13d4e8[_0xc52c8f(0x1b4)][_0xc52c8f(0x334)](_0xc52c8f(0x2d8)));}function displayYesterdayAnswer(){const _0x3f91c6=a0_0x5b540a,_0x51d6ad=GAME_CONFIG[currentGameType],_0x2e21f9=_0x51d6ad[_0x3f91c6(0x324)](),_0x2600a0=getTargetForDate(getDailyString(-0x1),_0x2e21f9,currentGameType);document['getElementById'](_0x3f91c6(0x327))[_0x3f91c6(0x1ba)]=_0x3f91c6(0x288)+_0x2600a0[_0x3f91c6(0x2a7)];}const input=document['getElementById'](a0_0x5b540a(0x2f8));function renderSuggestions(_0x3fb3cd=''){const _0x6ce953=a0_0x5b540a,_0x3eb792=_0x3fb3cd[_0x6ce953(0x337)]()['trim'](),_0x470477=document['getElementById']('picker-grid');if(!_0x470477)return;_0x470477['innerHTML']='';const _0x337d2a=GAME_CONFIG[currentGameType],_0x1515ee=_0x337d2a[_0x6ce953(0x324)](),_0x2fd60d=sessionState[_0x6ce953(0x21a)]['map'](_0x3537f9=>_0x3537f9[_0x6ce953(0x2a7)]),_0x4c9fae=Object[_0x6ce953(0x1b7)](sessionState[_0x6ce953(0x2ba)]),_0x4608fe=currentGameType===_0x6ce953(0x27c)||currentGameType===_0x6ce953(0x30c)?0x3e7:0x2;let _0xe0679e=_0x1515ee['filter'](_0x48c96b=>!_0x2fd60d[_0x6ce953(0x250)](_0x48c96b[_0x6ce953(0x2a7)])&&(_0x3eb792===''||_0x48c96b[_0x6ce953(0x2a7)]['toLowerCase']()['includes'](_0x3eb792)));_0xe0679e[_0x6ce953(0x29f)]((_0x2ac923,_0x57c1e8)=>_0x2ac923[_0x6ce953(0x2a7)][_0x6ce953(0x1aa)](_0x57c1e8['name']));if(_0xe0679e[_0x6ce953(0x1be)]===0x0&&_0x3eb792!==''){_0x470477[_0x6ce953(0x210)]=_0x6ce953(0x256)+_0x3fb3cd+_0x6ce953(0x2d7);return;}const _0xa1b1a5=document[_0x6ce953(0x2fe)]();_0xe0679e[_0x6ce953(0x2e7)](_0x120740=>{const _0x5ba9e4=_0x6ce953;let _0x1cbe26=0x0;for(const [_0x146957,_0x7fe565]of _0x4c9fae){if(_0x120740[_0x146957]===_0x7fe565)_0x1cbe26++;}const _0x1eb115=(currentGameType===_0x5ba9e4(0x27c)||currentGameType===_0x5ba9e4(0x30c))&&_0x1cbe26>=_0x4608fe,_0x255ec8=document[_0x5ba9e4(0x2c0)](_0x5ba9e4(0x2f7));_0x255ec8[_0x5ba9e4(0x1ec)]=_0x5ba9e4(0x31e)+(_0x1eb115?_0x5ba9e4(0x2a3):''),_0x255ec8[_0x5ba9e4(0x323)][_0x5ba9e4(0x2a7)]=_0x120740[_0x5ba9e4(0x2a7)],_0x255ec8[_0x5ba9e4(0x210)]=_0x5ba9e4(0x237)+_0x120740[_0x5ba9e4(0x29a)]+_0x5ba9e4(0x321)+_0x120740['name']+_0x5ba9e4(0x2b9)+_0x120740[_0x5ba9e4(0x2a7)]+_0x5ba9e4(0x2b5)+(_0x1eb115?'<span\x20class=\x22picker-card-badge\x22>⭐</span>':'')+_0x5ba9e4(0x1b5),_0x255ec8[_0x5ba9e4(0x271)]=()=>{const _0x2cde7b=_0x5ba9e4;submitGuess(_0x120740);const _0x1bdeef=document[_0x2cde7b(0x1ff)](_0x2cde7b(0x2f8));if(_0x1bdeef)_0x1bdeef[_0x2cde7b(0x2e8)]='';renderSuggestions('');},_0xa1b1a5[_0x5ba9e4(0x311)](_0x255ec8);}),_0x470477[_0x6ce953(0x311)](_0xa1b1a5);}input[a0_0x5b540a(0x297)](a0_0x5b540a(0x1bd),_0x2cc843=>renderSuggestions(_0x2cc843[a0_0x5b540a(0x30d)][a0_0x5b540a(0x2e8)]));function addGuessRow(_0x530a40,_0x3e0636=![],_0x6b1fe0=!![]){const _0x28c12b=a0_0x5b540a,_0x5f2322=document[_0x28c12b(0x1ff)]('guess-grid'),_0x244324=document['createElement']('tr'),_0x5be67f=GAME_CONFIG[currentGameType];if(_0x3e0636)_0x244324[_0x28c12b(0x1b4)][_0x28c12b(0x334)](_0x28c12b(0x1c1));const _0xceb016=document[_0x28c12b(0x2c0)]('td');_0xceb016[_0x28c12b(0x1ec)]='name-col\x20p-2\x20bg-white/80\x20font-bold\x20border-b\x20border-gray-200';if(sessionState['mode']===_0x28c12b(0x1ed))_0xceb016[_0x28c12b(0x1b4)][_0x28c12b(0x334)](_0x28c12b(0x2d8));if(!_0x3e0636){const _0x1ec1e8=currentGameType===_0x28c12b(0x209)?_0x28c12b(0x208):_0x28c12b(0x275);_0xceb016[_0x28c12b(0x210)]=_0x28c12b(0x28d)+_0x530a40[_0x28c12b(0x29a)]+'\x22\x20alt=\x22'+_0x530a40['name']+'\x22\x20title=\x22'+_0x530a40[_0x28c12b(0x2a7)]+_0x28c12b(0x2d1)+_0x1ec1e8+_0x28c12b(0x1b0);}else _0xceb016[_0x28c12b(0x1df)]=_0x28c12b(0x222);_0x244324[_0x28c12b(0x311)](_0xceb016);const _0x373f33=!_0x3e0636&&_0x530a40[_0x28c12b(0x2a7)]===sessionState[_0x28c12b(0x30d)]['name'],_0x4fd93e=0x1f4,_0x3c2547=0x12c,_0x31946c=_0x5be67f[_0x28c12b(0x2da)][_0x28c12b(0x2ff)](_0x13fd98=>{const _0xb9f8c=_0x28c12b,_0x5d819b=_0x530a40[_0x13fd98],_0x397435=sessionState['target'][_0x13fd98];let _0x1bb626=_0xb9f8c(0x33e),_0x162bc1='';if(currentGameType===_0xb9f8c(0x27c)){const _0x4e107e=RANK_MAP[_0x397435]??-0x2,_0x1e9025=RANK_MAP[_0x5d819b]??-0x2;if(_0x5d819b===_0x397435)_0x1bb626=_0xb9f8c(0x338);else{if(Math[_0xb9f8c(0x281)](_0x4e107e-_0x1e9025)<=0x1)_0x1bb626=_0xb9f8c(0x27e);}if(_0x1e9025<_0x4e107e)_0x162bc1='\x20↑';else{if(_0x1e9025>_0x4e107e)_0x162bc1='\x20↓';}}else{if(_0x5d819b===_0x397435)_0x1bb626=_0xb9f8c(0x338);else _0x13fd98===_0xb9f8c(0x1be)&&Math['abs'](parseInt(_0x5d819b)-parseInt(_0x397435))<=0x190&&(_0x1bb626=_0xb9f8c(0x27e));}return{'val':_0x5d819b,'arrow':_0x162bc1,'status':_0x1bb626};});_0x31946c[_0x28c12b(0x2e7)](({val:_0xe1e41d,arrow:_0x55fe81,status:_0x785cb7},_0x107dda)=>{const _0x3594ab=_0x28c12b,_0x2f3d55=document[_0x3594ab(0x2c0)]('td');_0x2f3d55[_0x3594ab(0x1ec)]='p-2\x20wordle-cell\x20font-black\x20tracking-wide'+(_0x373f33?_0x3594ab(0x2ed):''),_0x2f3d55[_0x3594ab(0x210)]=_0x55fe81?_0xe1e41d+'<span\x20class=\x22guess-arrow\x22>'+_0x55fe81[_0x3594ab(0x20f)]()+_0x3594ab(0x25a):_0xe1e41d;if(_0x6b1fe0&&!_0x3e0636){const _0x3148e9=_0x107dda*_0x3c2547;_0x2f3d55[_0x3594ab(0x239)]['animationDelay']=_0x3148e9+'ms',_0x2f3d55[_0x3594ab(0x1b4)]['add'](_0x3594ab(0x203)),setTimeout(()=>_0x2f3d55[_0x3594ab(0x1b4)]['add'](_0x785cb7),_0x3148e9+_0x4fd93e/0x2);}else _0x2f3d55[_0x3594ab(0x1b4)]['add'](_0x785cb7);_0x244324[_0x3594ab(0x311)](_0x2f3d55);}),_0x5f2322[_0x28c12b(0x311)](_0x244324);if(_0x373f33){const _0x465ab7=_0x6b1fe0&&!_0x3e0636?(_0x31946c[_0x28c12b(0x1be)]-0x1)*_0x3c2547+_0x4fd93e:0x0;setTimeout(()=>{const _0x2c9596=_0x28c12b;_0x244324['classList'][_0x2c9596(0x334)](_0x2c9596(0x2c2)),_0xceb016[_0x2c9596(0x1b4)][_0x2c9596(0x334)](_0x2c9596(0x338));},_0x465ab7);}return _0x6b1fe0&&!_0x3e0636?(_0x31946c[_0x28c12b(0x1be)]-0x1)*_0x3c2547+_0x4fd93e:0x0;}function launchConfetti(){const _0x403ac0=a0_0x5b540a,_0x579814=document['createElement'](_0x403ac0(0x325));_0x579814[_0x403ac0(0x239)]['cssText']=_0x403ac0(0x261),document[_0x403ac0(0x204)][_0x403ac0(0x311)](_0x579814);const _0x550b0d=_0x579814[_0x403ac0(0x1d5)]('2d');_0x579814[_0x403ac0(0x307)]=window[_0x403ac0(0x219)],_0x579814['height']=window[_0x403ac0(0x23b)];const _0x3aa105=[_0x403ac0(0x28b),_0x403ac0(0x28e),_0x403ac0(0x216),_0x403ac0(0x255),_0x403ac0(0x331),'#8b5cf6',_0x403ac0(0x251)],_0x27d6fe=Array[_0x403ac0(0x286)]({'length':0x8c},()=>({'x':Math[_0x403ac0(0x273)]()*_0x579814[_0x403ac0(0x307)],'y':-0xa-Math[_0x403ac0(0x273)]()*0xc8,'w':0x8+Math[_0x403ac0(0x273)]()*0x8,'h':0x5+Math[_0x403ac0(0x273)]()*0x5,'color':_0x3aa105[Math['floor'](Math[_0x403ac0(0x273)]()*_0x3aa105[_0x403ac0(0x1be)])],'rotation':Math[_0x403ac0(0x273)]()*Math['PI']*0x2,'rotSpeed':(Math['random']()-0.5)*0.15,'vx':(Math[_0x403ac0(0x273)]()-0.5)*0x3,'vy':2.5+Math[_0x403ac0(0x273)]()*3.5,'opacity':0x1}));let _0x5aa09f;const _0x496b09=performance['now']();function _0x5f2b49(_0x456b9b){const _0x116274=_0x403ac0,_0x303a53=_0x456b9b-_0x496b09;_0x550b0d[_0x116274(0x2f2)](0x0,0x0,_0x579814['width'],_0x579814[_0x116274(0x283)]);let _0x40d7cc=![];_0x27d6fe[_0x116274(0x2e7)](_0x517326=>{const _0x38d8e4=_0x116274;_0x517326['x']+=_0x517326['vx'],_0x517326['y']+=_0x517326['vy'],_0x517326['vy']+=0.06,_0x517326[_0x38d8e4(0x22d)]+=_0x517326[_0x38d8e4(0x242)];if(_0x303a53>0x708)_0x517326['opacity']=Math[_0x38d8e4(0x24b)](0x0,_0x517326[_0x38d8e4(0x20c)]-0.012);if(_0x517326['y']<_0x579814[_0x38d8e4(0x283)]+0x14&&_0x517326[_0x38d8e4(0x20c)]>0x0)_0x40d7cc=!![];_0x550b0d['save'](),_0x550b0d['globalAlpha']=_0x517326[_0x38d8e4(0x20c)],_0x550b0d[_0x38d8e4(0x2ee)](_0x517326['x'],_0x517326['y']),_0x550b0d[_0x38d8e4(0x1a1)](_0x517326[_0x38d8e4(0x22d)]),_0x550b0d[_0x38d8e4(0x309)]=_0x517326['color'],_0x550b0d[_0x38d8e4(0x2f1)](-_0x517326['w']/0x2,-_0x517326['h']/0x2,_0x517326['w'],_0x517326['h']),_0x550b0d[_0x38d8e4(0x231)]();});if(_0x40d7cc&&_0x303a53<0xfa0)_0x5aa09f=requestAnimationFrame(_0x5f2b49);else cancelAnimationFrame(_0x5aa09f),_0x579814[_0x116274(0x1e4)]();}_0x5aa09f=requestAnimationFrame(_0x5f2b49);}function showModal(_0x406699,_0x14bf5e,_0x2d2a6d=!![]){const _0x192868=a0_0x5b540a,_0x4d1fc9=document[_0x192868(0x1ff)](_0x192868(0x2bd)),_0x589a6b=GAME_CONFIG[currentGameType];document[_0x192868(0x1ff)](_0x192868(0x289))[_0x192868(0x1ba)]=_0x406699,document['getElementById'](_0x192868(0x2c9))['innerText']=_0x14bf5e;const _0x214385=document['getElementById']('target-name'),_0x256cbf=document[_0x192868(0x1ff)](_0x192868(0x21e)),_0xe1627d=document[_0x192868(0x1ff)](_0x192868(0x1e9));if(_0x214385){_0x214385[_0x192868(0x210)]=_0x192868(0x2cd)+sessionState['target'][_0x192868(0x2a7)]+_0x192868(0x25a);const _0x5c3882=document[_0x192868(0x1ff)](_0x192868(0x2fd));_0x5c3882&&(_0x5c3882['innerHTML']=sessionState['target']['image']?_0x192868(0x28d)+sessionState[_0x192868(0x30d)][_0x192868(0x29a)]+_0x192868(0x321)+sessionState['target'][_0x192868(0x2a7)]+_0x192868(0x246):'');}if(_0x256cbf)_0x256cbf['innerText']=_0x589a6b[_0x192868(0x1fb)];if(_0xe1627d)_0xe1627d['innerText']=_0x589a6b['shareTitle'];if(currentGameType===_0x192868(0x30c)){const _0x55a53=sessionState[_0x192868(0x21a)][_0x192868(0x2e2)](_0x3b321f=>!_0x3b321f['skipped']&&_0x3b321f[_0x192868(0x2a7)]===sessionState[_0x192868(0x30d)][_0x192868(0x2a7)]);if(typeof renderVoicedleResultContent===_0x192868(0x264))renderVoicedleResultContent(_0x55a53);}else{if(typeof resetVoicedleResultPanel===_0x192868(0x264))resetVoicedleResultPanel();}const _0x5176ff=document[_0x192868(0x1ff)](_0x192868(0x30a));_0x5176ff&&(currentGameType===_0x192868(0x30c)?(_0x5176ff[_0x192868(0x210)]='',_0x5176ff[_0x192868(0x1b4)][_0x192868(0x334)]('hidden')):(_0x5176ff[_0x192868(0x1b4)]['remove'](_0x192868(0x2d8)),_0x5176ff[_0x192868(0x210)]='',_0x589a6b[_0x192868(0x200)][_0x192868(0x2e7)](_0x45fee3=>{const _0x468858=_0x192868,_0x47f9c5=document[_0x468858(0x2c0)](_0x468858(0x2f7));_0x47f9c5['className']=_0x468858(0x24e);const _0x4fb8af=document[_0x468858(0x2c0)]('h4');_0x4fb8af[_0x468858(0x1ec)]=_0x468858(0x1a4)+_0x45fee3[_0x468858(0x31d)]+_0x468858(0x20a),_0x4fb8af[_0x468858(0x1ba)]=_0x45fee3['title'],_0x47f9c5[_0x468858(0x311)](_0x4fb8af);const _0x1d62c0=document[_0x468858(0x2c0)](_0x468858(0x2f7));_0x1d62c0[_0x468858(0x1ec)]=_0x468858(0x2ad),_0x45fee3[_0x468858(0x2da)][_0x468858(0x2e7)](_0x2cf486=>{const _0x20e853=_0x468858,_0x485eff=document[_0x20e853(0x2c0)]('div');_0x485eff['className']='result-stat-pill';const _0x485043=document[_0x20e853(0x2c0)](_0x20e853(0x1fd));_0x485043[_0x20e853(0x1ec)]=_0x20e853(0x2c8),_0x485043[_0x20e853(0x1ba)]=_0x2cf486;const _0x1b1af7=document[_0x20e853(0x2c0)]('span');_0x1b1af7[_0x20e853(0x1ec)]=_0x20e853(0x218),_0x1b1af7[_0x20e853(0x1ba)]=sessionState[_0x20e853(0x30d)][_0x2cf486],_0x485eff[_0x20e853(0x311)](_0x485043),_0x485eff[_0x20e853(0x311)](_0x1b1af7),_0x1d62c0[_0x20e853(0x311)](_0x485eff);}),_0x47f9c5[_0x468858(0x311)](_0x1d62c0),_0x5176ff[_0x468858(0x311)](_0x47f9c5);})));const _0x529622=document[_0x192868(0x1ff)](_0x192868(0x272)),_0x313b98=localStorage[_0x192868(0x211)](_0x192868(0x2ea))===_0x192868(0x314);if(_0x313b98&&_0x529622){const _0x2a7041=localStorage[_0x192868(0x211)](currentGameType+_0x192868(0x31a));let _0x4fd1a3={'points':0x0,'placements':0x0};if(_0x2a7041)try{_0x4fd1a3=JSON[_0x192868(0x31c)](_0x2a7041)[_0x192868(0x324)]||_0x4fd1a3;}catch(_0x35de78){}_0x529622[_0x192868(0x1b4)][_0x192868(0x1e4)](_0x192868(0x2d8)),_0x4fd1a3[_0x192868(0x24d)]<0x5?_0x529622[_0x192868(0x210)]='\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22bg-blue-50\x20border\x20border-blue-200\x20rounded-lg\x20p-3\x20text-center\x20mb-4\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22text-[10px]\x20font-bold\x20text-blue-600\x20uppercase\x20tracking-widest\x22>Current\x20Rank</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22text-2xl\x20font-black\x20text-blue-800\x20uppercase\x22>UNRANKED</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22text-xs\x20font-bold\x20text-blue-700\x20mt-1\x22>Placement:\x20'+_0x4fd1a3[_0x192868(0x24d)]+_0x192868(0x319):_0x529622['innerHTML']=_0x192868(0x1dc)+getTier(_0x4fd1a3[_0x192868(0x2d9)])+_0x192868(0x205)+_0x4fd1a3[_0x192868(0x2d9)]+_0x192868(0x280);}else _0x529622&&_0x529622[_0x192868(0x1b4)][_0x192868(0x334)]('hidden');const _0x56e776=document[_0x192868(0x1ff)](_0x192868(0x25d));if(_0x56e776)_0x56e776[_0x192868(0x1ba)]=sessionState[_0x192868(0x29b)]+_0x192868(0x1e8)+getDailyString()+_0x192868(0x1b6)+sessionState[_0x192868(0x21a)][_0x192868(0x1be)];const _0xb86cb0=document[_0x192868(0x1ff)]('loss-streak-banner'),_0x376d80=!sessionState[_0x192868(0x21a)][_0x192868(0x2e2)](_0x2c2b9c=>!_0x2c2b9c[_0x192868(0x30e)]&&_0x2c2b9c[_0x192868(0x2a7)]===sessionState['target'][_0x192868(0x2a7)]);if(_0xb86cb0){if(_0x376d80&&sessionState[_0x192868(0x313)]&&(sessionState[_0x192868(0x29b)]===_0x192868(0x2e0)||sessionState[_0x192868(0x29b)]===_0x192868(0x1ed))){const _0x63100d=sessionState[_0x192868(0x29b)]==='hard'?'Hard':_0x192868(0x2eb);_0xb86cb0[_0x192868(0x210)]='\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22flex\x20flex-col\x20items-center\x20gap-1\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22streak-banner-label\x22>Final\x20Streak\x20Score</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22streak-banner-score\x22>'+sessionState[_0x192868(0x22f)]+_0x192868(0x1c0)+_0x63100d+_0x192868(0x26a),_0xb86cb0['classList']['remove'](_0x192868(0x2d8));}else _0xb86cb0[_0x192868(0x1b4)][_0x192868(0x334)]('hidden');}const _0x54ceee=document[_0x192868(0x1ff)](_0x192868(0x29d));if(_0x54ceee)_0x54ceee['textContent']=_0x192868(0x270);const _0x3cfddc=document[_0x192868(0x1ff)]('share-card-wrap');if(_0x3cfddc)_0x3cfddc[_0x192868(0x1b4)][_0x192868(0x2b8)](_0x192868(0x2d8),currentGameType===_0x192868(0x30c));currentGameType!==_0x192868(0x30c)&&renderShareEmojis(),_0x4d1fc9[_0x192868(0x1b4)]['remove'](_0x192868(0x2d8));}function closeModal(){const _0x1371e8=a0_0x5b540a,_0x4232f4=document[_0x1371e8(0x1ff)](_0x1371e8(0x2bd));_0x4232f4[_0x1371e8(0x1b4)][_0x1371e8(0x334)](_0x1371e8(0x2d8)),stopVoicedleAudio();if(typeof resetVoicedleResultPanel===_0x1371e8(0x264))resetVoicedleResultPanel();if(sessionState[_0x1371e8(0x313)]){const _0x1f135f=allPersistentData[currentGameType],_0x2bd586=sessionState[_0x1371e8(0x29b)]+'Streak';_0x1f135f[_0x2bd586]=0x0,sessionState['pendingStreakReset']=![],savePersistentData(),updateStatsUI(),updateScoreUI();}const _0x33880d=sessionState[_0x1371e8(0x21a)][_0x1371e8(0x2e2)](_0x1e67f9=>!_0x1e67f9[_0x1371e8(0x30e)]&&_0x1e67f9[_0x1371e8(0x2a7)]===sessionState['target'][_0x1371e8(0x2a7)]);if(sessionState[_0x1371e8(0x285)]&&(sessionState[_0x1371e8(0x29b)]==='unlimited'||sessionState[_0x1371e8(0x29b)]===_0x1371e8(0x1ed))&&_0x33880d){startGame(sessionState[_0x1371e8(0x29b)]);return;}if(sessionState[_0x1371e8(0x285)]&&sessionState['mode']===_0x1371e8(0x2ab)){const _0x159a0b=allPersistentData[currentGameType];_0x159a0b[_0x1371e8(0x282)]=[],_0x159a0b[_0x1371e8(0x296)]=_0x1371e8(0x316),_0x159a0b['rankedTargetName']=null,savePersistentData();if(_0x33880d)startGame(_0x1371e8(0x2ab));}}function renderShareEmojis(){const _0x16664b=a0_0x5b540a,_0x38728f=document['getElementById'](_0x16664b(0x244));_0x38728f[_0x16664b(0x210)]='';if(currentGameType==='voicedle'){renderVoicedleShareEmojis(_0x38728f);return;}const _0x4db405=GAME_CONFIG[currentGameType];sessionState[_0x16664b(0x21a)]['forEach'](_0x43179f=>{const _0x2d33af=_0x16664b;let _0x38eb56='';_0x4db405['keys'][_0x2d33af(0x2e7)](_0x1f5f9b=>{const _0x45491c=_0x2d33af,_0x342eaf=_0x43179f[_0x1f5f9b],_0x97fbfe=sessionState[_0x45491c(0x30d)][_0x1f5f9b];if(_0x342eaf===_0x97fbfe)_0x38eb56+='🟩';else{if(currentGameType===_0x45491c(0x27c))_0x38eb56+=Math[_0x45491c(0x281)](RANK_MAP[_0x342eaf]-RANK_MAP[_0x97fbfe])<=0x1?'🟨':'⬛';else _0x1f5f9b===_0x45491c(0x1be)&&Math['abs'](parseInt(_0x342eaf)-parseInt(_0x97fbfe))<=0x190?_0x38eb56+='🟨':_0x38eb56+='⬛';}});const _0x5078a5=document[_0x2d33af(0x2c0)](_0x2d33af(0x2f7));_0x5078a5[_0x2d33af(0x1ba)]=_0x38eb56,_0x38728f[_0x2d33af(0x311)](_0x5078a5);});}function renderShareEmojisText(){const _0x33ca9a=a0_0x5b540a;if(currentGameType===_0x33ca9a(0x30c))return renderVoicedleShareEmojisText();let _0x5339d2='';const _0x39b91b=GAME_CONFIG[currentGameType];return sessionState['guesses'][_0x33ca9a(0x2e7)](_0x2b24a1=>{const _0x7ec204=_0x33ca9a;_0x39b91b[_0x7ec204(0x2da)][_0x7ec204(0x2e7)](_0x2c6096=>{const _0x5f05e1=_0x7ec204,_0x48e15b=_0x2b24a1[_0x2c6096],_0x159a07=sessionState[_0x5f05e1(0x30d)][_0x2c6096];if(_0x48e15b===_0x159a07)_0x5339d2+='🟩';else{if(currentGameType===_0x5f05e1(0x27c))_0x5339d2+=Math['abs'](RANK_MAP[_0x48e15b]-RANK_MAP[_0x159a07])<=0x1?'🟨':'⬛';else _0x2c6096===_0x5f05e1(0x1be)&&Math['abs'](parseInt(_0x48e15b)-parseInt(_0x159a07))<=0x190?_0x5339d2+='🟨':_0x5339d2+='⬛';}}),_0x5339d2+='\x0a';}),_0x5339d2[_0x33ca9a(0x20f)]();}function shareToTwitter(){const _0x192abf=a0_0x5b540a,_0x4f9c33=GAME_CONFIG[currentGameType],_0x11d928=_0x4f9c33[_0x192abf(0x304)]+'\x0a'+sessionState[_0x192abf(0x29b)]+'\x20|\x20'+getDailyString()+_0x192abf(0x1b6)+sessionState[_0x192abf(0x21a)][_0x192abf(0x1be)]+'\x0a'+renderShareEmojisText()+_0x192abf(0x2b1);window[_0x192abf(0x240)](_0x192abf(0x328)+encodeURIComponent(_0x11d928),_0x192abf(0x33f));}function shareToFacebook(){const _0x3e10cb=a0_0x5b540a,_0x536a91=GAME_CONFIG[currentGameType],_0x167022=_0x536a91['shareTitle']+'\x0a'+sessionState[_0x3e10cb(0x29b)]+_0x3e10cb(0x1e8)+getDailyString()+_0x3e10cb(0x1b6)+sessionState[_0x3e10cb(0x21a)]['length']+'\x0a'+renderShareEmojisText()+'\x0a\x0aPlay\x20UmaWordle!';window[_0x3e10cb(0x240)](_0x3e10cb(0x249)+encodeURIComponent(_0x167022),_0x3e10cb(0x33f));}function copyShareResults(){const _0x511230=a0_0x5b540a,_0xd4cb41=GAME_CONFIG[currentGameType],_0x2ec4b5=_0xd4cb41[_0x511230(0x304)]+'\x0a'+sessionState[_0x511230(0x29b)]+_0x511230(0x1e8)+getDailyString()+_0x511230(0x1b6)+sessionState['guesses']['length']+'\x0a'+renderShareEmojisText()+_0x511230(0x32d);navigator[_0x511230(0x22c)][_0x511230(0x1b9)](_0x2ec4b5)[_0x511230(0x2cc)](()=>{const _0x3454bb=_0x511230,_0x3a3c92=event[_0x3454bb(0x30d)],_0x1a4efd=_0x3a3c92[_0x3454bb(0x1a2)]('aria-label');_0x3a3c92[_0x3454bb(0x27b)](_0x3454bb(0x2df),'Copied!'),_0x3a3c92[_0x3454bb(0x239)][_0x3454bb(0x1f9)]=_0x3454bb(0x21f),setTimeout(()=>{const _0x75665f=_0x3454bb;_0x3a3c92[_0x75665f(0x27b)](_0x75665f(0x2df),_0x1a4efd),_0x3a3c92[_0x75665f(0x239)]['backgroundColor']='';},0x7d0);})[_0x511230(0x238)](_0x174927=>{const _0x1bbe6b=_0x511230;console[_0x1bbe6b(0x1d8)]('Failed\x20to\x20copy:',_0x174927),alert('Failed\x20to\x20copy\x20to\x20clipboard');});}function toggleHelp(_0x58fbe9){const _0x9f66cd=a0_0x5b540a,_0x1cde7f=document[_0x9f66cd(0x1ff)]('help-modal'),_0x5cf8bc=document[_0x9f66cd(0x1ff)](_0x9f66cd(0x320));if(_0x58fbe9){if(currentGameType===_0x9f66cd(0x30c))_0x5cf8bc[_0x9f66cd(0x210)]='\x0a\x20\x20\x20\x20\x20\x20\x20\x20<p>Identify\x20the\x20hidden\x20Umamusume\x20from\x20a\x20short\x20voice\x20line\x20clip\x20(max\x202\x20seconds).</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3\x20class=\x22font-bold\x20text-gray-800\x20dark:text-gray-200\x20border-b\x20pb-1\x20mb-2\x22>Audio\x20Unlocks</h3>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<ul\x20class=\x22list-disc\x20list-inside\x20text-sm\x20space-y-1\x20ml-1\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<li><strong>Guess\x201:</strong>\x20Hear\x20the\x20first\x200.5\x20seconds</li>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<li><strong>Guess\x202:</strong>\x20Hear\x20the\x20first\x201.0\x20seconds</li>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<li><strong>Guess\x203:</strong>\x20Hear\x20the\x20first\x201.5\x20seconds</li>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<li><strong>Guess\x204:</strong>\x20Hear\x20the\x20first\x201.8\x20seconds</li>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<li><strong>Guess\x205:</strong>\x20Hear\x20the\x20full\x202.0\x20seconds</li>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</ul>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3\x20class=\x22font-bold\x20text-gray-800\x20dark:text-gray-200\x20border-b\x20pb-1\x20mb-2\x22>Game\x20Modes</h3>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<ul\x20class=\x22list-disc\x20list-inside\x20text-sm\x20space-y-2\x20ml-1\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<li><strong>Daily\x20Voicedle:</strong>\x20One\x20voice\x20puzzle\x20per\x20day!</li>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<li><strong>Easy\x20Mode:</strong>\x20Unlimited\x20guesses\x20with\x20the\x20full\x20clip\x20every\x20time!</li>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<li><strong>Normal\x20Mode:</strong>\x205\x20guesses\x20with\x20progressive\x20audio\x20unlocks.</li>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<li><strong>Skip:</strong>\x20Pass\x20your\x20turn\x20to\x20unlock\x20the\x20next\x20clip\x20length\x20without\x20guessing\x20a\x20name.</li>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<li><strong>Hard\x20Mode:</strong>\x20Only\x202\x20guesses\x20—\x20max\x201.0s\x20of\x20audio!</li>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</ul>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<p\x20class=\x22text-xs\x20text-gray-500\x22>Character\x20choices\x20are\x20the\x20same\x20roster\x20as\x20Umamusume\x20mode.</p>';else currentGameType==='uma'?_0x5cf8bc[_0x9f66cd(0x210)]='\x0a\x20\x20\x20\x20\x20\x20\x20\x20<p>Identify\x20the\x20hidden\x20Umamusume\x20by\x20their\x20base\x20Aptitudes\x20(A\x20to\x20G).</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3\x20class=\x22font-bold\x20text-gray-800\x20dark:text-gray-200\x20border-b\x20pb-1\x20mb-2\x22>Color\x20Indicators</h3>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22space-y-2\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22flex\x20items-center\x22><span\x20class=\x22help-dot\x20bg-[#6aaa64]\x22></span>\x20<strong>Green:</strong>\x20Exact\x20match!</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22flex\x20items-center\x22><span\x20class=\x22help-dot\x20bg-[#c9b458]\x22></span>\x20<strong>Yellow:</strong>\x20Near\x20match\x20(within\x201\x20rank,\x20e.g.,\x20A\x20vs\x20B).</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22flex\x20items-center\x22><span\x20class=\x22help-dot\x20bg-[#787c7e]\x22></span>\x20<strong>Gray:</strong>\x20Far\x20match.</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3\x20class=\x22font-bold\x20text-gray-800\x20dark:text-gray-200\x20border-b\x20pb-1\x20mb-2\x22>Rank\x20Hints\x20(Arrows)</h3>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p>↑:\x20Target\x20rank\x20is\x20higher.\x20↓:\x20Target\x20rank\x20is\x20lower.</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3\x20class=\x22font-bold\x20text-gray-800\x20dark:text-gray-200\x20border-b\x20pb-1\x20mb-2\x22>Game\x20Modes</h3>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<ul\x20class=\x22list-disc\x20list-inside\x20text-sm\x20space-y-2\x20ml-1\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<li><strong>Daily\x20Mode:</strong>\x20A\x20new\x20puzzle\x20every\x20day\x20at\x20midnight\x20JST!</li>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<li><strong>Unlimited\x20Mode:</strong>\x20Play\x20as\x20many\x20puzzles\x20as\x20you\x20want!</li>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<li><strong>Easy\x20Mode:</strong>\x20A\x20more\x20forgiving\x20difficulty\x20level\x20for\x20new\x20players!</li>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<li><strong>Normal\x20Mode:</strong>\x20The\x20classic\x20experience!</li>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<li><strong>Hard\x20Mode:</strong>\x20no\x20names,\x20only\x203\x20clues,\x20and\x20just\x202\x20attempts!\x20Good\x20Luck!</li>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</ul>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>':_0x5cf8bc[_0x9f66cd(0x210)]='\x0a\x20\x20\x20\x20\x20\x20\x20\x20<p>Identify\x20the\x20hidden\x20G1\x20Race\x20by\x20its\x20course\x20features.</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3\x20class=\x22font-bold\x20text-gray-800\x20dark:text-gray-200\x20border-b\x20pb-1\x20mb-2\x22>Color\x20Indicators</h3>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22space-y-2\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22flex\x20items-center\x22><span\x20class=\x22help-dot\x20bg-[#6aaa64]\x22></span>\x20<strong>Green:</strong>\x20Exact\x20match!</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22flex\x20items-center\x22><span\x20class=\x22help-dot\x20bg-[#c9b458]\x22></span>\x20<strong>Yellow:</strong>\x20Close\x20(Length\x20within\x20400m).</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22flex\x20items-center\x22><span\x20class=\x22help-dot\x20bg-[#787c7e]\x22></span>\x20<strong>Gray:</strong>\x20Incorrect.</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3\x20class=\x22font-bold\x20text-gray-800\x20dark:text-gray-200\x20border-b\x20pb-1\x20mb-2\x22>Game\x20Modes</h3>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<ul\x20class=\x22list-disc\x20list-inside\x20text-sm\x20space-y-2\x20ml-1\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<li><strong>Daily\x20Mode:</strong>\x20A\x20new\x20puzzle\x20every\x20day\x20at\x20midnight\x20JST!</li>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<li><strong>Unlimited\x20Mode:</strong>\x20Play\x20as\x20many\x20puzzles\x20as\x20you\x20want!</li>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<li><strong>Easy\x20Mode:</strong>\x20A\x20more\x20forgiving\x20difficulty\x20level\x20for\x20new\x20players!</li>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<li><strong>Normal\x20Mode:</strong>\x20The\x20classic\x20experience!</li>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<li><strong>Hard\x20Mode:</strong>\x20no\x20names,\x20only\x203\x20clues,\x20and\x20just\x202\x20attempts!\x20Good\x20Luck!</li>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</ul>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>';}_0x1cde7f[_0x9f66cd(0x1b4)][_0x9f66cd(0x2b8)](_0x9f66cd(0x2d8),!_0x58fbe9);}function checkDevMode(){const _0x45af72=a0_0x5b540a,_0x13894e=new URLSearchParams(window['location'][_0x45af72(0x1e1)])[_0x45af72(0x32e)]('silencesuzuka')===_0x45af72(0x314),_0xdab933=document[_0x45af72(0x1ff)](_0x45af72(0x1c4)),_0x331dfd=document[_0x45af72(0x2f0)](_0x45af72(0x293)),_0x293667=document[_0x45af72(0x2f0)](_0x45af72(0x26d));if(!_0x13894e){if(_0xdab933)_0xdab933[_0x45af72(0x1b4)][_0x45af72(0x334)](_0x45af72(0x2d8));if(_0x331dfd)_0x331dfd[_0x45af72(0x1b4)][_0x45af72(0x334)]('hidden');if(_0x293667)_0x293667[_0x45af72(0x1b4)][_0x45af72(0x334)](_0x45af72(0x2d8));}else{if(_0xdab933)_0xdab933[_0x45af72(0x1b4)][_0x45af72(0x1e4)](_0x45af72(0x2d8));if(_0x331dfd)_0x331dfd[_0x45af72(0x1b4)][_0x45af72(0x1e4)](_0x45af72(0x2d8));if(_0x293667)_0x293667['classList'][_0x45af72(0x1e4)](_0x45af72(0x2d8));}}function openChangelog(){const _0xf8bb21=a0_0x5b540a;document[_0xf8bb21(0x1ff)](_0xf8bb21(0x2de))[_0xf8bb21(0x1b4)][_0xf8bb21(0x1e4)](_0xf8bb21(0x2d8));}function closeChangelog(){const _0x2606dd=a0_0x5b540a;document[_0x2606dd(0x1ff)]('changelog-modal')[_0x2606dd(0x1b4)][_0x2606dd(0x334)](_0x2606dd(0x2d8));if(localStorage[_0x2606dd(0x211)](_0x2606dd(0x2cb))!==CURRENT_VERSION)localStorage[_0x2606dd(0x236)](_0x2606dd(0x2cb),CURRENT_VERSION);}function checkChangelog(){const _0x3547cf=a0_0x5b540a;if(localStorage['getItem'](_0x3547cf(0x2cb))!==CURRENT_VERSION){if(document['body'][_0x3547cf(0x1b4)][_0x3547cf(0x1a0)]('intro-complete'))openChangelog();else pendingUsernameModal?pendingChangelogAfterUsername=!![]:pendingChangelogModal=!![];}}window[a0_0x5b540a(0x297)](a0_0x5b540a(0x1d7),()=>setTimeout(checkChangelog,0x1f4));function openStats(){const _0x9da5f5=a0_0x5b540a;currentStatsTab=currentGameType,renderStatsModal();const _0x48ba1d=document[_0x9da5f5(0x1ff)](_0x9da5f5(0x1f5));if(_0x48ba1d)_0x48ba1d[_0x9da5f5(0x1b4)][_0x9da5f5(0x1e4)](_0x9da5f5(0x2d8));}function closeStats(){const _0x5c5e2a=a0_0x5b540a,_0x283486=document[_0x5c5e2a(0x1ff)]('stats-modal');if(_0x283486)_0x283486[_0x5c5e2a(0x1b4)][_0x5c5e2a(0x334)](_0x5c5e2a(0x2d8));}function renderStatsModal(){switchStatsTab(currentStatsTab);}function switchStatsTab(_0xd1721){const _0x2c4dc8=a0_0x5b540a;if(_0xd1721!==_0x2c4dc8(0x27c)&&_0xd1721!==_0x2c4dc8(0x209)&&_0xd1721!==_0x2c4dc8(0x30c))return;currentStatsTab=_0xd1721;const _0x5a1d44=document[_0x2c4dc8(0x1ff)]('stats-tab-uma')||document['getElementById'](_0x2c4dc8(0x1f3)),_0x350ae6=document[_0x2c4dc8(0x1ff)](_0x2c4dc8(0x2f3))||document[_0x2c4dc8(0x1ff)](_0x2c4dc8(0x290)),_0x29e399=document['getElementById'](_0x2c4dc8(0x2fb)),_0x688a6f=document[_0x2c4dc8(0x1ff)](_0x2c4dc8(0x230)),_0xc43c67=_0x2c4dc8(0x2c3),_0x24c3fa='flex-1\x20py-1.5\x20rounded-lg\x20font-bold\x20text-sm\x20transition-all\x20text-gray-500\x20hover:text-gray-700\x20dark:text-gray-400';if(_0x5a1d44)_0x5a1d44[_0x2c4dc8(0x1ec)]=_0xd1721===_0x2c4dc8(0x27c)?_0xc43c67:_0x24c3fa;if(_0x350ae6)_0x350ae6['className']=_0xd1721===_0x2c4dc8(0x209)?_0xc43c67:_0x24c3fa;if(_0x29e399)_0x29e399[_0x2c4dc8(0x1ec)]=_0xd1721===_0x2c4dc8(0x30c)?_0xc43c67:_0x24c3fa;if(_0x688a6f){const _0x42c98e={'uma':_0x2c4dc8(0x2e3),'course':'G1\x20Race','voicedle':_0x2c4dc8(0x2a2)};_0x688a6f[_0x2c4dc8(0x1df)]=_0x2c4dc8(0x1f7)+_0x42c98e[_0xd1721]+'\x20Stats';}renderStatsContent();}function renderStatsContent(){const _0x1e8be4=a0_0x5b540a,_0x4faa6a=allPersistentData[currentStatsTab],_0x137ee6=document[_0x1e8be4(0x1ff)](_0x1e8be4(0x2f4));if(!_0x137ee6||!_0x4faa6a)return;const _0x2793cb=_0x4faa6a[_0x1e8be4(0x1ef)]||0x0,_0x3ec56f=_0x4faa6a[_0x1e8be4(0x265)]||0x0,_0x9071ad=_0x4faa6a[_0x1e8be4(0x2c4)]||0x0,_0x1f99fc=_0x4faa6a['hardStreak']||0x0,_0x403c9b=(_0x5e751d,_0x49375c)=>_0x1e8be4(0x2a1)+_0x5e751d+'</span>\x0a\x20\x20\x20\x20\x20\x20<span\x20class=\x22stats-pill-label\x20text-gray-400\x20text-[10px]\x22>'+_0x49375c+_0x1e8be4(0x1dd);_0x137ee6[_0x1e8be4(0x210)]=_0x1e8be4(0x2d4)+_0x403c9b(_0x2793cb,_0x1e8be4(0x27d))+_0x1e8be4(0x2d6)+_0x403c9b(_0x4faa6a[_0x1e8be4(0x2bb)]||_0x2793cb,_0x1e8be4(0x1a9))+_0x1e8be4(0x2d6)+_0x403c9b(_0x4faa6a[_0x1e8be4(0x1d1)]||0x0,_0x1e8be4(0x291))+_0x1e8be4(0x299)+_0x403c9b(_0x3ec56f,'Current\x20Streak')+_0x1e8be4(0x2d6)+_0x403c9b(_0x4faa6a[_0x1e8be4(0x247)]||_0x3ec56f,_0x1e8be4(0x1a9))+_0x1e8be4(0x2d6)+_0x403c9b(_0x4faa6a['easyWins']||0x0,_0x1e8be4(0x291))+'\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20<div\x20class=\x22stats-section\x20mb-4\x22>\x0a\x20\x20\x20\x20\x20\x20<p\x20class=\x22stats-section-title\x20font-bold\x20text-sm\x20mb-1\x20text-red-600\x20dark:text-red-400\x22>🔁\x20Normal</p>\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22stats-grid\x20grid\x20grid-cols-3\x20gap-2\x20text-center\x20text-xs\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20'+_0x403c9b(_0x9071ad,_0x1e8be4(0x27d))+_0x1e8be4(0x2d6)+_0x403c9b(_0x4faa6a[_0x1e8be4(0x1a7)]||_0x9071ad,_0x1e8be4(0x1a9))+_0x1e8be4(0x2d6)+_0x403c9b(_0x4faa6a[_0x1e8be4(0x221)]||0x0,_0x1e8be4(0x291))+_0x1e8be4(0x1d6)+_0x403c9b(_0x1f99fc,_0x1e8be4(0x27d))+_0x1e8be4(0x2d6)+_0x403c9b(_0x4faa6a[_0x1e8be4(0x1f8)]||_0x1f99fc,_0x1e8be4(0x1a9))+_0x1e8be4(0x2d6)+_0x403c9b(_0x4faa6a[_0x1e8be4(0x336)]||0x0,_0x1e8be4(0x291))+_0x1e8be4(0x1a3);}function resetStatsTab(){const _0x59fde7=a0_0x5b540a;if(!confirm('Reset\x20all\x20'+(currentStatsTab===_0x59fde7(0x27c)?_0x59fde7(0x2e3):'G1\x20Race')+_0x59fde7(0x212)))return;allPersistentData[currentStatsTab]=_blankStats(),savePersistentData(),updateStatsUI(),renderStatsContent();}function resetAllStats(){const _0x3df19c=a0_0x5b540a;if(!confirm(_0x3df19c(0x2c1)))return;allPersistentData[_0x3df19c(0x27c)]=_blankStats(),allPersistentData[_0x3df19c(0x209)]=_blankStats(),allPersistentData[_0x3df19c(0x30c)]=_blankStats(),savePersistentData(),updateStatsUI(),renderStatsContent();}function _blankStats(){const _0x31c435=a0_0x5b540a;return{'dailyStreak':0x0,'easyStreak':0x0,'unlimitedStreak':0x0,'hardStreak':0x0,'bestDailyStreak':0x0,'bestEasyStreak':0x0,'bestUnlimitedStreak':0x0,'bestHardStreak':0x0,'dailyPlayed':0x0,'dailyWins':0x0,'easyPlayed':0x0,'easyWins':0x0,'unlimitedPlayed':0x0,'unlimitedWins':0x0,'hardPlayed':0x0,'hardWins':0x0,'lastPlayedDate':null,'dailyGuesses':[],'dailyStatus':_0x31c435(0x316),'rankedGuesses':[],'rankedStatus':_0x31c435(0x316),'rankedTargetName':null,'unlimitedSession':null,'hardSession':null,'easySession':null,'lbSubmittedKey':null};}function a0_0x48f0(_0x5d6b9e,_0x1d1468){_0x5d6b9e=_0x5d6b9e-0x1a0;const _0x44f15d=a0_0x44f1();let _0x48f0e1=_0x44f15d[_0x5d6b9e];return _0x48f0e1;}function showAutocomplete(){}function hideAutocomplete(){}const WALLPAPER_PRESETS=[{'label':a0_0x5b540a(0x1e2),'value':a0_0x5b540a(0x2c5),'thumb':a0_0x5b540a(0x2c5)},{'label':a0_0x5b540a(0x305),'value':a0_0x5b540a(0x301),'thumb':'https://images.steamusercontent.com/ugc/13963806649216154660/DF23A51B457215B75849D01FD85B8EC311BAFD68/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true'},{'label':a0_0x5b540a(0x1bc),'value':a0_0x5b540a(0x2a4),'thumb':a0_0x5b540a(0x2a4)},{'label':a0_0x5b540a(0x294),'value':a0_0x5b540a(0x2f5),'thumb':a0_0x5b540a(0x2f5)},{'label':a0_0x5b540a(0x262),'value':a0_0x5b540a(0x215),'thumb':a0_0x5b540a(0x215)},{'label':a0_0x5b540a(0x32b),'value':a0_0x5b540a(0x2b0),'thumb':'https://images.steamusercontent.com/ugc/13590127456284630094/1C00EF11763EEFAC06560B7D57B89A415844A9C9/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true'},{'label':a0_0x5b540a(0x303),'value':a0_0x5b540a(0x241),'thumb':a0_0x5b540a(0x241)},{'label':a0_0x5b540a(0x33d),'value':'https://images.steamusercontent.com/ugc/17148371294565966589/C064B7EDF15B1A02F3C8586F02FAFDEB27FCFBFF/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true','thumb':'https://images.steamusercontent.com/ugc/17148371294565966589/C064B7EDF15B1A02F3C8586F02FAFDEB27FCFBFF/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true'},{'label':a0_0x5b540a(0x1c8),'value':'','thumb':null}],_WP_KEY=a0_0x5b540a(0x287);function applyWallpaper(_0x182e25){const _0x4bf4da=a0_0x5b540a;document['body']['style'][_0x4bf4da(0x207)]=_0x182e25?_0x4bf4da(0x23d)+_0x182e25+'\x27)':'',!_0x182e25['startsWith'](_0x4bf4da(0x2d3))&&(localStorage[_0x4bf4da(0x236)](_WP_KEY,_0x182e25),localStorage[_0x4bf4da(0x2c7)](_0x4bf4da(0x318)));}function loadWallpaper(){const _0x111864=a0_0x5b540a,_0x36c12e=localStorage['getItem'](_0x111864(0x318));if(_0x36c12e===_0x111864(0x1b8)){const _0x104b44=localStorage[_0x111864(0x211)](_0x111864(0x235));if(_0x104b44){document[_0x111864(0x204)]['style']['backgroundImage']=_0x111864(0x23d)+_0x104b44+'\x27)';return;}}const _0x180e16=localStorage[_0x111864(0x211)](_WP_KEY);_0x180e16===null?applyWallpaper(_0x111864(0x2c5)):applyWallpaper(_0x180e16);}function openWallpaperPicker(){const _0x33fd15=a0_0x5b540a,_0x26ff7d=document['getElementById'](_0x33fd15(0x2f9));if(!_0x26ff7d)return;_renderWallpaperPresets(),_0x26ff7d[_0x33fd15(0x1b4)][_0x33fd15(0x1e4)](_0x33fd15(0x2d8));}function closeWallpaperPicker(){const _0x5f29a8=a0_0x5b540a,_0x3b2a0b=document[_0x5f29a8(0x1ff)](_0x5f29a8(0x2f9));if(_0x3b2a0b)_0x3b2a0b[_0x5f29a8(0x1b4)]['add']('hidden');}function _getCurrentWallpaperValue(){const _0x468e23=a0_0x5b540a,_0x33b6bd=localStorage[_0x468e23(0x211)](_0x468e23(0x318));if(_0x33b6bd===_0x468e23(0x1b8))return'__upload__';return localStorage[_0x468e23(0x211)](_WP_KEY)??_0x468e23(0x2c5);}function _renderWallpaperPresets(){const _0x443537=a0_0x5b540a,_0x5d4b64=document['getElementById'](_0x443537(0x243)),_0x2406d2=_getCurrentWallpaperValue();if(!_0x5d4b64)return;_0x5d4b64[_0x443537(0x210)]='',WALLPAPER_PRESETS[_0x443537(0x2e7)](_0xb30e62=>{const _0x4d9695=_0x443537,_0x11611d=_0xb30e62[_0x4d9695(0x2e8)]===_0x2406d2,_0x511987=document[_0x4d9695(0x2c0)](_0x4d9695(0x32a));_0x511987[_0x4d9695(0x1bb)]=_0xb30e62[_0x4d9695(0x1fc)],_0x511987[_0x4d9695(0x239)]['cssText']=_0x4d9695(0x1d9)+(_0x11611d?_0x4d9695(0x2f6):'#cbd5e1')+';\x0a\x20\x20\x20\x20\x20\x20outline:\x20'+(_0x11611d?_0x4d9695(0x1db):_0x4d9695(0x333))+';\x0a\x20\x20\x20\x20\x20\x20outline-offset:\x201px;\x0a\x20\x20\x20\x20\x20\x20aspect-ratio:\x2016/9;\x20width:100%;\x20cursor:pointer;\x0a\x20\x20\x20\x20\x20\x20transition:\x20border-color\x20.2s;\x0a\x20\x20\x20\x20',_0xb30e62[_0x4d9695(0x1c5)]?(_0x511987[_0x4d9695(0x239)][_0x4d9695(0x207)]=_0x4d9695(0x23d)+_0xb30e62[_0x4d9695(0x1c5)]+'\x27)',_0x511987[_0x4d9695(0x239)][_0x4d9695(0x2cf)]=_0x4d9695(0x228),_0x511987[_0x4d9695(0x239)][_0x4d9695(0x31f)]=_0x4d9695(0x2ac)):_0x511987[_0x4d9695(0x239)][_0x4d9695(0x1d0)]='linear-gradient(135deg,#e2e8f0,#94a3b8)',_0x511987['innerHTML']='\x0a\x20\x20\x20\x20\x20\x20<span\x20style=\x22position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;padding-bottom:4px;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x22font-size:9px;font-weight:700;color:#fff;background:rgba(0,0,0,.55);padding:1px\x206px;border-radius:999px;\x22>'+_0xb30e62[_0x4d9695(0x1fc)]+_0x4d9695(0x2c6)+(_0x11611d?_0x4d9695(0x29e):'')+_0x4d9695(0x1b5),_0x511987[_0x4d9695(0x1e7)]=()=>{const _0x3ff514=_0x4d9695;if(!_0x11611d)_0x511987[_0x3ff514(0x239)][_0x3ff514(0x306)]=_0x3ff514(0x1ae);},_0x511987[_0x4d9695(0x322)]=()=>{const _0xd879eb=_0x4d9695;if(!_0x11611d)_0x511987['style'][_0xd879eb(0x306)]='#cbd5e1';},_0x511987['onclick']=()=>{const _0x3b766e=_0x4d9695;applyWallpaper(_0xb30e62['value']),localStorage[_0x3b766e(0x2c7)]('tracendle_wallpaper_type'),localStorage[_0x3b766e(0x2c7)](_0x3b766e(0x235)),_renderWallpaperPresets();},_0x5d4b64[_0x4d9695(0x311)](_0x511987);});const _0x5ac807=document['getElementById'](_0x443537(0x2b7));_0x5ac807&&(_0x2406d2==='__upload__'?(_0x5ac807[_0x443537(0x239)]['borderColor']=_0x443537(0x2f6),_0x5ac807['querySelector']('span.upload-text')&&(_0x5ac807[_0x443537(0x2f0)](_0x443537(0x1b1))['textContent']=_0x443537(0x2ca))):_0x5ac807[_0x443537(0x239)][_0x443537(0x306)]='');}function handleWallpaperUpload(_0x2e8820){const _0x33fe8c=a0_0x5b540a,_0x34599f=_0x2e8820['target']['files']&&_0x2e8820[_0x33fe8c(0x30d)][_0x33fe8c(0x1f2)][0x0];if(!_0x34599f)return;if(!_0x34599f[_0x33fe8c(0x202)][_0x33fe8c(0x2e9)]('image/')){alert(_0x33fe8c(0x1a6));return;}if(_0x34599f[_0x33fe8c(0x2dc)]>0xa*0x400*0x400){alert(_0x33fe8c(0x1cf));return;}const _0x4924a0=new FileReader();_0x4924a0[_0x33fe8c(0x2aa)]=_0x28e37b=>{const _0x1b9425=_0x33fe8c,_0x3c6758=_0x28e37b[_0x1b9425(0x30d)]['result'];try{localStorage[_0x1b9425(0x236)](_0x1b9425(0x235),_0x3c6758),localStorage['setItem'](_0x1b9425(0x318),_0x1b9425(0x1b8)),document[_0x1b9425(0x204)][_0x1b9425(0x239)]['backgroundImage']='url(\x27'+_0x3c6758+'\x27)',_renderWallpaperPresets(),closeWallpaperPicker();}catch(_0xd97c49){document['body'][_0x1b9425(0x239)][_0x1b9425(0x207)]='url(\x27'+_0x3c6758+'\x27)',closeWallpaperPicker(),console[_0x1b9425(0x1c3)](_0x1b9425(0x302));}},_0x4924a0[_0x33fe8c(0x276)](_0x34599f),_0x2e8820[_0x33fe8c(0x30d)]['value']='';}function applyCustomWallpaperUrl(){const _0x498b33=a0_0x5b540a,_0x292727=document[_0x498b33(0x1ff)](_0x498b33(0x1c6)),_0x3a10aa=_0x292727?_0x292727[_0x498b33(0x2e8)][_0x498b33(0x20f)]():'';if(!_0x3a10aa)return;applyWallpaper(_0x3a10aa),localStorage[_0x498b33(0x2c7)]('tracendle_wallpaper_type'),localStorage[_0x498b33(0x2c7)](_0x498b33(0x235));if(_0x292727)_0x292727[_0x498b33(0x2e8)]='';closeWallpaperPicker();}function removeWallpaper(){const _0x435fc3=a0_0x5b540a;applyWallpaper(''),localStorage[_0x435fc3(0x2c7)](_0x435fc3(0x318)),localStorage[_0x435fc3(0x2c7)](_0x435fc3(0x235)),_renderWallpaperPresets();}window[a0_0x5b540a(0x297)]('DOMContentLoaded',loadWallpaper);function toggleOverflowMenu(){const _0x17c28d=a0_0x5b540a,_0x234b33=document[_0x17c28d(0x1ff)](_0x17c28d(0x258));if(!_0x234b33)return;const _0x8520fa=!_0x234b33[_0x17c28d(0x1b4)]['contains'](_0x17c28d(0x2d8));_0x8520fa?closeOverflowMenu():(_0x234b33[_0x17c28d(0x1b4)][_0x17c28d(0x1e4)](_0x17c28d(0x2d8)),setTimeout(()=>{const _0x292bc8=_0x17c28d;document[_0x292bc8(0x297)]('click',_overflowOutsideHandler,{'once':!![]});},0x0));}function closeOverflowMenu(){const _0x440e6b=a0_0x5b540a,_0x31ffba=document[_0x440e6b(0x1ff)](_0x440e6b(0x258));if(_0x31ffba)_0x31ffba[_0x440e6b(0x1b4)][_0x440e6b(0x334)]('hidden');}function _overflowOutsideHandler(_0x457410){const _0x4f414b=a0_0x5b540a,_0x159e9e=document[_0x4f414b(0x1ff)](_0x4f414b(0x1cb));_0x159e9e&&!_0x159e9e[_0x4f414b(0x1a0)](_0x457410[_0x4f414b(0x30d)])&&closeOverflowMenu();}function openAbout(){const _0x330ed0=a0_0x5b540a;closeOverflowMenu();let _0x5d094b=document[_0x330ed0(0x1ff)](_0x330ed0(0x21d));!_0x5d094b&&(_0x5d094b=document[_0x330ed0(0x2c0)](_0x330ed0(0x2f7)),_0x5d094b['id']='about-modal',_0x5d094b[_0x330ed0(0x210)]='\x0a\x20\x20\x20\x20\x20\x20<div\x20id=\x22about-modal-inner\x22>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20<!--\x20Header\x20(matches\x20changelog:\x20emoji\x20+\x20title\x20+\x20close)\x20-->\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22about-header\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x22display:flex;align-items:center;gap:12px;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h2\x20class=\x22about-title\x22>About\x20Tracendle:\x20Pretty\x20Wordle</h2>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20onclick=\x22closeAbout()\x22\x20class=\x22about-close-btn\x22>&times;</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20<!--\x20Scrollable\x20body\x20-->\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22about-body\x22>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<!--\x20Intro\x20card\x20(matches\x20green\x20highlight\x20card\x20in\x20changelog)\x20-->\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22about-intro-card\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p\x20class=\x22about-intro-card-title\x22>The\x20Pretty\x20Wordle</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p\x20style=\x22font-size:13px;line-height:1.6;margin:0;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20A\x20fan-made\x20daily\x20puzzle\x20experience\x20for\x20<strong>Umamusume:\x20Pretty\x20Derby</strong>.\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20Whether\x20you\x27re\x20a\x20casual\x20fan\x20or\x20a\x20hardcore\x20Trainer,\x20I\x20hope\x20this\x20adds\x20a\x20little\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20extra\x20joy\x20to\x20your\x20daily\x20routine!\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<!--\x20Developer\x20-->\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22about-section-label\x22>Creator</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22about-card\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x22font-size:15px;font-weight:800;\x22>Cephero\x20Garde</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22about-muted\x22\x20style=\x22margin-top:3px;\x22>indie\x20developer</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<!--\x20Data\x20Sources\x20-->\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22about-section-label\x22>Data\x20Sources\x20&amp;\x20Acknowledgments</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p\x20class=\x22about-muted\x22\x20style=\x22margin:0\x200\x2010px;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20This\x20project\x20relies\x20on\x20data\x20from\x20these\x20incredible\x20community\x20resources:\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<a\x20href=\x22https://uma.guide\x22\x20target=\x22_blank\x22\x20rel=\x22noopener\x22\x20class=\x22about-source-link\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x22font-size:13px;font-weight:700;\x22>uma.guide</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22about-muted\x22\x20style=\x22font-size:11px;margin:0;\x22>Comprehensive\x20Uma\x20guide</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22about-link-arrow\x22>↗</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</a>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<a\x20href=\x22https://gametora.com/umamusume\x22\x20target=\x22_blank\x22\x20rel=\x22noopener\x22\x20class=\x22about-source-link\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x22font-size:13px;font-weight:700;\x22>Gametora</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22about-muted\x22\x20style=\x22font-size:11px;margin:0;\x22>Game\x20data\x20&amp;\x20mechanics</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22about-link-arrow\x22>↗</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</a>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<a\x20href=\x22https://umapyoi.net\x22\x20target=\x22_blank\x22\x20rel=\x22noopener\x22\x20class=\x22about-source-link\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x22font-size:13px;font-weight:700;\x22>Umapyoi</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22about-muted\x22\x20style=\x22font-size:11px;margin:0;\x22>Character\x20database</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22about-link-arrow\x22>↗</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</a>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<!--\x20Contact\x20-->\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22about-section-label\x22\x20style=\x22margin-top:18px;\x22>Contact\x20&amp;\x20Feedback</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22about-card\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p\x20class=\x22about-muted\x22\x20style=\x22margin:0;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20Found\x20a\x20bug\x20or\x20have\x20a\x20feature\x20idea?\x20Feel\x20free\x20to\x20reach\x20out\x20—\x20your\x20feedback\x20makes\x20Tracendle\x20better\x20for\x20everyone!\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<!--\x20Tester\x20-->\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22about-section-label\x22\x20style=\x22margin-top:18px;\x22>THANKS\x20TO\x20THESE\x20TRAINER\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22about-card\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p\x20class=\x22about-muted\x22\x20style=\x22margin:0;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20Tester:\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p>\x20<a\x20href=\x22https://x.com/NielZGM\x22\x20target=\x22_blank\x22\x20rel=\x22noopener\x20noreferrer\x22>@NielZGM</a>\x20</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p>\x20YukkiClyde\x20</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p>\x20<a\x20href=\x22https://www.tiktok.com/@lesterhervieux\x22\x20target=\x22_blank\x22\x20rel=\x22noopener\x20noreferrer\x22>@Lester\x20Herviéux</a>\x20</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<!--\x20Legal\x20-->\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22about-card\x20about-legal-card\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22about-section-label\x22\x20style=\x22color:#94a3b8;margin-bottom:6px;\x22>Legal\x20Disclaimer</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p\x20class=\x22about-muted\x22\x20style=\x22font-size:12px;margin:0;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20Tracendle\x20is\x20a\x20<strong>non-commercial,\x20fan-made\x20project</strong>.\x20All\x20characters,\x20images,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20sound\x20assets,\x20and\x20related\x20intellectual\x20property\x20belong\x20to\x20<strong>Cygames,\x20Inc.</strong>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20I\x20do\x20not\x20claim\x20ownership\x20of\x20any\x20game\x20assets.\x20Please\x20support\x20the\x20official\x20game\x20and\x20media!\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20<!--\x20Footer\x20button\x20(matches\x20changelog\x27s\x20\x22Let\x27s\x20Play!\x22\x20button)\x20-->\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22about-footer\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20onclick=\x22closeAbout()\x22\x20class=\x22about-close-btn-main\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20Got\x20it!\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20',_0x5d094b[_0x330ed0(0x297)]('click',_0xdd8ea0=>{const _0x4f19b6=_0x330ed0;if(_0xdd8ea0[_0x4f19b6(0x30d)]===_0x5d094b)closeAbout();}),document[_0x330ed0(0x204)][_0x330ed0(0x311)](_0x5d094b)),_0x5d094b[_0x330ed0(0x239)][_0x330ed0(0x1c7)]=_0x330ed0(0x2a0);}function closeAbout(){const _0x4a0032=a0_0x5b540a,_0x1c922d=document[_0x4a0032(0x1ff)](_0x4a0032(0x21d));if(_0x1c922d)_0x1c922d['style']['display']=_0x4a0032(0x333);}
+// ============================================================
+//  ui.js — Rendering, modals, picker, share, stats, changelog
+// ============================================================
+
+// --------------- Theme ---------------
+function toggleTheme() {
+  document.body.classList.toggle('dark');
+  localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+}
+
+function loadTheme() {
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === null || savedTheme === 'dark') {
+    document.body.classList.add('dark');
+    if (savedTheme === null) localStorage.setItem('theme', 'dark');
+  }
+}
+
+// --------------- Clock ---------------
+let pendingUsernameModal = false;
+let pendingChangelogModal = false;
+let pendingChangelogAfterUsername = false;
+
+function startClock() {
+  const clockEl = document.getElementById('server-time');
+  if (!clockEl) return;
+  setInterval(() => {
+    const now8 = getUTC8Time();
+    const nextMidnight8 = new Date(now8);
+    nextMidnight8.setUTCDate(nextMidnight8.getUTCDate() + 1);
+    nextMidnight8.setUTCHours(0, 0, 0, 0);
+    const diff = nextMidnight8 - now8;
+    if (diff <= 0) { location.reload(); return; }
+    const h = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, '0');
+    const m = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, '0');
+    const s = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+    clockEl.innerText = `NEXT DAILY IN: ${h}:${m}:${s}`;
+  }, 1000);
+}
+
+// --------------- Archive Mode ---------------
+function openArchiveMode() {
+  const modal = document.getElementById('archive-modal');
+  const dateInput = document.getElementById('archive-date-input');
+  if (modal && dateInput) {
+    const today = getUTC8Time();
+
+    // Max selectable date = 2 days ago (Today and Yesterday are blocked)
+    const maxDate = new Date(today);
+    maxDate.setUTCDate(maxDate.getUTCDate() - 2);
+    const maxDateStr = `${maxDate.getUTCFullYear()}-${String(maxDate.getUTCMonth() + 1).padStart(2, '0')}-${String(maxDate.getUTCDate()).padStart(2, '0')}`;
+
+    // Min selectable date = 30 days ago
+    const minDate = new Date(today);
+    minDate.setUTCDate(minDate.getUTCDate() - 30);
+    const minDateStr = `${minDate.getUTCFullYear()}-${String(minDate.getUTCMonth() + 1).padStart(2, '0')}-${String(minDate.getUTCDate()).padStart(2, '0')}`;
+
+    dateInput.max = maxDateStr;
+    dateInput.min = minDateStr;
+    dateInput.value = maxDateStr; // Default to the most recent available date
+    modal.classList.remove('hidden');
+  }
+}
+
+function closeArchiveMode() {
+  const modal = document.getElementById('archive-modal');
+  if (modal) modal.classList.add('hidden');
+}
+
+function validateAndStartArchive() {
+  const dateInput = document.getElementById('archive-date-input');
+  if (!dateInput.value) {
+    alert('Please select a date');
+    return;
+  }
+
+  const today = getUTC8Time();
+  today.setUTCHours(0, 0, 0, 0);
+
+  const yesterday = new Date(today);
+  yesterday.setUTCDate(yesterday.getUTCDate() - 1);
+
+  const selected = new Date(dateInput.value + 'T00:00:00Z');
+
+  if (selected >= today) {
+    alert("You cannot play Today's puzzle in Archive Mode!");
+    return;
+  }
+  if (selected.getTime() === yesterday.getTime()) {
+    alert("Yesterday's puzzle is not yet available in Archive Mode!");
+    return;
+  }
+
+  closeArchiveMode();
+  startArchiveGame(dateInput.value);
+}
+
+// --------------- Username modal ---------------
+function checkOrCreateUsername() {
+  const nickname = localStorage.getItem('idvle_nickname');
+  const isFirstTime = !nickname || nickname.trim() === '' || nickname.startsWith('Anonymous');
+  if (isFirstTime) {
+    if (document.body.classList.contains('intro-complete')) {
+      showUsernameModal(false);
+    } else {
+      pendingUsernameModal = true;
+    }
+  }
+  getOrCreateUserId();
+}
+
+function showUsernameModal(isChange = false) {
+  const modal = document.getElementById('username-modal');
+  const title = document.getElementById('username-modal-title');
+  const input = document.getElementById('username-input');
+  const err   = document.getElementById('username-error');
+  if (!modal) return;
+  title.textContent = isChange ? 'Change Username' : 'Welcome, Visitor!';
+  input.value = isChange ? (localStorage.getItem('idvle_nickname') || '') : '';
+  err.classList.add('hidden');
+  modal.classList.remove('hidden');
+  setTimeout(() => input.focus(), 100);
+  modal._allowClose = isChange;
+  modal.onclick = (e) => { if (e.target === modal && modal._allowClose) closeUsernameModal(); };
+}
+
+function closeUsernameModal() {
+  const modal = document.getElementById('username-modal');
+  if (modal) modal.classList.add('hidden');
+  if (pendingChangelogAfterUsername) {
+    pendingChangelogAfterUsername = false;
+    openChangelog();
+  }
+}
+
+async function saveUsername() {
+  const input = document.getElementById('username-input');
+  if (!input) return;
+  let val = input.value.trim();
+  if (!val) val = 'Anonymous';
+  localStorage.setItem('idvle_nickname', val);
+  const lbUsername = document.getElementById('lb-current-username');
+  if (lbUsername) lbUsername.innerHTML = formatUsernameWithSuffix(val, getOrCreateUserId());
+  closeUsernameModal();
+
+  const userId = getOrCreateUserId();
+  try {
+    const { error } = await supabaseClient
+      .from('leaderboard_Idv')
+      .update({ username: val })
+      .eq('user_id', userId);
+    if (error) console.error('Error updating leaderboard username:', error);
+    else console.log('Leaderboard usernames successfully updated across all modes!');
+  } catch (err) {
+    console.error('Supabase update failed:', err);
+  }
+
+  if (typeof scheduleLegacyLeaderboardMigration === 'function') {
+    scheduleLegacyLeaderboardMigration();
+  }
+
+  const lbModal = document.getElementById('leaderboard-modal');
+  if (lbModal && !lbModal.classList.contains('hidden') && typeof updateLeaderboardUI === 'function') {
+    updateLeaderboardUI();
+  }
+}
+
+function openChangeUsername() { showUsernameModal(true); }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const input = document.getElementById('username-input');
+  if (input) input.addEventListener('keydown', (e) => { if (e.key === 'Enter') saveUsername(); });
+});
+
+function playIntroAnimation() {
+  const overlay = document.getElementById('intro-logo-overlay');
+  const introLogo = document.getElementById('intro-logo');
+  const introCredit = document.getElementById('intro-credit');
+  const headerLogo = document.getElementById('header-logo');
+  if (!overlay || !introLogo || !headerLogo) return;
+
+  headerLogo.style.opacity = '0';
+  overlay.classList.add('visible');
+
+  requestAnimationFrame(() => {
+    introLogo.classList.add('popup');
+    if (introCredit) introCredit.classList.add('show');
+  });
+  // Move the intro logo to the header, and the credit to the footer
+  setTimeout(() => {
+    const overlayRect = introLogo.getBoundingClientRect();
+    const targetRect = headerLogo.getBoundingClientRect();
+    const dx = (targetRect.left + targetRect.width / 2) - (overlayRect.left + overlayRect.width / 2);
+    const dy = (targetRect.top + targetRect.height / 2) - (overlayRect.top + overlayRect.height / 2);
+    const scale = Math.min(targetRect.width / overlayRect.width, targetRect.height / overlayRect.height) * 0.94;
+
+    introLogo.style.transform = `translate(${dx}px, ${dy}px) scale(${scale})`;
+    introLogo.classList.add('move-to-header');
+
+    if (introCredit) {
+      const creditRect = introCredit.getBoundingClientRect();
+      const footerTarget = document.getElementById('made-by-footer');
+      if (footerTarget) {
+        const footerRect = footerTarget.getBoundingClientRect();
+        const cdx = (footerRect.left + footerRect.width / 2) - (creditRect.left + creditRect.width / 2);
+        const cdy = (footerRect.top + footerRect.height / 2) - (creditRect.top + creditRect.height / 2);
+        const cscale = Math.min(footerRect.width / creditRect.width, footerRect.height / creditRect.height) * 0.9;
+        introCredit.style.transform = `translate(${cdx}px, ${cdy}px) scale(${cscale})`;
+        introCredit.classList.add('move-to-footer');
+      }
+    }
+  }, 900);
+
+  setTimeout(() => {
+    introLogo.style.opacity = '0';
+    headerLogo.style.opacity = '1';
+    if (introCredit) introCredit.style.opacity = '0';
+  }, 1450);
+
+  setTimeout(() => {
+    overlay.classList.remove('visible');
+    introLogo.classList.remove('popup', 'move-to-header');
+    introLogo.style.transform = '';
+    introLogo.style.opacity = '';
+    if (introCredit) {
+      introCredit.classList.remove('show', 'move-to-footer');
+      introCredit.style.transform = '';
+      introCredit.style.opacity = '';
+    }
+    document.body.classList.add('intro-complete');
+
+    const peeking = document.getElementById('peeking-character');
+    if (peeking) {
+      peeking.classList.add('peek-start');
+    }
+
+    if (pendingUsernameModal) {
+      pendingUsernameModal = false;
+      showUsernameModal(false);
+      if (pendingChangelogModal) {
+        pendingChangelogModal = false;
+        pendingChangelogAfterUsername = true;
+      }
+    } else if (pendingChangelogModal) {
+      pendingChangelogModal = false;
+      openChangelog();
+    }
+  }, 1750);
+}
+
+function animateSelection(element) {
+  if (!element) return;
+  element.classList.add('animate-flip');
+  element.addEventListener('animationend', () => {
+    element.classList.remove('animate-flip');
+  }, { once: true });
+}
+
+function isMobileLayout() {
+  return window.matchMedia('(max-width: 767px)').matches;
+}
+
+// --------------- Game type switcher ---------------
+function _setTabActive(tab, active) {
+  if (!tab) return;
+  tab.className = active
+    ? "flex-1 py-2 rounded-lg font-bold transition-all bg-white shadow-sm text-green-700 text-sm"
+    : "flex-1 py-2 rounded-lg font-bold transition-all text-gray-500 hover:text-gray-700 text-sm";
+}
+
+function hideVoicedlePanel() {
+  const panel = document.getElementById('voicedle-panel');
+  if (panel) panel.classList.add('hidden');
+}
+
+function stopVoicedleAudio() {
+  // Voicedle mode has been removed, so this is a safe no-op fallback.
+}
+
+function updateMenuModeHints(type) {
+  const hardDesc = document.getElementById('hard-mode-desc');
+  const dailyLabel = document.querySelector('#daily-btn .font-black');
+  if (!hardDesc) return;
+  if (type === 'uma') {
+    if (dailyLabel) dailyLabel.innerText = 'Daily Survivor';
+    hardDesc.innerText = 'Hard: No names + 3 clues + Only 2 Attempts!';
+  }
+  if (type === 'course') {
+    if (dailyLabel) dailyLabel.innerText = 'Daily Hunter';
+  }
+  if (type === 'voicedle') {
+    hardDesc.innerText = 'Hard: Only 2 guesses — hear up to 1.0s of the voice line!';
+    if (dailyLabel) dailyLabel.innerText = 'Daily Voicedle';
+  }
+}
+
+function switchGameType(type) {
+  
+  currentGameType = type;
+  sessionState.knownStats = {};
+  const config = GAME_CONFIG[type];
+
+  const tabUma     = document.getElementById('tab-uma');
+  const tabCourse  = document.getElementById('tab-course');
+  const tabVoicedle = document.getElementById('tab-voicedle');
+  _setTabActive(tabUma, type === 'uma');
+  _setTabActive(tabCourse, type === 'course');
+  _setTabActive(tabVoicedle, type === 'voicedle');
+  const activeTab = type === 'uma' ? tabUma : type === 'course' ? tabCourse : tabVoicedle;
+  if (activeTab) animateSelection(activeTab);
+  updateMenuModeHints(type);
+
+  const menuDescription = document.getElementById('menu-description');
+  if (menuDescription) {
+    menuDescription.classList.add('animate-fade-in');
+    menuDescription.addEventListener('animationend', () => {
+      menuDescription.classList.remove('animate-fade-in');
+    }, { once: true });
+  }
+  document.getElementById('menu-description').innerText = config.helpDesc;
+
+  const today     = getDailyString();
+  const yesterday = getDailyString(-1);
+  const pData     = allPersistentData[type];
+  if (pData.lastPlayedDate !== today) {
+    pData.dailyGuesses = [];
+    pData.dailyStatus  = 'playing';
+    if (pData.lastPlayedDate !== yesterday) pData.dailyStreak = 0;
+    savePersistentData();
+  }
+
+  updateStatsUI();
+  checkDailyStatus();
+  displayYesterdayAnswer();
+  
+
+  // Rebuild column headers (Wordle modes only)
+  if (type !== 'voicedle') {
+    const headRow = document.createElement('tr');
+    headRow.className = "text-[10px] md:text-xs font-bold uppercase";
+    const nameTh = document.createElement('th');
+    nameTh.className = "name-col p-1 bg-gray-100 text-gray-600 rounded-t-lg text-[9px]";
+    nameTh.innerText = "Name";
+    headRow.appendChild(nameTh);
+    config.headers.forEach((header, index) => {
+      const th = document.createElement('th');
+      th.className = `p-2 ${index === 0 ? 'rounded-tl-lg' : ''} ${index === config.headers.length - 1 ? 'rounded-tr-lg cell-group-end' : ''}`;
+      if (type === 'uma') {
+        if (index < 4)      th.className += " head-dist";
+        else if (index < 8) th.className += " head-strat";
+        else                th.className += " head-track";
+      } else {
+        th.className += " head-course";
+      }
+      th.innerText = header;
+      headRow.appendChild(th);
+    });
+    document.getElementById('guess-head').innerHTML = '';
+    document.getElementById('guess-head').appendChild(headRow);
+  } else {
+    document.getElementById('guess-head').innerHTML = '';
+  }
+  document.getElementById('uma-input').placeholder = config.placeholder;
+  hideVoicedlePanel();
+  if (typeof updateDailySolverBadge === 'function') {
+    updateDailySolverBadge();
+  } else {
+    // leaderboard.js may not be parsed yet — try shortly after
+    setTimeout(() => { if (typeof updateDailySolverBadge === 'function') updateDailySolverBadge(); }, 500);
+  }
+}
+
+function setPeekingChibiInGame(inGame) {
+  const peeking = document.getElementById('peeking-character');
+  if (peeking) peeking.classList.toggle('peek-in-game', inGame);
+}
+
+// --------------- Game screen ---------------
+function renderGameLayout() {
+  document.getElementById('menu-screen').classList.add('hidden');
+  const gameScreen = document.getElementById('game-screen');
+  if (gameScreen) {
+    gameScreen.classList.remove('hidden');
+    gameScreen.classList.add('animate-fade-in');
+  }
+  setPeekingChibiInGame(true);
+  
+  // Display mode indicator with archive date if applicable
+  const typeLabel = currentGameType === 'uma' ? 'Survivor'
+    : currentGameType === 'course' ? 'Hunter'
+    : currentGameType === 'voicedle' ? 'Voicedle'
+    : currentGameType.toUpperCase();
+
+  let modeDisplay = `${typeLabel} / ${sessionState.mode}`;
+  if (sessionState.mode === 'archive' && sessionState.archiveDate) {
+    modeDisplay = `${typeLabel} / <span style="color:#7c3aed; font-weight:900;">ARCHIVE 📅 ${sessionState.archiveDate}</span>`;
+  }
+  document.getElementById('mode-indicator').innerHTML = modeDisplay;   //  Changed to innerHTML
+  
+  document.getElementById('guess-grid').innerHTML = '';
+  document.getElementById('uma-input').value = '';
+  document.getElementById('input-container').classList.remove('hidden');
+
+  if (currentGameType === 'voicedle') {
+    renderVoicedleLayout();
+  } else {
+    hideVoicedlePanel();
+    const nameCols = document.querySelectorAll('.name-col');
+    nameCols.forEach(col => {
+      if (sessionState.mode === 'hard') col.classList.add('hidden');
+      else col.classList.remove('hidden');
+    });
+  }
+
+  updateGuessCountUI();
+  updateScoreUI();
+  renderSuggestions('');
+}
+
+function updateGuessCountUI() {
+  const el = document.getElementById('remaining-guesses');
+  if (!el) return;
+
+  let maxAttempts;
+  if (currentGameType === 'voicedle') {
+    maxAttempts = sessionState.mode === 'easy' ? null : getVoicedleMaxGuesses();
+  } else {
+    maxAttempts = sessionState.mode === 'daily' ? 5
+      : sessionState.mode === 'hard'  ? 2
+      : sessionState.mode === 'archive' ? 5
+      : sessionState.mode === 'easy'  ? null
+      : 5;
+  }
+
+  if (maxAttempts === null) {
+    // Unlimited / easy mode — show a small — badge
+    el.innerHTML = `<span style="
+      display:inline-flex; align-items:center; justify-content:center;
+      font-size:18px; line-height:1; color:#16a34a; font-weight:900;
+      letter-spacing:-1px;
+    ">∞</span><span style="font-size:10px;color:#9ca3af;margin-left:4px;">unlimited</span>`;
+    return;
+  }
+
+  const used      = sessionState.guesses.length;
+  const remaining = Math.max(0, maxAttempts - used);
+  let dots = '';
+
+  for (let i = 0; i < maxAttempts; i++) {
+    const isUsed = i < used;
+    const isLast = !isUsed && i === used; // next dot to be consumed
+
+    if (isUsed) {
+      dots += `<span style="
+        display:inline-block; width:9px; height:9px; border-radius:50%;
+        background:#ef4444; box-shadow:0 0 0 1.5px #fca5a5;
+        transition:all .3s;
+      "></span>`;
+    } else {
+      const pulse = isLast ? 'animation:dot-pulse 1.4s ease-in-out infinite;' : '';
+      dots += `<span style="
+        display:inline-block; width:9px; height:9px; border-radius:50%;
+        background:#16a34a; box-shadow:0 0 0 1.5px #bbf7d0;
+        transition:all .3s; ${pulse}
+      "></span>`;
+    }
+  }
+
+  // inject keyframes once
+  if (!document.getElementById('dot-pulse-style')) {
+    const s = document.createElement('style');
+    s.id = 'dot-pulse-style';
+    s.textContent = `@keyframes dot-pulse {
+      0%,100%{transform:scale(1);opacity:1}
+      50%{transform:scale(1.25);opacity:.7}
+    }`;
+    document.head.appendChild(s);
+  }
+
+  el.innerHTML = dots;
+}
+
+function showMenu() {
+  localStorage.setItem('is_ranked_session', 'false');
+  if (typeof persistActiveSession === 'function') persistActiveSession();
+  stopVoicedleAudio();
+  hideVoicedlePanel();
+  setPeekingChibiInGame(false);
+  document.getElementById('menu-screen').classList.remove('hidden');
+  document.getElementById('game-screen').classList.add('hidden');
+  document.getElementById('input-container').classList.add('hidden');
+  checkDailyStatus();
+}
+
+function checkDailyStatus() {
+  const today     = getDailyString();
+  const statusDiv = document.getElementById('daily-status');
+  const pData     = allPersistentData[currentGameType];
+  if (pData.lastPlayedDate === today && pData.dailyStatus !== 'playing') {
+    const label = currentGameType === 'uma' ? 'Survivor' : currentGameType === 'course' ? 'Hunter' : currentGameType.toUpperCase();
+    statusDiv.innerText = `Daily ${label} completed for today!`;
+    statusDiv.classList.add('text-green-600');
+  } else {
+    statusDiv.innerText = "";
+    statusDiv.classList.remove('text-green-600');
+  }
+  updateDailySolverBadge();
+}
+
+function updateScoreUI() {
+  const el    = document.getElementById('score-display');
+  const pData = allPersistentData[currentGameType];
+  const mode  = sessionState.mode;
+
+  const modeKey    = mode === 'daily' ? 'dailyStreak' : `${mode}Streak`;
+  const streak     = pData[modeKey] || 0;
+  const modeLabel  = mode === 'daily' ? 'Daily'
+    : mode === 'easy'      ? 'Easy Streak'
+    : mode === 'hard'      ? 'Hard Streak'
+    : mode === 'unlimited' ? 'Normal Streak'
+    : mode.charAt(0).toUpperCase() + mode.slice(1);
+
+  
+  const color  = streak >= 3 ? '#f97316' : streak >= 1 ? '#16a34a' : '#9ca3af';
+  const bg     = streak >= 3 ? '#fff7ed' : streak >= 1 ? '#f0fdf4' : '#f9fafb';
+  const border = streak >= 3 ? '#fed7aa' : streak >= 1 ? '#bbf7d0' : '#e5e7eb';
+
+  el.innerHTML = `
+    <div style="
+      display:inline-flex; align-items:center; gap:5px;
+      background:${bg}; border:1.5px solid ${border};
+      border-radius:999px; padding:3px 10px 3px 7px;
+      font-size:12px; font-weight:800; color:${color};
+      line-height:1; white-space:nowrap;
+    ">
+      <span style="font-size:10px; font-weight:600; color:#6b7280; margin-right:1px;">${modeLabel}</span>
+      <span style="font-size:15px; font-weight:900; color:${color};">${streak}</span>
+    </div>`;
+}
+
+function updateStatsUI() {
+  const pData  = allPersistentData[currentGameType];
+  const streak = pData.dailyStreak || 0;
+  const fire   = streak >= 3 ? '🔥' : streak >= 1 ? '⚡' : '💫';
+  const color  = streak >= 3 ? '#ea580c' : streak >= 1 ? '#16a34a' : '#9ca3af';
+
+  document.getElementById('stats-summary').innerHTML = `
+    <span style="font-size:14px; line-height:1;">${fire}</span>
+    <span style="font-size:10px; font-weight:700; color:#9ca3af; letter-spacing:.05em; text-transform:uppercase;">Daily</span>
+    <span style="font-size:15px; font-weight:900; color:${color};">${streak}</span>`;
+
+  const rankedData    = getVerifiedRankedStats(currentGameType);
+  const tierNameEl    = document.getElementById('menu-tier-name');
+  const tierPointsEl  = document.getElementById('menu-tier-points');
+  const placementEl   = document.getElementById('menu-placements');
+  const streakBadge   = document.getElementById('streak-badge');
+
+  if (rankedData.placements < 5) {
+    tierNameEl.innerText   = "UNRANKED";
+    tierPointsEl.innerText = "Complete placement matches";
+    placementEl.innerText  = `Placements: ${rankedData.placements}/5`;
+    streakBadge.classList.add('hidden');
+  } else {
+    tierNameEl.innerText   = `${getTier(rankedData.points)} TIER`;
+    tierPointsEl.innerText = `${rankedData.points} Points`;
+    placementEl.innerText  = "Rank Active";
+    if (rankedData.winStreak >= 2) {
+      streakBadge.innerText = `🔥 ${rankedData.winStreak} STREAK`;
+      streakBadge.classList.remove('hidden');
+    } else {
+      streakBadge.classList.add('hidden');
+    }
+  }
+}
+
+function displayYesterdayAnswer() {
+  const config          = GAME_CONFIG[currentGameType];
+  const dataList        = config.data();
+  const yesterdayTarget = getTargetForDate(getDailyString(-1), dataList, currentGameType);
+  document.getElementById('yesterday-info').innerText = `Yesterday's Answer: ${yesterdayTarget.name}`;
+}
+
+function renderRoleIcon(role) {
+  const name = String(role || '').toLowerCase();
+  const roleFiles = {
+    assist: 'assist.png',
+    decode: 'decode.png',
+    contain: 'contain.png',
+    rescue: 'rescue.png'
+  };
+  const fileName = roleFiles[name];
+  if (!fileName) return `<span class="text-sm text-slate-600">N/A</span>`;
+  return `<img src="images/roles/${fileName}" alt="${role}" title="${role}" class="mx-auto h-8 w-8 object-contain" />`;
+}
+
+function renderGenderSymbol(value) {
+  const gender = String(value || '').toLowerCase();
+  if (gender === 'male') return '♂';
+  if (gender === 'female') return '♀';
+  return 'N/A';
+}
+
+function renderDifficultyStars(value) {
+  if (value === undefined || value === null || Number.isNaN(Number(value))) return 'N/A';
+  const diff = Number(value);
+  const fullPath = 'images/difficulty/DifficultyFull.webp';
+  const halfPath = 'images/difficulty/DifficultyHalf.webp';
+  const emptyPath = 'images/difficulty/DifficultyEmpty.webp';
+  let output = '<span class="difficulty-stars inline-flex items-center gap-1">';
+
+  for (let i = 1; i <= 3; i += 1) {
+    if (diff >= i) {
+      output += `<img src="${fullPath}" alt="Full star" title="Full star" class="difficulty-star" />`;
+    } else if (diff >= i - 0.5) {
+      output += `<img src="${halfPath}" alt="Half star" title="Half star" class="difficulty-star" />`;
+    } else {
+      output += `<img src="${emptyPath}" alt="Empty star" title="Empty star" class="difficulty-star opacity-50" />`;
+    }
+  }
+
+  output += '</span>';
+  return output;
+}
+
+// --------------- Picker / suggestions ---------------
+const input = document.getElementById('uma-input');
+
+function renderSuggestions(filterText = "") {
+  const val       = filterText.toLowerCase().trim();
+  const pickerGrid = document.getElementById('picker-grid');
+  if (!pickerGrid) return;
+  pickerGrid.innerHTML = '';
+
+  const config       = GAME_CONFIG[currentGameType];
+  const dataList     = config.data();
+  const guessedNames = sessionState.guesses.map(g => g.name);
+
+  let matches = dataList.filter(u =>
+    !guessedNames.includes(u.name) &&
+    (val === '' || u.name.toLowerCase().includes(val))
+  );
+  matches.sort((a, b) => a.name.localeCompare(b.name));
+
+  if (matches.length === 0 && val !== '') {
+    pickerGrid.innerHTML = `<p class="picker-empty">No matches for "<strong>${filterText}</strong>"</p>`;
+    return;
+  }
+
+  const fragment = document.createDocumentFragment();
+  matches.forEach(match => {
+    const card = document.createElement('div');
+    card.className    = 'picker-card';
+    card.dataset.name = match.name;
+    card.innerHTML = `
+      <img src="${match.image}" alt="${match.name}" class="picker-card-img">
+      <div class="picker-card-labels">
+        <span class="picker-card-name">${match.name}</span>
+      </div>
+    `;
+    card.onclick = () => {
+      submitGuess(match);
+      const inp = document.getElementById('uma-input');
+      if (inp) inp.value = '';
+      renderSuggestions('');
+    };
+    fragment.appendChild(card);
+  });
+  pickerGrid.appendChild(fragment);
+}
+
+input.addEventListener('input', (e) => renderSuggestions(e.target.value));
+
+// --------------- Guess row rendering ---------------
+function addGuessRow(item, isClue = false, animate = true) {
+  const grid   = document.getElementById('guess-grid');
+  const row    = document.createElement('tr');
+  const config = GAME_CONFIG[currentGameType];
+  if (isClue) row.classList.add('clue-row');
+
+  const nameCell = document.createElement('td');
+  nameCell.className = "name-col p-2 bg-white/80 font-bold border-b border-gray-200";
+  if (sessionState.mode === 'hard') nameCell.classList.add('hidden');
+  if (!isClue) {
+    const imgClass = currentGameType === 'course'
+      ? 'course-img w-14 h-14 object-contain mx-auto rounded-md shadow-sm'
+      : 'w-10 h-10 object-cover mx-auto rounded-full shadow-sm';
+    nameCell.innerHTML = `<img src="${item.image}" alt="${item.name}" title="${item.name}" class="${imgClass}" />`;
+  } else {
+    nameCell.textContent = '???';
+  }
+  row.appendChild(nameCell);
+
+  const isAnswer  = !isClue && item.name === sessionState.target.name;
+  const FLIP_MS   = 500;
+  const STAGGER_MS = 300;
+  const STYLE_ORDER = { Low: 1, Medium: 2, High: 3, low: 1, medium: 2, high: 3 };
+  const STYLE_DISPLAY = { Low: 'Low', Medium: 'Med', High: 'High', low: 'Low', medium: 'Med', high: 'High' };
+
+  const cellData = config.keys.map(key => {
+    const rawVal    = item[key];
+    const targetVal = sessionState.target[key];
+    let val         = rawVal;
+    let status      = 'absent';
+    let arrow       = '';
+
+    // 1. Difficulty Stars Logic
+    if (key === 'difficulty') {
+      val = renderDifficultyStars(rawVal);
+      const diff = Number(rawVal) - Number(targetVal);
+      if (Number(rawVal) === Number(targetVal)) {
+        status = 'correct';
+      } else if (Math.abs(diff) <= 0.5) {
+        status = 'present';
+      }
+      if (diff < 0) arrow = ' ↑';
+      else if (diff > 0) arrow = ' ↓';
+    } 
+    
+    // 2. Trait Number Logic (Corrected placement)
+    else if (key === 'trait') {
+      val = String(rawVal);
+      if (Number(rawVal) === Number(targetVal)) {
+        status = 'correct';
+      } else {
+        status = 'absent';
+        const diff = Number(rawVal) - Number(targetVal);
+        if (diff < 0) arrow = ' ↑';      // Target is higher than guess
+        else if (diff > 0) arrow = ' ↓'; // Target is lower than guess
+      }
+    }
+
+    // 3. Survivor Roles Logic
+    else if (key === 'role1' || key === 'role2') {
+      const roleText = String(rawVal || 'N/A');
+      val = renderRoleIcon(rawVal);
+      if (roleText === String(targetVal)) {
+        status = 'correct';
+      }
+    } 
+
+    // 4. Gender Logic
+    else if (key === 'gender') {
+      const genderText = String(rawVal || 'N/A');
+      val = renderGenderSymbol(rawVal);
+      if (genderText.toLowerCase() === String(targetVal).toLowerCase()) {
+        status = 'correct';
+      }
+    } 
+
+    // 5. Release Year Logic
+    else if (key === 'year') {
+      val = String(rawVal);
+      if (Number(rawVal) === Number(targetVal)) {
+        status = 'correct';
+      } else if (Math.abs(Number(rawVal) - Number(targetVal)) <= 1) {
+        status = 'present';
+      }
+      const diff = Number(rawVal) - Number(targetVal);
+      if (diff < 0) arrow = ' ↑';
+      else if (diff > 0) arrow = ' ↓';
+    } 
+
+    // 6. Hunter style score logic
+    else if (key === 'pursuit' || key === 'control' || key === 'chairGuarding') {
+      const rawText = String(rawVal || 'N/A');
+      val = STYLE_DISPLAY[rawText] || rawText;
+      if (rawText === String(targetVal)) {
+        status = 'correct';
+      } else {
+        status = 'absent';
+      }
+    }
+
+    // 7. Default fallback (Exact match text)
+    else {
+      val = String(rawVal || 'N/A');
+      if (val === String(targetVal)) {
+        status = 'correct';
+      }
+    }
+
+    return { val, arrow, status, key };
+  });
+
+  cellData.forEach(({ val, arrow, status, key }, i) => {
+    const cell = document.createElement('td');
+    cell.className = `p-2 wordle-cell font-black tracking-wide${isAnswer ? ' answer-cell' : ''}`;
+    const arrowFirst = currentGameType === 'course' && isMobileLayout() && arrow;
+    cell.innerHTML = arrowFirst ? (arrow + val) : (val + arrow);
+    if (animate && !isClue) {
+      const delay = i * STAGGER_MS;
+      cell.style.animationDelay = `${delay}ms`;
+      cell.classList.add('wordle-flip');
+      setTimeout(() => cell.classList.add(status), delay + FLIP_MS / 2);
+    } else {
+      cell.classList.add(status);
+    }
+    row.appendChild(cell);
+  });
+
+  grid.appendChild(row);
+
+  if (isAnswer) {
+    const lastDelay = animate && !isClue ? (cellData.length - 1) * STAGGER_MS + FLIP_MS : 0;
+    setTimeout(() => { row.classList.add('correct-answer'); nameCell.classList.add('correct'); }, lastDelay);
+  }
+
+  return animate && !isClue ? (cellData.length - 1) * STAGGER_MS + FLIP_MS : 0;
+}
+
+// --------------- Confetti ---------------
+function launchConfetti() {
+  const canvas = document.createElement('canvas');
+  canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;';
+  document.body.appendChild(canvas);
+  const ctx = canvas.getContext('2d');
+  canvas.width  = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const COLORS = ['#6aaa64','#c9b458','#f59e0b','#3b82f6','#ec4899','#8b5cf6','#ffffff'];
+  const pieces = Array.from({ length: 140 }, () => ({
+    x: Math.random() * canvas.width,
+    y: -10 - Math.random() * 200,
+    w: 8 + Math.random() * 8, h: 5 + Math.random() * 5,
+    color: COLORS[Math.floor(Math.random() * COLORS.length)],
+    rotation: Math.random() * Math.PI * 2,
+    rotSpeed: (Math.random() - 0.5) * 0.15,
+    vx: (Math.random() - 0.5) * 3,
+    vy: 2.5 + Math.random() * 3.5,
+    opacity: 1
+  }));
+  let frame;
+  const start = performance.now();
+  function draw(now) {
+    const elapsed = now - start;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    let alive = false;
+    pieces.forEach(p => {
+      p.x += p.vx; p.y += p.vy; p.vy += 0.06; p.rotation += p.rotSpeed;
+      if (elapsed > 1800) p.opacity = Math.max(0, p.opacity - 0.012);
+      if (p.y < canvas.height + 20 && p.opacity > 0) alive = true;
+      ctx.save();
+      ctx.globalAlpha = p.opacity;
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rotation);
+      ctx.fillStyle = p.color;
+      ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+      ctx.restore();
+    });
+    if (alive && elapsed < 4000) frame = requestAnimationFrame(draw);
+    else { cancelAnimationFrame(frame); canvas.remove(); }
+  }
+  frame = requestAnimationFrame(draw);
+}
+
+// --------------- Result modal ---------------
+function showModal(title, msg, isNewGameOver = true) {
+  const modal  = document.getElementById('result-modal');
+  const config = GAME_CONFIG[currentGameType];
+
+  document.getElementById('result-title').innerText = title;
+  document.getElementById('result-msg').innerText   = msg;
+
+  const targetNameElement = document.getElementById('target-name');
+  const targetLabel       = document.getElementById('target-label');
+  const shareTitleText    = document.getElementById('share-title-text');
+
+  if (targetNameElement) {
+    targetNameElement.innerHTML = `<span class="text-lg font-black text-green-700">${sessionState.target.name}</span>`;
+    const imgWrap = document.getElementById('target-img-wrap');
+    if (imgWrap) {
+      imgWrap.innerHTML = sessionState.target.image
+        ? `<img src="${sessionState.target.image}" alt="${sessionState.target.name}" class="result-target-thumb">`
+        : '';
+    }
+  }
+
+  if (targetLabel)    targetLabel.innerText    = config.resultTitle;
+  if (shareTitleText) shareTitleText.innerText = config.shareTitle;
+
+  if (currentGameType === 'voicedle') {
+    const isWin = sessionState.guesses.some(g => !g.skipped && g.name === sessionState.target.name);
+    if (typeof renderVoicedleResultContent === 'function') renderVoicedleResultContent(isWin);
+  } else {
+    if (typeof resetVoicedleResultPanel === 'function') resetVoicedleResultPanel();
+  }
+
+  // Target stats grid (Umamusume / G1 Race only)
+  const targetGrid = document.getElementById('target-stats-grid');
+  if (targetGrid) {
+    if (currentGameType === 'voicedle') {
+      targetGrid.innerHTML = '';
+      targetGrid.classList.add('hidden');
+    } else {
+      targetGrid.classList.remove('hidden');
+    targetGrid.innerHTML = '';
+    config.sections.forEach(section => {
+      const sectionDiv = document.createElement('div');
+      sectionDiv.className = "result-stat-section";
+      const h4 = document.createElement('h4');
+      h4.className = `result-stat-section-title text-${section.color}-600`;
+      h4.innerText = section.title;
+      sectionDiv.appendChild(h4);
+      const statsDiv = document.createElement('div');
+      statsDiv.className = "result-stat-row";
+      section.keys.forEach(key => {
+        const statBox = document.createElement('div');
+        statBox.className = "result-stat-pill";
+        const label = document.createElement('span');
+        label.className = "result-stat-pill-label";
+        label.innerText = key;
+        const val = document.createElement('span');
+        val.className = "result-stat-pill-value";
+        val.innerText = sessionState.target[key];
+        statBox.appendChild(label);
+        statBox.appendChild(val);
+        statsDiv.appendChild(statBox);
+      });
+      sectionDiv.appendChild(statsDiv);
+      targetGrid.appendChild(sectionDiv);
+    });
+    }
+  }
+
+  // Ranked profile
+  const rankedProfileContainer = document.getElementById('ranked-result-profile');
+  const isRankedSession = localStorage.getItem('is_ranked_session') === 'true';
+  if (isRankedSession && rankedProfileContainer) {
+    const saved = localStorage.getItem(`${currentGameType}_ranked_stats`);
+    let stats = { points: 0, placements: 0 };
+    if (saved) { try { stats = JSON.parse(saved).data || stats; } catch (e) {} }
+    rankedProfileContainer.classList.remove('hidden');
+    if (stats.placements < 5) {
+      rankedProfileContainer.innerHTML = `
+        <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 text-center mb-4">
+          <div class="text-[10px] font-bold text-blue-600 uppercase tracking-widest">Current Rank</div>
+          <div class="text-2xl font-black text-blue-800 uppercase">UNRANKED</div>
+          <div class="text-xs font-bold text-blue-700 mt-1">Placement: ${stats.placements} / 5 Matches</div>
+        </div>`;
+    } else {
+      rankedProfileContainer.innerHTML = `
+        <div class="bg-gradient-to-r from-amber-50 to-orange-50 border border-orange-200 rounded-lg p-3 text-center mb-4 shadow-sm">
+          <div class="text-[10px] font-bold text-orange-600 uppercase tracking-widest">Current Rank</div>
+          <div class="text-2xl font-black text-orange-900">${getTier(stats.points)} TIER</div>
+          <div class="text-xs font-bold text-orange-700">${stats.points} Rating Points</div>
+        </div>`;
+    }
+  } else if (rankedProfileContainer) {
+    rankedProfileContainer.classList.add('hidden');
+  }
+
+  const shareInfo = document.getElementById('share-info-text');
+  if (shareInfo) shareInfo.innerText = `${sessionState.mode} | ${getDailyString()} | Guesses: ${sessionState.guesses.length}`;
+
+  // Loss streak banner
+  const streakBanner = document.getElementById('loss-streak-banner');
+  const isLoss = !sessionState.guesses.some(g => !g.skipped && g.name === sessionState.target.name);
+  if (streakBanner) {
+    if (isLoss && sessionState.pendingStreakReset && (sessionState.mode === 'unlimited' || sessionState.mode === 'hard')) {
+      const modeName = sessionState.mode === 'hard' ? 'Hard' : 'Normal';
+      streakBanner.innerHTML = `
+        <div class="flex flex-col items-center gap-1">
+          <span class="streak-banner-label">Final Streak Score</span>
+          <span class="streak-banner-score">${sessionState.streakAtLoss}</span>
+          <span class="streak-banner-sub">${modeName} Mode Streak Lost</span>
+        </div>`;
+      streakBanner.classList.remove('hidden');
+    } else {
+      streakBanner.classList.add('hidden');
+    }
+  }
+
+  const actionBtn = document.getElementById('modal-action-btn');
+  if (actionBtn) actionBtn.textContent = 'Continue';
+
+  const shareCardWrap = document.getElementById('share-card-wrap');
+  if (shareCardWrap) shareCardWrap.classList.toggle('hidden', currentGameType === 'voicedle');
+
+  if (currentGameType !== 'voicedle') {
+    renderShareEmojis();
+  }
+
+  modal.classList.remove('hidden');
+}
+
+function closeModal() {
+  const modal = document.getElementById('result-modal');
+  modal.classList.add('hidden');
+  stopVoicedleAudio();
+  if (typeof resetVoicedleResultPanel === 'function') resetVoicedleResultPanel();
+
+  if (sessionState.pendingStreakReset) {
+    const pData   = allPersistentData[currentGameType];
+    const modeKey = `${sessionState.mode}Streak`;
+    pData[modeKey] = 0;
+    sessionState.pendingStreakReset = false;
+    savePersistentData();
+    updateStatsUI();
+    updateScoreUI();
+  }
+
+  const isWin = sessionState.guesses.some(g => !g.skipped && g.name === sessionState.target.name);
+  if (sessionState.isGameOver && (sessionState.mode === 'unlimited' || sessionState.mode === 'hard') && isWin) {
+    startGame(sessionState.mode);
+    return;
+  }
+  if (sessionState.isGameOver && sessionState.mode === 'ranked') {
+    const pData = allPersistentData[currentGameType];
+    pData.rankedGuesses    = [];
+    pData.rankedStatus     = 'playing';
+    pData.rankedTargetName = null;
+    savePersistentData();
+    if (isWin) startGame('ranked');
+  }
+}
+
+// --------------- Share ---------------
+function renderShareEmojis() {
+  const preview = document.getElementById('share-block-preview');
+  preview.innerHTML = '';
+  if (currentGameType === 'voicedle') {
+    renderVoicedleShareEmojis(preview);
+    return;
+  }
+  const config = GAME_CONFIG[currentGameType];
+  sessionState.guesses.forEach(guess => {
+    let rowStr = '';
+    config.keys.forEach(key => {
+      const val       = guess[key];
+      const targetVal = sessionState.target[key];
+      const status    = getAttributeMatchStatus(key, val, targetVal);
+      rowStr += status === 'correct' ? '🟩' : status === 'present' ? '🟨' : '⬛';
+    });
+    const div = document.createElement('div');
+    div.innerText = rowStr;
+    preview.appendChild(div);
+  });
+}
+
+function getAttributeMatchStatus(key, val, targetVal) {
+  if (val === targetVal) return 'correct';
+  if (key === 'difficulty') {
+    return Math.abs(Number(val) - Number(targetVal)) <= 0.5 ? 'present' : 'absent';
+  }
+  if (key === 'year') {
+    return Math.abs(Number(val) - Number(targetVal)) <= 1 ? 'present' : 'absent';
+  }
+  return 'absent';
+}
+
+function renderShareEmojisText() {
+  if (currentGameType === 'voicedle') return renderVoicedleShareEmojisText();
+  let result = '';
+  const config = GAME_CONFIG[currentGameType];
+  sessionState.guesses.forEach(guess => {
+    config.keys.forEach(key => {
+      const val       = guess[key];
+      const targetVal = sessionState.target[key];
+      const status    = getAttributeMatchStatus(key, val, targetVal);
+      result += status === 'correct' ? '🟩' : status === 'present' ? '🟨' : '⬛';
+    });
+    result += '\n';
+  });
+  return result.trim();
+}
+
+function shareToTwitter() {
+  const config    = GAME_CONFIG[currentGameType];
+  const shareText = `${config.shareTitle}\n${sessionState.mode} | ${getDailyString()} | Guesses: ${sessionState.guesses.length}\n${renderShareEmojisText()}\n\nPlay ${config.shareTitle}!`;
+  window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`, '_blank');
+}
+
+function shareToFacebook() {
+  const config    = GAME_CONFIG[currentGameType];
+  const shareText = `${config.shareTitle}\n${sessionState.mode} | ${getDailyString()} | Guesses: ${sessionState.guesses.length}\n${renderShareEmojisText()}\n\nPlay ${config.shareTitle}!`;
+  window.open(`https://www.facebook.com/sharer/sharer.php?quote=${encodeURIComponent(shareText)}`, '_blank');
+}
+
+function copyShareResults() {
+  const config    = GAME_CONFIG[currentGameType];
+  const shareText = `${config.shareTitle}\n${sessionState.mode} | ${getDailyString()} | Guesses: ${sessionState.guesses.length}\n${renderShareEmojisText()}\n\nPlay ${config.shareTitle}!\nhttps://idvle.example/`;
+  
+  navigator.clipboard.writeText(shareText).then(() => {
+    const button = event.target;
+    const originalTitle = button.getAttribute('aria-label');
+    button.setAttribute('aria-label', 'Copied!');
+    button.style.backgroundColor = '#10b981';
+    setTimeout(() => {
+      button.setAttribute('aria-label', originalTitle);
+      button.style.backgroundColor = '';
+    }, 2000);
+  }).catch(err => {
+    console.error('Failed to copy:', err);
+    alert('Failed to copy to clipboard');
+  });
+}
+
+// --------------- Help modal ---------------
+function toggleHelp(show) {
+  const modal       = document.getElementById('help-modal');
+  const helpContent = document.getElementById('help-content');
+  if (show) {
+    if (currentGameType === 'voicedle') {
+      helpContent.innerHTML = `
+        <p>Identify the hidden Identity V survivor from a short voice line clip (max 2 seconds).</p>
+        <div>
+          <h3 class="font-bold text-gray-800 dark:text-gray-200 border-b pb-1 mb-2">Audio Unlocks</h3>
+          <ul class="list-disc list-inside text-sm space-y-1 ml-1">
+            <li><strong>Guess 1:</strong> Hear the first 0.5 seconds</li>
+            <li><strong>Guess 2:</strong> Hear the first 1.0 seconds</li>
+            <li><strong>Guess 3:</strong> Hear the first 1.5 seconds</li>
+            <li><strong>Guess 4:</strong> Hear the first 1.8 seconds</li>
+            <li><strong>Guess 5:</strong> Hear the full 2.0 seconds</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-800 dark:text-gray-200 border-b pb-1 mb-2">Game Modes</h3>
+          <ul class="list-disc list-inside text-sm space-y-2 ml-1">
+            <li><strong>Daily Voicedle:</strong> One voice puzzle per day!</li>
+            <li><strong>Easy Mode:</strong> Unlimited guesses with the full clip every time!</li>
+            <li><strong>Normal Mode:</strong> 5 guesses with progressive audio unlocks.</li>
+            <li><strong>Skip:</strong> Pass your turn to unlock the next clip length without guessing a name.</li>
+            <li><strong>Hard Mode:</strong> Only 2 guesses — max 1.0s of audio!</li>
+          </ul>
+        </div>
+        <p class="text-xs text-gray-500">Character choices are the same roster as Survivor mode.</p>`;
+    } else if (currentGameType === 'uma') {
+      helpContent.innerHTML = `
+        <p>Identify the hidden Identity V survivor by their role icons, gender symbol, difficulty stars, and release year.</p>
+        <div>
+          <h3 class="font-bold text-gray-800 dark:text-gray-200 border-b pb-1 mb-2">Color Indicators</h3>
+          <div class="space-y-3 text-sm">
+            <div class="flex items-center gap-2"><span class="help-dot bg-[#6aaa64] shrink-0"></span><div><strong>Green — Exact match.</strong> The attribute is correct.</div></div>
+            <div class="flex items-start gap-2"><span class="help-dot bg-[#c9b458] shrink-0 mt-0.5"></span><div><strong>Yellow — Close, but not exact.</strong><br>
+              <span class="text-gray-500">• <em>Difficulty:</em> within ½ a star of the answer.<br>
+              • <em>Year:</em> within 1 year of the answer.<br>
+              • Role 1, Role 2, Gender: no yellow — green or gray only.</span>
+            </div></div>
+            <div class="flex items-center gap-2"><span class="help-dot bg-[#787c7e] shrink-0"></span><div><strong>Gray — No match.</strong> The attribute is wrong.</div></div>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-800 dark:text-gray-200 border-b pb-1 mb-2">Direction Arrows</h3>
+          <p class="text-sm">Appear on <strong>Difficulty</strong> and <strong>Year</strong> when the cell is yellow or gray.<br>
+          <strong>↑</strong> The answer is <em>higher</em>. &nbsp;<strong>↓</strong> The answer is <em>lower</em>.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-800 dark:text-gray-200 border-b pb-1 mb-2">Game Modes</h3>
+          <ul class="list-disc list-inside text-sm space-y-2 ml-1">
+            <li><strong>Daily Mode:</strong> One new puzzle per day at midnight JST.</li>
+            <li><strong>Unlimited Mode:</strong> Keep guessing as many puzzles as you want.</li>
+            <li><strong>Easy Mode:</strong> Easier clues for new players.</li>
+            <li><strong>Normal Mode:</strong> Standard gameplay and clue rules.</li>
+            <li><strong>Hard Mode:</strong> No names shown, only 3 clue rows, and just 2 attempts.</li>
+          </ul>
+        </div>`;
+    } else {
+      helpContent.innerHTML = `
+        <p>Identify the hidden Identity V Hunter by their gender, difficulty, release year, and playstyle ratings.</p>
+        <div>
+          <h3 class="font-bold text-gray-800 dark:text-gray-200 border-b pb-1 mb-2">Columns</h3>
+          <ul class="list-disc list-inside text-sm space-y-1 ml-1">
+            <li><strong>Gender:</strong> The Hunter's gender symbol.</li>
+            <li><strong>Difficulty:</strong> Star rating (1–5 stars).</li>
+            <li><strong>Year:</strong> Release year of the Hunter.</li>
+            <li><strong>Pursuit:</strong> Chase/kiting style rating — Low, Med, or High.</li>
+            <li><strong>Control:</strong> Map control style rating — Low, Med, or High.</li>
+            <li><strong>Chair Guarding:</strong> Chair pressure style rating — Low, Med, or High.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-800 dark:text-gray-200 border-b pb-1 mb-2">Color Indicators</h3>
+          <div class="space-y-3 text-sm">
+            <div class="flex items-center gap-2"><span class="help-dot bg-[#6aaa64] shrink-0"></span><div><strong>Green — Exact match.</strong> The attribute is correct.</div></div>
+            <div class="flex items-start gap-2"><span class="help-dot bg-[#c9b458] shrink-0 mt-0.5"></span><div><strong>Yellow — Close, but not exact.</strong><br>
+              <span class="text-gray-500">• <em>Difficulty:</em> within ½ a star of the answer.<br>
+              • <em>Year:</em> within 1 year of the answer.<br>
+              • Gender, Pursuit, Control, Chair Guarding: green or gray only.</span>
+            </div></div>
+            <div class="flex items-center gap-2"><span class="help-dot bg-[#787c7e] shrink-0"></span><div><strong>Gray — No match.</strong> The attribute is wrong.</div></div>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-800 dark:text-gray-200 border-b pb-1 mb-2">Direction Arrows</h3>
+          <p class="text-sm">Appear on <strong>Difficulty</strong> and <strong>Year</strong> when the cell is yellow or gray.<br>
+          <strong>↑</strong> The answer is <em>higher</em>. &nbsp;<strong>↓</strong> The answer is <em>lower</em>.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-800 dark:text-gray-200 border-b pb-1 mb-2">Game Modes</h3>
+          <ul class="list-disc list-inside text-sm space-y-2 ml-1">
+            <li><strong>Daily Mode:</strong> A new puzzle every day at midnight JST.</li>
+            <li><strong>Unlimited Mode:</strong> Play as many puzzles as you want.</li>
+            <li><strong>Easy Mode:</strong> A more forgiving difficulty level for new players.</li>
+            <li><strong>Normal Mode:</strong> The classic experience.</li>
+            <li><strong>Hard Mode:</strong> No names shown, only 3 clue rows, and just 2 attempts.</li>
+          </ul>
+        </div>`;
+    }
+  }
+  modal.classList.toggle('hidden', !show);
+}
+
+// --------------- Dev mode / ranked visibility ---------------
+function checkDevMode() {
+  const isDev = new URLSearchParams(window.location.search).get('silencesuzuka') === 'true';
+  const rankedView    = document.getElementById('ranked-profile-view');
+  const rankedBtn     = document.querySelector("button[onclick=\"startGame('ranked')\"]");
+  const rankedWarning = document.querySelector(".text-purple-500.italic");
+  if (!isDev) {
+    if (rankedView)    rankedView.classList.add('hidden');
+    if (rankedBtn)     rankedBtn.classList.add('hidden');
+    if (rankedWarning) rankedWarning.classList.add('hidden');
+  } else {
+    if (rankedView)    rankedView.classList.remove('hidden');
+    if (rankedBtn)     rankedBtn.classList.remove('hidden');
+    if (rankedWarning) rankedWarning.classList.remove('hidden');
+  }
+}
+
+// --------------- Changelog modal ---------------
+function openChangelog()  { document.getElementById('changelog-modal').classList.remove('hidden'); }
+function closeChangelog() {
+  document.getElementById('changelog-modal').classList.add('hidden');
+  if (localStorage.getItem('uma_wordle_version') !== CURRENT_VERSION)
+    localStorage.setItem('uma_wordle_version', CURRENT_VERSION);
+}
+function checkChangelog() {
+  if (localStorage.getItem('uma_wordle_version') !== CURRENT_VERSION) {
+    if (document.body.classList.contains('intro-complete')) {
+      openChangelog();
+    } else if (pendingUsernameModal) {
+      pendingChangelogAfterUsername = true;
+    } else {
+      pendingChangelogModal = true;
+    }
+  }
+}
+window.addEventListener('load', () => setTimeout(checkChangelog, 500));
+
+// --------------- Stats modal ---------------
+function openStats() {
+  currentStatsTab = currentGameType;
+  renderStatsModal();
+  const modal = document.getElementById('stats-modal');
+  if (modal) modal.classList.remove('hidden');
+}
+
+function closeStats() {
+  const modal = document.getElementById('stats-modal');
+  if (modal) modal.classList.add('hidden');
+}
+
+function renderStatsModal() { switchStatsTab(currentStatsTab); }
+
+function switchStatsTab(type) {
+  if (type !== 'uma' && type !== 'course') return;
+  currentStatsTab = type;
+  const tabUma     = document.getElementById('stats-tab-uma')    || document.getElementById('tab-btn-uma');
+  const tabCourse  = document.getElementById('stats-tab-course') || document.getElementById('tab-btn-course');
+  const resetBtn   = document.getElementById('reset-tab-btn');
+  const activeCls  = 'flex-1 py-1.5 rounded-lg font-bold text-sm transition-all bg-green-600 text-white shadow-sm';
+  const idleCls    = 'flex-1 py-1.5 rounded-lg font-bold text-sm transition-all text-gray-500 hover:text-gray-700 dark:text-gray-400';
+
+  if (tabUma) tabUma.className = type === 'uma' ? activeCls : idleCls;
+  if (tabCourse) tabCourse.className = type === 'course' ? activeCls : idleCls;
+
+  if (resetBtn) {
+    const labels = { uma: 'Survivor', course: 'Hunter' };
+    resetBtn.textContent = `Reset ${labels[type]} Stats`;
+  }
+  renderStatsContent();
+}
+
+function renderStatsContent() {
+  const pData     = allPersistentData[currentStatsTab];
+  const container = document.getElementById('stats-content');
+  if (!container || !pData) return;
+
+  const dailyStreak     = pData.dailyStreak     || 0;
+  const easyStreak      = pData.easyStreak      || 0;
+  const unlimitedStreak = pData.unlimitedStreak  || 0;
+  const hardStreak      = pData.hardStreak       || 0;
+
+  const pill = (value, label) => `
+    <div class="stats-pill p-2 border rounded-xl dark:border-gray-700">
+      <span class="stats-pill-value block font-black text-lg">${value}</span>
+      <span class="stats-pill-label text-gray-400 text-[10px]">${label}</span>
+    </div>`;
+
+  container.innerHTML = `
+    <div class="stats-section mb-4">
+      <p class="stats-section-title font-bold text-sm mb-1 text-gray-700 dark:text-gray-300">🗓️ Daily</p>
+      <div class="stats-grid grid grid-cols-3 gap-2 text-center text-xs">
+        ${pill(dailyStreak, 'Current Streak')}
+        ${pill(pData.bestDailyStreak || dailyStreak, 'Best Streak')}
+        ${pill(pData.dailyWins || 0, 'Wins')}
+      </div>
+    </div>
+    <div class="stats-section mb-4">
+      <p class="stats-section-title font-bold text-sm mb-1 text-blue-600 dark:text-blue-400">🟢 Easy Mode</p>
+      <div class="stats-grid grid grid-cols-3 gap-2 text-center text-xs">
+        ${pill(easyStreak, 'Current Streak')}
+        ${pill(pData.bestEasyStreak || easyStreak, 'Best Streak')}
+        ${pill(pData.easyWins || 0, 'Wins')}
+      </div>
+    </div>
+    <div class="stats-section mb-4">
+      <p class="stats-section-title font-bold text-sm mb-1 text-red-600 dark:text-red-400">🔁 Normal</p>
+      <div class="stats-grid grid grid-cols-3 gap-2 text-center text-xs">
+        ${pill(unlimitedStreak, 'Current Streak')}
+        ${pill(pData.bestUnlimitedStreak || unlimitedStreak, 'Best Streak')}
+        ${pill(pData.unlimitedWins || 0, 'Wins')}
+      </div>
+    </div>
+    <div class="stats-section mb-2">
+      <p class="stats-section-title font-bold text-sm mb-1 text-purple-600 dark:text-purple-400">💀 Hard Mode</p>
+      <div class="stats-grid grid grid-cols-3 gap-2 text-center text-xs">
+        ${pill(hardStreak, 'Current Streak')}
+        ${pill(pData.bestHardStreak || hardStreak, 'Best Streak')}
+        ${pill(pData.hardWins || 0, 'Wins')}
+      </div>
+    </div>
+  `;
+}
+
+function resetStatsTab() {
+  if (!confirm(`Reset all ${currentStatsTab === 'uma' ? 'Survivor' : 'Hunter'} statistics? This cannot be undone.`)) return;
+  allPersistentData[currentStatsTab] = _blankStats();
+  savePersistentData();
+  updateStatsUI();
+  renderStatsContent();
+}
+
+function resetAllStats() {
+  if (!confirm('Reset ALL statistics for Survivor and Hunter? This cannot be undone.')) return;
+  allPersistentData.uma      = _blankStats();
+  allPersistentData.course   = _blankStats();
+  allPersistentData.voicedle  = _blankStats();
+  savePersistentData();
+  updateStatsUI();
+  renderStatsContent();
+}
+
+function _blankStats() {
+  return {
+    dailyStreak: 0, easyStreak: 0, unlimitedStreak: 0, hardStreak: 0,
+    bestDailyStreak: 0, bestEasyStreak: 0, bestUnlimitedStreak: 0, bestHardStreak: 0,
+    dailyPlayed: 0, dailyWins: 0,
+    easyPlayed: 0, easyWins: 0,
+    unlimitedPlayed: 0, unlimitedWins: 0,
+    hardPlayed: 0, hardWins: 0,
+    lastPlayedDate: null,
+    dailyGuesses: [], dailyStatus: 'playing',
+    rankedGuesses: [], rankedStatus: 'playing', rankedTargetName: null,
+    unlimitedSession: null, hardSession: null, easySession: null, lbSubmittedKey: null
+  };
+}
+
+// --------------- No-op stubs (picker is always visible) ---------------
+function showAutocomplete() {}
+function hideAutocomplete() {}
+// --------------- Wallpaper Picker ---------------
+const WALLPAPER_PRESETS = [
+  { label: 'Default',        value: 'images/trace background.jpg',                                                    thumb: 'images/trace background.jpg' },
+  { label: 'Hide n Seek',       value: 'https://static.wikia.nocookie.net/id5/images/d/d7/HideAndSeekGamemode.jpg/revision/latest/scale-to-width-down/1200?cb=20230503232759',             thumb: 'https://static.wikia.nocookie.net/id5/images/d/d7/HideAndSeekGamemode.jpg/revision/latest/scale-to-width-down/1200?cb=20230503232759' },
+  { label: 'Two vs Eight', value: 'https://wallpaperaccess.com/full/1910287.jpg',       thumb: 'https://wallpaperaccess.com/full/1910287.jpg' },
+  { label: 'Detective',     value: 'https://i.ytimg.com/vi/7ItNvooOMoA/maxresdefault.jpg',       thumb: 'https://i.ytimg.com/vi/7ItNvooOMoA/maxresdefault.jpg' },
+  { label: 'Queen Bee',         value: 'https://pbs.twimg.com/media/G7SkqOMWYAALqpM.jpg',         thumb: 'https://pbs.twimg.com/media/G7SkqOMWYAALqpM.jpg' },
+  { label: 'Fish',   value: 'https://pbs.twimg.com/media/E3QnKnLVgAI8Psd.jpg',       thumb: 'https://pbs.twimg.com/media/E3QnKnLVgAI8Psd.jpg' },
+  { label: 'Party',   value: 'https://scontent.fcrk2-1.fna.fbcdn.net/v/t39.30808-6/481295259_1047186534109131_5108588853355176072_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=zgyi6ZKr8GEQ7kNvwFOpHa1&_nc_oc=AdrFeP2pQ31itQDkX59cPYI5--PwuoqdChSgRicB4iiOwrixCxfn1LfocyFdmCwKO4b6p2LZSPpwIvY4cz5SmeCq&_nc_zt=23&_nc_ht=scontent.fcrk2-1.fna&_nc_gid=Z_pni3KcMWnv7Wz8U63dZg&_nc_ss=7b2a8&oh=00_Af7syZtrI_IafdPHQfSkxsheeRzYaw7pkx7UPv4lKFpKtA&oe=6A1EF688',         thumb: 'https://scontent.fcrk2-1.fna.fbcdn.net/v/t39.30808-6/481295259_1047186534109131_5108588853355176072_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=zgyi6ZKr8GEQ7kNvwFOpHa1&_nc_oc=AdrFeP2pQ31itQDkX59cPYI5--PwuoqdChSgRicB4iiOwrixCxfn1LfocyFdmCwKO4b6p2LZSPpwIvY4cz5SmeCq&_nc_zt=23&_nc_ht=scontent.fcrk2-1.fna&_nc_gid=Z_pni3KcMWnv7Wz8U63dZg&_nc_ss=7b2a8&oh=00_Af7syZtrI_IafdPHQfSkxsheeRzYaw7pkx7UPv4lKFpKtA&oe=6A1EF688' },
+  { label: 'Little Girl',     value: 'https://pbs.twimg.com/media/FDLhgzEVEAAFNUr.jpg',       thumb: 'https://pbs.twimg.com/media/FDLhgzEVEAAFNUr.jpg' },
+  { label: 'None',           value: '',                                                                                thumb: null },
+];
+
+// The storage key used for URL/data-url wallpapers
+const _WP_KEY = 'idvle_wallpaper';
+
+function applyWallpaper(url) {
+  document.body.style.backgroundImage = url ? `url('${url}')` : '';
+  // Only persist non-dataURL values to localStorage (data URLs can exceed 5 MB limit).
+  // For uploaded images we store separately under a dedicated key.
+  if (!url.startsWith('data:')) {
+    localStorage.setItem(_WP_KEY, url);
+    // Clear any previously uploaded custom image reference
+    localStorage.removeItem('idvle_wallpaper_type');
+  }
+}
+
+function loadWallpaper() {
+  const type = localStorage.getItem('idvle_wallpaper_type');
+  if (type === 'upload') {
+    // Retrieve the stored data URL from IndexedDB-style key (we use a dedicated localStorage key for blobs)
+    const dataUrl = localStorage.getItem('idvle_wallpaper_data');
+    if (dataUrl) {
+      document.body.style.backgroundImage = `url('${dataUrl}')`;
+      return;
+    }
+  }
+  const saved = localStorage.getItem(_WP_KEY);
+  // Default to trace background if nothing has been saved yet
+  if (saved === null) {
+    applyWallpaper('images/trace background.jpg');
+  } else {
+    applyWallpaper(saved);
+  }
+}
+
+function openWallpaperPicker() {
+  const modal = document.getElementById('wallpaper-modal');
+  if (!modal) return;
+  _renderWallpaperPresets();
+  modal.classList.remove('hidden');
+}
+
+function closeWallpaperPicker() {
+  const modal = document.getElementById('wallpaper-modal');
+  if (modal) modal.classList.add('hidden');
+}
+
+function _getCurrentWallpaperValue() {
+  const type = localStorage.getItem('idvle_wallpaper_type');
+  if (type === 'upload') return '__upload__'; // special sentinel
+  return localStorage.getItem(_WP_KEY) ?? 'images/trace background.jpg';
+}
+
+function _renderWallpaperPresets() {
+  const grid    = document.getElementById('wallpaper-preset-grid');
+  const current = _getCurrentWallpaperValue();
+  if (!grid) return;
+  grid.innerHTML = '';
+
+  WALLPAPER_PRESETS.forEach(preset => {
+    const isActive = preset.value === current;
+    const btn = document.createElement('button');
+    btn.title = preset.label;
+
+    // Build border colour via inline style so it works in both light and dark without Tailwind JIT
+    btn.style.cssText = `
+      position:relative; border-radius:12px; overflow:hidden;
+      border: 4px solid ${isActive ? '#22c55e' : '#cbd5e1'};
+      outline: ${isActive ? '2px solid #86efac' : 'none'};
+      outline-offset: 1px;
+      aspect-ratio: 16/9; width:100%; cursor:pointer;
+      transition: border-color .2s;
+    `;
+    if (preset.thumb) {
+      btn.style.backgroundImage    = `url('${preset.thumb}')`;
+      btn.style.backgroundSize     = 'cover';
+      btn.style.backgroundPosition = 'center';
+    } else {
+      btn.style.background = 'linear-gradient(135deg,#e2e8f0,#94a3b8)';
+    }
+    btn.innerHTML = `
+      <span style="position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;padding-bottom:4px;">
+        <span style="font-size:9px;font-weight:700;color:#fff;background:rgba(0,0,0,.55);padding:1px 6px;border-radius:999px;">${preset.label}</span>
+      </span>
+      ${isActive ? '<span style="position:absolute;top:4px;right:5px;font-size:13px;color:#4ade80;text-shadow:0 0 4px #000;">✓</span>' : ''}
+    `;
+    btn.onmouseenter = () => { if (!isActive) btn.style.borderColor = '#86efac'; };
+    btn.onmouseleave = () => { if (!isActive) btn.style.borderColor = '#cbd5e1'; };
+    btn.onclick = () => {
+      applyWallpaper(preset.value);
+      localStorage.removeItem('idvle_wallpaper_type');
+      localStorage.removeItem('idvle_wallpaper_data');
+      _renderWallpaperPresets();
+    };
+    grid.appendChild(btn);
+  });
+
+  // If an uploaded image is active, show a small badge in the upload zone
+  const uploadLabel = document.getElementById('wallpaper-upload-label');
+  if (uploadLabel) {
+    if (current === '__upload__') {
+      uploadLabel.style.borderColor = '#22c55e';
+      uploadLabel.querySelector('span.upload-text') && (uploadLabel.querySelector('span.upload-text').textContent = '✓ Custom image active — click to change');
+    } else {
+      uploadLabel.style.borderColor = '';
+    }
+  }
+}
+
+function handleWallpaperUpload(event) {
+  const file = event.target.files && event.target.files[0];
+  if (!file) return;
+  if (!file.type.startsWith('image/')) {
+    alert('Please select an image file.');
+    return;
+  }
+  // 10 MB safety cap
+  if (file.size > 10 * 1024 * 1024) {
+    alert('Image is too large (max 10 MB). Please choose a smaller file.');
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const dataUrl = e.target.result;
+    try {
+      localStorage.setItem('idvle_wallpaper_data', dataUrl);
+      localStorage.setItem('idvle_wallpaper_type', 'upload');
+      // Apply directly
+      document.body.style.backgroundImage = `url('${dataUrl}')`;
+      _renderWallpaperPresets();
+      closeWallpaperPicker();
+    } catch (storageErr) {
+      // localStorage quota exceeded (data URLs can be large)
+      // Apply for this session only without persisting
+      document.body.style.backgroundImage = `url('${dataUrl}')`;
+      closeWallpaperPicker();
+      console.warn('Wallpaper too large to persist in localStorage; applied for this session only.');
+    }
+  };
+  reader.readAsDataURL(file);
+  // Reset the input so the same file can be re-selected
+  event.target.value = '';
+}
+
+function applyCustomWallpaperUrl() {
+  const input = document.getElementById('wallpaper-url-input');
+  const url   = input ? input.value.trim() : '';
+  if (!url) return;
+  applyWallpaper(url);
+  localStorage.removeItem('idvle_wallpaper_type');
+  localStorage.removeItem('idvle_wallpaper_data');
+  if (input) input.value = '';
+  closeWallpaperPicker();
+}
+
+function removeWallpaper() {
+  applyWallpaper('');
+  localStorage.removeItem('idvle_wallpaper_type');
+  localStorage.removeItem('idvle_wallpaper_data');
+  _renderWallpaperPresets();
+}
+
+// Load saved wallpaper on startup
+window.addEventListener('DOMContentLoaded', loadWallpaper);
+// --------------- Overflow menu () ---------------
+function toggleOverflowMenu() {
+  const dropdown = document.getElementById('overflow-menu-dropdown');
+  if (!dropdown) return;
+  const isOpen = !dropdown.classList.contains('hidden');
+  if (isOpen) {
+    closeOverflowMenu();
+  } else {
+    dropdown.classList.remove('hidden');
+    // Close when clicking outside
+    setTimeout(() => {
+      document.addEventListener('click', _overflowOutsideHandler, { once: true });
+    }, 0);
+  }
+}
+
+function closeOverflowMenu() {
+  const dropdown = document.getElementById('overflow-menu-dropdown');
+  if (dropdown) dropdown.classList.add('hidden');
+}
+
+function _overflowOutsideHandler(e) {
+  const wrap = document.getElementById('overflow-menu-wrap');
+  if (wrap && !wrap.contains(e.target)) {
+    closeOverflowMenu();
+  }
+}
+
+// --------------- About modal ---------------
+function openAbout() {
+  closeOverflowMenu();
+
+  let modal = document.getElementById('about-modal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'about-modal';
+    modal.innerHTML = `
+      <div id="about-modal-inner">
+
+        <!-- Header (matches changelog: emoji + title + close) -->
+        <div class="about-header">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <h2 class="about-title">About IDVLE Wordle</h2>
+          </div>
+          <button onclick="closeAbout()" class="about-close-btn">&times;</button>
+        </div>
+
+        <!-- Scrollable body -->
+        <div class="about-body">
+
+          <!-- Intro card (matches green highlight card in changelog) -->
+          <div class="about-intro-card">
+            <p class="about-intro-card-title">IDVLE Wordle</p>
+            <p style="font-size:13px;line-height:1.6;margin:0;">
+              A fan-made daily puzzle experience for <strong>Identity V</strong> survivors and hunters.
+              Whether you're a casual fan or a hardcore player!
+            </p>
+          </div>
+
+          <!-- Developer -->
+          <div class="about-section-label">Creator</div>
+          <div class="about-card">
+            <div style="font-size:15px;font-weight:800;">Cephero Garde</div>
+            <div class="about-muted" style="margin-top:3px;">indie developer</div>
+          </div>
+
+          <!-- Data Sources -->
+          <div class="about-section-label">Data Sources &amp; Acknowledgments</div>
+          <p class="about-muted" style="margin:0 0 10px;">
+            This project relies on data from these incredible community resources:
+          </p>
+          <a href="https://id5.fandom.com/wiki/Identity_V_Wiki" target="_blank" rel="noopener" class="about-source-link">
+            <div>
+              <div style="font-size:13px;font-weight:700;">Identity V Wiki</div>
+              <div class="about-muted" style="font-size:11px;margin:0;">Comprehensive game information</div>
+            </div>
+            <span class="about-link-arrow">↗</span>
+          </a>
+
+          <!-- Contact -->
+          <div class="about-section-label" style="margin-top:18px;">Contact &amp; Feedback</div>
+          <div class="about-card">
+            <p class="about-muted" style="margin:0 0 10px;">
+              Found a bug or have a feature idea? Feel free to reach out — your feedback makes IDVLE better for everyone!
+            </p>
+            <a href="https://discord.gg/SB7ve3XrbG" target="_blank" rel="noopener"
+              style="display:inline-flex;align-items:center;gap:8px;background:#5865F2;color:#fff;font-size:13px;font-weight:700;padding:8px 14px;border-radius:10px;text-decoration:none;transition:background .15s;"
+              onmouseover="this.style.background='#4752c4'" onmouseout="this.style.background='#5865F2'">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+              Join the Discord Server
+            </a>
+          </div>
+
+          <!-- Tester -->
+          <div class="about-section-label" style="margin-top:18px;">THANKS TO THESE VISITORS</div>
+          <div class="about-card" style="padding:12px 14px;">
+            <p class="about-muted" style="margin:0 0 10px;font-size:12px;">Play Testers:</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 6px;">
+
+              <!-- TikTok SVG inline -->
+              ${[
+                { name: 'Lester Hervieux', url: 'https://www.tiktok.com/@lesterhervieux', platform: 'tiktok' },
+                { name: 'NotAlternic',     url: 'https://www.tiktok.com/@notalternic',   platform: 'tiktok' },
+                { name: 'd0ogl',           url: 'https://www.tiktok.com/@d0ogl',         platform: 'tiktok' },
+                { name: 'Ikiki',           url: 'https://www.tiktok.com/@ikikipt2',      platform: 'tiktok' },
+                { name: 'GoldieAcroteer', url: 'https://www.tiktok.com/@goldieacrtr',   platform: 'tiktok' },
+                { name: 'LilikuMacha',    url: 'https://www.tiktok.com/@lika.macha',    platform: 'tiktok' },
+                { name: 'Atlarusss',      url: 'https://www.twitch.tv/atlarusss',       platform: 'twitch' },
+                { name: 'ItsaGoodman',    url: 'https://www.twitch.tv/itsagoodman',     platform: 'twitch' },
+              ].map(p => {
+                const isTiktok = p.platform === 'tiktok';
+                const icon = isTiktok
+                  ? `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="color:#010101;flex-shrink:0;"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.31 6.31 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.16 8.16 0 0 0 4.77 1.52V6.76a4.85 4.85 0 0 1-1-.07z"/></svg>`
+                  : `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="color:#9146FF;flex-shrink:0;"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg>`;
+                return `<a href="${p.url}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:inherit;padding:4px 6px;border-radius:8px;transition:background .15s;" onmouseover="this.style.background='rgba(0,0,0,0.05)'" onmouseout="this.style.background='transparent'">${icon}<span style="font-size:13px;font-weight:600;">${p.name}</span></a>`;
+              }).join('')}
+
+              <!-- No-link entries -->
+              ${['Hermit Alva', 'Uzumaki', 'YuukiClyde', 'Eli'].map(name =>
+                `<div style="display:flex;align-items:center;gap:8px;padding:4px 6px;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;opacity:0.35;"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                  <span style="font-size:13px;font-weight:600;">${name}</span>
+                </div>`
+              ).join('')}
+
+            </div>
+          </div>
+
+          <!-- Legal -->
+          <div class="about-card about-legal-card">
+            <div class="about-section-label" style="color:#94a3b8;margin-bottom:6px;">Legal Disclaimer</div>
+            <p class="about-muted" style="font-size:12px;margin:0;">
+              IDVLE is a <strong>non-commercial, fan-made project</strong>. All characters, images,
+              sound assets, and related intellectual property belong to the owners of Identity V.
+              I do not claim ownership of any game assets. Please support the official game and media!
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Footer button (matches changelog's "Let's Play!" button) -->
+        <div class="about-footer">
+          <button onclick="closeAbout()" class="about-close-btn-main">
+            Got it!
+          </button>
+        </div>
+
+      </div>
+    `;
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeAbout(); });
+    document.body.appendChild(modal);
+  }
+  modal.style.display = 'flex';
+}
+
+function closeAbout() {
+  const modal = document.getElementById('about-modal');
+  if (modal) modal.style.display = 'none';
+}
