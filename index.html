@@ -19,9 +19,7 @@
     <meta property="twitter:image" content="images/umawordle logo.png">
     <meta name="theme-color" content="#15803d">
     
-    
     <script>
-
         (function(){
             var t = localStorage.getItem('theme');
             if (t === null || t === 'dark') document.documentElement.classList.add('dark-pre');
@@ -46,8 +44,6 @@
              onclick="showMenu()">
     </div>
 
-    
-    
     <div class="flex items-center gap-3 md:gap-4">
         <div id="stats-summary" class="text-xs md:text-sm font-bold text-gray-600 flex items-center gap-1 bg-white px-3 py-1.5 rounded-full shadow-sm border border-gray-100">
             </div>
@@ -100,11 +96,6 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 <span>Save Transfer</span>
             </button>
-            <div style="height:1px;background:var(--border-color,#e2e8f0);margin:4px 8px;"></div>
-            <a href="https://idvletest.pages.dev/" target="_blank" rel="noopener noreferrer" class="overflow-item" style="text-decoration:none;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9S3 16.97 3 12 7.03 3 12 3s9 4.03 9 9z"/></svg>
-                <span style="color:#16a34a;font-weight:700;">Test Server</span>
-            </a>
         </div>
     </div>
 
@@ -141,7 +132,7 @@
             <button onclick="openArchiveMode()" class="btn-secondary text-white font-bold py-2 rounded-lg shadow-lg text-sm bg-indigo-600 hover:bg-indigo-700">Archive Mode</button>
 </div>
         <div class="flex flex-col gap-4 w-full max-w-md">
-    <div id="ranked-profile-view" class="hidden bg-gradient-to-r from-purple-100 to-indigo-100 p-4 rounded-2xl border-2 border-purple-300 shadow-sm mb-2">
+    <div  class="hidden bg-gradient-to-r from-purple-100 to-indigo-100 p-4 rounded-2xl border-2 border-purple-300 shadow-sm mb-2">
         <div class="flex justify-between items-center">
             <div>
                 <p class="text-[10px] font-bold text-purple-600 uppercase tracking-widest">Current Rank</p>
@@ -156,15 +147,15 @@
             </div>
         </div>
     </div>
-    
-    <div class=" flex flex-col gap-1">
-        <button onclick="startGame('ranked')" class="hidden w-full py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl font-bold shadow-lg transform active:scale-95 transition-all">
-            Ranked Mode
-        </button>
-        <p class="hidden text-[9px] text-purple-500 font-medium italic text-center px-2">
-             This game mode is still developing and it might not be working correctly.
-        </p>
-    </div>
+</div>
+<div class="flex flex-col gap-2 mt-2">
+    <p class="text-xs font-bold text-gray-400 uppercase ml-1">Competitive PvP Mode</p>
+    <button onclick="joinPvPQueue()" class="btn-primary w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-bold text-lg bg-gradient-to-r from-red-800 to-amber-800 border border-red-600 hover:brightness-110 shadow-lg shadow-red-900/20">
+       Matchmaking Duel (PvP)
+    </button>
+    <button onclick="openLobbyModal()" class="btn-custom-lobby w-full flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm hover:brightness-110 shadow-md text-white transition-all">
+        Custom Lobby
+    </button>
 </div>
         <div class="flex flex-col gap-2 mt-2">
             <p class="text-xs font-bold text-gray-400 uppercase ml-1">Unlimited Play</p>
@@ -280,8 +271,6 @@
                     </div>
                 </div>
 
-                <div id="ranked-result-profile" class="hidden w-full mb-3"></div>
-
                 <div id="result-target-card" class="rounded-2xl p-3 border-2 border-slate-100 mb-3 mt-1">
                     <div id="result-target-header" class="flex items-center gap-3 mb-3">
                         <div id="target-img-wrap"></div>
@@ -396,6 +385,218 @@
   </div>
 </div>
 
+<!-- PvP Final Result Modal -->
+<div id="pvp-result-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+  <div class="pvp-result-card">
+    <div class="pvp-result-header">
+      <span id="pvp-result-icon" class="pvp-result-icon">🏆</span>
+      <div>
+        <h2 id="pvp-result-title">VICTORY</h2>
+        <p id="pvp-result-subtitle">Battle complete</p>
+      </div>
+    </div>
+    <div class="pvp-result-body">
+      <p id="pvp-result-winner" class="pvp-result-winner-line"></p>
+      <p id="pvp-result-rounds" class="pvp-result-meta"></p>
+      <div id="pvp-result-standings" class="pvp-result-standings"></div>
+      <button class="lobby-btn-primary" onclick="closePvPResultModal()">Return to Menu</button>
+    </div>
+  </div>
+</div>
+
+<!-- Custom PvP Lobby Modal -->
+<div id="lobby-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+  <div class="lobby-card relative">
+    <button class="lobby-close-btn" onclick="closeLobbyModal()" aria-label="Close">&times;</button>
+    <div class="lobby-header">
+      <h2>⚔️ Custom PvP Lobby</h2>
+      <p>Create, browse, or join private duels with custom rules</p>
+    </div>
+    <div class="lobby-body">
+      <div class="lobby-tabs">
+        <button class="lobby-tab active" data-view="browse" onclick="showLobbyView('browse')">Browse</button>
+        <button class="lobby-tab" data-view="create" onclick="showLobbyView('create')">Create</button>
+        <button class="lobby-tab" data-view="join" onclick="showLobbyView('join')">Join Code</button>
+        <button class="lobby-tab hidden" data-view="room" onclick="showLobbyView('room')">Room</button>
+      </div>
+
+      <!-- Browse View -->
+      <div id="lobby-view-browse">
+        <!-- Browse Filter Controls -->
+        <div class="lobby-filters-grid mb-3">
+          <div class="lobby-filter-item">
+            <label>Game Type</label>
+            <select id="lobby-filter-type" onchange="refreshLobbyList()">
+              <option value="all">All Types</option>
+              <option value="uma">Survivor</option>
+              <option value="course">Hunter</option>
+            </select>
+          </div>
+          <div class="lobby-filter-item">
+            <label>Game Mode</label>
+            <select id="lobby-filter-mode" onchange="refreshLobbyList()">
+              <option value="all">All Modes</option>
+              <option value="duel">Duel</option>
+              <option value="classic">Classic</option>
+              <option value="hard">Hard</option>
+              <option value="speed">Speed</option>
+              <option value="long">Long Game</option>
+            </select>
+          </div>
+          <div class="lobby-filter-item">
+            <label>Visibility</label>
+            <select id="lobby-filter-visibility" onchange="refreshLobbyList()">
+              <option value="all">All Lobbies</option>
+              <option value="public">🌐 Public</option>
+              <option value="private">🔒 Private</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="lobby-refresh-bar">
+          <span><span class="lobby-refresh-dot"></span>Auto-refreshing</span>
+          <span id="lobby-last-refresh">—</span>
+        </div>
+        <div id="lobby-list-container" class="lobby-list">
+          <div class="lobby-empty">
+            <div class="lobby-empty-icon">⏳</div>
+            <p>Loading lobbies...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Create View -->
+      <div id="lobby-view-create" class="hidden">
+        <div class="lobby-form-group">
+          <label>Lobby Name</label>
+          <input type="text" id="lobby-title" maxlength="40" placeholder="My Custom Duel" />
+        </div>
+        <div class="lobby-form-row">
+          <div class="lobby-form-group">
+            <label>Visibility</label>
+            <select id="lobby-visibility" onchange="toggleLobbyPasswordField()">
+              <option value="public">🌐 Public</option>
+              <option value="private">🔒 Private</option>
+            </select>
+          </div>
+          <div class="lobby-form-group">
+            <label>Max Players</label>
+            <select id="lobby-max-players">
+              <option value="2">2 Players</option>
+              <option value="3">3 Players</option>
+              <option value="4">4 Players</option>
+            </select>
+          </div>
+        </div>
+        <div class="lobby-form-row">
+          <div class="lobby-form-group">
+            <label>Game Type</label>
+            <select id="lobby-game-type">
+              <option value="uma">Survivor</option>
+              <option value="course">Hunter</option>
+            </select>
+          </div>
+          <div class="lobby-form-group">
+            <label>Game Mode</label>
+            <select id="lobby-game-mode" onchange="updateLobbyGameModeDescription()">
+              <option value="duel">Duel (Standard)</option>
+              <option value="classic">Classic</option>
+              <option value="hard">Hard</option>
+              <option value="speed">Speed</option>
+              <option value="long">Long Game</option>
+            </select>
+            <p id="lobby-game-mode-description" class="text-[11px] text-gray-500 dark:text-gray-400 mt-1 italic">
+              Standard 1v1 PvP
+            </p>
+          </div>
+        </div>
+        <div id="lobby-password-group" class="lobby-form-group hidden">
+          <label>Password (required for private)</label>
+          <input type="password" id="lobby-password" maxlength="32" placeholder="Enter password..." />
+        </div>
+        <div class="lobby-mod-section">
+          <h4>⚙️ MOD Settings</h4>
+          <div class="lobby-form-row">
+            <div class="lobby-form-group">
+              <label>Time Limit</label>
+              <select id="lobby-mod-time">
+                <option value="2">2 min</option>
+                <option value="3" selected>3 min</option>
+                <option value="5">5 min</option>
+                <option value="10">10 min</option>
+              </select>
+            </div>
+            <div class="lobby-form-group">
+              <label>Max Guesses</label>
+              <select id="lobby-mod-guesses">
+                <option value="3">3 Guesses</option>
+                <option value="5" selected>5 Guesses</option>
+                <option value="7">7 Guesses</option>
+              </select>
+            </div>
+          </div>
+          <div class="lobby-form-row">
+            <div class="lobby-form-group">
+              <label>Starting HP</label>
+              <select id="lobby-mod-hp">
+                <option value="50">50 HP (Fragile)</option>
+                <option value="100" selected>100 HP (Normal)</option>
+                <option value="150">150 HP (Robust)</option>
+                <option value="200">200 HP (Beast)</option>
+              </select>
+            </div>
+            <div class="lobby-form-group">
+              <label>Damage Multiplier</label>
+              <select id="lobby-mod-damage">
+                <option value="1" selected>1x Normal</option>
+                <option value="1.5">1.5x</option>
+                <option value="2">2x Brutal</option>
+              </select>
+            </div>
+          </div>
+          <div class="lobby-form-row">
+            <div class="lobby-form-group">
+              <label>Sudden Death Start</label>
+              <select id="lobby-mod-sudden-death">
+                <option value="3">Round 3</option>
+                <option value="6" selected>Round 6 (Default)</option>
+                <option value="10">Round 10</option>
+                <option value="none">None (Disabled)</option>
+              </select>
+            </div>
+            <div class="lobby-form-group invisible md:visible">
+              <label>&nbsp;</label>
+              <div class="py-2.5"></div>
+            </div>
+          </div>
+          <label class="lobby-checkbox-row">
+            <input type="checkbox" id="lobby-mod-auto-start" /> Auto-start when all ready
+          </label>
+        </div>
+        <button class="lobby-btn-primary mt-3" onclick="createLobby()">Create Lobby</button>
+      </div>
+
+      <!-- Join Code View -->
+      <div id="lobby-view-join" class="hidden">
+        <div class="lobby-form-group">
+          <label>Lobby Code</label>
+          <input type="text" id="lobby-join-code" maxlength="6" placeholder="ABC123" style="text-transform:uppercase;letter-spacing:0.2em;font-weight:900;text-align:center;font-size:1.25rem;" />
+        </div>
+        <div class="lobby-form-group">
+          <label>Password (if private)</label>
+          <input type="password" id="lobby-join-password" maxlength="32" placeholder="Optional for public lobbies" />
+        </div>
+        <button class="lobby-btn-primary" onclick="joinLobbyByCode()">Join Lobby</button>
+      </div>
+
+      <!-- Room View -->
+      <div id="lobby-view-room" class="hidden">
+        <div id="lobby-room-content"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/config.js"></script>
@@ -405,6 +606,9 @@
     <script src="js/leaderboard.js"></script>
     <script src="js/main.js"></script>
     <script src="devtool.js"></script>
+    <script src="js/pvp.js"></script>
+    <script src="js/lobby.js"></script>
+
 
     
 
@@ -556,9 +760,9 @@
                 <ul class="list-disc list-inside text-sm space-y-2 ml-1">
                     <strong>Changelog: </strong>
                     
-                    <br><strong>V1.1.2</strong>
-                    <li><strong>Added a Test Server Button:</strong></li>You can now access the test server from the main menu to try out upcoming features and provide feedback before they go live!</li>
                     <br><strong>V1.1</strong>
+                    <li><strong>NEW PVP Mode:</strong>Challenge other trainers in real-time battles with customizable rules and global matchmaking, and Custom lobby!</li>
+                    <br><strong>V1.0.1</strong>
                     <li><strong>Fixed THe Global Leaderboard:</strong>Fixed an issue where Easy Mode streaks were incorrectly uploading to the Normal Mode Global Leaderboard.</li>
                     <li><strong>Fixed Wallpaper:</strong>Fixed an issue where the wallpaper picker was not displaying correctly.</li>
                     <br><strong>V1.0</strong>
