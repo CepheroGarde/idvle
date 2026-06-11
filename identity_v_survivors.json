@@ -535,5 +535,16 @@
         "Difficulty": 1.0,
         "ReleaseYear": 2018,
         "Image" : "images/survivor/NavLuckyGuy.webp"
+    },
+    {
+        "Name": "Mime Artist",
+        "Roles": [
+            "Contain",
+            "Assist"
+        ],
+        "Gender": "Female",
+        "Difficulty": 2,
+        "ReleaseYear": 2026,
+        "Image" : "images/survivor/NavMimeArtist.webp"
     }
 ]
